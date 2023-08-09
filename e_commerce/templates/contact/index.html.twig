@@ -1,0 +1,56 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+    <title>Rejoignez-nous</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <!-- Cette page contient des informations, un lien vers linkedtree et un lien de navigation vers
+            la page d'accueil -->
+            <h3>REJOIGNEZ-NOUS</h3>
+
+            <div class="mentions">
+                <p>
+                    Vous partagez les idées de l’auteur, vous êtes retraité(e),<br>
+                    vous êtes disponible pour devenir Ambassadeur dans votre territoire ? Contactez-nous.<br>
+                    ou<br>
+                    Vous voulez être bénévole pour défendre les idées de l’auteur ?<br>
+                    Contactez-nous ?<br>
+                </p>
+            </div>
+
+            <div class="informations">
+                <div>
+                    <a href="https://linktr.ee/SageEtFou" class="boutonJoinAyant">Contactez-nous...</a>
+                </div>
+                <div id="menu">
+                    <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- <script>src = "script.js"</script> -->
+</body>
+
+</html
+{% endblock %}

@@ -1,0 +1,59 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+    <title>Etik Business Club</title>
+</head>
+
+<body>
+    <div class="wrapperEtik">
+        <header>
+            <!-- Cette page contient des informations, un lien vers linkedtree et un lien de navigation vers
+            la page d'accueil -->
+            <h3>ETIK BUSINESS CLUB</h3>
+            <h6>(Sera lancé fin août)</h6>
+
+            <div class="mentions">
+                <p>
+                    Vous avez une entreprise, une association, un club de sport …. ?<br>
+                    Offrez les livres de l’auteur en cadeau d’entreprise. Tarif préférentiel…<br>
+                    Vous partagez les valeurs et les idées de l’auteur.<br>
+                    Vous voulez être interviewé sur iii RADIO et augmenter votre visibilité ?<br>
+                    Vous voulez devenir adhérent au Etik Business Club ?<br> 
+                    Contactez-nous !<br>
+
+                </p>
+            </div>
+
+            <div class="informations">
+                <div>
+                    <a href="https://linktr.ee/SageEtFou" class="boutonJoinAyant">Contactez-nous...</a>
+                </div>
+                <div id="menu">
+                   <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- <script>src = "script.js"</script> -->
+</body>
+
+</html
+{% endblock %}

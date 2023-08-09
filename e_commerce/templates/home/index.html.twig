@@ -1,0 +1,408 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FOUETSAGE{% endblock %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="fr">
+
+        <head>
+            <meta charset="utf-8">
+
+            <link rel="stylesheet" href="file.css">
+
+            <link rel="stylesheet" href="index.html">
+            
+
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+            <title>MENU</title>
+        </head>
+        <main>
+
+            <section class="features">
+
+                <div class="bloc3">
+                    <div class="feat">
+                        <img class="ico" src="{{ asset('img/logo2.jpg') }}" alt="logo revolution">
+                        <h4></h4>
+                        <p class="text2">
+                            Collection de livres politiques et intimistes.
+                        </p>
+                    </div>
+                    <div class="feat">
+                        <img class="ico" src="{{ asset('img/logo1.jpg') }}" alt="logo iiiradio">
+                        <h4></h4>
+                        <p class="text2">
+                           Radio libre de podcasts, d'idées, d'initiatives, d'interviews.
+                        </p>
+                    </div>
+                    <div class="feat">
+                        <img class="ico" src="{{ asset('img/logo4.bmp') }}" alt="logo ventes aux encheres">
+                        <h4></h4>
+                        <p class="text2">
+                            Ventes d'oeuvres mémorielles individuelles et collectives en ligne
+                        </p>
+                    </div>
+                    <div class="feat">
+                        <img class="icoA" src="{{ asset('img/logo5.jpg') }}" alt="logo etik business club">
+                        <h4></h4>
+                        <p class="text2">
+                            Réseau de partenaires professionnels partageant les mêmes valeurs avec Daniel Aaron.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team">
+                <div class="staff">
+                    <div class="member">
+                        <figure>
+                            <figcaption>
+                                <h3 id="team"></h3>
+                                
+                            </figcaption>
+                            <div class="icoPhoto">
+                                <div class="ico3">
+                                    <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src=" {{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
+                                    <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }} " alt="Lien vers le compte Instagram" title="Instagram"></a>
+                                    <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
+                                    <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
+                                </div>
+                                <div class="ico4">
+                                    <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
+                                    <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
+                                    <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
+                                    <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a>
+                                </div>
+                                <img class="pcs1" src="{{ asset('img/daniel1.jpg') }}" alt="Daniel Aaron">
+                            </div>
+                            <h1>Daniel Aaron</h1>
+                            <p class="text3">Écrivain Éditeur</p>
+                            <p>
+                                Qui suis-je ?
+                                Jumeau, père de 2 garçons merveilleux, autodidacte, instinctif, optimiste, amoureux toujours, ayant connu plusieurs carrières professionnelles. Ma provocation n'en est pas une, je veux faire mes “RévolutionS” ! Lisez moi...
+                                Fou et sage ? Sage et fou ? 
+                                Qui suis-je ?
+                            </p>
+                        </figure>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="getStart">
+                <div class ="revolution">
+                    <h5>Découvrir la Collection</h5><br>
+                    <img class="logRevolution" src="{{ asset('img/logo2.jpg') }}" alt="logo Revolutions">
+                </div>
+            </section>
+
+            <div class="livres">
+                <h3 id="prix">Les Livres de Daniel Aaron</h3>
+            </div>
+
+            <div class="book">
+                <p>
+                    Pamphlet politique et intimiste, compilation de textes courts et incisifs,<br>
+                    le format de poche, souple, permet une lecture partout et suscitera questionnements et réflexions.<br>
+                    Un style provoquant pour dénoncer sans aucune concession, avec une indépendance totale,
+                    les grands maux de notre époque et ensuite proposer des solutions nées du terrain pour entretenir cette petite flamme d'espoir.<br>
+            
+                    <br>3 ans de travail, 1200 pages déclinées en 8 tomes
+                    qui forment la collection "RévolutionS" abordant
+                    chacun un thème essentiel de notre époque.
+                </p>
+            </div>
+
+            <section class="price">
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
+                            </figure>
+                            <div class="acheter1">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log">
+                            </figure>
+                            <h2>DISPONIBLE</h2>
+                            <h3>PRIX: 16 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des femmes à travers cet amour,
+                                au niveau intime et collectif.
+                                Et toujours apporter un espoir…
+                              </p>
+                            <a href="https://buy.stripe.com/8wM3fh4Wf1XM0zS000">
+                                <input type="submit" value="Achetez-moi" class="boutonJoin">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+          
+                      <div class="front">
+                        <figure>
+                          <img src="{{ asset('img/livreHS.jpg') }}" alt="livre Une question qui tue" class="log">
+                        </figure>
+                        <div class="acheter7">ACHETEZ-MOI</div>
+                      </div>
+          
+                      <div class="back">
+                        <figure>
+                          <img src="{{ asset('img/tomeHS.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                            class="log">
+                        </figure>
+                        <h2 class="ayant">15 Août 2023</h2>
+                        <h3>PRIX: 16 € ttc</h3>
+                        <h6>(Dont 4 € de frais de port)</h6>
+                        <p>
+                          
+                        </p>
+                        <a href="https://buy.stripe.com/8wM6rtdsL45UeqI14c">
+                          <input type="submit" value="Pré-Commande" class="boutonJoinAyant">
+                        </a>
+                      </div>
+          
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre0.jpg') }}" alt="livre Une question qui tue" class="log">
+                            </figure>
+                            <div class="acheter0">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome0.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log">
+                            </figure>
+                            <h2 class="tue">15 Août 2023</h2>
+                            <h3>PRIX: 13 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet pour répondre à 4 questions : Qui suis-je ? Pourquoi écrire ? Pourquoi RévolutionS ?
+                                Un titre originel qui a surgi il y a plus de 20 ans déjà et qui est née suite à une question posée par un journaleux local
+                                et qui a failli me tuer.
+                                Et toujours apporter un espoir…
+                            </p>
+                            <a href="https://buy.stripe.com/14k9DFbkD1XM0zS7st">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinTue">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre2.jpg') }}" alt="livre Juifs" class="log">
+                            </figure>
+                            <div class="acheter2">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome2.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log2">
+                            </figure>
+                            <h2 class="juifs">15 Août 2023</h2>
+                            <h3>PRIX: 19 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet émerveillé sur la première religion monothéiste, celle que toutes les autres ont prise en référence
+                                même si de nombreux fidèles l’ont oubliée. 
+                                Pamphlet personnel où l’auteur parle de son judaïsme, ou plutôt des chemins qu'il a empruntés. 
+                                Pamphlet acide sur l’antisémitisme où il appelle un chat un chat.
+                                Pamphlet passionné et argumenté sans concession sur Israël, plus beau pays au monde.
+                                Et toujours apporter un espoir…
+                            </p>
+                            <a href="https://buy.stripe.com/cN22bdfAT9qe96o3ce">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinJuifs">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre3.jpg') }}" alt="livre Argent" class="log">
+                            </figure>
+                            <div class="acheter3">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome3.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log">
+                            </figure>
+                            <h2 class="argents">15 Septembre 2023</h2>
+                            <h3>PRIX: 19 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet éminemment politique et intime en deux parties.
+                                Un traité d’économie réelle avec une somme d’expériences professionnelles d’un auteur autodidacte 
+                                dont l’approche est empreinte de réalité du terrain et surtout pas de grandes théories.
+                                Un mode d’emploi pour les porteurs de projet afin de mener à bien leurs entreprises 
+                                selon une expertise reconnue et construite grâce aux 350 accompagnements réalisés dans 50 secteurs par l’auteur… 
+                                Avec une quinzaine de cas d’école pour illustrer les dysfonctionnements du système et comment le dépasser.
+                                Et toujours apporter un espoir…
+                            </p>
+                            <a href="https://buy.stripe.com/8wMg23bkDeKygyQcMP">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinArgents">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre5.jpg') }}" alt="livre Politique" class="log">
+                            </figure>
+                            <div class="acheter5">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome5.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log">
+                            </figure>
+                            <h2 class="politique">15 Septembre 2023</h2>
+                            <h3>PRIX: 19 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet engagé et sans compromis d’un auteur libre.
+                                Des cris sur beaucoup de sujets brûlants de notre époque et des propositions… des RévolutionS… et donc un espoir…
+                            </p>
+                            <a href="https://buy.stripe.com/6oE9DFcoH8ma1DW5ko">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinPolitique">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre4.jpg') }}" alt="livre Foot" class="log">
+                            </figure>
+                            <div class="acheter4">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome4.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log1">
+                            </figure>
+                            <h2 class="foot">15 Octobre 2023</h2>
+                            <h3>PRIX: 13 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet passionné et révolutionnaire sur le sport le plus populaire.
+                                Un traité de cinquante pages pour réinventer les règles du football et lui permettre d’extirper ses
+                                démons.
+                            </p>
+                            <a href="https://buy.stripe.com/aEU4jldsL1XMeqI6ot">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinFoot">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre6.jpg') }}" alt="livre Inclassable" class="log">
+                            </figure>
+                            <div class="acheter6">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome6.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log">
+                            </figure>
+                            <h2 class="inclassable">15 Octobre 2023</h2>
+                            <h3>PRIX: 16 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet avec des sujets inclassables et pourtant essentiels. 
+                                Portraits courts aussi de personnalités anonymes qui ont marqué l’auteur,
+                                des héros du quotidien à qui on devrait confier une mission… Révolutionner la France.
+                                Et toujours apporter un espoir…
+                            </p>
+                            <a href="https://buy.stripe.com/eVag231K3eKybew14a">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinInclassable">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocPrice">
+                    <div class="pack">
+
+                        <div class="front">
+                            <figure>
+                                <img src="{{ asset('img/livre7.jpg') }}" alt="livre Une question qui tue" class="log">
+                            </figure>
+                            <div class="acheter7">ACHETEZ-MOI</div>
+                        </div>
+
+                        <div class="back">
+                            <figure>
+                                <img src="{{ asset('img/tome7.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                    class="log">
+                            </figure>
+                            <h2 class="ayant">15 Novembre 2023</h2>
+                            <h3>PRIX: 16 € ttc</h3>
+                            <h6>(Dont 4 € de frais de port)</h6>
+                            <p>
+                                Pamphlet intime. Pour comprendre cette collection, l’auteur a dû se livrer plus.
+                                “Bipolaire”, “à fond de cale”, perdu, amoureux, fou, sage, professionnel…
+                                sont les mots qui permettent de lire ses livres et de les… recommander.
+                                Et toujours apporter un espoir…
+                            </p>
+                            <a href="https://buy.stripe.com/5kA8zB60jbymaas7sz">
+                                <input type="submit" value="Pré-Commande" class="boutonJoinAyant">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </html>
+
+{% endblock %}

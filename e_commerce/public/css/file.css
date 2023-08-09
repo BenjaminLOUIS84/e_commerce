@@ -1,0 +1,158 @@
+/*  Pour reset les marges*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* wrapper  =   bloc contenant les réglages par défaut pour toute la page*/
+
+.wrapper {
+
+    background-image: url(/img/logo.jpg);
+    font-family: 'Libre Baskerville', sans-serif;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+}
+
+.wrapperEtik {
+
+    background-image: url(/img/logo5.jpg);
+    font-family: 'Libre Baskerville', sans-serif;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+}
+
+.wrapperVente {
+
+    background-image: url(/img/logo4.bmp);
+    font-family: 'Libre Baskerville', sans-serif;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+}
+
+/* nav  =   bloc contenant: h1, nav, menu et a  */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    line-height: 1;
+    height: 370px;
+}
+
+nav .lk {
+    width: 6%;
+    filter: invert();
+}
+
+.informations {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    line-height: 1;
+    height: 100px;
+}
+
+.informations .lk {
+    width: 6%;
+    filter: invert();
+}
+
+h1 {
+    font-size: 3.7em;
+    color: white;
+}
+
+h3 {
+    font-size: 2em;
+    color: rgba(204, 0, 0, 1);
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+}
+
+#men {
+    height: 60px;
+    margin-bottom: 40px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 1.5em;
+    background: rgba(204, 0, 0, 1);
+    background-size: 100px;
+    border: none;
+    animation: appear 1s;
+    transition: ease-in-out 0.5s;
+    margin: 10px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+.ml {
+    color: gray;
+    background: none;
+    font-size: 1em;
+}
+
+
+@keyframes appear {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+
+}
+
+a:hover {
+    opacity: 70%;
+    color: black;
+    /* background: white; */
+    font-weight: bold;
+}
+
+.mentions {
+    font-family: 'Libre Baskerville', sans-serif;
+    text-align: justify;
+    padding: 10px;
+    padding-top: 620px;
+}
+
+.icoA {
+    width: 50%;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+/*TELEPHONE//////////////////////////////////////////////////////*/
+
+@media (min-width: 0) and (max-width: 768px) {
+
+
+    .mentions {
+        padding-top: 280px;
+    }
+}
