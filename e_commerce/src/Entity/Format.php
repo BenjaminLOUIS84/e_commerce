@@ -21,9 +21,13 @@ class Format
     #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'formats')]
     private Collection $Livre;
 
+    #[ORM\OneToMany(mappedBy: 'format', targetEntity: FormatLivre::class)]
+    private Collection $FormatLivre;
+
     public function __construct()
     {
         $this->Livre = new ArrayCollection();
+        $this->FormatLivre = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -63,6 +67,36 @@ class Format
     public function removeLivre(Livre $livre): static
     {
         $this->Livre->removeElement($livre);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FormatLivre>
+     */
+    public function getFormatLivre(): Collection
+    {
+        return $this->FormatLivre;
+    }
+
+    public function addFormatLivre(FormatLivre $formatLivre): static
+    {
+        if (!$this->FormatLivre->contains($formatLivre)) {
+            $this->FormatLivre->add($formatLivre);
+            $formatLivre->setFormat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormatLivre(FormatLivre $formatLivre): static
+    {
+        if ($this->FormatLivre->removeElement($formatLivre)) {
+            // set the owning side to null (unless already changed)
+            if ($formatLivre->getFormat() === $this) {
+                $formatLivre->setFormat(null);
+            }
+        }
 
         return $this;
     }
