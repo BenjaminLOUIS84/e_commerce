@@ -50,7 +50,6 @@ class Commande
     {
         $this->Livre = new ArrayCollection();
         $this->Facture = new ArrayCollection();
-       
     }
 
     public function getId(): ?int

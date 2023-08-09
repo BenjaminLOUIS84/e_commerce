@@ -21,7 +21,6 @@ class Format
     #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'formats')]
     private Collection $Livre;
 
-
     public function __construct()
     {
         $this->Livre = new ArrayCollection();
@@ -67,6 +66,4 @@ class Format
 
         return $this;
     }
-
-
 }

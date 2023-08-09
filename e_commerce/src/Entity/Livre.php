@@ -148,5 +148,4 @@ class Livre
         return $this;
     }
 
-
 }
