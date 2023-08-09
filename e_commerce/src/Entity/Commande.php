@@ -44,7 +44,7 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Facture::class)]
     private Collection $Facture;
 
-   
+
 
     public function __construct()
     {
