@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LivreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,19 @@ class Livre
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $resume = null;
+
+    #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'Livre')]
+    private Collection $commandes;
+
+    #[ORM\ManyToMany(targetEntity: Format::class, mappedBy: 'Livre')]
+    private Collection $formats;
+
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+        $this->formats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -78,4 +93,59 @@ class Livre
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->addLivre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            $commande->removeLivre($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Format>
+     */
+    public function getFormats(): Collection
+    {
+        return $this->formats;
+    }
+
+    public function addFormat(Format $format): static
+    {
+        if (!$this->formats->contains($format)) {
+            $this->formats->add($format);
+            $format->addLivre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormat(Format $format): static
+    {
+        if ($this->formats->removeElement($format)) {
+            $format->removeLivre($this);
+        }
+
+        return $this;
+    }
+
 }

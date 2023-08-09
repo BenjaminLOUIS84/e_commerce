@@ -20,6 +20,9 @@ class Facture
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_facture = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Facture')]
+    private ?Commande $commande = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Facture
     public function setDateFacture(\DateTimeInterface $date_facture): static
     {
         $this->date_facture = $date_facture;
+
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commande $commande): static
+    {
+        $this->commande = $commande;
 
         return $this;
     }

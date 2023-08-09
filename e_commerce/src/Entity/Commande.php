@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +37,20 @@ class Commande
 
     #[ORM\Column(length: 100)]
     private ?string $ville = null;
+
+    #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'commandes')]
+    private Collection $Livre;
+
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Facture::class)]
+    private Collection $Facture;
+
+   
+
+    public function __construct()
+    {
+        $this->Livre = new ArrayCollection();
+        $this->Facture = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,4 +140,61 @@ class Commande
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Livre>
+     */
+    public function getLivre(): Collection
+    {
+        return $this->Livre;
+    }
+
+    public function addLivre(Livre $livre): static
+    {
+        if (!$this->Livre->contains($livre)) {
+            $this->Livre->add($livre);
+        }
+
+        return $this;
+    }
+
+    public function removeLivre(Livre $livre): static
+    {
+        $this->Livre->removeElement($livre);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Facture>
+     */
+    public function getFacture(): Collection
+    {
+        return $this->Facture;
+    }
+
+    public function addFacture(Facture $facture): static
+    {
+        if (!$this->Facture->contains($facture)) {
+            $this->Facture->add($facture);
+            $facture->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFacture(Facture $facture): static
+    {
+        if ($this->Facture->removeElement($facture)) {
+            // set the owning side to null (unless already changed)
+            if ($facture->getCommande() === $this) {
+                $facture->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
+    
 }
