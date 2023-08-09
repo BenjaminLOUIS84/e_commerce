@@ -34,11 +34,15 @@ class Livre
     #[ORM\ManyToMany(targetEntity: Format::class, mappedBy: 'Livre')]
     private Collection $formats;
 
+    #[ORM\OneToMany(mappedBy: 'Livre', targetEntity: CommandeLivre::class)]
+    private Collection $commandeLivres;
+
 
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
         $this->formats = new ArrayCollection();
+        $this->commandeLivres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -143,6 +147,36 @@ class Livre
     {
         if ($this->formats->removeElement($format)) {
             $format->removeLivre($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommandeLivre>
+     */
+    public function getCommandeLivres(): Collection
+    {
+        return $this->commandeLivres;
+    }
+
+    public function addCommandeLivre(CommandeLivre $commandeLivre): static
+    {
+        if (!$this->commandeLivres->contains($commandeLivre)) {
+            $this->commandeLivres->add($commandeLivre);
+            $commandeLivre->setLivre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeLivre(CommandeLivre $commandeLivre): static
+    {
+        if ($this->commandeLivres->removeElement($commandeLivre)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeLivre->getLivre() === $this) {
+                $commandeLivre->setLivre(null);
+            }
         }
 
         return $this;
