@@ -34,6 +34,9 @@ class Livre
     #[ORM\ManyToMany(targetEntity: Format::class, mappedBy: 'Livre')]
     private Collection $formats;
 
+    #[ORM\ManyToOne(inversedBy: 'Livre')]
+    private ?Serie $serie = null;
+
 
     public function __construct()
     {
@@ -144,6 +147,18 @@ class Livre
         if ($this->formats->removeElement($format)) {
             $format->removeLivre($this);
         }
+
+        return $this;
+    }
+
+    public function getSerie(): ?Serie
+    {
+        return $this->serie;
+    }
+
+    public function setSerie(?Serie $serie): static
+    {
+        $this->serie = $serie;
 
         return $this;
     }
