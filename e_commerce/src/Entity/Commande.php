@@ -44,12 +44,16 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Facture::class)]
     private Collection $Facture;
 
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: CommandeLivre::class)]
+    private Collection $CommandeLivre;
+
    
 
     public function __construct()
     {
         $this->Livre = new ArrayCollection();
         $this->Facture = new ArrayCollection();
+        $this->CommandeLivre = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +193,36 @@ class Commande
             // set the owning side to null (unless already changed)
             if ($facture->getCommande() === $this) {
                 $facture->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommandeLivre>
+     */
+    public function getCommandeLivre(): Collection
+    {
+        return $this->CommandeLivre;
+    }
+
+    public function addCommandeLivre(CommandeLivre $commandeLivre): static
+    {
+        if (!$this->CommandeLivre->contains($commandeLivre)) {
+            $this->CommandeLivre->add($commandeLivre);
+            $commandeLivre->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeLivre(CommandeLivre $commandeLivre): static
+    {
+        if ($this->CommandeLivre->removeElement($commandeLivre)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeLivre->getCommande() === $this) {
+                $commandeLivre->setCommande(null);
             }
         }
 
