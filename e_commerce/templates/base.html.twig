@@ -69,6 +69,8 @@
 
         {% if app.user %}
         
+          <div class="mb-3">Bienvenue {{ app.user.Pseudo }}</div>
+        
           <div class="menu">
             <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la page d'accueil" title="Retour à l'accueil"></a>
 
