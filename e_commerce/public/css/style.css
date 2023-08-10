@@ -895,6 +895,23 @@ h6 {
     cursor: pointer;
 }
 
+/*INSCRIPTION & CONNEXION*/
+
+.formAddCo {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(63, 66, 71, 1));
+    color: black;
+    line-height: 2;
+    padding: 20px;
+    width: max-content;
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px black;
+    text-align: center;
+}
+
+.mb-3 a:hover {
+    color: #212529;
+}
+
 /*///////////////////////////////////////RESPONSIVE/////////////////////////////////////////*/
 
 
