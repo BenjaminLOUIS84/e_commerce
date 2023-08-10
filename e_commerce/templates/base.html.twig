@@ -62,14 +62,16 @@
       <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}" title="Linktree" alt="QR Code de Daniel Aaron" class="qR"></a>
     
     </div>
+    
+    {% if app.user %}
+      <div class="mb-3">Bienvenue {{ app.user.Pseudo }} !</div> 
+    {% endif %}
 
     <header>
 
       <nav>
 
         {% if app.user %}
-        
-          <div class="mb-3">Bienvenue {{ app.user.Pseudo }}</div>
         
           <div class="menu">
             <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la page d'accueil" title="Retour à l'accueil"></a>

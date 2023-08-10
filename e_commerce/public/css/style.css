@@ -908,8 +908,9 @@ h6 {
     text-align: center;
 }
 
-.mb-3 a:hover {
-    color: #212529;
+.mb-3 {
+    color: white;
+    margin-bottom: 0px;
 }
 
 /*///////////////////////////////////////RESPONSIVE/////////////////////////////////////////*/

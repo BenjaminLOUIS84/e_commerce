@@ -152,6 +152,10 @@ a:hover {
 
 /*FORMULAIRES INSCRIPTION & CONNEXION*/
 
+.mb-3 {
+    color: black;
+}
+
 form {
     text-align: end;
     display: flex;
