@@ -239,6 +239,153 @@ header {
     font-size: 1.5em;
 }
 
+/* LES LIVRES/////////////////////////////////////////////////////////// */
+
+.book {
+    display: flex;
+    padding: 20px;
+    text-align: justify;
+    width: 400px;
+    margin: auto;
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+    background: whitesmoke;
+    justify-content: left;
+    align-items: center;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.blocPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* position:relative; */
+    margin: auto;
+}
+
+.livres h3 {
+    color: white;
+    background: rgba(204, 0, 0, 1);
+    padding: 10px;
+    text-align: center;
+}
+
+/*Effet de carte retournée*/
+
+.blocPrice:hover .pack {
+    transform: rotateY(180deg);
+    transition: ease-in-out 1s;
+}
+
+.pack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    transition: .5s ease-in-out;
+    /* position: absolute; */
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+    margin: 10px;
+}
+
+.front {
+    position: absolute;
+    box-shadow: 0px 5px 10px black;
+    backface-visibility: hidden;
+    /* width: 330px; */
+    width: 245px;
+}
+
+.back {
+    /* position: absolute; */
+    background: white;
+    position: sticky;
+    object-fit: cover;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    box-shadow: 0px 6px 10px black;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+    padding: 10px;
+    height: max-content;
+    /* width: 400px; */
+    width: 410px;
+    text-align: center;
+}
+
+.back p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.back h2 {
+
+    padding-bottom: 20px;
+    font-size: 2em;
+}
+
+h6 {
+    font-size: 0.7em;
+    font-weight: normal;
+}
+
+.log {
+    width: 100%;
+    align-items: center;
+    cursor: pointer;
+}
+
+.log1 {
+    width: 50%;
+    align-items: center;
+    cursor: pointer;
+}
+
+.log2 {
+    width: 70%;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+/*Femmes*/
+
+.boutonJoin {
+    color: rgba(204, 0, 0, 1);
+    border: 1px solid rgba(204, 0, 0, 1);
+    background: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+    margin-top: 20px;
+    padding: 10px 80px 10px 80px;
+    transition: .5s ease-in-out;
+}
+
+.boutonJoin:hover {
+    background: rgba(204, 0, 0, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.acheter1 {
+    color: rgba(204, 0, 0, 1);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    background: pink;
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
+
+
 /*TELEPHONE//////////////////////////////////////////////////////*/
 
 @media (min-width: 0) and (max-width: 768px) {

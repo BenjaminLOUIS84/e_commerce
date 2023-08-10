@@ -66,6 +66,9 @@
     <header>
 
       <nav>
+        {# {% if is_granted('ROLE_ADMIN') %}
+          <a href="">PARAMETRES</a>
+        {% endif %} #}
 
         {% if app.user %}
         
@@ -99,6 +102,7 @@
           <div class="burger">
             <a href="{{path ('app_menu')}}"><img src="{{ asset('img/burger.png') }}" class="meal" alt="menu burger" title="Menu"></a>
           </div>
+
           {% else %}
 
             <div class="menu">
@@ -130,6 +134,7 @@
             <div class="burger">
               <a href="{{path ('app_menu')}}"><img src="{{ asset('img/burger.png') }}" class="meal" alt="menu burger" title="Menu"></a>
             </div>
+
         {% endif %}
 
       </nav>

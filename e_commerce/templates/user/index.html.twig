@@ -31,13 +31,14 @@
                 <header>
                     <!-- Cette page contient L'espace personnel des utilisateurs -->
                     <h3>MON ESPACE</h3>
-                    <h2>Bienvenue dans votre espace personnel {{ app.user.Pseudo }} </h2>
-
-                    <div class="mentions">
-
-                        
-                        
-                    </div>          
+                    <h2>Bienvenue dans votre espace personnel {{ app.user.Pseudo }} </h2><br>
+                    
+                    <br><a href="{{ path ('app_livre')}}">Voir mes livres</a>
+                    <a href="{{ path ('app_commande')}}">Voir mes commandes</a>
+                    <a href="{{ path ('app_facture')}}">Voir mes factures</a>
+                    <a href="{{ path ('app_format')}}">Voir les formats</a>
+                    <a href="{{ path ('app_serie')}}">Voir les collections</a>
+                             
                     
                     <nav id="men">
                         <div id="menu">

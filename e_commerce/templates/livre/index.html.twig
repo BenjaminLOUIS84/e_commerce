@@ -23,19 +23,44 @@
         </head>
 
         <body>
-            <div class="wrapper">
+            <div>
                 <header>
                     <!-- Cette page concerne les livres-->
                     <h3>LIVRES</h3>
 
-                    <div class="mentions">
-                        
-
-                    </div>
+                    {# <section class="price">
+                        <div class="blocPrice">
+                            <div class="pack">
+                                <div class="front">
+                                    <figure>
+                                        <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
+                                    </figure>
+                                    <div class="acheter1">ACHETEZ-MOI</div>
+                                </div>
+                                <div class="back">
+                                    <figure>
+                                        <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                            class="log">
+                                    </figure>
+                                    <h2>DISPONIBLE</h2>
+                                    <h3>PRIX: 16 € ttc</h3>
+                                    <h6>(Dont 4 € de frais de port)</h6>
+                                    <p>
+                                        Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des femmes à travers cet amour,
+                                        au niveau intime et collectif.
+                                        Et toujours apporter un espoir…
+                                      </p>
+                                    <a href="">
+                                        <input type="submit" value="Ajouter au panier" class="boutonJoin">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section> #}
 
                     <nav id="men">
                         <div id="menu">
-                        <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la page d'accueil" title="Retour à l'accueil"></a>
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>                        </div>
                         </div>
                     </nav>
 
