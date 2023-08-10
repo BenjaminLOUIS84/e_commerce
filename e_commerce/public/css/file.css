@@ -78,10 +78,12 @@ h1 {
     color: white;
 }
 
+
 h3 {
     font-size: 2em;
     color: rgba(204, 0, 0, 1);
     font-family: 'Libre Baskerville', sans-serif;
+    text-align: center;
 }
 
 #menu {
@@ -148,12 +150,28 @@ a:hover {
     border-radius: 10px;
 }
 
-/*INSCRIPTION & CONNEXION*/
+/*FORMULAIRES INSCRIPTION & CONNEXION*/
 
-.formAddCo {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(63, 66, 71, 1));
+form {
+    text-align: end;
+}
+
+h3 {
+    margin-bottom: 40px;
+}
+
+#registration_form_agreeTerms {
+    width: 30px;
+}
+
+.btn {
+    margin-top: 40px;
+}
+
+.formAddInscription {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(204, 0, 0, 1));
     color: black;
-    line-height: 2;
+    line-height: 3;
     padding: 20px;
     width: auto;
     border-radius: 20px;
@@ -161,6 +179,56 @@ a:hover {
     text-align: end;
     display: flex;
     justify-content: center;
+}
+
+.formAddInscription input {
+    padding: 10px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.formAddInscription label {
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.btn {
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
+.btn:hover {
+    background: rgba(204, 0, 0, 1);
+    color: white;
+    transition: ease-in-out 0.5s;
+}
+
+.formAddConnexion {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(204, 0, 0, 1));
+    color: black;
+    line-height: 2;
+    padding: 20px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px black;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formAddConnexion input {
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.formAddConnexion label {
+    padding: 10px;
+    font-size: 2em;
 }
 
 /*TELEPHONE//////////////////////////////////////////////////////*/
@@ -171,4 +239,17 @@ a:hover {
     .mentions {
         padding-top: 280px;
     }
+
+    .formAddInscription {
+        line-height: 2;
+    }
+
+    .formAddInscription input {
+        width: 380px;
+    }
+
+    form {
+        text-align: center;
+    }
+
 }

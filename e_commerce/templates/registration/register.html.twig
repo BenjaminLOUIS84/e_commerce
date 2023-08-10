@@ -25,32 +25,36 @@
         {% for flash_error in app.flashes('verify_email_error') %}
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
+        <div class="wrapper">
+            <header>
+                <h3>INSCRIPTION</h3>
 
-        <h1>INSCRIPTION</h1>
+                <div class="formAddInscription">
 
-        <div class="formAddCo">
+                    {{ form_errors(registrationForm) }}
 
-            {{ form_errors(registrationForm) }}
+                    {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.pseudo) }}
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Mot de passe'
+                        }) }}
+                        {{ form_row(registrationForm.agreeTerms, {
+                            label: 'CGV'
+                        }) }}
 
-            {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.pseudo) }}
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Mot de passe'
-                }) }}
-                {{ form_row(registrationForm.agreeTerms, {
-                    label: 'CGV'
-                }) }}
+                        <button type="submit" class="btn">Validez</button>
+                    {{ form_end(registrationForm) }}
 
-                <button type="submit" class="btn btn-dark">Validez</button>
-            {{ form_end(registrationForm) }}
+                </div>
 
-        </div>
+                <div class="informations">
+                    <div id="menu">
+                        <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
+                    </div>
+                </div>
 
-        <div class="informations">
-            <div id="menu">
-                <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
-            </div>
+            </header>
         </div>
 
     </html>
