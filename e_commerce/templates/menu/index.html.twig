@@ -31,24 +31,40 @@
             les différentes sections de la page et des liens vers les réseaux sociaux -->
             <img class="illustrationB" src="{{ asset('img/logo.jpg') }}" alt="logo de etrefouetsage">
             <nav>
-                <div id="menu">
-                    <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la page d'accueil"></a>
-                    
-                    {# Rediriger les ancres #}
+                {% if app.user %}
 
-                    <a href="{{ path ('app_home') }}#team">L'AUTEUR</a>
+                    <div id="menu">
+                        <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la page d'accueil"></a>
+                        
+                        {# Rediriger les ancres #}
+                        <a href="{{ path ('app_home') }}#team">L'AUTEUR</a>
+                        {# <a href="{{ path ('app_home', {'_fragment': 'team'}) }}">L'AUTEUR</a> #}
+                        <a href="/home#prix">SES LIVRES</a>
+                        <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u">iii RADIO</a>
+                        <a href="{{ path ('app_etik') }}">ETIK BUSINESS CLUB</a>
+                        <a href="{{ path ('app_ventes') }}">VENTES AUX ENCHERES</a>
+                        <a href="{{ path ('app_contact') }}">CONTACTEZ-NOUS</a>
+                        <a href="{{ path ('app_logout') }}">DECONNEXION</a>
+                        
+                    </div>
+                    {% else %}
 
-                    {# <a href="{{ path ('app_home', {'_fragment': 'team'}) }}">L'AUTEUR</a> #}
+                        <div id="menu">
+                            <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la page d'accueil"></a>
+                            
+                            {# Rediriger les ancres #}
+                            <a href="{{ path ('app_home') }}#team">L'AUTEUR</a>
+                            {# <a href="{{ path ('app_home', {'_fragment': 'team'}) }}">L'AUTEUR</a> #}
+                            <a href="/home#prix">SES LIVRES</a>
+                            
+                            <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u">iii RADIO</a>
+                            <a href="{{ path ('app_etik') }}">ETIK BUSINESS CLUB</a>
+                            <a href="{{ path ('app_ventes') }}">VENTES AUX ENCHERES</a>
+                            <a href="{{ path ('app_register') }}">INSCRIPTION</a>
+                            <a href="{{ path ('app_login') }}">CONNEXION</a> 
+                        </div>
+                {% endif %}
 
-                    <a href="/home#prix">ACHETER MOI</a>
-                    
-                    <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u">iii RADIO</a>
-                    <a href="">ETIK BUSINESS CLUB</a>
-                    <a href="">VENTES AUX ENCHERES</a>
-                    <a href="">REJOIGNEZ-NOUS</a>
-                    <a href="">INSCRIPTION</a>
-                    <a href="">CONNEXION</a>
-                </div>
             </nav>
         </header>
     </div>
