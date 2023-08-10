@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'Un compte est déjà associé à cette adresse mail')] // Spécifie que le mail est unique (généré auto)
-#[UniqueEntity(fields: ['pseudo'], message: 'Un compte est déjà associé à ce pseudo')] // Spécifie que le pseudo est unique (à ajouter)
+// #[UniqueEntity(fields: ['pseudo'], message: 'Un compte est déjà associé à ce pseudo')] // Spécifie que le pseudo est unique (à ajouter)
 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -34,7 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\Column(length: 255, unique: true)] // Spécifie que le pseudo est unique (à ajouter)
+    #[ORM\Column(length: 255)] // Spécifie que le pseudo est unique (à ajouter)
     private ?string $Pseudo = null;
 
     public function getId(): ?int
