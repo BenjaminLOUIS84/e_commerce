@@ -1,47 +1,67 @@
 {# {% extends 'base.html.twig' %} #}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
 
-    <link rel="stylesheet" href="{{ asset('css/file.css') }}">
-    
-    <form method="post">
+    <!DOCTYPE html>
+    <html lang="fr">
 
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+        <head>
+            <meta charset="utf-8">
 
-        {% if app.user %}
-            <div class="mb-3">
-                Bienvenue {{ app.user.Pseudo }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+            <title>Formulaire de connexion</title>
+        </head>
+
+        <form method="post">
+
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    Bienvenue {{ app.user.Pseudo }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
+
+            <h1>CONNEXION</h1>
+
+            <div class="formAddCo">
+
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="btn btn-dark" type="submit">
+                    Valider
+                </button>
+
             </div>
-        {% endif %}
+            
+        </form>
 
-        <h1>CONNEXION</h1>
-
-        <div class="formAddCo">
-
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" 
-            {# class="form-control"  #}
-            autocomplete="email" required autofocus>
-
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" 
-            {# class="form-control"  #}
-            autocomplete="current-password" required>
-
-            <input type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}"
-            >
-
-            <button class="btn btn-dark" type="submit">
-                Valider
-            </button>
-
+        <div class="informations">
+            <div id="menu">
+                <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
+            </div>
         </div>
         
-    </form>
+    </html>
 
 {% endblock %}

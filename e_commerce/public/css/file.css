@@ -107,6 +107,7 @@ a {
     margin: 10px;
     border-radius: 20px;
     width: 400px;
+    text-align: center;
 }
 
 .ml {
@@ -154,10 +155,12 @@ a:hover {
     color: black;
     line-height: 2;
     padding: 20px;
-    width: max-content;
+    width: auto;
     border-radius: 20px;
     box-shadow: 0px 6px 10px black;
-    text-align: center;
+    text-align: end;
+    display: flex;
+    justify-content: center;
 }
 
 /*TELEPHONE//////////////////////////////////////////////////////*/

@@ -3,57 +3,59 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="utf-8">
+    <!DOCTYPE html>
+    <html lang="fr">
 
-    <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+        <head>
+            <meta charset="utf-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 
-    <title>Ventes aux enchères</title>
-</head>
+            <title>Ventes aux enchères</title>
+        </head>
 
-<body>
-    <div class="wrapperVente">
-        <header>
-            <!-- Cette page contient des informations, un lien vers linkedtree et un lien de navigation vers
-            la page d'accueil -->
-           
+        <body>
+            <div class="wrapperVente">
+                <header>
+                    <!-- Cette page contient des informations, un lien vers linkedtree et un lien de navigation vers
+                    la page d'accueil -->
+                
 
-            <div class="mentions">
-                <h3></h3>
-                <h6>(Sera lancé fin août)</h6>
-                <p>
-                    Le premier objectif de l'auteur est de s’engager en politique.<br>
-                    Pas pour être élu, mais pour œuvrer pour la cause qui lui semble la plus importante de toutes.<br>
-                    La transmission de la mémoire , des mémoires individuelles et collectives...<br>
-                    comme pour les pamphlets intimistes et politiques que l’auteur vous propose de lire … lien avec “Achetez-moi”.<br>
-                    Les ventes aux enchères vont permettre aux artistes de produire des œuvres sur le thème de la mémoire.<br>
-                    L’auteur démarre avec sa propre histoire et ses premières traces de cette mémoire fuyante.<br>
-                    Allez sur le site de vente aux enchères … et soutenez cette œuvre de mémoire.<br>
-                    Très vite, l’idée est de susciter la création artistique autour des grands enjeux de mémoire..<br>
-                    Suivez cette rubrique…<br>
-                </p>
+                    <div class="mentions">
+                        <h3></h3>
+                        <h6>(Sera lancé fin août)</h6>
+                        <p>
+                            Le premier objectif de l'auteur est de s’engager en politique.<br>
+                            Pas pour être élu, mais pour œuvrer pour la cause qui lui semble la plus importante de toutes.<br>
+                            La transmission de la mémoire , des mémoires individuelles et collectives...<br>
+                            comme pour les pamphlets intimistes et politiques que l’auteur vous propose de lire … lien avec “Achetez-moi”.<br>
+                            Les ventes aux enchères vont permettre aux artistes de produire des œuvres sur le thème de la mémoire.<br>
+                            L’auteur démarre avec sa propre histoire et ses premières traces de cette mémoire fuyante.<br>
+                            Allez sur le site de vente aux enchères … et soutenez cette œuvre de mémoire.<br>
+                            Très vite, l’idée est de susciter la création artistique autour des grands enjeux de mémoire..<br>
+                            Suivez cette rubrique…<br>
+                        </p>
+                    </div>
+
+                    <div class="informations">
+                        <div id="menu">
+                            <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
+                        </div>
+                    </div>
+                    
+                </header>
             </div>
+            <!-- <script>src = "script.js"</script> -->
+        </body>
 
-            <div class="informations">
-                <div id="menu">
-                    <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
-                </div>
-            </div>
-        </header>
-    </div>
-    <!-- <script>src = "script.js"</script> -->
-</body>
-
-</html
+    </html
 {% endblock %}
