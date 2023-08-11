@@ -30,7 +30,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter une nouvelle collection #}
-                        <a class="crud" href="">AJOUTER</a>
+                        <a class="crud" href="{{ path ('new_serie') }}">AJOUTER</a>
 
                         {# BDD L'élément de la collection #}
                         {# Créer une boucle for #}

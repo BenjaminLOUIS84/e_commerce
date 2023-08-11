@@ -1,0 +1,53 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="fr">
+
+        <head>
+            <meta charset="utf-8">
+
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+            
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+            <title>AJOUTER UNE COLLECTION</title>
+        </head>
+
+        <body>
+            <div class="wrapper">
+        
+
+                {# Condition pour gérer le titre selon si on créer ou l'on modifie une collection #}
+                {% if edit %}
+                    <h1>Modifier une collection</h1>
+                {% else %}
+                    <h1>Ajouter une nouvelle collection</h1> 
+                {% endif %}
+
+                <div class="formAdd">
+
+                    {# Affiche le formulaire #}
+                    {{form(formAddSerie)}}
+
+                </div>
+
+                <nav id="men">
+                    <div id="menu">
+                        <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+                    </div>
+                </nav>
+            </div>
+        </body>
+        
+    </html>
+
+{% endblock %}
