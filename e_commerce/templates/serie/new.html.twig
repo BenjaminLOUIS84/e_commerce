@@ -28,12 +28,12 @@
 
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie une collection #}
                 {% if edit %}
-                    <h1>Modifier une collection</h1>
+                    <h3>Modifier une collection</h3>
                 {% else %}
-                    <h1>Ajouter une nouvelle collection</h1> 
+                    <h3>Ajouter une nouvelle collection</h3> 
                 {% endif %}
 
-                <div class="formAddCo">
+                <div class="formAddInscription">
 
                     {# Affiche le formulaire #}
                     {{form(formAddSerie)}}
@@ -42,7 +42,7 @@
 
                 <nav id="men">
                     <div id="menu">
-                        <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+                        <a href="{{ path ('app_serie') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à la liste des collections" title="Retourner à la liste des collections"></a>
                     </div>
                 </nav>
             </div>
