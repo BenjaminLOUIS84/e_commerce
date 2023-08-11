@@ -58,9 +58,8 @@
                                                 class="log">
                                         </figure>
 
-                                        {# //PB POUR AFFICHER LA DATE DE PUBLICATION #}
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
-                                        {# {{ livre.date_publication | date("d-m-Y") }}<br> #}
+                                        <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
 
                                         {# //PB POUR AFFICHER LE PRIX UNITAIRE ET POUR AJOUTER CETTE PROPRIETE A LA TABLE ASSOCIATIVE #}
                                         {#<h3>PRIX: 16 € ttc</h3>#}
