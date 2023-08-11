@@ -17,10 +17,10 @@ class FormatType extends AbstractType
     {
         $builder
         ->add('type', TextType::class)          // Définir les types de champs et importer les classes
-        ->add('Livre', EntityType::class,  [    // Particlarité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-        'class' => Livre::class, 
-        'attr' => ['class' => 'form-control'],
-        'choice_label' => 'titre'])
+        // ->add('livre', EntityType::class, [     // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+        // 'class' => Livre::class, 
+        // 'attr' => ['class' => 'form-control'],
+        // 'choice_label' => 'titre'])
 
         ->add('valider', SubmitType::class, [   // Ajouter directement le bouton submit ici
         'attr' =>['class' => 'btn btn-dark']])  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   

@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\FormatRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FormatRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: FormatRepository::class)]
 class Format
@@ -19,11 +19,11 @@ class Format
     private ?string $type = null;
 
     #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'formats')]
-    private Collection $Livre;
+    private Collection $livre;
 
     public function __construct()
     {
-        $this->Livre = new ArrayCollection();
+        $this->livre = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,25 +48,29 @@ class Format
      */
     public function getLivre(): Collection
     {
-        return $this->Livre;
+        return $this->livre;
     }
 
-    public function addLivre(Livre $livre): static
+    public function addLivre(Livre $livre): static // Pour ajouter un format
     {
-        if (!$this->Livre->contains($livre)) {
-            $this->Livre->add($livre);
+        if (!$this->livre->contains($livre)) {
+            $this->livre->add($livre);
+            $livre->setFormat($this);
         }
 
         return $this;
     }
 
-    public function removeLivre(Livre $livre): static
+    public function removeLivre(Livre $livre): static // Pour supprimer un livre
     {
-        $this->Livre->removeElement($livre);
-
-        return $this;
+        if ($this->livre->removeElement($livre)) {
+            if ($livre->getFormat() === $this) {
+                $livre->setFormat(null);
+            }
+            return $this;
+        }
+        
     }
-
     ////////////////////////////////////////////////////////////////////////
     // Il est possible de créer d'autres fonctions ici
 
