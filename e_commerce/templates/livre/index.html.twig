@@ -39,8 +39,9 @@
 
                                 <div class="front">
                                     {% for livre in livres %}
+                                        {# Afficher la collection pour chaque livres #}
+                                        <h2> {{livre.serie}} </h2>
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
-                                        
                                         <figure>
                                             {# Pour afficher les couvertures de chaque livres #}
                                             <img src="{{ asset('img/'~livre.couverture|e) }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
