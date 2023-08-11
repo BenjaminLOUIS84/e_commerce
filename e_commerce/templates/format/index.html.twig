@@ -31,26 +31,30 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau format #}
                         <a class="crud" href="">AJOUTER</a>
-                    {% endif %}
+                    
 
-                    {# BDD L'élément de la format #}
-                    {# Créer une boucle for #}
-                    {% for format in formats %}
-                        <div class="liste">
-                            {# Accéder à la liste des livres pour chaque formats en cliquant sur l'intitulé d'une format #}
-                            <a class="btn" href="">{{ format }}</a>
+                        {# BDD L'élément de la format #}
+                        {# Créer une boucle for #}
+                        {% for format in formats %}
+                            <div class="liste">
+                                
+                                <h1>{{ format }}</h1>
 
-                            {# Seul l'admin peut modifier et/ou supprimer une format #}
-                            {% if is_granted('ROLE_ADMIN') %}
+                                {# Seul l'admin peut modifier et/ou supprimer une format #}
                                 <div class="option">
                                     <a class="crud" href="">MODIFIER</a>
                                     <a class="crud" href="">SUPPRIMER</a>
                                 </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+                                
+                            </div>
+                        {% endfor %}
 
-                    
+                    {% endif %}
+
+                    {% for format in formats %}
+                        {# Accéder à la liste des livres pour chaque formats en cliquant sur l'intitulé d'un format #}
+                        <a class="btn" title="Accéder à la liste des livres de ce format" href="">{{ format }}</a>
+                    {% endfor %}
 
                     <nav id="men">
                         <div id="menu">

@@ -31,28 +31,33 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter une nouvelle collection #}
                         <a class="crud" href="">AJOUTER</a>
-                    {% endif %}
 
-                    {# BDD L'élément de la collection #}
-                    {# Créer une boucle for #}
-                    {% for serie in series %}
-                        <div class="liste">
-                            {# Accéder à la liste des livres pour chaque collections en cliquant sur l'intitulé d'une collection #}
-                            <a class="btn" href="">{{ serie }}</a>
+                        {# BDD L'élément de la collection #}
+                        {# Créer une boucle for #}
+                        {% for serie in series %}
+                            <div class="liste">
+                                
+                                <h1>{{ serie }}</h1>
 
-                            {# Seul l'admin peut modifier et/ou supprimer une collection #}
-                            {% if is_granted('ROLE_ADMIN') %}
+                                {# Seul l'admin peut modifier et/ou supprimer une collection #}
                                 <div class="option">
                                     <a class="crud" href="">MODIFIER</a>
                                     <a class="crud" href="">SUPPRIMER</a>
                                 </div>
-                            {% endif %}
-                        </div>
+                                
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+
+                    {% for serie in series %}
+                        {# Accéder à la liste des livres pour chaque collections en cliquant sur l'intitulé d'une collection #}
+                        <a class="btn" title="Accéder à la liste des livres de cette collection" href="">{{ serie }}</a>
                     {% endfor %}
 
                     <nav id="men">
                         <div id="menu">
-                        <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
                         </div>
                     </nav>
 
