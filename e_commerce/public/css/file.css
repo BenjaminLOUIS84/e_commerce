@@ -204,6 +204,30 @@ header {
     cursor: pointer;
     font-family: 'Libre Baskerville', sans-serif;
 }
+/*OPTIONS DU CRUD*/
+
+.crud {
+    color: black;
+    background: none;
+    padding: 10px;
+    margin-top: 40px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
+.option {
+    display: flex;
+    flex-direction: row;
+}
+
+.liste {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(204, 0, 0, 1));
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px black;
+}
 
 .btn:hover {
     background: rgba(204, 0, 0, 1);
@@ -401,6 +425,10 @@ h6 {
 
     form {
         text-align: center;
+    }
+
+    .liste {
+        width: -webkit-fill-available;
     }
 
 }
