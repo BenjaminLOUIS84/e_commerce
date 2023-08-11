@@ -30,7 +30,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau format #}
-                        <a class="crud" href="">AJOUTER</a>
+                        <a class="crud" href="{{ path ('new_format') }}">AJOUTER</a>
                     
 
                         {# BDD L'élément de la format #}
@@ -42,7 +42,7 @@
 
                                 {# Seul l'admin peut modifier et/ou supprimer une format #}
                                 <div class="option">
-                                    <a class="crud" href="">MODIFIER</a>
+                                    <a class="crud" href="{{ path ('edit_format', {id: format.id}) }}">MODIFIER</a>
                                     <a class="crud" href="{{ path ('delete_format', {id: format.id}) }}">SUPPRIMER</a>
                                 </div>
                                 

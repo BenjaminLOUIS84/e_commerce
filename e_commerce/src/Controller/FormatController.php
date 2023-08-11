@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Format;
+use App\Form\FormatType;
 use App\Repository\FormatRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,4 +38,43 @@ class FormatController extends AbstractController
        
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION FORMULAIRE POUR AJOUTER et EDITER DES FORMATS
+
+    #[Route('/format/new', name: 'new_format')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
+    #[Route('/format/{id}/edit', name: 'edit_format')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
+
+    public function new_edit(Format $format  = null, Request $request, EntityManagerInterface $entityManager): Response   
+    
+    // Créer une fonction new() dans le controller pour permettre l'ajout de format
+    // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
+
+    {
+        if(!$format){                                            // S'il n'ya pas de format à modifier alors en créer un nouveau
+            $format = new Format();                              // Après avoir importé la classe Request Déclarer un nouveau format
+
+        $form = $this->createForm(FormatType :: class, $format); // Créer un nouveau formulaire avec la méthode createForm() et importer le classe FormatType
+
+        //////////////////////////////////////////////////////////////////////////
+        //                                                      GERER LE TRAITEMENT EN BDD
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {         // Si le formulaire soumis est valide alors
+            
+            $format = $form->getData();                         // Récupérer les informations du nouveau format
+            //prepare PDO
+            $entityManager->persist($format);                   // Dire à Doctrine que je veux sauvegarder le nouveau format           
+            //execute PDO
+            $entityManager->flush();                            // Mettre le nouveau format dans la BDD
+
+            return $this->redirectToRoute('app_format');        // Rediriger vers la liste des formats
+        }
+
+        //////////////////////////////////////////////////////////////////////////
+
+
+        return $this->render('format/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier format)
+            'formAddFormat' => $form,
+            'edit' => $format->getId()
+        ]);
+    }
 }                                                                          
