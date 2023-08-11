@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SerieController extends AbstractController
 {                                                                       // AFFICHER LA LISTE DES COLLECTIONS
-    #[Route('/serie', name: 'app_serie')]                               // Route représentant l'URL '/categorie' pour la redirection et le name: sert pour la navigation
+    #[Route('/serie', name: 'app_serie')]                               // Route représentant l'URL '/serie' pour la redirection et le name: sert pour la navigation
     public function index(SerieRepository $serieRepository): Response   // Pour afficher la liste des collections insérer dans la fonction index() SerieRepository $serieRepository        
     {                                                                   // Importer la classe SerieRepository avec un click droit 
         $series = $serieRepository->findBy([],["intitule" => "ASC"]);   // Pour récupérer la liste des series classées par ordre alphabéthique selon l'intitule

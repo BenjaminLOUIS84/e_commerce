@@ -28,6 +28,28 @@
                     <!-- Cette page concerne le format des livres Papier ou Numérique -->
                     <h3>FORMATS</h3>
 
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {# Seul l'admin peut ajouter un nouveau format #}
+                        <a class="crud" href="">AJOUTER</a>
+                    {% endif %}
+
+                    {# BDD L'élément de la format #}
+                    {# Créer une boucle for #}
+                    {% for format in formats %}
+                        <div class="liste">
+                            {# Accéder à la liste des livres pour chaque formats en cliquant sur l'intitulé d'une format #}
+                            <a href="">{{ format }}</a>
+
+                            {# Seul l'admin peut modifier et/ou supprimer une format #}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="option">
+                                    <a class="crud" href="">MODIFIER</a>
+                                    <a class="crud" href="">SUPPRIMER</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
                     
 
                     <nav id="men">
