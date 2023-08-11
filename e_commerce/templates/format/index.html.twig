@@ -43,7 +43,7 @@
                                 {# Seul l'admin peut modifier et/ou supprimer une format #}
                                 <div class="option">
                                     <a class="crud" href="">MODIFIER</a>
-                                    <a class="crud" href="">SUPPRIMER</a>
+                                    <a class="crud" href="{{ path ('delete_format', {id: format.id}) }}">SUPPRIMER</a>
                                 </div>
                                 
                             </div>

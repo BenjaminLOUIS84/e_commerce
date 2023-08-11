@@ -18,5 +18,22 @@ class LivreController extends AbstractController
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres                                         // Pour passer la variable $livres en argument 'livres'
         ]);
-    }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }}
-}                                                                       // Dans le fichier index.html.twig du dossier livre
+    }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR SUPPRIMER UN LIVRE
+
+    #[Route('/livre/{id}/delete', name: 'delete_livre')]                // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+
+    public function delete(Livre $livre, EntityManagerInterface $entityManager): Response   
+
+    {                                                                   // Créer une fonction delete() dans le controller pour supprimer un livre            
+        $entityManager->remove($livre);                                 // Supprime un livre
+        $entityManager->flush();                                        // Exécute l'action DANS LA BDD
+
+        return $this->redirectToRoute('app_livre');                     // Rediriger vers la liste des livres
+       
+    }
+}                                                                       
+
+

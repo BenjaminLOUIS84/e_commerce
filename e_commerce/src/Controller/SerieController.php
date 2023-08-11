@@ -2,7 +2,9 @@
 
 namespace App\Controller;                                               // La classe importée s'ajoute ici automatiquement
 
+use App\Entity\Serie;
 use App\Repository\SerieRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,5 +19,22 @@ class SerieController extends AbstractController
         return $this->render('serie/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'series' => $series                                         // Pour passer la variable $series en argument 'series'
         ]);
-    }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }}
-}                                                                       // Dans le fichier index.html.twig du dossier serie
+    }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier serie
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR SUPPRIMER UNE COLLECTION
+
+    #[Route('/serie/{id}/delete', name: 'delete_serie')]                // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+
+    public function delete(Serie $serie, EntityManagerInterface $entityManager): Response   
+
+    {                                                                   // Créer une fonction delete() dans le controller pour supprimer une serie            
+        $entityManager->remove($serie);                                 // Supprime une collection
+        $entityManager->flush();                                        // Exécute l'action DANS LA BDD
+
+        return $this->redirectToRoute('app_serie');                     // Rediriger vers la liste des collections
+       
+    }
+
+}                                                                       
+
