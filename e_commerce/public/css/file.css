@@ -308,7 +308,6 @@ header {
     justify-content: center;
     align-items: end;
     transition: .5s ease-in-out;
-    /* position: absolute; */
     transition: all 1s ease;
     transform-style: preserve-3d;
     margin: 10px;
@@ -318,12 +317,11 @@ header {
     position: absolute;
     box-shadow: 0px 5px 10px black;
     backface-visibility: hidden;
-    /* width: 330px; */
-    width: 245px;
+    width: 310px;
+    left: 50px;
 }
 
 .back {
-    /* position: absolute; */
     background: white;
     position: sticky;
     object-fit: cover;
