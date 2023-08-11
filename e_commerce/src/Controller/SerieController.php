@@ -44,7 +44,8 @@ class SerieController extends AbstractController
     #[Route('/serie/new', name: 'new_serie')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     // #[Route('/serie/{id}/edit', name: 'edit_serie')]         // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
 
-    public function new(Serie $serie = null, Request $request, EntityManagerInterface $entityManager): Response   
+    public function new(Serie $serie // = null
+    , Request $request, EntityManagerInterface $entityManager): Response   
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de collection
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
