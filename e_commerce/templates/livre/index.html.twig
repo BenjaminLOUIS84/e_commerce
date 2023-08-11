@@ -23,22 +23,31 @@
         </head>
 
         <body>
-            <div>
+            <div class="wrapper">
                 <header>
                     <!-- Cette page concerne les livres-->
                     <h3>LIVRES</h3>
 
-                    {# <section class="price">
+                    {% if is_granted('ROLE_ADMIN') %}
+                    {# Seul l'admin peut ajouter un nouveau livre #}
+                    <a href="">AJOUTER</a>
+                    {% endif %}
+
+                    {# BDD L'élément de la collection #}
+                    {# Créer une boucle for #}
+                    {# {% for livre in livres %} #}
+                    
+                    <section class="price">
                         <div class="blocPrice">
                             <div class="pack">
                                 <div class="front">
-                                    <figure>
+                                    {# <figure>
                                         <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
                                     </figure>
-                                    <div class="acheter1">ACHETEZ-MOI</div>
+                                    <div class="acheter1">ACHETEZ-MOI</div> #}
                                 </div>
                                 <div class="back">
-                                    <figure>
+                                    {# <figure>
                                         <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
                                             class="log">
                                     </figure>
@@ -49,14 +58,20 @@
                                         Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des femmes à travers cet amour,
                                         au niveau intime et collectif.
                                         Et toujours apporter un espoir…
-                                      </p>
-                                    <a href="">
+                                      </p> #}
+                                    {# <a href="">
                                         <input type="submit" value="Ajouter au panier" class="boutonJoin">
-                                    </a>
+                                    </a> #}
+
+                                    {# Seul l'admin peut modifier ou supprimer un livre #}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="btn" href="">MODIFIER</a>
+                                        <a class="btn" href="">SUPPRIMER</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
-                    </section> #}
+                    </section> 
 
                     <nav id="men">
                         <div id="menu">

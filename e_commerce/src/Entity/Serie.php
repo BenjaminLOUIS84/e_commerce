@@ -72,4 +72,13 @@ class Serie
 
         return $this;
     }
+
+    ////////////////////////////////////////////////////////////////////////
+    // Il est possible de créer d'autres fonctions ici
+
+    public function __toString() {          // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->intitule. " ";        // L'élément affiché de la liste des collections est seulement l'intitule
+    }                                       // Permet d'afficher l'intule dans le détail d'une collection ET AUSSI dans le détail des autres entités
+
 }

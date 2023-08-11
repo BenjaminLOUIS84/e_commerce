@@ -28,7 +28,25 @@
                     <!-- Cette page concerne les séries de livres -->
                     <h3>COLLECTIONS</h3>
 
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {# Seul l'admin peut ajouter une nouvelle collection #}
+                        <a class="btn" href="">AJOUTER</a>
+                    {% endif %}
+
+                    {# BDD L'élément de la collection #}
+                    {# Créer une boucle for #}
+                    {% for serie in series %}
                     
+                        {# Accéder à la liste des livres pour chaque collections en cliquant sur l'intitulé d'une collection #}
+                        <a href="">{{ serie }}</a>
+
+                        {# Seul l'admin peut modifier et/ou supprimer une collection #}
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <a class="btn" href="">MODIFIER</a>
+                        <a class="btn" href="">SUPPRIMER</a>
+                        {% endif %}
+
+                    {% endfor %}
 
                     <nav id="men">
                         <div id="menu">
