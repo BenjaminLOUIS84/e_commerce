@@ -38,7 +38,7 @@
                     {% for format in formats %}
                         <div class="liste">
                             {# Accéder à la liste des livres pour chaque formats en cliquant sur l'intitulé d'une format #}
-                            <a href="">{{ format }}</a>
+                            <a class="btn" href="">{{ format }}</a>
 
                             {# Seul l'admin peut modifier et/ou supprimer une format #}
                             {% if is_granted('ROLE_ADMIN') %}

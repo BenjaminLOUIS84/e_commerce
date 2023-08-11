@@ -38,7 +38,7 @@
                     {% for serie in series %}
                         <div class="liste">
                             {# Accéder à la liste des livres pour chaque collections en cliquant sur l'intitulé d'une collection #}
-                            <a href="">{{ serie }}</a>
+                            <a class="btn" href="">{{ serie }}</a>
 
                             {# Seul l'admin peut modifier et/ou supprimer une collection #}
                             {% if is_granted('ROLE_ADMIN') %}
