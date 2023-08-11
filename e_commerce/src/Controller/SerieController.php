@@ -78,6 +78,5 @@ class SerieController extends AbstractController
             'edit' => $serie->getId()
         ]);
     }
-
 }                                                                       
 

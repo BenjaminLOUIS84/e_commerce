@@ -52,6 +52,7 @@ class FormatController extends AbstractController
     {
         if(!$format){                                            // S'il n'ya pas de format à modifier alors en créer un nouveau
             $format = new Format();                              // Après avoir importé la classe Request Déclarer un nouveau format
+        }
 
         $form = $this->createForm(FormatType :: class, $format); // Créer un nouveau formulaire avec la méthode createForm() et importer le classe FormatType
 
