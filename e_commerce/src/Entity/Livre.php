@@ -37,6 +37,9 @@ class Livre
     #[ORM\ManyToOne(inversedBy: 'Livre')]
     private ?Serie $serie = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $tome = null;
+
 
     public function __construct()
     {
@@ -170,5 +173,17 @@ class Livre
 
         return $this->titre. " ";               // L'élément affiché de la liste des livres est seulement le titre
                
+    }
+
+    public function getTome(): ?string
+    {
+        return $this->tome;
+    }
+
+    public function setTome(string $tome): static
+    {
+        $this->tome = $tome;
+
+        return $this;
     }                                       
 }

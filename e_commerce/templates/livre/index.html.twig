@@ -42,10 +42,15 @@
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         
                                         <figure>
-                                            {# Pour afficher les couvertures de chaque livres #}
-                                            <img src="{{ asset('img/{% livre.couverture %}') }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
+                                            <img src="{{ asset('img/livre1.jpg') }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
                                         </figure>
                                         <div class="acheter1">ACHETEZ-MOI</div>
+
+                                        {# <figure>
+                                            {# Pour afficher les couvertures de chaque livres #}{#
+                                            <img src="{{ asset('img/') }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
+                                        </figure>
+                                        <div class="acheter1">ACHETEZ-MOI</div> #}
 
                                     {% endfor %}
                                 </div>
@@ -53,10 +58,15 @@
                                 <div class="back">
                                     {% for livre in livres %}
 
-                                        {# <figure>
+                                        <figure>
                                             <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
                                                 class="log">
                                         </figure>
+
+                                        {# <figure> //PB AFFICHER LES IMAGES DE LA BDD
+                                            <img src="{{ asset('img/') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                                class="log">
+                                        </figure> #}
 
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
                                         {# {{ livre.date_publication | date("d-m-Y") }}<br> #}
