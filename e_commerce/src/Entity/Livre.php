@@ -22,7 +22,7 @@ class Livre
     #[ORM\Column(length: 255)]
     private ?string $couverture = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_publication = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -163,4 +163,12 @@ class Livre
         return $this;
     }
 
+    ////////////////////////////////////////////////////////////////////////
+    // Il est possible de créer d'autres fonctions ici
+
+    public function __toString() {              // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->titre. " ";               // L'élément affiché de la liste des livres est seulement le titre
+               
+    }                                       
 }

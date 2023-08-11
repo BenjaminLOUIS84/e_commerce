@@ -29,46 +29,58 @@
                     <h3>LIVRES</h3>
 
                     {% if is_granted('ROLE_ADMIN') %}
-                    {# Seul l'admin peut ajouter un nouveau livre #}
-                    <a href="">AJOUTER</a>
+                        {# Seul l'admin peut ajouter un nouveau livre #}
+                        <a href="">AJOUTER</a>
                     {% endif %}
 
-                    {# BDD L'élément de la collection #}
-                    {# Créer une boucle for #}
-                    {# {% for livre in livres %} #}
-                    
                     <section class="price">
                         <div class="blocPrice">
-                            <div class="pack">
-                                <div class="front">
-                                    {# <figure>
-                                        <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
-                                    </figure>
-                                    <div class="acheter1">ACHETEZ-MOI</div> #}
-                                </div>
-                                <div class="back">
-                                    {# <figure>
-                                        <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                            class="log">
-                                    </figure>
-                                    <h2>DISPONIBLE</h2>
-                                    <h3>PRIX: 16 € ttc</h3>
-                                    <h6>(Dont 4 € de frais de port)</h6>
-                                    <p>
-                                        Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des femmes à travers cet amour,
-                                        au niveau intime et collectif.
-                                        Et toujours apporter un espoir…
-                                      </p> #}
-                                    {# <a href="">
-                                        <input type="submit" value="Ajouter au panier" class="boutonJoin">
-                                    </a> #}
+                            <div class="pack">   
 
-                                    {# Seul l'admin peut modifier ou supprimer un livre #}
-                                    {% if is_granted('ROLE_ADMIN') %}
-                                        <a class="btn" href="">MODIFIER</a>
-                                        <a class="btn" href="">SUPPRIMER</a>
-                                    {% endif %}
+                                <div class="front">
+                                    {% for livre in livres %}
+                                        {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
+                                        
+                                        <figure>
+                                            {# Pour afficher les couvertures de chaque livres #}
+                                            <img src="{{ asset('img/{% livre.couverture %}') }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
+                                        </figure>
+                                        <div class="acheter1">ACHETEZ-MOI</div>
+
+                                    {% endfor %}
                                 </div>
+                
+                                <div class="back">
+                                    {% for livre in livres %}
+
+                                        {# <figure>
+                                            <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
+                                                class="log">
+                                        </figure>
+
+                                        {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
+                                        {# {{ livre.date_publication | date("d-m-Y") }}<br> #}
+
+                                        {#<h3>PRIX: 16 € ttc</h3>
+                                        <h6>(Dont 4 € de frais de port)</h6>#}
+
+                                        <p>{{ livre.resume }}</p> 
+
+                                        {# <a href="">
+                                            <input type="submit" value="Ajouter au panier" class="boutonJoin">
+                                        </a>  #}
+
+                                        <div class="liste">
+                                            {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                             <div class="option">
+                                                <a class="crud" href="">MODIFIER</a>
+                                                <a class="crud" href="">SUPPRIMER</a>
+                                            </div>  
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+
                             </div>
                         </div>
                     </section> 
