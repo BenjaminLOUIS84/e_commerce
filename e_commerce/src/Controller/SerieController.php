@@ -42,10 +42,9 @@ class SerieController extends AbstractController
     // FONCTION FORMULAIRE POUR AJOUTER et EDITER DES COLLECTIONS
 
     #[Route('/serie/new', name: 'new_serie')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
-    // #[Route('/serie/{id}/edit', name: 'edit_serie')]         // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
+    #[Route('/serie/{id}/edit', name: 'edit_serie')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
 
-    public function new(Serie $serie // = null
-    , Request $request, EntityManagerInterface $entityManager): Response   
+    public function new_edit(Serie $serie  = null, Request $request, EntityManagerInterface $entityManager): Response   
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de collection
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
@@ -76,7 +75,7 @@ class SerieController extends AbstractController
 
         return $this->render('serie/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier serie)
             'formAddSerie' => $form,
-            // 'edit' => $serie->getId()
+            'edit' => $serie->getId()
         ]);
     }
 
