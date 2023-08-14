@@ -27,17 +27,34 @@ class LivreType extends AbstractType
             'widget' =>'single_text',
             'attr' =>['class' =>'form-control']])
 
-            ->add('couverture', FileType::class)            // Champs pour charger un fichier (image)
-            ->add('tome', FileType::class)                  
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)
+            'required' => false                             // Pour rendre le chargement de fichiers non obligatoire, rendre nullable la propriété couverture dans la BDD
+            ])            
+            
+            
+            
+            
+            
+            
+            
+            ->add('tome', FileType::class, [
+            'required' => false
+            ])                  
 
-            ->add('resume', TextareaType::class, [          // Champs pour les textes long
-            'attr' => ['class' => 'tinymce']])
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ->add('resume', TextareaType::class, [          // Champs pour les textes long, zone de texte pour les résumés
+            'attr' => ['class' => 'tinymce'],
+            'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
+            ])
 
-            ->add('commandes', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
-            'class' => Commande::class, 
-            'attr' => ['class' => 'form-control'],
-            'choice_label' => 'numero_commande'])
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // ->add('commandes', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            // 'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
+            // 'class' => Commande::class,                     // PAS BESOIN POUR LE MOMENT
+            // 'attr' => ['class' => 'form-control'],
+            // 'choice_label' => 'numero_commande'])
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             ->add('formats', EntityType::class, [           // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
             'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
