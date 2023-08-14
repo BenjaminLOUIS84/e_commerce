@@ -9,6 +9,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -45,7 +50,7 @@ class LivreController extends AbstractController
     #[Route('/livre/new', name: 'new_livre')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/livre/{id}/edit', name: 'edit_livre')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
 
-    public function new_edit(Livre $livre  = null, Request $request, EntityManagerInterface $entityManager): Response   
+    public function new_edit(Livre $livre  = null, Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response   
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de livre
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
@@ -68,22 +73,67 @@ class LivreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {        // Si le formulaire soumis est valide alors
             
             $livre = $form->getData();                         // Récupérer les informations du nouveau livre
+            
+            $couvertureFile = $form->get('couverture')->getData();
+            //$tomeFile = $form->get('tome')->getData();         // Récupérer les images (couverture et tome) du nouveau livre  
+
+            //////////////////////////////////////////////////////////////////////////
+            // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
+            // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
+            
+            if ($couvertureFile) {
+                $originalFilename = pathinfo($couvertureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                
+                $safeFilename = $slugger->slug($originalFilename);// Cela est nécessaire pour inclure en toute sécurité le nom du fichier dans l'URL
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$couvertureFile->guessExtension();
+                
+                try {                                           // Déplacer le fichier dans le répertoire où sont stockées les couvertures
+                    $couvertureFile->move(
+                        $this->getParameter('couvertures_directory'),
+                        $newFilename
+                    );
+
+                } catch (FileException $e) {                    // Gérer l'exception si quelques chose se produit pendant le téléchargement du fichier
+                    
+                }                                               
+
+                $livre->setCouvertureFilename($newFilename);    // Mettre à jour la propriété CouvertureFilename pour stocker le nom du fichier jpg au lieu de son contenu
+            }
+
+            // if ($tomeFile) {
+            //     $originalFilename = pathinfo($tomeFile->getClientOriginalName(), PATHINFO_FILENAME);
+            //     $safeFilename = $slugger->slug($originalFilename);
+            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$tomeFile->guessExtension();
+                
+            //     try {                                           
+            //         $tomeFile->move(
+            //             $this->getParameter('tomes_directory'),
+            //             $newFilename
+            //         );
+            //     } catch (FileException $e) {                    
+                    
+            //     }                                               
+            //     $livre->setTomeFilename($newFilename);    
+            // }
+
+            //////////////////////////////////////////////////////////////////////////
+
             //prepare PDO
             $entityManager->persist($livre);                   // Dire à Doctrine que je veux sauvegarder le nouveau livre           
             //execute PDO
             $entityManager->flush();                           // Mettre le nouveau livre dans la BDD
-
             return $this->redirectToRoute('app_livre');        // Rediriger vers la liste des livres
+
         }
 
         //////////////////////////////////////////////////////////////////////////
-
 
         return $this->render('livre/new.html.twig', [          // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier livre)
             'formAddLivre' => $form,
             'edit' => $livre->getId()
         ]);
     }
+
 }                                                                       
 
 

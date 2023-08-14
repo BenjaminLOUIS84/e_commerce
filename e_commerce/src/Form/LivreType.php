@@ -30,6 +30,9 @@ class LivreType extends AbstractType
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)                
+    
+                'mapped' =>false,                           // Rendre le mappage faux pour dissocier l'image de l'entité
+                'required'=> false,                         // Rendre l'ajout d'image non obligatoire
                 'constraints' => [                          // Sécurité pour que le fichier soit une image au format jpg uniquement
                     new File([
                         'maxSize' => '1024k',
@@ -40,15 +43,21 @@ class LivreType extends AbstractType
                     ])
                 ],
             ])                           
-                    
-            
-            
-            
-            
-            
-            
             
             ->add('tome', FileType::class, [
+
+                'mapped' =>false,
+                'required'=> false,
+                'constraints' => [                          
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg'
+                        ],
+                        'mimeTypesMessage' => 'Image au format jpg uniquement',
+                    ])
+                ],
+
             ])                  
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,5 +96,7 @@ class LivreType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Livre::class,
         ]);
+
+        
     }
 }
