@@ -9,6 +9,7 @@ use App\Entity\Commande;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -29,8 +30,19 @@ class LivreType extends AbstractType
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)
-            'required' => false                             // Pour rendre le chargement de fichiers non obligatoire, rendre nullable la propriété couverture dans la BDD
-            ])            
+                'required' => false,                        // Pour rendre le chargement de fichiers non obligatoire, rendre nullable la propriété couverture dans la BDD
+                'mapped' => false,                          // Rendre le mappage de l'image faux pour permettre la modification des livres
+                'constraints' => [                          // Sécurité pour que le fichier soit une image au format jpg uniquement
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg'
+                        ],
+                        'mimeTypesMessage' => 'Image au format jpg uniquement',
+                    ])
+                ],
+            ])                           
+                    
             
             
             
