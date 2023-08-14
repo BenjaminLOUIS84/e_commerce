@@ -29,9 +29,7 @@ class LivreType extends AbstractType
             'attr' =>['class' =>'form-control']])
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)
-                'required' => false,                        // Pour rendre le chargement de fichiers non obligatoire, rendre nullable la propriété couverture dans la BDD
-                'mapped' => false,                          // Rendre le mappage de l'image faux pour permettre la modification des livres
+            ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)                
                 'constraints' => [                          // Sécurité pour que le fichier soit une image au format jpg uniquement
                     new File([
                         'maxSize' => '1024k',
@@ -51,7 +49,6 @@ class LivreType extends AbstractType
             
             
             ->add('tome', FileType::class, [
-            'required' => false
             ])                  
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

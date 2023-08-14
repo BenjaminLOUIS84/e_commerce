@@ -171,9 +171,9 @@ class Livre
 
     public function __toString() {              // Pour faciliter l'affichage des autres informations d'une entité
 
-        return $this->titre. " ";               // L'élément affiché de la liste des livres est seulement le titre
-               
-    }
+        return $this->titre. " " .$this->couverture. " " .$this->tome. " ";               
+                                                
+    }                                           // Les éléments affichés de la liste des livres sont le titre, la couverture et le tome afin de permettre la modification des livres
 
     public function getTome(): ?string
     {
