@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\LivreRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\LivreRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: LivreRepository::class)]
 class Livre
@@ -40,6 +41,8 @@ class Livre
     #[ORM\Column(length: 255)]
     private ?string $tome = null;
 
+    // #[ORM\Column(type: 'string')]
+    // private string $couvertureFilename;// Créer cette variable pour gérer l'affichage des couvertures
 
     public function __construct()
     {
@@ -63,18 +66,19 @@ class Livre
 
         return $this;
     }
-
+    
     public function getCouverture(): ?string
     {
         return $this->couverture;
     }
 
-    public function setCouverture(string $couverture): static
+    public function setCouverture(string $couverture): self
     {
         $this->couverture = $couverture;
-
+        
         return $this;
     }
+
 
     public function getDatePublication(): ?\DateTimeInterface
     {
@@ -171,7 +175,7 @@ class Livre
 
     public function __toString() {              // Pour faciliter l'affichage des autres informations d'une entité
 
-        return $this->titre. " " .$this->couverture. " " .$this->tome. " ";               
+        return $this->titre. " ";               
                                                 
     }                                           // Les éléments affichés de la liste des livres sont le titre, la couverture et le tome afin de permettre la modification des livres
 

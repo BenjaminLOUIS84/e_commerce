@@ -8,13 +8,14 @@ use App\Repository\LivreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\File;
 
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
 class LivreController extends AbstractController
@@ -74,30 +75,33 @@ class LivreController extends AbstractController
             
             $livre = $form->getData();                         // Récupérer les informations du nouveau livre
             
-            $couvertureFile = $form->get('couverture')->getData();
+            $couverture = $form->get('couverture')->getData();
             //$tomeFile = $form->get('tome')->getData();         // Récupérer les images (couverture et tome) du nouveau livre  
 
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
             
-            if ($couvertureFile) {
-                $originalFilename = pathinfo($couvertureFile->getClientOriginalName(), PATHINFO_FILENAME);
+            if ($couverture) {
+                $originalFilename = pathinfo($couverture->getClientOriginalName(), PATHINFO_FILENAME);
                 
-                $safeFilename = $slugger->slug($originalFilename);// Cela est nécessaire pour inclure en toute sécurité le nom du fichier dans l'URL
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$couvertureFile->guessExtension();
+                $safeFilename = $slugger->slug($originalFilename);  // Cela est nécessaire pour inclure en toute sécurité le nom du fichier dans l'URL
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$couverture->guessExtension();
                 
-                try {                                           // Déplacer le fichier dans le répertoire où sont stockées les couvertures
-                    $couvertureFile->move(
+                try {                                               // Déplacer le fichier dans le répertoire où sont stockées les couvertures
+                    $couverture->move(
                         $this->getParameter('couvertures_directory'),
                         $newFilename
                     );
 
-                } catch (FileException $e) {                    // Gérer l'exception si quelques chose se produit pendant le téléchargement du fichier
+                } catch (FileException $e) {                        // Gérer l'exception si quelques chose se produit pendant le téléchargement du fichier
                     
                 }                                               
 
-                $livre->setCouvertureFilename($newFilename);    // Mettre à jour la propriété CouvertureFilename pour stocker le nom du fichier jpg au lieu de son contenu
+                $livre->setCouverture(                              // Mettre à jour la propriété Couverture pour stocker le nom du fichier jpg au lieu de son contenu
+                    new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
+
+                );    
             }
 
             // if ($tomeFile) {
