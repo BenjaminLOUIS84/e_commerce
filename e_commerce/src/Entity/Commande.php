@@ -195,6 +195,14 @@ class Commande
         return $this;
     }
 
+    ////////////////////////////////////////////////////////////////////////
+    // Il est possible de créer d'autres fonctions ici
+
+    public function __toString() {          // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->numero_commande. " "; // L'élément affiché de la liste des formats est seulement le type
+    }                                       // Permet d'afficher le type dans le détail d'un fomrat ET AUSSI dans le détail des autres entités
+
     
     
 }
