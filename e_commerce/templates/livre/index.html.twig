@@ -30,7 +30,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau livre #}
-                        <a href="">AJOUTER</a>
+                        <a href="{{ path ('new_livre', {id: livre.id}) }}">AJOUTER</a>
                     {% endif %}
 
                     <section class="price">
@@ -75,7 +75,7 @@
                                             <div class="liste">
                                                 {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                                 <div class="option">
-                                                    <a class="crud" href="">MODIFIER</a>
+                                                    <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}">MODIFIER</a>
                                                     <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}">SUPPRIMER</a>
                                                 </div>  
                                             </div>
