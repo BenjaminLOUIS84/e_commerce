@@ -30,7 +30,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau livre #}
-                        <a href="{{ path ('new_livre', {id: livre.id}) }}">AJOUTER</a>
+                        <a href="{{ path ('new_livre') }}">AJOUTER</a>
                     {% endif %}
 
                     <section class="price">
