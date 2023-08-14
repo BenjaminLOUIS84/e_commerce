@@ -18,7 +18,7 @@ class FormatType extends AbstractType
         $builder
         ->add('type', TextType::class)          // Définir les types de champs et importer les classes
         
-        ->add('livre', EntityType::class, [     // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+        ->add('Livre', EntityType::class, [     // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
         'mapped' => false,                      // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
         'class' => Livre::class, 
         'attr' => ['class' => 'form-control'],

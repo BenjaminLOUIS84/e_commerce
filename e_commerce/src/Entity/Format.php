@@ -19,11 +19,11 @@ class Format
     private ?string $type = null;
 
     #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'formats')]
-    private Collection $livre;
+    private Collection $Livre;
 
     public function __construct()
     {
-        $this->livre = new ArrayCollection();
+        $this->Livre = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,14 +48,14 @@ class Format
      */
     public function getLivre(): Collection
     {
-        return $this->livre;
+        return $this->Livre;
     }
 
     public function addLivre(Livre $livre): static // Pour ajouter un format
     {
         if (!$this->livre->contains($livre)) {
             $this->livre->add($livre);
-            $livre->setFormat($this);
+            // $livre->setFormat($this);
         }
 
         return $this;
@@ -63,10 +63,12 @@ class Format
 
     public function removeLivre(Livre $livre): static // Pour supprimer un livre
     {
-        if ($this->livre->removeElement($livre)) {
-            if ($livre->getFormat() === $this) {
-                $livre->setFormat(null);
-            }
+       // if (
+            $this->Livre->removeElement($livre);
+        //    ) {
+            // if ($livre->getFormat() === $this) {
+            //     $livre->setFormat(null);
+            // }
             return $this;
         }
         
