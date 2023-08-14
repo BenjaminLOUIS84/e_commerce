@@ -22,16 +22,16 @@ class LivreType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class)                 // Définir les types de champs et importer les classes
-            ->add('couverture', FileType::class)            // Champs pour charger un fichier (image)
 
             ->add('date_publication', DateType::class, [    // Ajouter après class ['widget' => 'single_text', 'attr' =>['class' =>'form-control']] Propiété BootStrap pour améliorer l'affichage de la date
             'widget' =>'single_text',
             'attr' =>['class' =>'form-control']])
 
+            ->add('couverture', FileType::class)            // Champs pour charger un fichier (image)
+            ->add('tome', FileType::class)                  
+
             ->add('resume', TextareaType::class, [          // Champs pour les textes long
             'attr' => ['class' => 'tinymce']])
-
-            ->add('tome', FileType::class)                  // Champs pour charger un fichier (image)
 
             ->add('commandes', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
             'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
