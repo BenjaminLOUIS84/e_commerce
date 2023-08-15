@@ -30,7 +30,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau format #}
-                        <a class="crud" href="{{ path ('new_format') }}">AJOUTER</a>
+                        <a class="crud" href="{{ path ('new_format', {id: format.id}) }}">AJOUTER</a>
                     
 
                         {# BDD L'élément de la format #}
