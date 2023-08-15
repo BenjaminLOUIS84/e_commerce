@@ -81,7 +81,6 @@ class LivreType extends AbstractType
             'choice_label' => 'type'])
 
             ->add('serie', EntityType::class, [             // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
             'class' => Serie::class, 
             'attr' => ['class' => 'form-control'],
             'choice_label' => 'intitule'])
