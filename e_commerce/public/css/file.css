@@ -275,11 +275,13 @@ header {
 
 .edition {
     display: flex;
+    justify-content: center;
 }
 
 .photo {
 
     display: flex;
+    width: 50%;
 }
 
 /* LES LIVRES/////////////////////////////////////////////////////////// */
