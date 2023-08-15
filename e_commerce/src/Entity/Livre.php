@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LivreRepository;
 use Doctrine\Common\Collections\Collection;
-// use Symfony\Component\HttpFoundation\File\File; // Pour permettre le chargement et l'affichage des images
+use Symfony\Component\HttpFoundation\File\File; // Pour permettre le chargement et l'affichage des images
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: LivreRepository::class)]

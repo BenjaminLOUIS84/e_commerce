@@ -32,7 +32,8 @@ class LivreType extends AbstractType
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)                
-                'required'=> true,                          // Rendre l'ajout d'image obligatoire
+                'mapped' => false,
+                'required'=> false,                          // Rendre l'ajout d'image obligatoire
                 'constraints' => [                          // Sécurité pour que le fichier soit une image au format jpg uniquement
                     new File([
                         'maxSize' => '1024k',
@@ -45,7 +46,8 @@ class LivreType extends AbstractType
             ])                           
             
             ->add('tome', FileType::class, [
-                'required'=> true,
+                'mapped' => false,
+                'required'=> false,
                 'constraints' => [                          
                     new File([
                         'maxSize' => '1024k',
@@ -62,7 +64,7 @@ class LivreType extends AbstractType
             ->add('resume', TextareaType::class, [          // Champs pour les textes long, zone de texte pour les résumés
                 'label' => 'Résumé',
                 'attr' => ['class' => 'tinymce'],
-                'required' => false                         // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
+                'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,9 +75,9 @@ class LivreType extends AbstractType
             // 'choice_label' => 'numero_commande'])
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ->add('formats', EntityType::class, [            // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            ->add('formats', EntityType::class, [       // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Format',
-                'mapped' => false,                           // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
+                'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
                 'class' => Format::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'type'

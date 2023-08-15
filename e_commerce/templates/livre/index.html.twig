@@ -45,8 +45,8 @@
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
                                             {# Pour afficher les couvertures de chaque livres #}
-                                            {# <img src="{{ asset('uploads/couvertures/'~livre.couverture) }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log"> #}
-                                            <img src="{{ asset('img/'~livre.couverture|e) }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
+                                            <img src="{{ asset('uploads/images/'~ app.livre.couverture) }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log">
+                                            {# <img src="{{ asset('img/'~livre.couverture|e) }}" alt="Couverture Tome 1 Livre Révolutions Femmes" class="log"> #}
                                         </figure>
                                         <div class="acheter1">ACHETEZ-MOI</div> 
 
@@ -59,8 +59,8 @@
                                     {% for livre in livres %}
 
                                         <figure>
-                                            {# <img src="{{ asset('uploads/tomes'~livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log"> #}
-                                            <img src="{{ asset('img/'~livre.tome|e) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                                            <img src="{{ asset('uploads/images/'~ app.livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                                            {# <img src="{{ asset('img/'~livre.tome|e) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log"> #}
                                         </figure>
 
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}

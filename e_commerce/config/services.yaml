@@ -7,6 +7,7 @@ parameters:
 
     # Créer les paramêtres couverture et tomes qui seront utilisés dans le contrôleur pour spécifier les répertoires 
     # dans lesquels les couvertures et les tomes devraient être stockés
+    image_directory: '%kernel.project_dir%/public/uploads/images'
 
     # couvertures_directory: '%kernel.project_dir%/public/uploads/couvertures'
     # tomes_directory: '%kernel.project_dir%/public/uploads/tomes'
@@ -25,6 +26,10 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            
+    App\Service\FileUploader:
+        arguments:
+            $targetDirectory: '%image_directory%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
