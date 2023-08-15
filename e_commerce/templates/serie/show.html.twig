@@ -21,12 +21,27 @@
 
             <title>Liste des Livres</title>
         </head>
+        {# Précise le titre de la collection cible #}
         <h3>Les livres de la collection {{ serie }}</h3>
         <body>
             <div class="wrapperLivres">
         
+                {# Créer une condition pour afficher un message quand il y a pas de livres dans une collection #}
+                {% if serie.Livre | length >0 %}
                 
+                    {% for livre in serie.Livre %}
+
+                        <figure>
+                            {# Pour afficher les couvertures de chaque livres #}
+                            <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="couvertures">
+                        </figure>
                 
+                    {% endfor %}
+                {% else %}
+
+                    <p>Aucuns livres dans cette collection</p>
+                
+                {% endif %}  
 
                 <nav id="men">
                     <div id="menu">
