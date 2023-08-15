@@ -30,7 +30,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau format #}
-                        <a class="crud" href="{{ path ('new_format', {id: format.id}) }}">AJOUTER</a>
+                        <a class="crud" href="{{ path ('new_format') }}">AJOUTER</a>
                     
 
                         {# BDD L'élément de la format #}
@@ -53,7 +53,7 @@
 
                     {% for format in formats %}
                         {# Accéder à la liste des livres pour chaque formats en cliquant sur l'intitulé d'un format #}
-                        <a class="btn" title="Détail sur ce mode d'édition" href="{{ path ('show_format') }}">{{ format }}</a>
+                        <a class="btn" title="Détail sur ce mode d'édition" href="{{ path ('show_format', {id: format.id}) }}">{{ format }}</a>
                     {% endfor %}
 
                     <nav id="men">
