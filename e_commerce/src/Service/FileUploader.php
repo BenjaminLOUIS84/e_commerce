@@ -8,8 +8,8 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class FileUploader
 {
-    // targetDirectory correspond au chemin d'envoi des fichiers présent dans services.yaml
-    private $targetDirectory;
+    
+    private $targetDirectory;                                           // targetDirectory correspond au chemin d'envoi des fichiers présent dans services.yaml
     private $slugger;
 
     public function __construct($targetDirectory, SluggerInterface $slugger)
@@ -21,18 +21,17 @@ class FileUploader
     public function upload(UploadedFile $file): string
     {
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        // Transforme les caractères unicode du nom du fichier en une version "safe" pour être ajouté dans l'URL
-        $safeFilename = $this->slugger->slug($originalFilename);
+        
+        $safeFilename = $this->slugger->slug($originalFilename);        // Transforme les caractères unicode du nom du fichier en une version "safe" pour être ajouté dans l'URL
         $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
-        // Déplace le fichier dans le répertoire où sont stockés les images d'avatar
+        
         try {
-            $file->move($this->getTargetDirectory(), $fileName);
+            $file->move($this->getTargetDirectory(), $fileName);        // Déplace le fichier dans le répertoire où sont stockés les images d'avatar
         } catch (FileException $e) {
-            // Gère les exceptions dans le cas où un problème arrive durant l'upload
-        }
-        // Met à jour la propriété 'originaleFilename' pour stocker le nom du fichier image
-        // au lieu de son contenu
-        return $fileName;
+            
+        }                                                               // Gère les exceptions dans le cas où un problème arrive durant l'upload
+        
+        return $fileName;                                               // Met à jour la propriété 'originaleFilename' pour stocker le nom du fichier image au lieu de son contenu
     }
 
     public function getTargetDirectory(): string

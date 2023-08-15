@@ -9,9 +9,6 @@ parameters:
     # dans lesquels les couvertures et les tomes devraient être stockés
     image_directory: '%kernel.project_dir%/public/uploads/images'
 
-    # couvertures_directory: '%kernel.project_dir%/public/uploads/couvertures'
-    # tomes_directory: '%kernel.project_dir%/public/uploads/tomes'
-
 services:
     # default configuration for services in *this* file
     _defaults:

@@ -58,7 +58,7 @@ class LivreController extends AbstractController
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // POUR PERMETTRE LA MODIFICATION DES LIVRE -> rendre nullable les propriétés couverture et tome (fichier type) dans la bdd
+    // POUR PERMETTRE LA MODIFICATION DES LIVRES -> rendre nullable les propriétés couverture et tome (fichier type) dans la bdd
     //                                          -> dans le fichier LivreType.php, ajouter 'required'=> false aux champs couverture et tome
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -78,7 +78,7 @@ class LivreController extends AbstractController
             $livre = $form->getData();                              // Récupérer les informations du nouveau livre
             
             $couvertureFile = $form->get('couverture')->getData();
-            $tomeFile = $form->get('tome')->getData();                  // Récupérer les images (couverture et tome) du nouveau livre  
+            $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre  
 
 
             //////////////////////////////////////////////////////////////////////////
@@ -86,49 +86,12 @@ class LivreController extends AbstractController
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
             
             if ($couvertureFile) {
-            //     $originalFilename = pathinfo($couverture->getClientOriginalName(), PATHINFO_FILENAME);
-                
-            //     $safeFilename = $slugger->slug($originalFilename);  // Cela est nécessaire pour inclure en toute sécurité le nom du fichier dans l'URL
-            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$couverture->guessExtension();
-                
-            //     try {                                               // Déplacer le fichier dans le répertoire où sont stockées les couvertures
-            //         $couverture->move(
-            //             // $this->getParameter('couvertures_directory'),
-            //             $newFilename
-            //         );
-
-            //     } catch (FileException $e) {                        // Gérer l'exception si quelques chose se produit pendant le téléchargement du fichier
-                    
-            //     }                                               
-
-            //     $livre->setCouverture(                              // Mettre à jour la propriété Couverture pour stocker le nom du fichier jpg au lieu de son contenu
-            //         // new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
-                    
-            //         $newFilename
-            //     ); 
-            // Envoie les données au Service FileUploader 
-            $couvertureFileName = $fileUploader->upload($couvertureFile);
-            $livre->setCouverture($couvertureFileName);   
+                // Envoie les données au Service FileUploader 
+                $couvertureFileName = $fileUploader->upload($couvertureFile);
+                $livre->setCouverture($couvertureFileName);   
             }
 
             if ($tomeFile) {
-            //     $originalFilename = pathinfo($tome->getClientOriginalName(), PATHINFO_FILENAME);
-            //     $safeFilename = $slugger->slug($originalFilename);
-            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$tome->guessExtension();
-                
-            //     try {                                           
-            //         $tome->move(
-            //             // $this->getParameter('tomes_directory'),
-            //             $newFilename
-            //         );
-            //     } catch (FileException $e) {                    
-                    
-            //     }                                               
-            //     $livre->setTome(
-            //         // new File($this->getParameter('tomes_directory').'/'.$livre->getTome())
-
-            //         $newFilename
-            //     );
                 // Envoie les données au Service FileUploader 
                 $tomeFileName = $fileUploader->upload($tomeFile);
                 $livre->setTome($tomeFileName);
@@ -153,5 +116,3 @@ class LivreController extends AbstractController
     }
 
 }                                                                       
-
-
