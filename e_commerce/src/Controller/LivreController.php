@@ -71,12 +71,12 @@ class LivreController extends AbstractController
         //////////////////////////////////////////////////////////////////////////
         //                                                      GERER LE TRAITEMENT EN BDD
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {        // Si le formulaire soumis est valide alors
+        if ($form->isSubmitted() && $form->isValid()) {             // Si le formulaire soumis est valide alors
             
-            $livre = $form->getData();                         // Récupérer les informations du nouveau livre
+            $livre = $form->getData();                              // Récupérer les informations du nouveau livre
             
             $couverture = $form->get('couverture')->getData();
-            $tomeFile = $form->get('tome')->getData();         // Récupérer les images (couverture et tome) du nouveau livre  
+            $tome = $form->get('tome')->getData();                  // Récupérer les images (couverture et tome) du nouveau livre  
 
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
