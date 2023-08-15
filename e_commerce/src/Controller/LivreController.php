@@ -24,7 +24,7 @@ class LivreController extends AbstractController
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
     public function index(LivreRepository $livreRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository        
     {                                                                   // Importer la classe LivreRepository avec un click droit 
-        $livres = $livreRepository->findBy([],["titre" => "ASC"]);      // Pour récupérer la liste des livres classées par ordre alphabéthique selon le titre
+        $livres = $livreRepository->findBy([],["date_publication" => "ASC"]);      // Pour récupérer la liste des livres classées par ordre alphabéthique selon le titre
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres                                         // Pour passer la variable $livres en argument 'livres'
