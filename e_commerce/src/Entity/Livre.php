@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Livre;
+use App\Entity\Serie;
+use App\Entity\Format;
+use App\Entity\Commande;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LivreRepository;
@@ -24,7 +28,7 @@ class Livre
     private ?string $couverture = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_publication = null;
+    private ?DateTimeInterface $date_publication = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $resume = null;
@@ -40,9 +44,6 @@ class Livre
 
     #[ORM\Column(length: 255)]
     private ?string $tome = null;
-
-    // #[ORM\Column(type: 'string')]
-    // private string $couvertureFilename;// Créer cette variable pour gérer l'affichage des couvertures
 
     public function __construct()
     {
@@ -72,7 +73,7 @@ class Livre
         return $this->couverture;
     }
 
-    public function setCouverture(string $couverture): self
+    public function setCouverture(string $couverture): static
     {
         $this->couverture = $couverture;
         
