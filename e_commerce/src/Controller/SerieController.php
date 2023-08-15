@@ -78,5 +78,18 @@ class SerieController extends AbstractController
             'edit' => $serie->getId()
         ]);
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LA LISTE DES LIVRES DE CHAQUE COLLECTION
+
+    #[Route('/serie/{id}', name: 'show_serie')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+
+    public function show(Serie $serie): Response                // Créer une fonction show() dans le controller pour afficher le détail d'une collection 
+
+    {
+        return $this->render('serie/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
+            'serie' => $serie
+        ]);
+    }
 }                                                                       
 

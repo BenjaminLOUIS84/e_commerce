@@ -52,7 +52,7 @@
 
                     {% for serie in series %}
                         {# Accéder à la liste des livres pour chaque collections en cliquant sur l'intitulé d'une collection #}
-                        <a class="btn" title="Accéder à la liste des livres de cette collection" href="">{{ serie }}</a>
+                        <a class="btn" title="Accéder à la liste des livres de cette collection" href="{{ path ('show_serie', {id: serie.id}) }}">{{ serie }}</a>
                     {% endfor %}
 
                     <nav id="men">

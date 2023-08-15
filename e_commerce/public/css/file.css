@@ -43,6 +43,18 @@
     height: 700px;
 }
 
+.wrapperLivres {
+
+    background-image: url(/img/collection.jpg);
+    font-family: 'Libre Baskerville', sans-serif;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+}
+
 /* nav  =   bloc contenant: h1, nav, menu et a  */
 
 nav {
