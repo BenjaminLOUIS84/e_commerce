@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Format;
 use App\Form\FormatType;
+use App\Service\FileUploader;
 use App\Repository\FormatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,7 +45,7 @@ class FormatController extends AbstractController
     #[Route('/format/new', name: 'new_format')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/format/{id}/edit', name: 'edit_format')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
 
-    public function new_edit(Format $format  = null, Request $request, EntityManagerInterface $entityManager): Response   
+    public function new_edit(Format $format  = null, Request $request, FileUploader $fileUploader, EntityManagerInterface $entityManager): Response   
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de format
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
@@ -62,6 +63,21 @@ class FormatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {         // Si le formulaire soumis est valide alors
             
             $format = $form->getData();                         // Récupérer les informations du nouveau format
+            
+            $photoFile = $form->get('photo')->getData();        // Récupérer l'image (photo) du nouveau format  
+            
+            //////////////////////////////////////////////////////////////////////////
+            // Cette condition est nécessaire car le champs photo n'est pas requis
+            // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
+            
+            if ($photoFile) {
+                // Envoie les données au Service FileUploader 
+                $photoFileName = $fileUploader->upload($photoFile);
+                $format->setPhoto($photoFileName);   
+            }
+
+            //////////////////////////////////////////////////////////////////////////
+
             //prepare PDO
             $entityManager->persist($format);                   // Dire à Doctrine que je veux sauvegarder le nouveau format           
             //execute PDO
