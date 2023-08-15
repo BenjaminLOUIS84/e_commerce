@@ -25,14 +25,14 @@ class LivreType extends AbstractType
             ->add('titre', TextType::class)                 // Définir les types de champs et importer les classes
 
             ->add('date_publication', DateType::class, [    // Ajouter après class ['widget' => 'single_text', 'attr' =>['class' =>'form-control']] Propiété BootStrap pour améliorer l'affichage de la date
-            'widget' =>'single_text',
-            'attr' =>['class' =>'form-control']])
+                'label' => 'Date de publication',
+                'widget' =>'single_text',
+                'attr' =>['class' =>'form-control']
+            ])
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)                
-    
-                //'mapped' =>false,                           // Rendre le mappage faux pour dissocier l'image de l'entité
-                'required'=> false,                         // Rendre l'ajout d'image non obligatoire
+                'required'=> true,                          // Rendre l'ajout d'image obligatoire
                 'constraints' => [                          // Sécurité pour que le fichier soit une image au format jpg uniquement
                     new File([
                         'maxSize' => '1024k',
@@ -45,9 +45,7 @@ class LivreType extends AbstractType
             ])                           
             
             ->add('tome', FileType::class, [
-
-                //'mapped' =>false,
-                'required'=> false,
+                'required'=> true,
                 'constraints' => [                          
                     new File([
                         'maxSize' => '1024k',
@@ -62,8 +60,9 @@ class LivreType extends AbstractType
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('resume', TextareaType::class, [          // Champs pour les textes long, zone de texte pour les résumés
-            'attr' => ['class' => 'tinymce'],
-            'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
+                'label' => 'Résumé',
+                'attr' => ['class' => 'tinymce'],
+                'required' => false                         // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,19 +73,24 @@ class LivreType extends AbstractType
             // 'choice_label' => 'numero_commande'])
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ->add('formats', EntityType::class, [       // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
-            'class' => Format::class, 
-            'attr' => ['class' => 'form-control'],
-            'choice_label' => 'type'])
+            ->add('formats', EntityType::class, [            // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+                'label' => 'Format',
+                'mapped' => false,                           // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
+                'class' => Format::class, 
+                'attr' => ['class' => 'form-control'],
+                'choice_label' => 'type'
+            ])
 
             ->add('serie', EntityType::class, [             // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            'class' => Serie::class, 
-            'attr' => ['class' => 'form-control'],
-            'choice_label' => 'intitule'])
+                'label' => 'Collection',
+                'class' => Serie::class, 
+                'attr' => ['class' => 'form-control'],
+                'choice_label' => 'intitule'
+            ])
 
             ->add('valider', SubmitType::class, [           // Ajouter directement le bouton submit ici
-            'attr' =>['class' => 'btn btn-dark']])          // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
+                'attr' =>['class' => 'btn btn-dark']
+            ])                                              // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
         ;
     }
 
