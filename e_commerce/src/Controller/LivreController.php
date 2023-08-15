@@ -76,7 +76,7 @@ class LivreController extends AbstractController
             $livre = $form->getData();                         // Récupérer les informations du nouveau livre
             
             $couverture = $form->get('couverture')->getData();
-            //$tomeFile = $form->get('tome')->getData();         // Récupérer les images (couverture et tome) du nouveau livre  
+            $tomeFile = $form->get('tome')->getData();         // Récupérer les images (couverture et tome) du nouveau livre  
 
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
@@ -100,25 +100,30 @@ class LivreController extends AbstractController
 
                 $livre->setCouverture(                              // Mettre à jour la propriété Couverture pour stocker le nom du fichier jpg au lieu de son contenu
                     new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
-
+                    
+                    //$newFilename
                 );    
             }
 
-            // if ($tomeFile) {
-            //     $originalFilename = pathinfo($tomeFile->getClientOriginalName(), PATHINFO_FILENAME);
-            //     $safeFilename = $slugger->slug($originalFilename);
-            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$tomeFile->guessExtension();
+            if ($tome) {
+                $originalFilename = pathinfo($tome->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$tome->guessExtension();
                 
-            //     try {                                           
-            //         $tomeFile->move(
-            //             $this->getParameter('tomes_directory'),
-            //             $newFilename
-            //         );
-            //     } catch (FileException $e) {                    
+                try {                                           
+                    $tome->move(
+                        $this->getParameter('tomes_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {                    
                     
-            //     }                                               
-            //     $livre->setTomeFilename($newFilename);    
-            // }
+                }                                               
+                $livre->setTome(
+                    new File($this->getParameter('tomes_directory').'/'.$livre->getTome())
+
+                    //$newFilename
+                );    
+            }
 
             //////////////////////////////////////////////////////////////////////////
 
