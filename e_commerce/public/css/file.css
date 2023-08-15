@@ -271,6 +271,17 @@ header {
     font-size: 1.5em;
 }
 
+/* LES FORMATS/////////////////////////////////////////////////////////// */
+
+.edition {
+    display: flex;
+}
+
+.photo {
+
+    display: flex;
+}
+
 /* LES LIVRES/////////////////////////////////////////////////////////// */
 
 .couvertures {
