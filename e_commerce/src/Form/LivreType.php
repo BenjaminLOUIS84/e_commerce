@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class LivreType extends AbstractType
 {
@@ -74,8 +75,8 @@ class LivreType extends AbstractType
             // 'choice_label' => 'numero_commande'])
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ->add('formats', EntityType::class, [           // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
+            ->add('formats', CollectionType::class, [       // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            //'mapped' => false,                            // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
             'class' => Format::class, 
             'attr' => ['class' => 'form-control'],
             'choice_label' => 'type'])

@@ -139,7 +139,7 @@ class Livre
         return $this->formats;
     }
 
-    public function addFormat(Format $format): static
+    public function addFormat(Format $format): static // Pour permettre l'ajout d'un format
     {
         if (!$this->formats->contains($format)) {
             $this->formats->add($format);
@@ -149,7 +149,7 @@ class Livre
         return $this;
     }
 
-    public function removeFormat(Format $format): static
+    public function removeFormat(Format $format): static // Pour permettre la suppression d'un format
     {
         if ($this->formats->removeElement($format)) {
             $format->removeLivre($this);
