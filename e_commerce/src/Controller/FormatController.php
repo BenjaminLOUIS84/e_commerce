@@ -78,4 +78,17 @@ class FormatController extends AbstractController
             'edit' => $format->getId()
         ]);
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE MODES D'EDITION
+
+    #[Route('/format/{id}', name: 'show_format')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+
+    public function show(Format $format): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un mode d'édition 
+
+    {
+        return $this->render('format/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
+            'format' => $format
+        ]);
+    }
 }                                                                          
