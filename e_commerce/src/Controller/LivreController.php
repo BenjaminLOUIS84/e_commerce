@@ -8,12 +8,12 @@ use App\Repository\LivreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
+
+// use Symfony\Component\HttpFoundation\File\File;
+// use Symfony\Component\String\Slugger\SluggerInterface;
+// use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
@@ -51,7 +51,7 @@ class LivreController extends AbstractController
     #[Route('/livre/new', name: 'new_livre')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/livre/{id}/edit', name: 'edit_livre')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
 
-    public function new_edit(Livre $livre  = null, Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response   
+    public function new_edit(Livre $livre  = null, Request $request, EntityManagerInterface $entityManager): Response   
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de livre
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
@@ -75,55 +75,55 @@ class LivreController extends AbstractController
             
             $livre = $form->getData();                              // Récupérer les informations du nouveau livre
             
-            $couverture = $form->get('couverture')->getData();
-            $tome = $form->get('tome')->getData();                  // Récupérer les images (couverture et tome) du nouveau livre  
+            //$couverture = $form->get('couverture')->getData();
+            //$tome = $form->get('tome')->getData();                  // Récupérer les images (couverture et tome) du nouveau livre  
 
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
             
-            if ($couverture) {
-                $originalFilename = pathinfo($couverture->getClientOriginalName(), PATHINFO_FILENAME);
+            // if ($couverture) {
+            //     $originalFilename = pathinfo($couverture->getClientOriginalName(), PATHINFO_FILENAME);
                 
-                $safeFilename = $slugger->slug($originalFilename);  // Cela est nécessaire pour inclure en toute sécurité le nom du fichier dans l'URL
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$couverture->guessExtension();
+            //     $safeFilename = $slugger->slug($originalFilename);  // Cela est nécessaire pour inclure en toute sécurité le nom du fichier dans l'URL
+            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$couverture->guessExtension();
                 
-                try {                                               // Déplacer le fichier dans le répertoire où sont stockées les couvertures
-                    $couverture->move(
-                        // $this->getParameter('couvertures_directory'),
-                        $newFilename
-                    );
+            //     try {                                               // Déplacer le fichier dans le répertoire où sont stockées les couvertures
+            //         $couverture->move(
+            //             // $this->getParameter('couvertures_directory'),
+            //             $newFilename
+            //         );
 
-                } catch (FileException $e) {                        // Gérer l'exception si quelques chose se produit pendant le téléchargement du fichier
+            //     } catch (FileException $e) {                        // Gérer l'exception si quelques chose se produit pendant le téléchargement du fichier
                     
-                }                                               
+            //     }                                               
 
-                $livre->setCouverture(                              // Mettre à jour la propriété Couverture pour stocker le nom du fichier jpg au lieu de son contenu
-                    // new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
+            //     $livre->setCouverture(                              // Mettre à jour la propriété Couverture pour stocker le nom du fichier jpg au lieu de son contenu
+            //         // new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
                     
-                    $newFilename
-                );    
-            }
+            //         $newFilename
+            //     );    
+            // }
 
-            if ($tome) {
-                $originalFilename = pathinfo($tome->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$tome->guessExtension();
+            // if ($tome) {
+            //     $originalFilename = pathinfo($tome->getClientOriginalName(), PATHINFO_FILENAME);
+            //     $safeFilename = $slugger->slug($originalFilename);
+            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$tome->guessExtension();
                 
-                try {                                           
-                    $tome->move(
-                        // $this->getParameter('tomes_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {                    
+            //     try {                                           
+            //         $tome->move(
+            //             // $this->getParameter('tomes_directory'),
+            //             $newFilename
+            //         );
+            //     } catch (FileException $e) {                    
                     
-                }                                               
-                $livre->setTome(
-                    // new File($this->getParameter('tomes_directory').'/'.$livre->getTome())
+            //     }                                               
+            //     $livre->setTome(
+            //         // new File($this->getParameter('tomes_directory').'/'.$livre->getTome())
 
-                    $newFilename
-                );    
-            }
+            //         $newFilename
+            //     );    
+            // }
 
             //////////////////////////////////////////////////////////////////////////
 

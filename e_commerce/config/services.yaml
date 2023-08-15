@@ -8,8 +8,8 @@ parameters:
     # Créer les paramêtres couverture et tomes qui seront utilisés dans le contrôleur pour spécifier les répertoires 
     # dans lesquels les couvertures et les tomes devraient être stockés
 
-    couvertures_directory: '%kernel.project_dir%/public/uploads/couvertures'
-    tomes_directory: '%kernel.project_dir%/public/uploads/tomes'
+    # couvertures_directory: '%kernel.project_dir%/public/uploads/couvertures'
+    # tomes_directory: '%kernel.project_dir%/public/uploads/tomes'
 
 services:
     # default configuration for services in *this* file
