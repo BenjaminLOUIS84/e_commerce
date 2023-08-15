@@ -31,7 +31,7 @@ class LivreType extends AbstractType
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('couverture', FileType::class, [          // Champs pour charger un fichier (image)                
     
-                'mapped' =>false,                           // Rendre le mappage faux pour dissocier l'image de l'entité
+                //'mapped' =>false,                           // Rendre le mappage faux pour dissocier l'image de l'entité
                 'required'=> false,                         // Rendre l'ajout d'image non obligatoire
                 'constraints' => [                          // Sécurité pour que le fichier soit une image au format jpg uniquement
                     new File([
@@ -46,7 +46,7 @@ class LivreType extends AbstractType
             
             ->add('tome', FileType::class, [
 
-                'mapped' =>false,
+                //'mapped' =>false,
                 'required'=> false,
                 'constraints' => [                          
                     new File([

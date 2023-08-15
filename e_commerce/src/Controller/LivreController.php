@@ -90,7 +90,7 @@ class LivreController extends AbstractController
                 
                 try {                                               // Déplacer le fichier dans le répertoire où sont stockées les couvertures
                     $couverture->move(
-                        $this->getParameter('couvertures_directory'),
+                        // $this->getParameter('couvertures_directory'),
                         $newFilename
                     );
 
@@ -99,9 +99,9 @@ class LivreController extends AbstractController
                 }                                               
 
                 $livre->setCouverture(                              // Mettre à jour la propriété Couverture pour stocker le nom du fichier jpg au lieu de son contenu
-                    new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
+                    // new File($this->getParameter('couvertures_directory').'/'.$livre->getCouverture())
                     
-                    //$newFilename
+                    $newFilename
                 );    
             }
 
@@ -112,16 +112,16 @@ class LivreController extends AbstractController
                 
                 try {                                           
                     $tome->move(
-                        $this->getParameter('tomes_directory'),
+                        // $this->getParameter('tomes_directory'),
                         $newFilename
                     );
                 } catch (FileException $e) {                    
                     
                 }                                               
                 $livre->setTome(
-                    new File($this->getParameter('tomes_directory').'/'.$livre->getTome())
+                    // new File($this->getParameter('tomes_directory').'/'.$livre->getTome())
 
-                    //$newFilename
+                    $newFilename
                 );    
             }
 
