@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FormatRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File; // Pour permettre le chargement et l'affichage des images
 
 #[ORM\Entity(repositoryClass: FormatRepository::class)]
 class Format
