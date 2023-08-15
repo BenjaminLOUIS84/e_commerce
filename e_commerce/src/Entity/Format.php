@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FormatRepository;
 use Doctrine\Common\Collections\Collection;
@@ -20,6 +21,12 @@ class Format
 
     #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'formats')]
     private Collection $Livre;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $photo = null;
 
     public function __construct()
     {
@@ -80,5 +87,29 @@ class Format
 
         return $this->type. " ";            // L'élément affiché de la liste des formats est seulement le type
     }                                       // Permet d'afficher le type dans le détail d'un fomrat ET AUSSI dans le détail des autres entités
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): static
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
 
 }
