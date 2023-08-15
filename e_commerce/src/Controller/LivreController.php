@@ -56,19 +56,12 @@ class LivreController extends AbstractController
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de livre
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // POUR PERMETTRE LA MODIFICATION DES LIVRES -> rendre nullable les propriétés couverture et tome (fichier type) dans la bdd
-    //                                          -> dans le fichier LivreType.php, ajouter 'required'=> false aux champs couverture et tome
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
     {
         if(!$livre){                                           // S'il n'ya pas de livre à modifier alors en créer un nouveau
             $livre = new Livre();                              // Après avoir importé la classe Request Déclarer un nouveau livre
         }
 
         $form = $this->createForm(LivreType :: class, $livre); // Créer un nouveau formulaire avec la méthode createForm() et importer le classe LivreType
-
         //////////////////////////////////////////////////////////////////////////
         //                                                      GERER LE TRAITEMENT EN BDD
         $form->handleRequest($request);
@@ -79,7 +72,6 @@ class LivreController extends AbstractController
             
             $couvertureFile = $form->get('couverture')->getData();
             $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre  
-
 
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
