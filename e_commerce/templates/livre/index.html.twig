@@ -27,9 +27,10 @@
                 <header>
                     <!-- Cette page concerne les livres-->
                     <h3>LIVRES</h3>
+                    
                     {# Afficher la collection pour chaque livres #}
-                    <h2> {{livres.serie}} </h2>
-
+                    {# <h2> {{livre.serie}} </h2> #}
+                    
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau livre #}
                         <a href="{{ path ('new_livre') }}">AJOUTER</a>
