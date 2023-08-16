@@ -6,13 +6,9 @@ use App\Entity\Livre;
 use App\Form\LivreType;
 use App\Service\FileUploader;
 use App\Repository\LivreRepository;
+// use App\Repository\SerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-
-// use SymfonyComponentHttpFoundationFileFile;
-// use Symfony\Component\String\Slugger\SluggerInterface;
-// use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,10 +20,12 @@ class LivreController extends AbstractController
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
     public function index(LivreRepository $livreRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository        
     {                                                                   // Importer la classe LivreRepository avec un click droit 
-        $livres = $livreRepository->findBy([],["date_publication" => "ASC"]);      // Pour récupérer la liste des livres classées par ordre alphabéthique selon le titre
+        
+        $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
+        "ASC"]);      
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
-            'livres' => $livres                                         // Pour passer la variable $livres en argument 'livres'
+            'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
         ]);
     }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
 

@@ -306,6 +306,11 @@ header {
 
 /* LES LIVRES/////////////////////////////////////////////////////////// */
 
+.serie {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .couvertures {
     width: 20%;
 }
@@ -326,6 +331,7 @@ header {
     align-items: center;
     overflow: auto;
     scroll-snap-type: x mandatory;
+    width: -webkit-fill-available;
 }
 
 .blocPrice {
@@ -455,6 +461,10 @@ h6 {
 /*TELEPHONE//////////////////////////////////////////////////////*/
 
 @media (min-width: 0) and (max-width: 768px) {
+
+    .couvertures {
+        width: 50%;
+    }
 
     .mentions {
         padding-top: 280px;

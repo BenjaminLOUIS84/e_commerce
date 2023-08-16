@@ -27,6 +27,8 @@
                 <header>
                     <!-- Cette page concerne les livres-->
                     <h3>LIVRES</h3>
+                    {# Afficher la collection pour chaque livres #}
+                    <h2> {{livres.serie}} </h2>
 
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau livre #}
@@ -34,14 +36,15 @@
                     {% endif %}
 
                     <section class="price">
-                        <div class="blocPrice">
-                            <div class="pack">   
 
-                                <div class="front">
-                                    
-                                    {% for livre in livres %}
-                                        {# Afficher la collection pour chaque livres #}
-                                        <h2> {{livre.serie}} </h2>
+                        {% for livre in livres %}
+
+                            <div class="blocPrice">
+                                
+                                <div class="pack">   
+
+                                    <div class="front">
+                                        
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
                                             {# Pour afficher les couvertures de chaque livres #}
@@ -49,16 +52,12 @@
                                         </figure>
                                         <div class="acheter1">ACHETEZ-MOI</div> 
 
-                                    {% endfor %}
-
-                                </div>
-                
-                                <div class="back">
-
-                                    {% for livre in livres %}
+                                    </div>
+                    
+                                    <div class="back">
 
                                         <figure>
-                                             {# Pour afficher les tomes de chaque livres #}
+                                                {# Pour afficher les tomes de chaque livres #}
                                             <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
                                         </figure>
 
@@ -84,12 +83,14 @@
                                             </div>
                                         {% endif %}
 
-                                    {% endfor %}
-
+                                    </div>
+                                
                                 </div>
-
+                                
                             </div>
-                        </div>
+
+                        {% endfor %}
+
                     </section> 
 
                     <nav id="men">
