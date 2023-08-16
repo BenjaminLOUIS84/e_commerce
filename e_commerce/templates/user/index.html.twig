@@ -24,8 +24,6 @@
              
         </head>
 
-        
-
         <body>
             <div class="wrapper">
                 <header>
@@ -37,11 +35,10 @@
                     <a href="{{ path ('app_format')}}">Les Formats</a>
                     <a href="{{ path ('app_livre')}}">Les livres</a>
                     
-                    
                     {# <a href="{{ path ('app_commande')}}">Commander</a> #}
                     {# <a href="{{ path ('app_facture')}}">Mes factures</a> #}
-                    {# <a href="">Mes paramêtres</a> #}
-                             
+                    <a href="{{ path ('delete_user', {id: user.id}) }}">Supprimer mon compte</a> 
+                         
                     
                     <nav id="men">
                         <div id="menu">
