@@ -3,7 +3,6 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-
     <!DOCTYPE html>
     <html lang="fr">
 
@@ -11,7 +10,7 @@
             <meta charset="utf-8">
 
             <link rel="stylesheet" href="{{ asset('css/file.css') }}">
-        
+            
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             
@@ -20,36 +19,32 @@
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 
-            <title>MON ESPACE</title>
-             
+            <title>PARAMETRES DU COMPTE</title>
         </head>
 
         <body>
             <div class="wrapper">
                 <header>
-                    <!-- Cette page contient L'espace personnel des utilisateurs -->
-                    <h3>MON ESPACE</h3>
-                    <h2>Bienvenue dans votre espace personnel {{ app.user.Pseudo }} </h2><br>
-                    
-                    <br><a href="{{ path ('app_serie')}}">Les collections</a>
-                    <a href="{{ path ('app_format')}}">Les Formats</a>
-                    <a href="{{ path ('app_livre')}}">Les livres</a>
-                    
-                    {# <a href="{{ path ('app_commande')}}">Commander</a> #}
-                    {# <a href="{{ path ('app_facture')}}">Mes factures</a> #}
-                    <a href="{{ path ('app_param') }}">Mes paramêtres</a> 
-                    
+                    <!-- Cette page concerne les paramêtres du compte -->
+                    <h3>PARAMETRES DU COMPTE</h3>
+
+                            <div class="liste">
+                                <div class="option">
+                                    <a class="crud" href="">Modifier mon mot de passe</a>
+                                    <a class="crud" href="{{ path ('delete_user', {id: app.user.id}) }}">Supprimer mon compte</a>
+                                </div> 
+                            </div>
+
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retourner à l'accueil" alt="Retour à la page d'accueil"></a>
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
                         </div>
                     </nav>
+
                 </header>
             </div>
             <!-- <script>src = "script.js"</script> -->
         </body>
 
     </html>
-
-
 {% endblock %}
