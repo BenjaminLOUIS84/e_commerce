@@ -91,6 +91,11 @@ nav .lk {
     width: 30%;
 }
 
+.icone2 {
+    width: 8%;
+    filter: invert();
+}
+
 .informations {
     display: flex;
     flex-direction: column;
@@ -482,6 +487,10 @@ h6 {
     .icone, 
     .icone1 {
         width: 20%;
+    }
+
+    .icone2 {
+        width: 10%;
     }
 
     .couvertures {
