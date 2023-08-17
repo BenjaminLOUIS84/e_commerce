@@ -83,8 +83,12 @@ nav .lk {
     filter: invert();
 }
 
-img .icone {
+.icone {
     width: 10%;
+}
+
+.icone1 {
+    width: 30%;
 }
 
 .informations {
@@ -248,6 +252,7 @@ header {
 .option {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .liste {
@@ -465,6 +470,15 @@ h6 {
 /*TELEPHONE//////////////////////////////////////////////////////*/
 
 @media (min-width: 0) and (max-width: 768px) {
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .icone, 
+    .icone1 {
+        width: 20%;
+    }
 
     .couvertures {
         width: 50%;

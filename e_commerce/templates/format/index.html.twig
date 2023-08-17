@@ -38,11 +38,12 @@
                         {% for format in formats %}
                             <div class="liste">
                                 
-                                <h1>{{ format }}</h1>
+                                
 
                                 {# Seul l'admin peut modifier et/ou supprimer une format #}
                                 <div class="option">
                                     <a class="crud" href="{{ path ('edit_format', {id: format.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    <h1>{{ format }}</h1>
                                     <a class="crud" href="{{ path ('delete_format', {id: format.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 </div>
                                 

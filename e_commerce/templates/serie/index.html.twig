@@ -37,12 +37,13 @@
                         {% for serie in series %}
                             <div class="liste">
                                 
-                                <h1>{{ serie }}</h1>
+                                
 
                                 {# Seul l'admin peut modifier et/ou supprimer une collection #}
                                 <div class="option">
-                                    <a class="crud" href="{{ path ('edit_serie', {id: serie.id}) }}">MODIFIER</a>
-                                    <a class="crud" href="{{ path ('delete_serie', {id: serie.id}) }}">SUPPRIMER</a>
+                                    <a class="crud" href="{{ path ('edit_serie', {id: serie.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    <h1>{{ serie }}</h1>
+                                    <a class="crud" href="{{ path ('delete_serie', {id: serie.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 </div>
                                 
                             </div>

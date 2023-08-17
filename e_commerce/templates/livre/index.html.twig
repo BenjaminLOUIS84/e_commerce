@@ -78,8 +78,8 @@
                                             <div class="liste">
                                                 {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                                 <div class="option">
-                                                    <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}">MODIFIER</a>
-                                                    <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}">SUPPRIMER</a>
+                                                    <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                    <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                                 </div>  
                                             </div>
                                         {% endif %}
