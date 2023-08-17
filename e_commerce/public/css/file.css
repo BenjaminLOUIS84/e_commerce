@@ -83,6 +83,10 @@ nav .lk {
     filter: invert();
 }
 
+img .icone {
+    width: 10%;
+}
+
 .informations {
     display: flex;
     flex-direction: column;
