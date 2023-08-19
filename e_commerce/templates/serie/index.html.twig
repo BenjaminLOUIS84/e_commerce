@@ -28,6 +28,16 @@
                     <!-- Cette page concerne les séries de livres -->
                     <h3>COLLECTIONS</h3>
 
+                    {# Lire et afficher toutes les notifications #}
+
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter une nouvelle collection #}
                         <a class="crud" href="{{ path ('new_serie') }}">AJOUTER</a>

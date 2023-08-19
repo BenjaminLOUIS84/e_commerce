@@ -34,6 +34,11 @@ class SerieController extends AbstractController
         $entityManager->remove($serie);                                 // Supprime une collection
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
+        $this->addFlash(                                                // Envoyer une notification
+            'success',
+            'Supprimé avec succès!'
+        );
+
         return $this->redirectToRoute('app_serie');                     // Rediriger vers la liste des collections
        
     }
@@ -66,6 +71,11 @@ class SerieController extends AbstractController
             $entityManager->persist($serie);                    // Dire à Doctrine que je veux sauvegarder la nouvelle collection           
             //execute PDO
             $entityManager->flush();                            // Mettre la nouvelle collection dans la BDD
+
+            $this->addFlash(                                    // Envoyer une notification
+                'success',
+                'Opération réalisée avec succès!'
+            );
 
             return $this->redirectToRoute('app_serie');         // Rediriger vers la liste des collections
         }
