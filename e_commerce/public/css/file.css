@@ -517,4 +517,8 @@ h6 {
         width: -webkit-fill-available;
     }
 
+    .option {
+        flex-direction: column;
+    }
+
 }
