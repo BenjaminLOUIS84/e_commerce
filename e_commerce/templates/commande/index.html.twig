@@ -38,9 +38,26 @@
                         {% endfor %}
                     {% endfor %}
 
+                    {# {% for livre in commande.Livre %} #}
+                    {# {% for livre in livres %} #}
+                        
+                    <figure>
+                        {# Pour afficher les couvertures de chaque livres #}
+                        {# <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="couvertures"> #}
+                    </figure>
+                
+                    {# {% endfor %} #}
 
+                    {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
+                    {% if commandes | length >0 %}
 
+                        {% for commande in commandes %}
+                            {{ commande }}
+                        {% endfor %}
 
+                    {% else %}
+                        <p>Aucunes commandes</p>
+                    {% endif %}
 
                     <nav id="men">
                         <div id="menu">

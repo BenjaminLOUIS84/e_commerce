@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Livre;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommandeRepository;
 // use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,11 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CommandeController extends AbstractController
 {
     #[Route('/commande', name: 'app_commande')]
-    public function index(): Response
-    {
+    public function index(CommandeRepository $commandeRepository): Response
+    {                                                               // Pour afficher la liste de toute les commandes classés par ordre date de commande ordre croissant
         
+        $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
+
         return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandeController',
+            'commandes' => $commandes
         ]);
     }
 
