@@ -52,11 +52,20 @@
                     {% if commandes | length >0 %}
 
                         {% for commande in commandes %}
-                            {{ commande }}
+                            <div class="liste">
+                                    
+                                <div class="option">
+                                    <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    <h1>{{ commande }}</h1>
+                                    <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                </div>
+                                
+                            </div>
                         {% endfor %}
 
                     {% else %}
                         <p>Aucunes commandes</p>
+                        <a class="crud" href="{{ path ('new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
                     {% endif %}
 
                     <nav id="men">

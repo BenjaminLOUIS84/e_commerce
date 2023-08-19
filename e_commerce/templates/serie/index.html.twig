@@ -47,8 +47,6 @@
                         {% for serie in series %}
                             <div class="liste">
                                 
-                                
-
                                 {# Seul l'admin peut modifier et/ou supprimer une collection #}
                                 <div class="option">
                                     <a class="crud" href="{{ path ('edit_serie', {id: serie.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
