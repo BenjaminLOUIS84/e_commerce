@@ -26,22 +26,24 @@
         <body>
             <div class="wrapperLivres">
         
+                {{ commande.coordonnees }}<br>
+
                 {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
-                {# {% if commande.Livre | length >0 %} #}
+                {% if commande.Livre | length >0 %}
                 
-                    {# {% for livre in commande.Livre %} #}
+                    {% for livre in commande.Livre %}
                         
                         <figure>
                             {# Pour afficher les couvertures de chaque livres #}
-                            {# <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="couvertures"> #}
+                            <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="couvertures">
                         </figure>
                     
-                    {# {% endfor %} #}
-                {# {% else %} #}
+                    {% endfor %}
+                {% else %}
 
-                    {# <p>Aucuns livres dans la commande</p> #}
+                    <p>Aucuns livres dans la commande</p>
                 
-                {# {% endif %}   #}
+                {% endif %}  
 
                 <nav id="men">
                     <div id="menu">
