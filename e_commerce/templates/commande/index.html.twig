@@ -56,7 +56,10 @@
                                     
                                 <div class="option">
                                     <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                    <h1>{{ commande.dateCommande | date("d-m-Y") }}</h1>
+
+                                    {# Accéder au détail en cliquant sur la date de commande #}
+                                    <a class="btn" title="Accéder au détail de cette commande" href="{{ path ('show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    
                                     <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 </div>
                                 

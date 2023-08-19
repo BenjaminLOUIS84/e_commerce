@@ -41,7 +41,7 @@ class CommandeController extends AbstractController
             'Commande supprimée avec succès!'
         );
 
-        return $this->redirectToRoute('app_commande');                     // Rediriger vers la liste des collections
+        return $this->redirectToRoute('app_commande');                     // Rediriger vers la liste des commandes
        
     }
 
@@ -70,14 +70,14 @@ class CommandeController extends AbstractController
             //prepare PDO
             $entityManager->persist($commande);                    // Dire à Doctrine que je veux sauvegarder la nouvelle commande           
             //execute PDO
-            $entityManager->flush();                               // Mettre la nouvelle collection dans la BDD
+            $entityManager->flush();                               // Mettre la nouvelle commande dans la BDD
 
             $this->addFlash(                                       // Envoyer une notification
                 'success',
                 'Opération réalisée avec succès!'
             );
 
-            return $this->redirectToRoute('app_commande');         // Rediriger vers la liste des collections
+            return $this->redirectToRoute('app_commande');         // Rediriger vers la liste des commandes
         }
 
         //////////////////////////////////////////////////////////////////////////
@@ -86,6 +86,19 @@ class CommandeController extends AbstractController
         return $this->render('commande/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)
             'formAddCommande' => $form,
             'edit' => $commande->getId()
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
+
+    #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+
+    public function show(Commande $commande): Response             // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
+
+    {
+        return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
+            'commande' => $commande
         ]);
     }
 
