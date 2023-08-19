@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Livre;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommandeController extends AbstractController
 {
@@ -17,6 +19,29 @@ class CommandeController extends AbstractController
         ]);
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION FORMULAIRE POUR AJOUTER UN LIVRE DANS LA COMMANDE
 
+    #[Route('/livre/{id}/addLivre', name: 'add_livre')]             // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
+
+    public function addLivre(Livre $livre, EntityManagerInterface $entityManager): Response                // Créer une fonction addLivre() dans le controller pour permettre l'ajout d'un livre
+
+    {
+        ////////////////////////////////////////////////////////////GERER LE TRAITEMENT EN BDD
+        
+        $livre = $commande->getData();                          // Récupérer les informations du livre 
+        //prepare PDO
+        $entityManager->persist($livre);                        // Dire à Doctrine que je veux sauvegarder le livre          
+        //execute PDO
+        $entityManager->flush();                                // Mettre le livre dans la BDD
+
+        return $this->redirectToRoute('app_commande');          // Rediriger vers le panier
     
+        ////////////////////////////////////////////////////////////
+
+        return $this->render('commande/index.html.twig', [      // Pour faire le lien entre le controller et la vue index.html.twig du dossier commande
+            'addLivre' => $livre->getId()
+        ]);
+    }
+
 }
