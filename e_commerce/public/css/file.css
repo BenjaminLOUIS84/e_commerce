@@ -241,6 +241,16 @@ header {
     cursor: pointer;
     font-family: 'Libre Baskerville', sans-serif;
 }
+
+.btnCom {
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
 /*OPTIONS DU CRUD*/
 
 .crud {
