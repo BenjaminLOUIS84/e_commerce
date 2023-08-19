@@ -40,6 +40,11 @@ class LivreController extends AbstractController
         $entityManager->remove($livre);                                 // Supprime un livre
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
+        $this->addFlash(                                                // Envoyer une notification
+            'success',
+            'Supprimé avec succès!'
+        );
+
         return $this->redirectToRoute('app_livre');                     // Rediriger vers la liste des livres
        
     }
@@ -93,6 +98,12 @@ class LivreController extends AbstractController
             $entityManager->persist($livre);                   // Dire à Doctrine que je veux sauvegarder le nouveau livre           
             //execute PDO
             $entityManager->flush();                           // Mettre le nouveau livre dans la BDD
+
+            $this->addFlash(                                   // Envoyer une notification
+                'success',
+                'Opération réalisée avec succès!'
+            );
+
             return $this->redirectToRoute('app_livre');        // Rediriger vers la liste des livres
 
         }

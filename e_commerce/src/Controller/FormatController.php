@@ -35,6 +35,11 @@ class FormatController extends AbstractController
         $entityManager->remove($format);                                    // Supprime un format
         $entityManager->flush();                                            // Exécute l'action DANS LA BDD
 
+        $this->addFlash(                                                    // Envoyer une notification
+            'success',
+            'Supprimé avec succès!'
+        );
+
         return $this->redirectToRoute('app_format');                        // Rediriger vers la liste des formats
        
     }
@@ -82,6 +87,11 @@ class FormatController extends AbstractController
             $entityManager->persist($format);                   // Dire à Doctrine que je veux sauvegarder le nouveau format           
             //execute PDO
             $entityManager->flush();                            // Mettre le nouveau format dans la BDD
+
+            $this->addFlash(                                    // Envoyer une notification
+                'success',
+                'Opération réalisée avec succès!'
+            );
 
             return $this->redirectToRoute('app_format');        // Rediriger vers la liste des formats
         }

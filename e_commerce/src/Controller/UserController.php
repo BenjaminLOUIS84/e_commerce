@@ -29,7 +29,12 @@ class UserController extends AbstractController
         $entityManager->remove($user);                                  // Supprime un user
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
-        return $this->redirectToRoute('app_home');                     // Rediriger vers la page d'accueil
+        $this->addFlash(                                                // Envoyer une notification
+            'success',
+            'Compte supprimé avec succès!'
+        );
+
+        return $this->redirectToRoute('app_home');                      // Rediriger vers la page d'accueil
        
     }
 }
