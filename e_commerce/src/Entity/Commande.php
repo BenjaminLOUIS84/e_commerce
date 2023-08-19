@@ -150,18 +150,21 @@ class Commande
         return $this->Livre;
     }
 
-    public function addLivre(Livre $livre): static
+    public function addLivre(Livre $livre): static // Pour permettre l'ajout d'un livre
     {
         if (!$this->Livre->contains($livre)) {
             $this->Livre->add($livre);
+            $livre->addLivre($this);
         }
 
         return $this;
     }
 
-    public function removeLivre(Livre $livre): static
+    public function removeLivre(Livre $livre): static // Pour permettre la suppression d'un livre
     {
-        $this->Livre->removeElement($livre);
+        if ($this->Livre->removeElement($livre)){
+            $livre->removeLivre($this); 
+        }
 
         return $this;
     }
