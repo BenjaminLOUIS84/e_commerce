@@ -201,7 +201,7 @@ class Commande
 
     public function __toString() {          // Pour faciliter l'affichage des autres informations d'une entité
 
-        return $this->date_commande. " ";   // L'élément affiché de la liste des commande est seulement la date de commande
+        return $this->nom. " ";   // L'élément affiché de la liste des commande est seulement la date de commande
     }                                       
 
     
