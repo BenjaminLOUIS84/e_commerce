@@ -75,13 +75,13 @@ class LivreType extends AbstractType
             // 'choice_label' => 'numero_commande'])
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            // ->add('formats', EntityType::class, [               // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            //     'label' => 'Format',
-            //     'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
-            //     'class' => Format::class, 
-            //     'attr' => ['class' => 'form-control'],
-            //     'choice_label' => 'type'
-            // ])
+            ->add('formats', EntityType::class, [               // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+                'label' => 'Format',
+                'multiple' => true,                              // Autorise l'affichage d'un champ multiple dans le cas d'une collectio
+                'class' => Format::class, 
+                'attr' => ['class' => 'form-control'],
+                'choice_label' => 'type'
+            ])
 
             ->add('serie', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Collection',
