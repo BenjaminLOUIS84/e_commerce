@@ -33,7 +33,7 @@ class CommandeType extends AbstractType
 
             ->add('Livre', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'multiple' => true,                     // Autorise l'affichage d'un champ multiple dans le cas d'une collection
-                'label' => 'Choisir un livre',
+                'label' => 'Choisir un ou plusieurs livres',
                 'class' => Livre::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'titre'
