@@ -519,6 +519,7 @@ h6 {
 
     .option {
         flex-direction: column;
+        line-height: 3;
     }
 
 }
