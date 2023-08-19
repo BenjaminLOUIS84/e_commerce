@@ -40,10 +40,10 @@ class CommandeController extends AbstractController
         //execute PDO
         $entityManager->flush();                                // Mettre le livre dans la BDD
 
-        $this->addFlash(                                        // Envoyer une notification
-            'success',
-            'Ajouté avec succès!'
-        );
+        // $this->addFlash(                                        // Envoyer une notification
+        //     'success',
+        //     'Ajouté avec succès!'
+        // );
 
         return $this->redirectToRoute('app_commande');          // Rediriger vers le panier
     
