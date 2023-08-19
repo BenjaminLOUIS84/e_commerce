@@ -28,6 +28,16 @@
                     <!-- Cette page concerne le format des livres Papier ou Numérique -->
                     <h3>FORMATS</h3>
 
+                    {# Lire et afficher toutes les notifications #}
+
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau format #}
                         <a class="crud" href="{{ path ('new_format') }}">AJOUTER</a>

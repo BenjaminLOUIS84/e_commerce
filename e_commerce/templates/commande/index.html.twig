@@ -28,6 +28,16 @@
                     <!-- Cette page concerne les commandes -->
                     <h3>MON PANIER</h3>
 
+                    {# Lire et afficher toutes les notifications #}
+
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
 
 
 
