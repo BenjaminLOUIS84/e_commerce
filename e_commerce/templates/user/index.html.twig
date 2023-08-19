@@ -35,11 +35,11 @@
                     <a href="{{ path ('app_format')}}">Les Formats</a>
                     <a href="{{ path ('app_livre')}}">Les livres</a><br>
                     
-                    {# Créer une condition pour afficher le panier quand il y a pas de livres dans le panier #}
+                    {# Créer une condition pour afficher le panier quand il y a des livres dans le panier #}
                     {# {% if commande.Livre | length >0 %} #}
                         <a href="{{ path ('app_commande')}}"><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
                         {# {% else %} #}
-                    
+                        {# Quand il n'y a pas de livres dans le panier, celui-ci n'est pas affiché #}
                     {# {% endif %}  #}
                     
                     {# <a href="{{ path ('app_facture')}}">Mes factures</a> #} 
