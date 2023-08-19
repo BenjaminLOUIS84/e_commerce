@@ -25,8 +25,12 @@
         <h3>Détail de la commande du {{ commande.dateCommande | date("d-m-Y") }}</h3>
         <body>
             <div class="wrapperLivres">
-        
-                {{ commande.coordonnees }}<br>
+
+                {# Afficher les coordonnées du client #}
+                <div class="">
+                    <h2>Coordonnées pour la facturation et la livraison</h2>
+                    {{ commande.coordonnees }}<br>
+                </div>
 
                 {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
                 {% if commande.Livre | length >0 %}
@@ -45,8 +49,11 @@
                 
                 {% endif %}  
 
+
+
                 <nav id="men">
                     <div id="menu">
+                        <a href=""><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                         <a href="{{ path ('app_commande') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des commandes" title="Retourner à la liste des commandes"></a>
                     </div>
                 </nav>
