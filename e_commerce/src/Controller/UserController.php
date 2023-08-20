@@ -37,4 +37,6 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_home');                      // Rediriger vers la page d'accueil
        
     }
+
+    
 }
