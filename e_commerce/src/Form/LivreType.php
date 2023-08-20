@@ -77,7 +77,8 @@ class LivreType extends AbstractType
 
             ->add('formats', EntityType::class, [               // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Format',
-                'multiple' => true,                              // Autorise l'affichage d'un champ multiple dans le cas d'une collectio
+                'multiple' => true,                             // Autorise l'affichage d'un champ multiple dans le cas d'une collection
+                'expanded' => true,                             // Pour afficher des cases à cocher
                 'class' => Format::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'type'
