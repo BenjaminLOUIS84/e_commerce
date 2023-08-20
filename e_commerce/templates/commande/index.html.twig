@@ -36,44 +36,9 @@
                         {% endfor %}
                     {% endfor %}
 
-                    {# Seul l'administrateur peut voir la liste de toutes les commandes #}
-                    {% if is_granted('ROLE_ADMIN') %}
-
-                        <h3>GERER LES COMMANDES</h3>
-
-                        {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
-                        {% if commandes | length >0 %}
-
-                            {% for commande in commandes %}
-                                <div class="liste">
-                                        
-                                    <div class="option">
-                                        <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-
-                                        {# Accéder au détail en cliquant sur la date de commande #}
-                                        <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
-                                        
-                                        <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                    </div>
-                                    
-                                </div>
-                            {% endfor %}
-
-                        {% else %}
-                            <p>Aucunes commandes</p>
-
-                            {# Permet à l'utilisateur de créer une commande #}
-                            {% if app.user %}
-                                <a class="crud" href="{{ path ('new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
-                            {% endif %}
-
-                        {% endif %}
-
-                    {% endif %}
-
                     <!-- Cette partie concerne les commandes de chaque utilisateurs -->
                     <h3>MON PANIER</h3>
-                    
+
                     {# Ce que les utiliseurs peuvent voir #}
                     {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
                     {% if commandes | length >0 %}

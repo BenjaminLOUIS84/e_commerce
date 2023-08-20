@@ -38,9 +38,9 @@
                     {# Créer une condition pour afficher le panier quand il y a des livres dans le panier #}
                     {# {% if commande.Livre | length >0 %} #}
 
-                        {# Seul l'administrateur peut gérer les commandes #}
+                        {# Seul l'administrateur peut voir toutes les commandes #}
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path ('app_commande')}}"><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Gérer les commandes" title="Gérer les commandes"></a>
+                            <a href=""><img class="icone2" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir toutes les commandes" title="Voir toutes les commandes"></a>
                             
                         {% endif %}  
 

@@ -16,7 +16,7 @@ class CommandeController extends AbstractController
 {
     #[Route('/commande', name: 'app_commande')]
     public function index(CommandeRepository $commandeRepository): Response
-    {                                                               // Pour afficher la liste de toute les commandes classés par ordre date de commande ordre croissant
+    {                                                               // Pour afficher la liste de toute les commandes classés par date de commande ordre croissant
         
         $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
 
