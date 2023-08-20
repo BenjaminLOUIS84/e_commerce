@@ -27,11 +27,12 @@ class UserController extends AbstractController
         // Affiche un utilisateur en fonction de son id
         // $users = $userRepository->findBy(["id" => $id], ["Pseudo" => "ASC"]);
         // $id = $userRepository->find($user->getId());
+
         
         
 
         return $this->render('user/index.html.twig', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
