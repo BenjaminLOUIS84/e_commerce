@@ -68,8 +68,12 @@
 
                     {% else %}
                         <p>Aucunes commandes</p>
-                        <a class="crud" href="{{ path ('new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
-                    {% endif %}
+
+                            {% if app.user %}
+                                <a class="crud" href="{{ path ('new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
+                            {% endif %}
+
+                        {% endif %}
 
                     <nav id="men">
                         <div id="menu">

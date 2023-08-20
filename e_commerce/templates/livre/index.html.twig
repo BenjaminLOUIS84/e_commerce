@@ -81,9 +81,11 @@
                                         <h6>(Dont 4 € de frais de port)</h6>
 
                                         <p>{{ livre.resume }}</p> 
-
-                                        {# Pour ajouter un livre à la commande #}
-                                        <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                        
+                                        {%  if app.user %}
+                                            {# Pour ajouter un livre à la commande #}
+                                            <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                        {% endif %}
                                         
                                         {% if is_granted('ROLE_ADMIN') %}
                                             <div class="liste">
