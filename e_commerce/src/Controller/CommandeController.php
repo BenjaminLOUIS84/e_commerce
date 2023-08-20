@@ -109,7 +109,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     // FONCTION ADMINISTRATEUR POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
     
     #[Route('/commande/{id}', name: 'see_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    
     #[IsGranted('ROLE_ADMIN')]                                    // Pour que l'administrateur puisse accéder à une vue différente du détail des commandes
+    
     public function see(Commande $commande): Response             // Créer une fonction see() dans le controller pour afficher le détail d'une commande 
 
     {
