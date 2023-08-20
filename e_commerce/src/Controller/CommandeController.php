@@ -28,20 +28,7 @@ class CommandeController extends AbstractController
         ]);
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
-
-    #[Route('/commande', name: 'user_commande')]
-    public function commandeUser(CommandeRepository $commandeRepository): Response
-    {                                                               
-        
-        $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
-
-        return $this->render('commande/commandeUser.html.twig', [
-            'commandes' => $commandes
-        ]);
-    }
-
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION UTILISATEUR POUR SUPPRIMER UNE COMMANDE
 
@@ -121,15 +108,15 @@ class CommandeController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION UTILISATEUR POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
 
-    #[Route('/commande/{id}', name: 'see_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    // #[Route('/commande/{id}', name: 'see_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function see(Commande $commande): Response             // Créer une fonction see() dans le controller pour afficher le détail d'une commande 
+    // public function see(Commande $commande): Response             // Créer une fonction see() dans le controller pour afficher le détail d'une commande 
 
-    {
-        return $this->render('commande/see.html.twig', [          // Pour faire le lien entre le controller et la vue see.html.twig (il faut donc la créer dans le dossier commande)
-            'commande' => $commande
-        ]);
-    }
+    // {
+    //     return $this->render('commande/see.html.twig', [          // Pour faire le lien entre le controller et la vue see.html.twig (il faut donc la créer dans le dossier commande)
+    //         'commande' => $commande
+    //     ]);
+    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION PANIER POUR AJOUTER UN LIVRE DANS LA COMMANDE
