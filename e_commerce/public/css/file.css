@@ -351,6 +351,17 @@ header {
     width: auto;
 }
 
+.articles {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.cover {
+    width: 60%;
+}
+
 /* LES FORMATS/////////////////////////////////////////////////////////// */
 
 .edition {
@@ -381,10 +392,6 @@ header {
 
 .couvertures {
     width: 20%;
-}
-
-.cover {
-    width: 10%;
 }
 
 .book {
@@ -589,6 +596,10 @@ h6 {
     }
 
     .cover {
-        width: 20%;
+        width: 30%;
+    }
+
+    .articles {
+        flex-wrap: wrap;
     }
 }

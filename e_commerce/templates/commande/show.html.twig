@@ -28,25 +28,26 @@
 
                 {# Afficher les coordonnées du client #}
                 <div class="order">
-                    {{ commande.coordonnees }}<br>
-                
-                    {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
-                    {% if commande.Livre | length >0 %}
-                    
-                        {% for livre in commande.Livre %}
-                            
-                            <figure>
-                                {# Pour afficher les couvertures de chaque livres #}
-                                <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
-                            </figure>
+                    {{ commande.coordonnees }}
+
+                    <div class="articles">
+                        {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
+                        {% if commande.Livre | length >0 %}
                         
-                        {% endfor %}
-                    {% else %}
+                            {% for livre in commande.Livre %}
+                                
+                                <figure>
+                                    {# Pour afficher les couvertures de chaque livres #}
+                                    <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
+                                </figure>
+                            
+                            {% endfor %}
+                        {% else %}
 
-                        <p>Aucuns livres dans la commande</p>
-                    
-                    {% endif %}  
-
+                            <p>Aucuns livres dans la commande</p>
+                        
+                        {% endif %}  
+                    </div>
                 
 
                     <nav id="men">
