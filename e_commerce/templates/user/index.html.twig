@@ -39,8 +39,17 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{ path ('app_commande')}}"><img class="icone2" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir toutes les commandes" title="Voir toutes les commandes"></a>
                     {% endif %}  
+                    
+                    {# {% for commande in commandes%} #}
+                    {# {% for commande in user.commandes%} #}
+                    {% for user in users%}
 
-                    <a href=""><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
+                        {# {{ user }}  #}
+
+                        {# <a href="{{path('show_user', {'id':commande.user.id})}}"><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a> #}
+                        <a href="{{ path ('show_user', {id: user.id}) }}"><img class="icone2" src="{{ asset('img/plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
+                    
+                    {% endfor %}
 
                     <nav id="men">
                         <div id="menu">

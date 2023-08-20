@@ -46,6 +46,8 @@ class Commande
     private Collection $Facture;
 
     #[ORM\ManyToOne(inversedBy: 'commande')]
+    // Créer un lien interne pour afficher les commandes d'un utilisateur 
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
    
