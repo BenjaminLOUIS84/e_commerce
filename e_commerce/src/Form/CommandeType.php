@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\Livre;
 use App\Entity\Commande;
 use Symfony\Component\Form\AbstractType;
@@ -11,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class CommandeType extends AbstractType
 {
@@ -18,6 +20,13 @@ class CommandeType extends AbstractType
     {
         $builder
             // ->add('numero_commande')
+
+            ->add('user', EntityType::class, [
+                'label' => 'Client',
+                'class' => User::class, 
+                'attr' => ['class' => 'form-control'],
+                'choice_label' => 'pseudo'
+            ])
 
             ->add('date_commande', DateType::class, [   // Ajouter après class ['widget' => 'single_text', 'attr' =>['class' =>'form-control']] Propiété BootStrap pour améliorer l'affichage de la date
                 'label' => 'Date de commande',

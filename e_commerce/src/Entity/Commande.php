@@ -45,6 +45,9 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Facture::class)]
     private Collection $Facture;
 
+    #[ORM\ManyToOne(inversedBy: 'commande')]
+    private ?User $user = null;
+
    
 
     public function __construct()
@@ -214,5 +217,17 @@ class Commande
        return  $this->nom. " " .$this->prenom. " " .$this->adresse. " " .$this->cp. " " .$this->ville; 
     }
     ////////////////////////////////////////////////////////////////////////
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
     
 }
