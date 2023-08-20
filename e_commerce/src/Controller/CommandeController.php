@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class CommandeController extends AbstractController
+ class CommandeController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
