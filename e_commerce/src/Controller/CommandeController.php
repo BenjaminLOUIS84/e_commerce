@@ -14,9 +14,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommandeController extends AbstractController
 {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
+
     #[Route('/commande', name: 'app_commande')]
     public function index(CommandeRepository $commandeRepository): Response
-    {                                                               // Pour afficher la liste de toute les commandes classés par date de commande ordre croissant
+    {                                                               
         
         $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
 
@@ -26,7 +29,21 @@ class CommandeController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR SUPPRIMER UNE COMMANDE
+    // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
+
+    #[Route('/commande', name: 'user_commande')]
+    public function commandeUser(CommandeRepository $commandeRepository): Response
+    {                                                               
+        
+        $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
+
+        return $this->render('commande/commandeUser.html.twig', [
+            'commandes' => $commandes
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION UTILISATEUR POUR SUPPRIMER UNE COMMANDE
 
     #[Route('/commande/{id}/delete', name: 'delete_commande')]          // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
 
@@ -46,7 +63,7 @@ class CommandeController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION FORMULAIRE POUR AJOUTER et EDITER DES COMMANDES
+    // FONCTION UTILISATEUR FORMULAIRE POUR AJOUTER et EDITER DES COMMANDES
 
     #[Route('/commande/new', name: 'new_commande')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/commande/{id}/edit', name: 'edit_commande')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
@@ -89,7 +106,7 @@ class CommandeController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
+    // FONCTION ADMINISTRATEUR POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
 
     #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
@@ -97,6 +114,19 @@ class CommandeController extends AbstractController
 
     {
         return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
+            'commande' => $commande
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION UTILISATEUR POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
+
+    #[Route('/commande/{id}', name: 'see_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+
+    public function see(Commande $commande): Response             // Créer une fonction see() dans le controller pour afficher le détail d'une commande 
+
+    {
+        return $this->render('commande/see.html.twig', [          // Pour faire le lien entre le controller et la vue see.html.twig (il faut donc la créer dans le dossier commande)
             'commande' => $commande
         ]);
     }

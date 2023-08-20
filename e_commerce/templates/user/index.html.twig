@@ -43,7 +43,7 @@
                             <a href="{{ path ('app_commande')}}"><img class="icone2" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir toutes les commandes" title="Voir toutes les commandes"></a>
                         {% endif %}  
 
-                        <a href=""><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
+                        <a href="{{ path ('user_commande')}}"><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
                         
                         {# {% else %} #}
                         {# Quand il n'y a pas de livres dans le panier, celui-ci n'est pas affiché #}
