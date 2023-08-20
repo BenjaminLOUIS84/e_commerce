@@ -27,36 +27,35 @@
             <div class="wrapperLivres">
 
                 {# Afficher les coordonnées du client #}
-                <div class="">
-                    <h2>Coordonnées pour la facturation et la livraison</h2>
+                <div class="order">
                     {{ commande.coordonnees }}<br>
-                </div>
-
-                {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
-                {% if commande.Livre | length >0 %}
                 
-                    {% for livre in commande.Livre %}
-                        
-                        <figure>
-                            {# Pour afficher les couvertures de chaque livres #}
-                            <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
-                        </figure>
+                    {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
+                    {% if commande.Livre | length >0 %}
                     
-                    {% endfor %}
-                {% else %}
+                        {% for livre in commande.Livre %}
+                            
+                            <figure>
+                                {# Pour afficher les couvertures de chaque livres #}
+                                <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
+                            </figure>
+                        
+                        {% endfor %}
+                    {% else %}
 
-                    <p>Aucuns livres dans la commande</p>
+                        <p>Aucuns livres dans la commande</p>
+                    
+                    {% endif %}  
+
                 
-                {% endif %}  
 
-
-
-                <nav id="men">
-                    <div id="menu">
-                        <a href=""><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
-                        <a href="{{ path ('app_commande') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des commandes" title="Retourner à la liste des commandes"></a>
-                    </div>
-                </nav>
+                    <nav id="men">
+                        <div id="menu">
+                            <a href=""><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
+                            <a href="{{ path ('app_commande') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des commandes" title="Retourner à la liste des commandes"></a>
+                        </div>
+                    </nav>
+                </div>    
             </div>
         </body>
 
