@@ -80,7 +80,7 @@ class LivreType extends AbstractType
                 'multiple' => true,                             // Autorise l'affichage d'un champ multiple dans le cas d'une collection
                 'expanded' => true,                             // Pour afficher des cases à cocher
                 'class' => Format::class, 
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'check-box'],
                 'choice_label' => 'type'
             ])
 

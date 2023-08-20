@@ -36,7 +36,7 @@ class CommandeType extends AbstractType
                 'expanded' => true,                     // Pour afficher des cases à cocher
                 'label' => 'Choisir un ou plusieurs livres',
                 'class' => Livre::class, 
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'check-box'],
                 'choice_label' => 'titre'
             ])
 

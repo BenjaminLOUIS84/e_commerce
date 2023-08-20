@@ -232,6 +232,36 @@ header {
     font-size: 1.5em;
 }
 
+.check-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formAddCommande {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(204, 0, 0, 1));
+    color: black;
+    line-height: 3;
+    padding: 20px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px black;
+    text-align: end;
+    display: flex;
+    justify-content: center;
+}
+
+.formAddCommande input {
+    padding: 10px;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.formAddCommande label {
+    padding: 10px;
+    font-size: 1.5em;
+}
+
 .btn {
     padding: 10px;
     margin-top: 40px;
@@ -516,6 +546,14 @@ h6 {
     }
 
     .formAddInscription input {
+        width: 380px;
+    }
+
+    .formAddCommande {
+        line-height: 2;
+    }
+
+    .formAddCommande input {
         width: 380px;
     }
 
