@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\Mapping\Entity;
 
 class UserController extends AbstractController
 {
@@ -17,9 +18,16 @@ class UserController extends AbstractController
     #[Route('/user', name: 'app_user')]
     public function index(UserRepository $userRepository): Response
     {
-        $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);
-
-        // $user = $userRepository->find($id);
+        // Affiche tous les utilisateurs
+        // $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);
+        
+        // Affiche un utilisateur précis
+        $users = $userRepository->findBy(["Pseudo" => "Lady"], ["Pseudo" => "ASC"]);
+        
+        // Affiche un utilisateur en fonction de son id
+        // $users = $userRepository->findBy(["id" => $id], ["Pseudo" => "ASC"]);
+        
+        
 
         return $this->render('user/index.html.twig', [
             'users' => $users
