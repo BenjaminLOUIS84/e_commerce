@@ -26,6 +26,7 @@ class UserController extends AbstractController
         
         // Affiche un utilisateur en fonction de son id
         // $users = $userRepository->findBy(["id" => $id], ["Pseudo" => "ASC"]);
+        // $id = $userRepository->find($user->getId());
         
         
 
