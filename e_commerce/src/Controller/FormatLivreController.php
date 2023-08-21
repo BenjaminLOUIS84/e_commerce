@@ -23,7 +23,7 @@ class FormatLivreController extends AbstractController
     {
         $formatLivre = $formatLivreRepository->findAll();
 
-        return $this->render('format/livre/index.html.twig', [
+        return $this->render('format_livre/index.html.twig', [
             'formatLivres' => $formatLivres
         ]);
     }
