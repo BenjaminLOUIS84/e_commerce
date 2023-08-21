@@ -17,15 +17,15 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class FormatLivreController extends AbstractController
 {
-    #[Route('/format_livre', name: 'app_format_livre')]
+    #[Route('/format/livre', name: 'app_format_livre')]
     
-    public function index(ry $formatLivreRepository): Response
+    public function index(FormatLivreRepository $formatLivreRepository): Response
     {
-        // $formatLivre = $formatLivreRepository->findAll();
+        $formatLivre = $formatLivreRepository->findAll();
 
         return $this->render('format_livre/index.html.twig', [
-            // 'formatLivres' => $formatLivres
-            'controller_name' => 'FormatLivreController'
+            'formatLivres' => $formatLivres
+            // 'controller_name' => 'FormatLivreController'
         ]);
     }
 
@@ -45,7 +45,7 @@ class FormatLivreController extends AbstractController
             'Supprimé avec succès!'
         );
 
-        return $this->redirectToRoute('app__format_livre');                     // Rediriger vers la liste des livres
+        return $this->redirectToRoute('app_format_livre');                     // Rediriger vers la liste des livres
        
     }
 
@@ -110,7 +110,7 @@ class FormatLivreController extends AbstractController
                 'Opération réalisée avec succès!'
             );
 
-            return $this->redirectToRoute('app__format_livre');        // Rediriger vers la liste des livres
+            return $this->redirectToRoute('app_format_livre');        // Rediriger vers la liste des livres
 
         }
 
