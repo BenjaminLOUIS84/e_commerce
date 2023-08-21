@@ -4,12 +4,14 @@ namespace App\Entity;
 
 use App\Entity\Serie;
 use App\Entity\Format;
+use App\Entity\FormatLivre;
+use App\Entity\CommandeLivre;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LivreRepository;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\HttpFoundation\File\File; // Pour permettre le chargement et l'affichage des images
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File; // Pour permettre le chargement et l'affichage des images
 
 #[ORM\Entity(repositoryClass: LivreRepository::class)]
 class Livre

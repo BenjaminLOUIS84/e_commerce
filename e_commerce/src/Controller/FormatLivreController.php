@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Format;
+use App\Entity\Livre;
 use App\Entity\FormatLivre;
 use App\Form\FormatLivreType;
 use App\Service\FileUploader;

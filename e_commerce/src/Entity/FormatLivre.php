@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\FormatLivreRepository;
+use App\Entity\Livre;
+use App\Entity\Format;
+use App\Entity\FormatLivre;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FormatLivreRepository;
 
 #[ORM\Entity(repositoryClass: FormatLivreRepository::class)]
 class FormatLivre
