@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class LivreType extends AbstractType
@@ -85,12 +86,9 @@ class LivreType extends AbstractType
                 'choice_label' => 'type'
             ])
 
-            // ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            //     'label' => 'Prix TCC',
-            //     'class' => Livre::class, 
-            //     'attr' => ['class' => 'form-control'],
-            //     'choice_label' => 'prix_unitaire'
-            // ])
+            ->add('prix_unitaire', IntegerType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+                'label' => 'Prix TCC',
+                ])
 
             ->add('serie', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Collection',
