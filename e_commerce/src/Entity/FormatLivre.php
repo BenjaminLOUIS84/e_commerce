@@ -14,7 +14,7 @@ class FormatLivre
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?float $prix_unitaire = null;
+    private ?int $prix_unitaire = null;
 
     #[ORM\ManyToOne(inversedBy: 'formatLivres')]
     private ?Format $format = null;
@@ -29,12 +29,12 @@ class FormatLivre
         return $this->id;
     }
 
-    public function getPrixUnitaire(): ?float
+    public function getPrixUnitaire(): ?int
     {
         return $this->prix_unitaire;
     }
 
-    public function setPrixUnitaire(float $prix_unitaire): static
+    public function setPrixUnitaire(int $prix_unitaire): static
     {
         $this->prix_unitaire = $prix_unitaire;
 

@@ -1,0 +1,53 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="fr">
+
+        <head>
+            <meta charset="utf-8">
+
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+            
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+            <title>AJOUTER UN LIVRE</title>
+        </head>
+
+        <body>
+            <div class="wrapper">
+        
+
+                {# Condition pour gérer le titre selon si on créer ou l'on modifie une livre #}
+                {% if edit %}
+                    <h3>Modifier un livre</h3>
+                {% else %}
+                    <h3>Ajouter un nouveau livre</h3> 
+                {% endif %}
+
+                <div class="formAddInscription">
+
+                    {# Affiche le formulaire #}
+                    {{form(formAddFormatLivre)}}
+
+                </div>
+
+                <nav id="men">
+                    <div id="menu">
+                        <a href="{{ path ('app__format_livre') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des livres" title="Retourner à la liste des livres"></a>
+                    </div>
+                </nav>
+            </div>
+        </body>
+
+    </html>
+
+{% endblock %}

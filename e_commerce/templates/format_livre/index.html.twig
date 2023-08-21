@@ -1,0 +1,124 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="fr">
+
+        <head>
+            <meta charset="utf-8">
+
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+            
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+            <title>LIVRES</title>
+        </head>
+
+        <body>
+            <div class="wrapper">
+                <header>
+                    <!-- Cette page concerne les livres-->
+                    <h3>LIVRES</h3>
+
+                    {# Lire et afficher toutes les notifications #}
+
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    
+                    {# Afficher la collection pour chaque livres #}
+                    {# <h2> {{livre.serie}} </h2> #}
+                    
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {# Seul l'admin peut ajouter un nouveau livre #}
+                        <a href="{{ path ('new_formatLivre') }}">AJOUTER</a>
+
+                    {% endif %}
+
+                    <section class="price">
+
+                        {% for formatLivre in formatLivres %}
+
+                            <div class="blocPrice">
+                                
+                                <div class="pack">   
+
+                                    <div class="front">
+                                        {# <h2> Collection {{livre.serie}} </h2> #}
+                                        {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
+                                        <figure>
+                                            {# Pour afficher les couvertures de chaque livres #}
+                                            {# <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couvertures des livres de la collection Revolutions" class="log"> #}
+                                        </figure>
+                                        <div class="acheter1">ACHETEZ-MOI</div> 
+
+                                    </div>
+                    
+                                    <div class="back">
+
+                                        <figure>
+                                                {# Pour afficher les tomes de chaque livres #}
+                                            {# <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log"> #}
+                                        </figure>
+
+                                        {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
+                                        {# <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br> #}
+
+                                        {# //PB POUR AFFICHER LE PRIX UNITAIRE ET POUR AJOUTER CETTE PROPRIETE A LA TABLE ASSOCIATIVE #}
+                                        {#<h3>PRIX: 16 € ttc</h3>#}
+
+                                        <h6>(Dont 4 € de frais de port)</h6>
+
+                                        {# <p>{{ livre.resume }}</p>  #}
+                                        
+                                        {# {%  if app.user %} #}
+                                            {# Pour ajouter un livre à la commande #}
+                                            {# <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
+                                        {# {% endif %} #}
+                                        
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <div class="liste">
+                                                {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                                <div class="option">
+                                                    <a class="crud" href="{{ path ('edit__format_livre', {id: formatLivre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                    <a class="crud" href="{{ path ('delete_format_livre', {id: formatLivre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                                </div>  
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                
+                                </div>
+                                
+                            </div>
+
+                        {% endfor %}
+
+                    </section> 
+
+                    <nav id="men">
+                        <div id="menu">
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>                        </div>
+                        </div>
+                    </nav>
+
+                </header>
+            </div>
+            <!-- <script>src = "script.js"</script> -->
+        </body>
+
+    </html>
+{% endblock %}
+
