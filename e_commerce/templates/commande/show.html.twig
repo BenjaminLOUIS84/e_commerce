@@ -33,9 +33,9 @@
                     <div class="articles">
 
                         {# Créer une condition pour afficher un message quand il y a pas de livres dans une collection #}
-                        {% if commande.Livre | length >0 %}
+                        {% if commande.formatLivre | length >0 %}
                         
-                            {% for livre in commande.Livre %}
+                            {% for formatLivre in commande.formatLivres %}
                                 
                                 <figure>
                                     {# Pour afficher les couvertures de chaque livres #}
