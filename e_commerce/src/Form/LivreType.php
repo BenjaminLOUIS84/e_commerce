@@ -6,6 +6,7 @@ use App\Entity\Livre;
 use App\Entity\Serie;
 use App\Entity\Format;
 use App\Entity\Commande;
+use App\Entity\FormatLivre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -76,12 +77,21 @@ class LivreType extends AbstractType
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-                'multiple' => true,                             // Autorise l'affichage d'un champ multiple dans le cas d'une collection
+                'multiple' => true, 
+                'expanded' =>true,                            // Autorise l'affichage d'un champ multiple dans le cas d'une collection
                 'label' => 'Formats',
                 'class' => Format::class, 
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'check-box'],
                 'choice_label' => 'type'
             ])
+
+            // ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            //     'multiple' => true,
+            //     'label' => 'Prix TCC',
+            //     'class' => FormatLivre::class, 
+            //     'attr' => ['class' => 'form-control'],
+            //     'choice_label' => 'prix_unitaire'
+            // ])
 
             ->add('serie', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Collection',
