@@ -17,9 +17,11 @@ class CommandeLivre
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandeLivres')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Commande $commande = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandeLivres')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Livre $livre = null;
 
 
