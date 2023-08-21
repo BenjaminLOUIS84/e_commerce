@@ -20,9 +20,11 @@ class FormatLivre
     private ?int $prix_unitaire = null;
 
     #[ORM\ManyToOne(inversedBy: 'formatLivres')]
+    #[ORM\JoinColumn(nullable: false)]//Pour décocher la case NULL autorisé dans la BDD
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'formatLivres')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Livre $livre = null;
 
     
