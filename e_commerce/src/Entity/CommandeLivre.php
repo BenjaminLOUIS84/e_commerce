@@ -63,4 +63,10 @@ class CommandeLivre
 
         return $this;
     }
+
+    public function __toString() {                                              // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->quantite. " ";                                               // L'élément affiché de la liste des programmes est la durée
+                    
+    }  
 }

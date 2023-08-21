@@ -67,4 +67,11 @@ class FormatLivre
 
         return $this;
     }
+
+    public function __toString() {                                              // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->prix_unitaire. " ";                                               // L'élément affiché de la liste des programmes est la durée
+                    
+    }  
 }
+
