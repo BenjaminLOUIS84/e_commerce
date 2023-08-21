@@ -39,23 +39,22 @@ class Commande
     #[ORM\Column(length: 100)]
     private ?string $ville = null;
 
-    #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'commandes')]
-    private Collection $Livre;
 
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Facture::class)]
     private Collection $Facture;
 
     #[ORM\ManyToOne(inversedBy: 'commande')]
-    // Créer un lien interne pour afficher les commandes d'un utilisateur 
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: CommandeLivre::class)]
+    private Collection $commandeLivres;
    
 
     public function __construct()
     {
-        $this->Livre = new ArrayCollection();
         $this->Facture = new ArrayCollection();
+        $this->commandeLivres = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
@@ -147,33 +146,7 @@ class Commande
         return $this;
     }
 
-    /**
-     * @return Collection<int, Livre>
-     */
-    public function getLivre(): Collection
-    {
-        return $this->Livre;
-    }
-
-    public function addLivre(Livre $livre): static // Pour permettre l'ajout d'un livre
-    {
-        if (!$this->Livre->contains($livre)) {
-            $this->Livre->add($livre);
-            $livre->addLivre($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLivre(Livre $livre): static // Pour permettre la suppression d'un livre
-    {
-        if ($this->Livre->removeElement($livre)){
-            $livre->removeLivre($this); 
-        }
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection<int, Facture>
      */
@@ -231,5 +204,37 @@ class Commande
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, CommandeLivre>
+     */
+    public function getCommandeLivres(): Collection
+    {
+        return $this->commandeLivres;
+    }
+
+    public function addCommandeLivre(CommandeLivre $commandeLivre): static
+    {
+        if (!$this->commandeLivres->contains($commandeLivre)) {
+            $this->commandeLivres->add($commandeLivre);
+            $commandeLivre->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeLivre(CommandeLivre $commandeLivre): static
+    {
+        if ($this->commandeLivres->removeElement($commandeLivre)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeLivre->getCommande() === $this) {
+                $commandeLivre->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
     
 }

@@ -20,19 +20,20 @@ class Format
     #[ORM\Column(length: 50)]
     private ?string $type = null;
 
-    #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'formats')]
-    private Collection $Livre;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
     private ?string $photo = null;
 
+    #[ORM\OneToMany(mappedBy: 'format', targetEntity: FormatLivre::class)]
+    private Collection $formatLivres;
+
     public function __construct()
     {
-        $this->Livre = new ArrayCollection();
+        $this->formatLivres = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -51,36 +52,6 @@ class Format
         return $this;
     }
 
-    /**
-     * @return Collection<int, Livre>
-     */
-    public function getLivre(): Collection
-    {
-        return $this->Livre;
-    }
-
-    public function addLivre(Livre $livre): static // Pour ajouter un format
-    {
-        if (!$this->livre->contains($livre)) {
-            $this->livre->add($livre);
-            // $livre->setFormat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLivre(Livre $livre): static // Pour supprimer un livre
-    {
-       // if (
-            $this->Livre->removeElement($livre);
-        //    ) {
-            // if ($livre->getFormat() === $this) {
-            //     $livre->setFormat(null);
-            // }
-            return $this;
-        //}
-        
-    }
     ////////////////////////////////////////////////////////////////////////
     // Il est possible de créer d'autres fonctions ici
 
@@ -112,5 +83,37 @@ class Format
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, FormatLivre>
+     */
+    public function getFormatLivres(): Collection
+    {
+        return $this->formatLivres;
+    }
+
+    public function addFormatLivre(FormatLivre $formatLivre): static
+    {
+        if (!$this->formatLivres->contains($formatLivre)) {
+            $this->formatLivres->add($formatLivre);
+            $formatLivre->setFormat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormatLivre(FormatLivre $formatLivre): static
+    {
+        if ($this->formatLivres->removeElement($formatLivre)) {
+            // set the owning side to null (unless already changed)
+            if ($formatLivre->getFormat() === $this) {
+                $formatLivre->setFormat(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 
 }
