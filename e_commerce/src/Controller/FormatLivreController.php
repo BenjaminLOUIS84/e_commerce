@@ -16,10 +16,10 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class FormatLivreController extends AbstractController
 {
     #[Route('/format/livre', name: 'app_format_livre')]
+    
     public function index(FormatLivreRepository $formatLivreRepository): Response
     {
-        $formatLivre = $formatLivreRepository->findBy([],["livre_id" =>    // Pour récupérer la liste des formatLivre classées par date de publication ordre croissant
-        "ASC"]);
+        $formatLivre = $formatLivreRepository->findAll();
 
         return $this->render('format/livre/index.html.twig', [
             'formatLivres' => $formatLivres

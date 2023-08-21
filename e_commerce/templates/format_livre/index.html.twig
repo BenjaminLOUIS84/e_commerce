@@ -41,15 +41,15 @@
                     {# Afficher la collection pour chaque livres #}
                     {# <h2> {{livre.serie}} </h2> #}
                     
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {# {% if is_granted('ROLE_ADMIN') %} #}
                         {# Seul l'admin peut ajouter un nouveau livre #}
                         {# <a href="{{ path ('new_formatLivre') }}">AJOUTER</a> #}
 
-                    {% endif %}
+                    {# {% endif %} #}
 
                     <section class="price">
 
-                        {% for formatLivre in formatLivres %}
+                        {# {% for formatLivre in formatLivres %} #}
 
                             <div class="blocPrice">
                                 
@@ -92,8 +92,8 @@
                                             <div class="liste">
                                                 {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                                 <div class="option">
-                                                    <a class="crud" href="{{ path ('edit__format_livre', {id: formatLivre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                    <a class="crud" href="{{ path ('delete_format_livre', {id: formatLivre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                                    {# <a class="crud" href="{{ path ('edit__format_livre', {id: formatLivre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
+                                                    {# <a class="crud" href="{{ path ('delete_format_livre', {id: formatLivre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> #}
                                                 </div>  
                                             </div>
                                         {% endif %}
@@ -104,7 +104,7 @@
                                 
                             </div>
 
-                        {% endfor %}
+                        {# {% endfor %} #}
 
                     </section> 
 
