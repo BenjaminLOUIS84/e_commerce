@@ -94,9 +94,9 @@ class LivreController extends AbstractController
                 $livre->setTome($tomeFileName);
             }
 
-            // if ($format) {
-            //     $livre->addFormatLivre($format);
-            // }
+            if ($format) {
+                $livre->addFormatLivre($format);
+            }
 
             //////////////////////////////////////////////////////////////////////////
 
