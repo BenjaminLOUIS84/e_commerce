@@ -32,8 +32,9 @@
 
                     <div class="articles">
 
-                        {# Créer une condition pour afficher un message quand il y a pas de livres dans une collection #}
-                        {% if commande.commandeLivre | length >0 %}
+                        {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
+                        
+                        {% if commande.commandeLivres | length >0 %}
                         
                             {% for commandeLivre in commande.commandeLivres %}
                                 
@@ -46,7 +47,7 @@
 
                         {% else %}
 
-                            <p>Aucuns livres dans cette commande</p>
+                            <h2>Aucuns livres dans cette commande</h2>
                     
                         {% endif %} 
                         
