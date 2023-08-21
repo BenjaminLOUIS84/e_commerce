@@ -51,7 +51,7 @@
 
                                 <div class="option">
                                     {# Accéder au détail en cliquant sur la date de commande #}
-                                    <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('see_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
                                 </div>
                             
                             </div>
