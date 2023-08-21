@@ -50,7 +50,7 @@ class CommandeType extends AbstractType
                 'choice_label' => 'titre'
             ])
 
-            ->add('quantite', IntegerType::class)
+            // ->add('quantite', IntegerType::class)
 
             ->add('valider', SubmitType::class, [       // Ajouter directement le bouton submit ici
             'attr' =>['class' => 'btn btn-dark']])      // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   

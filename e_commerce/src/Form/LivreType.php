@@ -86,9 +86,9 @@ class LivreType extends AbstractType
                 'choice_label' => 'type'
             ])
 
-            ->add('prix_unitaire', IntegerType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-                'label' => 'Prix TCC',
-                ])
+            // ->add('prix_unitaire', IntegerType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            //     'label' => 'Prix TCC',
+            //     ])
 
             ->add('serie', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Collection',
