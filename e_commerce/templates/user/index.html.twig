@@ -35,7 +35,8 @@
                     <br><a href="{{ path ('app_serie')}}">Les collections</a>
                     <a href="{{ path ('app_format')}}">Les Formats</a>
                     
-                    <a href="{{ path ('app_livre')}}">Les livres</a><br>
+                    {# <a href="{{ path ('app_livre')}}">Les livres</a><br> #}
+                    <a href="{{ path ('app__format_livre')}}">Les livres</a><br>
 
                     {# Seul l'administrateur peut voir toutes les commandes #}
                     {% if is_granted('ROLE_ADMIN') %}

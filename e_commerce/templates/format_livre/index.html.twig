@@ -50,8 +50,10 @@
 
                     <section class="price">
 
-                        {# {% for formatLivre in formatLivres %} #}
+                        {% for formatLivre in formatLivres %}
 
+                            {{ formatLivre }}
+                            
                             <div class="blocPrice">
                                 
                                 <div class="pack">   
@@ -105,7 +107,7 @@
                                 
                             </div>
 
-                        {# {% endfor %} #}
+                        {% endfor %}
 
                     </section> 
 
