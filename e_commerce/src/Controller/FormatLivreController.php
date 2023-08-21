@@ -21,7 +21,7 @@ class FormatLivreController extends AbstractController
         $formatLivre = $formatLivreRepository->findBy([],["livre_id" =>    // Pour récupérer la liste des formatLivre classées par date de publication ordre croissant
         "ASC"]);
 
-        return $this->render('format_livre/index.html.twig', [
+        return $this->render('format/livre/index.html.twig', [
             'formatLivres' => $formatLivres
         ]);
     }
