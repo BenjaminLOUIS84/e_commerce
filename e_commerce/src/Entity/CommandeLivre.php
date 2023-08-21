@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandeLivreRepository;
+use App\Entity\Livre;
+use App\Entity\Commande;
+use App\Entity\CommandeLivre;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommandeLivreRepository;
 
 #[ORM\Entity(repositoryClass: CommandeLivreRepository::class)]
 class CommandeLivre
