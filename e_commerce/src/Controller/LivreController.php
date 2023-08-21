@@ -74,7 +74,9 @@ class LivreController extends AbstractController
             $livre = $form->getData();                              // Récupérer les informations du nouveau livre
             
             $couvertureFile = $form->get('couverture')->getData();
-            $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre  
+            $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre
+            
+            // $format = $form->get('formatLivres')->getData();        // Récupérer le format du livre
 
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
@@ -91,6 +93,10 @@ class LivreController extends AbstractController
                 $tomeFileName = $fileUploader->upload($tomeFile);
                 $livre->setTome($tomeFileName);
             }
+
+            // if ($format) {
+            //     $livre->addFormatLivre($format);
+            // }
 
             //////////////////////////////////////////////////////////////////////////
 

@@ -40,7 +40,7 @@ class CommandeType extends AbstractType
             ->add('cp', TextType::class)
             ->add('ville', TextType::class)
 
-            ->add('Livre', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            ->add('commandeLivres', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'multiple' => true,                     // Autorise l'affichage d'un champ multiple dans le cas d'une collection
                 'expanded' => true,                     // Pour afficher des cases à cocher
                 'label' => 'Choisir un ou plusieurs livres',

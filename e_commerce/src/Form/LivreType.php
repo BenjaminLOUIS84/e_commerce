@@ -75,7 +75,7 @@ class LivreType extends AbstractType
             // 'choice_label' => 'numero_commande'])
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ->add('formats', EntityType::class, [               // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'multiple' => true,                             // Autorise l'affichage d'un champ multiple dans le cas d'une collection
                 'label' => 'Formats',
                 'class' => Format::class, 

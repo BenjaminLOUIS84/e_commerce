@@ -187,5 +187,24 @@ class Livre
         return $this;
     }
 
-    
+    //Pour permettre l'affichage du champ serie dans le formulaire de création de livres
+    /**
+     * Get the value of serie
+     */ 
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * Set the value of serie
+     *
+     * @return  self
+     */ 
+    public function setSerie($serie)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
 }
