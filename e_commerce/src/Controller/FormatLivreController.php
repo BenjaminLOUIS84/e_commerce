@@ -17,13 +17,13 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class FormatLivreController extends AbstractController
 {
-    #[Route('/format/livre', name: 'app_format_livre')]
+    #[Route('/formatLivres', name: 'app_format_livre')]
     
     public function index(FormatLivreRepository $formatLivreRepository): Response
     {
         $formatLivre = $formatLivreRepository->findAll();
 
-        return $this->render('format/livre/index.html.twig', [
+        return $this->render('formatLivres/index.html.twig', [
             'formatLivres' => $formatLivres
         ]);
     }
