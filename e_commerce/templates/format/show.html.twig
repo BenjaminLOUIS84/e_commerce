@@ -25,13 +25,35 @@
         <h3>Edition {{ format }}</h3>
         <body>
             <div class="wrapperEdition">
-        
-                <figure>
-                    {# Pour afficher une photo en arrière plan pour illustrer le mode d'édition #}
-                    <img src="{{ asset('uploads/images/'~ format.photo) }}" alt="Photo illustrant le mode d'édition" class="photo">
-                </figure>
+
+                {% if format.livres | length >0 %}
                 
-                <div class="edition"> {{format.description}} </div> 
+                    {% for livre in format.livres %}
+
+                        {{ livre }}
+
+                    {% endfor %}
+
+                    <figure>
+                        {# Pour afficher une photo en arrière plan pour illustrer le mode d'édition #}
+                        <img src="{{ asset('uploads/images/'~ format.photo) }}" alt="Photo illustrant le mode d'édition" class="photo">
+                    </figure>
+                    
+                    <div class="edition"> {{format.description}} </div> 
+
+                {% else %}
+
+                    <p>Aucuns livres {{ format }} disponibles</p>
+                    
+                    figure>
+                        {# Pour afficher une photo en arrière plan pour illustrer le mode d'édition #}
+                        <img src="{{ asset('uploads/images/'~ format.photo) }}" alt="Photo illustrant le mode d'édition" class="photo">
+                    </figure>
+                    
+                    <div class="edition"> {{format.description}} </div> 
+                
+                {% endif %} 
+
 
                 <nav id="men">
                     <div id="menu">
