@@ -13,7 +13,8 @@ use Doctrine\ORM\Mapping\Entity;
 class UserController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER TOUS LES UTILISATEURS
+    // FONCTION POUR AFFICHER LE PANIER DE TOUS LES UTILISATEURS DANS L'ESPACE PERSONNEL
+    // OBJECTIF : Afficher le panier dans l'espace personnel de l'utilisateur correspondant
 
     #[Route('/user', name: 'app_user')]
     public function index(UserRepository $userRepository): Response
@@ -26,13 +27,11 @@ class UserController extends AbstractController
         
         // Affiche un utilisateur en fonction de son id
         // $users = $userRepository->findBy(["id" => $id], ["Pseudo" => "ASC"]);
-        // $id = $userRepository->find($user->getId());
-
+        // $user = $userRepository->find($id);
         
-        
-
         return $this->render('user/index.html.twig', [
-            'users' => $users,
+            'users' => $users
+            // 'user' => $user
         ]);
     }
 

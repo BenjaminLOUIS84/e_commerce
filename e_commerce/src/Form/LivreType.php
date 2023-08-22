@@ -69,14 +69,7 @@ class LivreType extends AbstractType
                 'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // ->add('commandes', EntityType::class, [         // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            // 'mapped' => false,                              // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
-            // 'class' => Commande::class,                     // PAS BESOIN POUR LE MOMENT
-            // 'attr' => ['class' => 'form-control'],
-            // 'choice_label' => 'numero_commande'])
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+           
             ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'multiple' => true, 
                 'expanded' =>true,                            // Autorise l'affichage d'un champ multiple dans le cas d'une collection
