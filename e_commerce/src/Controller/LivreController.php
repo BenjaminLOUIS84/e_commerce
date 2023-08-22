@@ -77,7 +77,7 @@ class LivreController extends AbstractController
             $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre
             
             //$format = $form->get('formatLivres')->getData();        // Récupérer le format du livre
-
+            
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé

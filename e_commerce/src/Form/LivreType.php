@@ -70,14 +70,14 @@ class LivreType extends AbstractType
             ])
 
            
-            ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-                'multiple' => true, 
-                'expanded' =>true,                            // Autorise l'affichage d'un champ multiple dans le cas d'une collection
-                'label' => 'Formats',
-                'class' => Format::class, 
-                'attr' => ['class' => 'check-box'],
-                'choice_label' => 'type'
-            ])
+            // ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            //     'multiple' => false, 
+            //     'expanded' =>true,                            // Autorise l'affichage d'un champ multiple dans le cas d'une collection
+            //     'label' => 'Formats',
+            //     'class' => Format::class, 
+            //     'attr' => ['class' => 'check-box'],
+            //     'choice_label' => 'type'
+            // ])
 
             // ->add('prix_unitaire', IntegerType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
             //     'label' => 'Prix TCC',
