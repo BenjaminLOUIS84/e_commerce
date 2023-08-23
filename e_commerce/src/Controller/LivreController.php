@@ -6,8 +6,8 @@ use App\Entity\Livre;
 use App\Form\LivreType;
 use App\Service\FileUploader;
 use App\Repository\LivreRepository;
-// use App\Repository\SerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\FormatLivreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,14 +18,17 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class LivreController extends AbstractController
 {                                                                       // AFFICHER LA LISTE DES LIVRES
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
-    public function index(LivreRepository $livreRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository        
-    {                                                                   // Importer la classe LivreRepository avec un click droit 
+    
+    public function index(LivreRepository $livreRepository, FormatLivreRepository $formatLivreRepository): Response // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit         
+    {                                                                                                               // Pour permettre l'affichage des prix unitaires et des formats insérer dans la fonction index() formatLivreRepository $formatLivreRepository et Importer la classe FormatLivreRepository avec un click droit
         
         $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
         "ASC"]);      
+        $formatLivres = $formatLivreRepository->findAll();
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
+            'formatLivres' => $formatLivres,                            // Pour passer la variable $formatLivres en argument 'formatLivres'
         ]);
     }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
 

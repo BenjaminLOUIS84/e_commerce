@@ -75,8 +75,10 @@
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
                                         <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
 
-                                        {# //PB POUR AFFICHER LE PRIX UNITAIRE ET POUR AJOUTER CETTE PROPRIETE A LA TABLE ASSOCIATIVE #}
-                                        {#<h3>PRIX: 16 € ttc</h3>#}
+                                        {% for formatLivre in formatLivres %}
+                                            {# POUR AFFICHER LE PRIX UNITAIRE #}
+                                            <h3>Prix : {{ formatLivre }} € ttc</h3>
+                                        {% endfor %}
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 
