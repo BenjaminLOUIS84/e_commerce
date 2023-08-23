@@ -30,8 +30,9 @@ class LivreController extends AbstractController
         $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
         "ASC"]);      
 
-        $formatLivres = $formatLivreRepository->findAll();
-        // $formatLivre = $formatLivreRepository->find($id);
+        $formatLivres = $formatLivreRepository->findAll();              // Pour récupérer la liste de tous les prix unitaire et de tous les formats
+
+        // $formatLivre = $formatLivreRepository->find($id);            // Pour récupérer un prix unitaire et un format selon l'ID
         // $formatLivre ->getId();
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
