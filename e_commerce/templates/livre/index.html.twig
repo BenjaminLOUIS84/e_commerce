@@ -54,9 +54,14 @@
                                     <div class="front">
 
                                         {% for formatLivre in formatLivres %}
-                                            {# POUR AFFICHER LE FORMAT #}
+                                            {# POUR AFFICHER LE FORMAT DE TOUS LES LIVRES #}
                                             <h2>{{ formatLivre.format }}</h2>
                                         {% endfor %}
+
+                                        {# {% for formatLivre in livre.formatLivre %} #}
+                                            {# POUR AFFICHER LE FORMAT DU LIVRE CIBLE SELON L'ID DU LIVRE #}
+                                            {# <h2>{{ formatLivre.format, {id:livre.id} }}</h2> #}
+                                        {# {% endfor %} #}
 
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
@@ -78,9 +83,14 @@
                                         <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
 
                                         {% for formatLivre in formatLivres %}
-                                            {# POUR AFFICHER LE PRIX UNITAIRE #}
+                                            {# POUR AFFICHER LE PRIX UNITAIRE DE TOUS LES LIVRES #}
                                             <h3>Prix : {{ formatLivre }} € ttc</h3>
                                         {% endfor %}
+
+                                        {# {% for formatLivre in livre.formatLivre %} #}
+                                            {# POUR AFFICHER LE PRIX UNITAIRE DU LIVRE CIBLE SELON L'ID DU LIVRE #}
+                                            {# <h3>Prix : {{ formatLivre, {id:livre.id} }} € ttc</h3> #}
+                                        {# {% endfor %} #}
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 

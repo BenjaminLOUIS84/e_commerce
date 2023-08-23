@@ -20,17 +20,25 @@ class LivreController extends AbstractController
 {                                                                       // AFFICHER LA LISTE DES LIVRES
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
     
-    public function index(LivreRepository $livreRepository, FormatLivreRepository $formatLivreRepository): Response // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit         
-    {                                                                                                               // Pour permettre l'affichage des prix unitaires et des formats insérer dans la fonction index() formatLivreRepository $formatLivreRepository et Importer la classe FormatLivreRepository avec un click droit
-        
+    public function index(LivreRepository $livreRepository,             // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
+    FormatLivreRepository $formatLivreRepository,                       // Pour permettre l'affichage des prix unitaires et des formats insérer dans la fonction index() formatLivreRepository $formatLivreRepository et Importer la classe FormatLivreRepository avec un click droit
+    // FormatLivre $formatLivre                                            
+    
+    ): Response          
+    
+    {                                                                                                                       
         $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
         "ASC"]);      
 
         $formatLivres = $formatLivreRepository->findAll();
+        // $formatLivre = $formatLivreRepository->find($id);
+        // $formatLivre ->getId();
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
-            'formatLivres' => $formatLivres                            // Pour passer la variable $formatLivres en argument 'formatLivres'
+            'formatLivres' => $formatLivres,                            // Pour passer la variable $formatLivres en argument 'formatLivres'
+
+            // 'formatLivre' => $formatLivre                            // Pour passer la variable $formatLivre en argument 'formatLivre'
         ]);
     }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
 
