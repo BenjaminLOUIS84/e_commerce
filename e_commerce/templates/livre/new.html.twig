@@ -40,49 +40,45 @@
                 <div class="formAddInscription">
 
                     {# Affiche le formulaire #}
-                    {# {{form(formAddLivre)}} #}
-
                     {{ form_start(form) }}
 
-                    {{ form_row(form.titre) }}
-                    {{ form_row(form.date_publication) }}
-                    {{ form_row(form.couverture) }}
-                    {{ form_row(form.tome) }}
-                    {{ form_row(form.resume) }}
-                    {{ form_row(form.serie) }}
-                    
-                    {# On va construire dynamiquement la liste des formats existants à partir de FormatLivre #}
-                    <h2>Format du Livre</h2>
-        
-                    <div class="form-group row">
-                        <div class="col-form-label col-sm-2">&nbsp;</div>
-        
-                        <div id="formatLivre-fields-list" class="col-sm-10 remove-collection-widget"
-                            data-prototype="{{ form_widget(form.formatLivres.vars.prototype) |e }}"
-                            data-livre="{{ livreId }}"
-                            data-widget-tags="{{ '<p></p>'|e }}"
-                            data-widget-counter="{{ form.formatLivres|length }}">
-                            
-                            {% for formatLivreField in form.formatLivres %}
-                            <p>
-                                {{ form_errors(formatLivreField) }}
-                                {{ form_widget (formatLivreField, {'attr': {'class':'borders'}}) }}
-                            </p>
-                            {% endfor %}
-                        </div> 
-                    </div>
-                    <div class="form-group row flex-action">
-                        <button type="button"
-                        class="add-another-collection-widget button"
-                        data-list-selector="#formatLivre-fields-list">Ajouter un nouveau format</button>
-                    </div>
-        
-                    {# empeche l'apparition d'une légende "formatLivres", si la collection est vide (en cas de création d'un nouveau livre #}
-                    {% do form.formatLivres.setRendered %}
-        
-                {{ form_end(form) }}
-        
-
+                        {{ form_row(form.titre) }}
+                        {{ form_row(form.date_publication) }}
+                        {{ form_row(form.couverture) }}
+                        {{ form_row(form.tome) }}
+                        {{ form_row(form.resume) }}
+                        {{ form_row(form.serie) }}
+                        
+                        {# On va construire dynamiquement la liste des formats existants à partir de FormatLivre #}
+                        <br><h2>Format du Livre</h2>
+            
+                        <div class="form-group row">
+                            <div class="col-form-label col-sm-2">&nbsp;</div>
+            
+                            <div id="formatLivre-fields-list" class="col-sm-10 remove-collection-widget"
+                                data-prototype="{{ form_widget(form.formatLivres.vars.prototype) |e }}"
+                                data-livre="{{ livreId }}"
+                                data-widget-tags="{{ '<p></p>'|e }}"
+                                data-widget-counter="{{ form.formatLivres|length }}">
+                                
+                                {% for formatLivreField in form.formatLivres %}
+                                <p>
+                                    {{ form_errors(formatLivreField) }}
+                                    {{ form_widget (formatLivreField, {'attr': {'class':'borders'}}) }}
+                                </p>
+                                {% endfor %}
+                            </div> 
+                        </div>
+                        <div class="form-group row flex-action">
+                            <button type="button"
+                            class="add-another-collection-widget button"
+                            data-list-selector="#formatLivre-fields-list">Ajouter un nouveau format</button>
+                        </div>
+            
+                        {# empeche l'apparition d'une légende "formatLivres", si la collection est vide (en cas de création d'un nouveau livre #}
+                        {% do form.formatLivres.setRendered %}
+            
+                    {{ form_end(form) }}
 
                 </div>
 
@@ -91,20 +87,21 @@
                         <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des livres" title="Retourner à la liste des livres"></a>
                     </div>
                 </nav>
+
             </div>
 
             {% block javascripts %}
 
-            {# Framework Bootstrap #}
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-             
-            {# Script pour permettre l'exécution du collection type #}
-            <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
-            
-            {# Script pour lier le projet au fichier gsf.js #}
-            <script src="{{ asset('js/gsf.js') }}"></script>
+                {# Framework Bootstrap #}
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+                
+                {# Script pour permettre l'exécution du collection type #}
+                <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
+                
+                {# Script pour lier le projet au fichier gsf.js #}
+                <script src="{{ asset('js/gsf.js') }}"></script>
 
-        {% endblock %}
+            {% endblock %}
 
         </body>
 
