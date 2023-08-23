@@ -17,7 +17,15 @@ class UserController extends AbstractController
     // OBJECTIF : Afficher le panier dans l'espace personnel de l'utilisateur correspondant
 
     #[Route('/user', name: 'app_user')]
-    public function index(UserRepository $userRepository): Response
+
+    public function index(
+
+        UserRepository $userRepository,
+        //User $user,
+        //int $id
+
+    ): Response
+
     {
         // Affiche tous les utilisateurs
         // $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);
@@ -31,7 +39,7 @@ class UserController extends AbstractController
         
         return $this->render('user/index.html.twig', [
             'users' => $users
-            // 'user' => $user
+            //  'user' => $user
         ]);
     }
 
