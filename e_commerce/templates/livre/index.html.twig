@@ -38,9 +38,6 @@
                         {% endfor %}
                     {% endfor %}
                     
-                    {# Afficher la collection pour chaque livres #}
-                    {# <h2> {{livre.serie}} </h2> #}
-                    
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau livre #}
                         <a href="{{ path ('new_livre') }}">AJOUTER</a>
@@ -91,10 +88,10 @@
                                         
                                         {%  if app.user %}
                                             {# Pour ajouter un livre à la commande #}
-                                            {# <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
+                                            <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
                                         
                                             {# Pour afficher le détail d'un livre #}
-                                            <a href="{{ path ('show_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>  
+                                            {# <a href="{{ path ('show_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>   #}
                                         
                                         {% endif %}
                                         

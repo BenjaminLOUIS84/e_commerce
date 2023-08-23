@@ -125,15 +125,14 @@ class LivreController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE LIVRES
 
-    #[Route('/livre/{id}', name: 'show_livre')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    // #[Route('/livre/{id}', name: 'show_livre')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(Livre $livre, FormatLivre $formatLivre): Response   // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
+    // public function show(Livre $livre, FormatLivre $formatLivre): Response   // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
 
-    {
-        return $this->render('livre/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier livre)
-            'livre' => $livre,
-            'formatLivre' => $formatLivre
-        ]);
-    }
+    // {
+    //     return $this->render('livre/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier livre)
+    //         'formatLivre' => $formatLivre
+    //     ]);
+    // }
 
 }                                                                       

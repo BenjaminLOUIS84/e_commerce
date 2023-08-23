@@ -49,10 +49,10 @@
 
                                     <div class="front">
 
-                                        {# {% for formatLivre in livre.formatLivre %} #}
+                                        {% for formatLivre in livre.formatLivre %}
                                             {# POUR AFFICHER LE FORMAT #}
-                                            {# <h2>{{ formatLivre.format }}</h2> #}
-                                        {# {% endfor %} #}
+                                            <h2>{{ formatLivre.format }}</h2>
+                                        {% endfor %}
 
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
@@ -73,10 +73,10 @@
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
                                         <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
 
-                                        {# {% for formatLivre in livre.formatLivre %} #}
+                                        {% for formatLivre in livre.formatLivre %}
                                             {# POUR AFFICHER LE PRIX UNITAIRE #}
-                                            {# <h3>Prix : {{ formatLivre }} € ttc</h3> #}
-                                        {# {% endfor %} #}
+                                            <h3>Prix : {{ formatLivre }} € ttc</h3>
+                                        {% endfor %}
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 
@@ -109,7 +109,7 @@
 
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>                        </div>
+                            <a href="{{ path ('app_livre', {id: livre.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des livres" title="Retourner à la liste des livres"></a>                        </div>
                         </div>
                     </nav>
 
