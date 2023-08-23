@@ -31,26 +31,24 @@
 
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie une commande #}
                 {% if edit %}
-                    <h3>Modifier une commande</h3>
+                    <h2>Modifier une commande</h2>
                 {% else %}
-                    <h3>Ajouter une nouvelle commande</h3> 
+                    <h2>Ajouter une nouvelle commande</h2> 
                 {% endif %}
         
-                <h2>Renseignez vos coordonnées dans le formulaire ci-dessous pour la facturation et la livraison</h2><br>
+                <h3>Renseignez vos coordonnées dans le formulaire ci-dessous pour la facturation et la livraison</h3><br>
             
                 <div class="formAddCommande">
 
                     {# Affiche le formulaire #}
                     {{ form_start(form) }}
 
-                        {{ form_row(form.pseudo) }}
                         {{ form_row(form.date_commande) }}
                         {{ form_row(form.nom) }}
                         {{ form_row(form.prenom) }}
                         {{ form_row(form.adresse) }}
                         {{ form_row(form.cp) }}
                         {{ form_row(form.ville) }}
-                        {{ form_row(form.cp) }}
                         
                         {# On va construire dynamiquement la liste des formats existants à partir de FormatLivre #}
                         <br><h2>LIVRES</h2>
@@ -88,7 +86,7 @@
 
                 <nav id="men">
                     <div id="menu">
-                        <a href="{{ path ('app_commande') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des commandes" title="Retourner à la liste des commandes"></a>
+                        <a href="{{ path ('app_commande') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à mon panier" title="Retourner à mon panier"></a>
                     </div>
                 </nav>
             </div>
