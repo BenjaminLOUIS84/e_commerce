@@ -55,7 +55,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
             'Commande supprimée avec succès!'
         );
 
-        return $this->redirectToRoute('app_commande');                     // Rediriger vers la liste des commandes
+        return $this->redirectToRoute('app_user');                     // Rediriger vers la liste des commandes
        
     }
 
@@ -92,7 +92,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                 'Opération réalisée avec succès!'
             );
 
-            return $this->redirectToRoute('show_commande');         // Rediriger vers la liste des commandes
+            return $this->redirectToRoute('app_user');         // Rediriger vers la liste des commandes
         }
 
         //////////////////////////////////////////////////////////////////////////
