@@ -15,7 +15,7 @@ class FormatLivreController extends AbstractController
     public function index(FormatLivreRepository $formatLivreRepository, FormatLivre $formatLivre): Response
     {
         $formatLivres = $formatLivreRepository->findAll();
-        // $formatLivre ->getId();
+        // $formatLivre->getId();
 
         return $this->render('format_livre/index.html.twig', [
 
