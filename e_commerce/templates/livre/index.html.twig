@@ -55,7 +55,12 @@
                                 <div class="pack">   
 
                                     <div class="front">
-                                        {# <h2> Collection {{livre.serie}} </h2> #}
+
+                                        {% for formatLivre in formatLivres %}
+                                            {# POUR AFFICHER LE FORMAT #}
+                                            <h2>{{ formatLivre.format }}</h2>
+                                        {% endfor %}
+                                        
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
                                             {# Pour afficher les couvertures de chaque livres #}
