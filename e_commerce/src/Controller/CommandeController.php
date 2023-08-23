@@ -20,21 +20,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
 
     #[Route('/commande', name: 'app_commande')]
-    public function index(CommandeRepository $commandeRepository,
-    CommandeLivreRepository $commandeLivreRepository,
-    
-    ): Response
+    public function index(CommandeRepository $commandeRepository): Response
+
     {                                                               
         
         $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
 
-        $commandeLivres = $commandeLivreRepository->findAll();
 
         //$commandeLivre = $commandeLivreRepository->find($id)
 
         return $this->render('commande/index.html.twig', [
             'commandes' => $commandes,
-            'commandeLivres' => $commandeLivres,
+            // 'commandeLivres' => $commandeLivres,
+            // 'livres' => $livres,
 
             // 'commandeLivre => commandeLivre
         ]);
@@ -94,7 +92,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
                 'Opération réalisée avec succès!'
             );
 
-            return $this->redirectToRoute('app_commande');         // Rediriger vers la liste des commandes
+            return $this->redirectToRoute('show_commande');         // Rediriger vers la liste des commandes
         }
 
         //////////////////////////////////////////////////////////////////////////
@@ -113,16 +111,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
     public function show(Commande $commande, 
-    //LivreRepository $livreRepository
+    LivreRepository $livreRepository
+
     ): Response             // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
 
     {
-        // $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
-        // "ASC"]);
+        $livres = $livreRepository->findAll();
 
         return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
             'commande' => $commande,
-            // 'livres' => $livres
+            'livres' => $livres
             
         ]);
     }

@@ -31,26 +31,13 @@
                     {{ commande.coordonnees }}
 
                     <div class="articles">
-
-                        {# Créer une condition pour afficher un message quand il y a pas de livres dans une commande #}
                         
-                        {% if commande.commandeLivres | length >0 %}
-                        
-                            {# {% for commandeLivre in commande.commandeLivres %} #}
-                            {% for commandeLivre in commandeLivres %}
-                                
-                                <figure>
-                                    {# Pour afficher les couvertures de chaque livres #}
-                                    <img src="{{ asset('uploads/images/'~ commandeLivre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
-                                </figure>
-                            
-                            {% endfor %}
-
-                        {% else %}
-
-                            <h2>Aucuns livres dans cette commande</h2>
-                    
-                        {% endif %} 
+                        {% for livre in livres %}
+                            <figure>
+                                {# Pour afficher les couvertures de chaque livres #}
+                                <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
+                            </figure>
+                        {% endfor %}
                         
                     </div>
                 
