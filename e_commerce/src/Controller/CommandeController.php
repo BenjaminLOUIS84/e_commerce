@@ -7,6 +7,7 @@ use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommandeLivreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,13 +19,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
 
     #[Route('/commande', name: 'app_commande')]
-    public function index(CommandeRepository $commandeRepository): Response
+    public function index(CommandeRepository $commandeRepository,
+    //CommandeLivreRepository $commandeLivreRepository,
+    
+    ): Response
     {                                                               
         
         $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
 
+        //$commandeLivres = $commandeLivreRepository->findAll();
+
+        //$commandeLivre = $commandeLivreRepository->find($id)
+
         return $this->render('commande/index.html.twig', [
-            'commandes' => $commandes
+            'commandes' => $commandes,
+            //'commandeLivres' => $commandeLivres,
+
+            // 'commandeLivre => commandeLivre
         ]);
     }
 
@@ -67,9 +78,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
         //////////////////////////////////////////////////////////////////////////
         //                                                      GERER LE TRAITEMENT EN BDD
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {            // Si le formulaire soumis est valide alors
             
             $commande = $form->getData();                          // Récupérer les informations de la nouvelle commande 
+            
             //prepare PDO
             $entityManager->persist($commande);                    // Dire à Doctrine que je veux sauvegarder la nouvelle commande           
             //execute PDO
@@ -87,8 +100,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
         return $this->render('commande/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)
-            'formAddCommande' => $form,
-            'edit' => $commande->getId()
+            'form' => $form,
+            'edit' => $commande->getId(),
+            'commandeId' => $commande->getId()
         ]);
     }
 

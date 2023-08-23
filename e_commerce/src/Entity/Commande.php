@@ -47,7 +47,7 @@ class Commande
     #[ORM\ManyToOne(inversedBy: 'commande')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: CommandeLivre::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', cascade: ['persist'], orphanRemoval:true, targetEntity: CommandeLivre::class)]
     private Collection $commandeLivres;
    
 

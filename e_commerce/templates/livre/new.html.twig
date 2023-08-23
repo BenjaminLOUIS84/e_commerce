@@ -50,7 +50,7 @@
                         {{ form_row(form.serie) }}
                         
                         {# On va construire dynamiquement la liste des formats existants à partir de FormatLivre #}
-                        <br><h2>Format du Livre</h2>
+                        <br><h2>FORMATS</h2>
             
                         <div class="form-group row">
                             <div class="col-form-label col-sm-2">&nbsp;</div>
@@ -62,10 +62,10 @@
                                 data-widget-counter="{{ form.formatLivres|length }}">
                                 
                                 {% for formatLivreField in form.formatLivres %}
-                                <p>
-                                    {{ form_errors(formatLivreField) }}
-                                    {{ form_widget (formatLivreField, {'attr': {'class':'borders'}}) }}
-                                </p>
+                                    <p>
+                                        {{ form_errors(formatLivreField) }}
+                                        {{ form_widget (formatLivreField, {'attr': {'class':'borders'}}) }}
+                                    </p>
                                 {% endfor %}
                             </div> 
                         </div>
@@ -98,8 +98,8 @@
                 {# Script pour permettre l'exécution du collection type #}
                 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
                 
-                {# Script pour lier le projet au fichier gsf.js #}
-                <script src="{{ asset('js/gsf.js') }}"></script>
+                {# Script pour lier le projet au fichier gfl.js #}
+                <script src="{{ asset('js/gfl.js') }}"></script>
 
             {% endblock %}
 

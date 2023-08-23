@@ -18,6 +18,9 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
+            {# Framework Bootstrap #}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        
 
             <title>AJOUTER UNE COMMANDE</title>
         </head>
@@ -38,7 +41,48 @@
                 <div class="formAddCommande">
 
                     {# Affiche le formulaire #}
-                    {{form(formAddCommande)}}
+                    {{ form_start(form) }}
+
+                        {{ form_row(form.pseudo) }}
+                        {{ form_row(form.date_commande) }}
+                        {{ form_row(form.nom) }}
+                        {{ form_row(form.prenom) }}
+                        {{ form_row(form.adresse) }}
+                        {{ form_row(form.cp) }}
+                        {{ form_row(form.ville) }}
+                        {{ form_row(form.cp) }}
+                        
+                        {# On va construire dynamiquement la liste des formats existants à partir de FormatLivre #}
+                        <br><h2>LIVRES</h2>
+
+                        <div class="form-group row">
+                            <div class="col-form-label col-sm-2">&nbsp;</div>
+
+                            <div id="commandeLivre-fields-list" class="col-sm-10 remove-collection-widget"
+                                data-prototype="{{ form_widget(form.commandeLivres.vars.prototype) |e }}"
+                                data-commande="{{ commandeId }}"
+                                data-widget-tags="{{ '<p></p>'|e }}"
+                                data-widget-counter="{{ form.commandeLivres|length }}">
+                                
+                                {% for commandeLivreField in form.commandeLivres %}
+                                    <p>
+                                        {{ form_errors(commandeLivreField) }}
+                                        {{ form_widget (commandeLivreField, {'attr': {'class':'borders'}}) }}
+                                    </p>
+                                {% endfor %}
+                            </div> 
+                        </div>
+                        <div class="form-group row flex-action">
+                            <button type="button"
+                            class="add-another-collection-widget button"
+                            data-list-selector="#commandeLivre-fields-list">Ajouter un nouveau livre</button>
+                        </div>
+
+                        {# empeche l'apparition d'une légende "commandeLivres", si la collection est vide (en cas de création d'un nouveau livre #}
+                        {% do form.commandeLivres.setRendered %}
+
+                    {{ form_end(form) }}
+
 
                 </div>
 
@@ -48,6 +92,20 @@
                     </div>
                 </nav>
             </div>
+
+            {% block javascripts %}
+
+                {# Framework Bootstrap #}
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+                
+                {# Script pour permettre l'exécution du collection type #}
+                <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
+                
+                {# Script pour lier le projet au fichier gcl.js #}
+                <script src="{{ asset('js/gcl.js') }}"></script>
+
+            {% endblock %}
+
         </body>
 
     </html>

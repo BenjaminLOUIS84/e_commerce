@@ -2,44 +2,42 @@
 
 namespace App\Form;
 
-use App\Entity\Format;
-use App\Entity\FormatLivre;
+use App\Entity\Livre;
+use App\Entity\CommandeLivre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class FormatLivreType extends AbstractType
+class CommandeLivreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder////////////////////////////////////////////////////////////FORMULAIRE PARALELLE
-            ->add('prix_unitaire', IntegerType::class, [
-                'label' => 'Prix unitaire ttc',
-                'attr' => ['min' => 1, 'max' => 20]
+        $builder
+            ->add('quantite' , IntegerType::class, [
+                'label' => 'Quantité',
+                'attr' => ['min' => 1, 'max' => 90]
             ])
 
-            ->add('format', EntityType::class, [ 
+            ->add('commande', HiddenType::class)
+
+            ->add('livre', EntityType::class, [ 
                 // 'multiple' => true, 
                 // 'expanded' =>true,                   // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-                'label' => 'Format',
-                'class' => Format::class, 
+                'label' => 'Livre',
+                'class' => Livre::class, 
                 'attr' => ['class' => 'form-control'],
-                'choice_label' => 'type'
+                'choice_label' => 'titre'
             ])
-            
-            ->add('livre', HiddenType::class)           // Pour cacher le champ
-            
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => FormatLivre::class,
+            'data_class' => CommandeLivre::class,
         ]);
     }
 }
