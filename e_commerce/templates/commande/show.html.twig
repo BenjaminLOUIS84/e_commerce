@@ -36,7 +36,8 @@
                         
                         {% if commande.commandeLivres | length >0 %}
                         
-                            {% for commandeLivre in commande.commandeLivres %}
+                            {# {% for commandeLivre in commande.commandeLivres %} #}
+                            {% for commandeLivre in commandeLivres %}
                                 
                                 <figure>
                                     {# Pour afficher les couvertures de chaque livres #}

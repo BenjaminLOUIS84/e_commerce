@@ -21,20 +21,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     #[Route('/commande', name: 'app_commande')]
     public function index(CommandeRepository $commandeRepository,
-    //CommandeLivreRepository $commandeLivreRepository,
+    CommandeLivreRepository $commandeLivreRepository,
     
     ): Response
     {                                                               
         
         $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
 
-        //$commandeLivres = $commandeLivreRepository->findAll();
+        $commandeLivres = $commandeLivreRepository->findAll();
 
         //$commandeLivre = $commandeLivreRepository->find($id)
 
         return $this->render('commande/index.html.twig', [
             'commandes' => $commandes,
-            //'commandeLivres' => $commandeLivres,
+            'commandeLivres' => $commandeLivres,
 
             // 'commandeLivre => commandeLivre
         ]);
