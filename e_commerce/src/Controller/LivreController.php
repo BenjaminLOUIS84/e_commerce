@@ -21,8 +21,7 @@ class LivreController extends AbstractController
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
     
     public function index(LivreRepository $livreRepository,             // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
-    FormatLivreRepository $formatLivreRepository,                       // Pour permettre l'affichage des prix unitaires et des formats insérer dans la fonction index() formatLivreRepository $formatLivreRepository et Importer la classe FormatLivreRepository avec un click droit
-    // FormatLivre $formatLivre                                            
+    FormatLivreRepository $formatLivreRepository,                       // Pour permettre l'affichage des prix unitaires et des formats insérer dans la fonction index() formatLivreRepository $formatLivreRepository et Importer la classe FormatLivreRepository avec un click droit                                           
     
     ): Response          
     
@@ -33,8 +32,7 @@ class LivreController extends AbstractController
         $formatLivres = $formatLivreRepository->findAll();              // Pour récupérer la liste de tous les prix unitaire et de tous les formats
 
         // $formatLivre = $formatLivreRepository->find($id);            // Pour récupérer un prix unitaire et un format selon l'ID
-        // $formatLivre ->getId();
-
+        
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
             'formatLivres' => $formatLivres,                            // Pour passer la variable $formatLivres en argument 'formatLivres'
