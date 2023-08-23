@@ -19,14 +19,14 @@
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 
-            <title>LIVRES</title>
+            <title>DETAIL DU LIVRE</title>
         </head>
 
         <body>
             <div class="wrapper">
                 <header>
-                    <!-- Cette page concerne les livres-->
-                    <h3>LIVRES</h3>
+                    <!-- Cette page concerne le détail de chaque livres-->
+                    <h3>DETAILS</h3>
 
                     {# Lire et afficher toutes les notifications #}
 
@@ -38,17 +38,10 @@
                         {% endfor %}
                     {% endfor %}
                     
-                    {# Afficher la collection pour chaque livres #}
-                    {# <h2> {{livre.serie}} </h2> #}
-                    
-                    {% if is_granted('ROLE_ADMIN') %}
-                        {# Seul l'admin peut ajouter un nouveau livre #}
-                        <a href="{{ path ('new_livre') }}">AJOUTER</a>
-                    {% endif %}
 
                     <section class="price">
 
-                        {% for livre in livres %}
+                        {# {% for livre in livres %} #}
 
                             <div class="blocPrice">
                                 
@@ -56,10 +49,10 @@
 
                                     <div class="front">
 
-                                        {% for formatLivre in formatLivres %}
+                                        {# {% for formatLivre in livre.formatLivre %} #}
                                             {# POUR AFFICHER LE FORMAT #}
-                                            <h2>{{ formatLivre.format }}</h2>
-                                        {% endfor %}
+                                            {# <h2>{{ formatLivre.format }}</h2> #}
+                                        {# {% endfor %} #}
 
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
@@ -80,10 +73,10 @@
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
                                         <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
 
-                                        {% for formatLivre in formatLivres %}
+                                        {# {% for formatLivre in livre.formatLivre %} #}
                                             {# POUR AFFICHER LE PRIX UNITAIRE #}
-                                            <h3>Prix : {{ formatLivre }} € ttc</h3>
-                                        {% endfor %}
+                                            {# <h3>Prix : {{ formatLivre }} € ttc</h3> #}
+                                        {# {% endfor %} #}
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 
@@ -91,11 +84,7 @@
                                         
                                         {%  if app.user %}
                                             {# Pour ajouter un livre à la commande #}
-                                            {# <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
-                                        
-                                            {# Pour afficher le détail d'un livre #}
-                                            <a href="{{ path ('show_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>  
-                                        
+                                            <a href=""><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
                                         {% endif %}
                                         
                                         {% if is_granted('ROLE_ADMIN') %}
@@ -114,7 +103,7 @@
                                 
                             </div>
 
-                        {% endfor %}
+                        {# {% endfor %} #}
 
                     </section> 
 
