@@ -9,25 +9,30 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class FormatLivreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
-            ->add('prix_unitaire', IntegerType::class)
+        $builder////////////////////////////////////////////////////////////FORMULAIRE PARALELLE
+            ->add('prix_unitaire', IntegerType::class, [
+                'label' => 'Prix unitaire ttc',
+                'attr' => ['min' => 1, 'max' => 20]
+            ])
 
-            ->add('format', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            ->add('format', EntityType::class, [ 
+                // 'multiple' => true, 
+                // 'expanded' =>true,                   // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Formats',
                 'class' => Format::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'type'
             ])
             
-            //->add('livre', CollectionType::class, [
-
-            //])
+            ->add('livre', HiddenType::class)           // Pour cacher le champ
+            
         ;
     }
 

@@ -7,6 +7,7 @@ use App\Entity\Serie;
 use App\Entity\Format;
 use App\Entity\Commande;
 use App\Entity\FormatLivre;
+use App\Form\FormatLivreType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class LivreType extends AbstractType
 {
@@ -70,18 +72,18 @@ class LivreType extends AbstractType
             ])
 
            
-            // ->add('formatLivres', EntityType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            //     'multiple' => false, 
-            //     'expanded' =>true,                            // Autorise l'affichage d'un champ multiple dans le cas d'une collection
-            //     'label' => 'Formats',
-            //     'class' => Format::class, 
-            //     'attr' => ['class' => 'check-box'],
-            //     'choice_label' => 'type'
-            // ])
+            ->add('formatLivres', CollectionType::class, [      // Particularité ici CollectionType à besoin d'être paramétré (CF Jounal de bord) pour fonctionner
+                'entry_type' => FormatLivreType::class,         // Pour ajouter un autre formulaire
 
-            // ->add('prix_unitaire', IntegerType::class, [          // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-            //     'label' => 'Prix TCC',
-            //     ])
+                'prototype' => true,                            // Pour autoriser l'ajout de nouveaux éléments dans l'entité session qui seront persistés grâce aux cascade persist sur l'élément programme 
+                                                                // Permet d'activer un data prototype qui sera un élément html qu'on pourra manipuler en JS
+                'allow_add' => true,                            // Permet d'ajouter plusieurs éléments
+                'allow_delete' => true,                         // Permet de supprimer plusieurs éléments
+                
+                'by_reference' => false                         // OBLIGATOIRE Car Livre n'a pas de setFormatLivre, c'est FormatLivre qui contient setSession (Programme est propriétaire de la relation)
+            ])                                                  // Cela évite un mapping false
+
+
 
             ->add('serie', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Collection',

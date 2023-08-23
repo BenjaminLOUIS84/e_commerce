@@ -76,8 +76,6 @@ class LivreController extends AbstractController
             $couvertureFile = $form->get('couverture')->getData();
             $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre
             
-            //$format = $form->get('formatLivres')->getData();        // Récupérer le format du livre
-            
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
@@ -93,10 +91,6 @@ class LivreController extends AbstractController
                 $tomeFileName = $fileUploader->upload($tomeFile);
                 $livre->setTome($tomeFileName);
             }
-
-            // if ($format) {
-            //     $livre->addFormatLivre($format);
-            // }
 
             //////////////////////////////////////////////////////////////////////////
 
@@ -117,8 +111,9 @@ class LivreController extends AbstractController
         //////////////////////////////////////////////////////////////////////////
 
         return $this->render('livre/new.html.twig', [          // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier livre)
-            'formAddLivre' => $form,
-            'edit' => $livre->getId()
+            'form' => $form,
+            'edit' => $livre->getId(),
+            'livreId' => $livre->getId()
         ]);
     }
 

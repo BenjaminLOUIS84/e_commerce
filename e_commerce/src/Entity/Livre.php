@@ -42,8 +42,10 @@ class Livre
 
     #[ORM\OneToMany(mappedBy: 'livre', targetEntity: CommandeLivre::class)]
     private Collection $commandeLivres;
-
-    #[ORM\OneToMany(mappedBy: 'livre', targetEntity: FormatLivre::class)]
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Ajouter cascade: 'persist' et orphanRemoval:true dans l'ORM 
+    #[ORM\OneToMany(mappedBy: 'livre',  cascade: ['persist'], orphanRemoval:true, targetEntity: FormatLivre::class)]
     private Collection $formatLivres;
 
     public function __construct()
