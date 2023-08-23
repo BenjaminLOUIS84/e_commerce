@@ -114,19 +114,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     public function show(Commande $commande, 
     LivreRepository $livreRepository,
-    //User $user,
-    //UserRepository $userRepository
+    // Livre $livre
+
+    
+    
+    
 
     ): Response             // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
 
     {
         $livres = $livreRepository->findAll();
-       // $user = $userRepository->getId();
-
+        // $livre->getRepository(Livre::class)->find($id);
+       
         return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
             'commande' => $commande,
-            'livres' => $livres,
-            //'user' => $user
+            'livres' => $livres
+            
             
         ]);
     }
