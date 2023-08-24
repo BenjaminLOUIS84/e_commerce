@@ -76,6 +76,13 @@ class LivreType extends AbstractType
                 'choice_label' => 'intitule'
             ])
 
+            ->add('format', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+                'label' => 'Format',
+                'class' => Format::class, 
+                'attr' => ['class' => 'form-control'],
+                'choice_label' => 'type'
+            ])
+
             ->add('prix_unitaire' , IntegerType::class, [
                 'label' => 'Prix',
                 'attr' => ['min' => 1, 'max' => 30]
