@@ -31,14 +31,11 @@ class LivreController extends AbstractController
            
         $formatLivres = $formatLivreRepository->findAll();              // Pour récupérer la liste de tous les prix unitaire et de tous les formats
 
-        // $formatLivre = $formatLivreRepository->find($id);            // Pour récupérer un prix unitaire et un format selon l'ID
-        // $formatLivres = $formatLivreRepository->findBy(["id"=>"1"],["id" => "ASC"], [0]);  
-
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
 
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
-            'formatLivres' => $formatLivres,                            // Pour passer la variable $formatLivres en argument 'formatLivres'
-            // 'formatLivre' => $formatLivre                            // Pour passer la variable $formatLivre en argument 'formatLivre'
+            'formatLivres' => $formatLivres                            // Pour passer la variable $formatLivres en argument 'formatLivres'
+            
 
         ]);
     }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
@@ -136,11 +133,15 @@ class LivreController extends AbstractController
 
     #[Route('/livre/{id}', name: 'show_livre')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(Livre $livre): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
+    public function show(Livre $livre, FormatLivreRepository $formatLivreRepository): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
 
     {
+        $formatLivres = $formatLivreRepository->findAll();
+
         return $this->render('livre/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier livre)
-            'livre' => $livre
+            'livre' => $livre,
+            'formatLivres' =>$formatLivres
+
         ]);
     }
 
