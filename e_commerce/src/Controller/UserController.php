@@ -31,7 +31,7 @@ class UserController extends AbstractController
         // $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);
         
         // Affiche un utilisateur précis
-        $users = $userRepository->findBy(["Pseudo" => "Lady"], ["Pseudo" => "ASC"]);
+        $users = $userRepository->findBy(["Pseudo" => "Benby"], ["Pseudo" => "ASC"]);
         
         // Affiche un utilisateur en fonction de son id
         // $users = $userRepository->findBy(["id" => $id], ["Pseudo" => "ASC"]);

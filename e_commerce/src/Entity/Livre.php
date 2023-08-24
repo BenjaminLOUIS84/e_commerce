@@ -78,7 +78,7 @@ class Livre
         return $this->couverture;
     }
 
-    public function setCouverture(string $couverture): self
+    public function setCouverture(string $couverture): static
     {
         $this->couverture = $couverture;
         
