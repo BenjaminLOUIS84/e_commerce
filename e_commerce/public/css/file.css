@@ -19,6 +19,18 @@
     height: 700px;
 }
 
+.wrapperCollection {
+
+    background-image: url(/img/logo2.jpg);
+    font-family: 'Libre Baskerville', sans-serif;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+}
+
 .wrapperEtik {
 
     background-image: url(/img/logo5.jpg);
@@ -410,7 +422,7 @@ header {
     align-items: center;
     overflow: auto;
     scroll-snap-type: x mandatory;
-    /* width: -webkit-fill-available; */
+    width: -webkit-fill-available;
 }
 
 .blocPrice {
