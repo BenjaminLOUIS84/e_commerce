@@ -17,11 +17,7 @@ class FormatLivreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder////////////////////////////////////////////////////////////FORMULAIRE PARALELLE
-            ->add('prix_unitaire', IntegerType::class, [
-                'label' => 'Prix unitaire ttc',
-                'attr' => ['min' => 1, 'max' => 20]
-            ])
-
+           
             ->add('format', EntityType::class, [ 
                 // 'multiple' => true, 
                 // 'expanded' =>true,                   // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
@@ -29,6 +25,11 @@ class FormatLivreType extends AbstractType
                 'class' => Format::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'type'
+            ])
+
+            ->add('prix_unitaire', IntegerType::class, [
+                'label' => 'Prix unitaire ttc',
+                'attr' => ['min' => 1, 'max' => 20]
             ])
             
             ->add('livre', HiddenType::class)           // Pour cacher le champ

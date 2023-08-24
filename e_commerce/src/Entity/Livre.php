@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Livre;
 use App\Entity\Serie;
 use App\Entity\Format;
 use App\Entity\FormatLivre;
