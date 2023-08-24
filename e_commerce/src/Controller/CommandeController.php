@@ -114,7 +114,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     public function show(Commande $commande, 
     LivreRepository $livreRepository,
-    // Livre $livre
+    
 
     
     
@@ -124,7 +124,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     {
         $livres = $livreRepository->findAll();
-        // $livre->getRepository(Livre::class)->find($id);
+        // $livre->$livreRepository->find($id);
        
         return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
             'commande' => $commande,
