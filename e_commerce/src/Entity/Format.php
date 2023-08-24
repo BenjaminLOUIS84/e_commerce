@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Format;
-use App\Entity\FormatLivre;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FormatRepository;
@@ -27,14 +27,6 @@ class Format
 
     #[ORM\Column(length: 255)]
     private ?string $photo = null;
-
-    #[ORM\OneToMany(mappedBy: 'format', targetEntity: FormatLivre::class)]
-    private Collection $formatLivres;
-
-    public function __construct()
-    {
-        $this->formatLivres = new ArrayCollection();
-    }
 
 
     public function getId(): ?int
@@ -85,37 +77,5 @@ class Format
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, FormatLivre>
-     */
-    public function getFormatLivres(): Collection
-    {
-        return $this->formatLivres;
-    }
-
-    public function addFormatLivre(FormatLivre $formatLivre): static
-    {
-        if (!$this->formatLivres->contains($formatLivre)) {
-            $this->formatLivres->add($formatLivre);
-            $formatLivre->setFormat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFormatLivre(FormatLivre $formatLivre): static
-    {
-        if ($this->formatLivres->removeElement($formatLivre)) {
-            // set the owning side to null (unless already changed)
-            if ($formatLivre->getFormat() === $this) {
-                $formatLivre->setFormat(null);
-            }
-        }
-
-        return $this;
-    }
-
-   
 
 }

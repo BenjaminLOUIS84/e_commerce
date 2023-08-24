@@ -2,11 +2,9 @@
 
 namespace App\Form;
 
-// use App\Entity\Livre;
 use App\Entity\Format;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -40,12 +38,6 @@ class FormatType extends AbstractType
                 ])
             ],
         ])         
-        
-        // ->add('Livre', EntityType::class, [     // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-        // 'mapped' => false,                      // Pour permettre l'affichage de ce champs dans le formulaire mettre le mappage en false
-        // 'class' => Livre::class, 
-        // 'attr' => ['class' => 'form-control'],
-        // 'choice_label' => 'titre'])
 
         ->add('valider', SubmitType::class, [   // Ajouter directement le bouton submit ici
         'attr' =>['class' => 'btn btn-dark']])  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   

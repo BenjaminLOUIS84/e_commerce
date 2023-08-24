@@ -21,8 +21,8 @@ class UserController extends AbstractController
     public function index(
 
         UserRepository $userRepository,
-        //User $user,
-        //int $id
+        // User $user,
+        // int $id
 
     ): Response
 
