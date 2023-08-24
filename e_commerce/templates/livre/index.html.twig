@@ -77,9 +77,9 @@
                                         <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
 
                                         {# POUR AFFICHER LE PRIX UNITAIRE DE TOUS LES LIVRES #}
-                                        {# {% for formatLivre in formatLivres %} #}
-                                            {# <h3>Prix : {{ formatLivre }} € ttc</h3> #}
-                                        {# {% endfor %} #}
+                                        {# {% for formatLivre in formatLivres %}
+                                            <h3>Prix : {{ formatLivre }} € ttc</h3>
+                                        {% endfor %} #}
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 
@@ -87,10 +87,10 @@
                                         
                                         {%  if app.user %}
                                             {# Pour ajouter un livre à la commande #}
-                                            <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                            {# <a href="{{ path ('add_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
                                         
                                             {# Pour afficher le détail d'un livre #}
-                                            {# <a href="{{ path ('show_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>   #}
+                                            <a href="{{ path ('show_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>  
                                         
                                             {# Pour afficher le détail d'un livre #}
                                             {# <a href="{{ path ('show_format_Livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>   #}
