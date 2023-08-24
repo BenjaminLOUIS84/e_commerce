@@ -52,12 +52,15 @@
 
                                     <div class="front">
 
+                                        <h2>{{ livre.format }}</h2>
+
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
                                             {# Pour afficher les couvertures de chaque livres #}
                                             <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couvertures des livres de la collection Revolutions" class="log">
                                         </figure>
-                                        
+                                        <div class="acheter1">ACHETEZ-MOI</div>
+  
                                     </div>
                     
                                     <div class="back">
@@ -69,9 +72,20 @@
                                         
                                         {%  if app.user %}
                                     
-                                            {# Pour afficher le détail d'un livre #}
-                                            <a href="{{ path ('show_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/circle-info-solid.svg') }}" alt="Afficher le détail" title="Afficher le détail"></a>  
+                                            {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
+                                            <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
                                         
+                                            <h3>Prix : {{ livre.prixUnitaire }} € ttc</h3>
+
+                                            <h6>(Dont 4 € de frais de port)</h6>
+
+                                            <p>{{ livre.resume }}</p> 
+                                            
+                                            {%  if app.user %}
+                                                {# Pour ajouter un livre à la commande #}
+                                                <a href="{{ path ('new_commande') }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                            {% endif %}
+
                                         {% endif %}
                                         
                                         {% if is_granted('ROLE_ADMIN') %}
