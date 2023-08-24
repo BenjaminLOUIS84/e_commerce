@@ -66,8 +66,7 @@
                                         
                                         {# POUR AFFICHER LE PRIX UNITAIRE #}
                                     
-                                            <h3>Prix : {{ formatLivre }} € ttc</h3>
-                                        
+                                        <h3>Prix : {{ formatLivre }} € ttc</h3>
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 
@@ -75,7 +74,7 @@
                                         
                                         {%  if app.user %}
                                             {# Pour ajouter un livre à la commande #}
-                                            <a href="{{ path ('add_livre') }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                            <a href="{{ path ('new_commande') }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
                                         {% endif %}
 
                                     {% endfor %}

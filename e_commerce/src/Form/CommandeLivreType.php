@@ -16,11 +16,7 @@ class CommandeLivreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('quantite' , IntegerType::class, [
-                'label' => 'Quantité',
-                'attr' => ['min' => 1, 'max' => 90]
-            ])
-
+            
             ->add('commande', HiddenType::class)
 
             ->add('livre', EntityType::class, [ 
@@ -30,6 +26,11 @@ class CommandeLivreType extends AbstractType
                 'class' => Livre::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'titre'
+            ])
+
+            ->add('quantite' , IntegerType::class, [
+                'label' => 'Quantité',
+                'attr' => ['min' => 1, 'max' => 90]
             ])
         ;
     }

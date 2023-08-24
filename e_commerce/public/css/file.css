@@ -410,7 +410,7 @@ header {
     align-items: center;
     overflow: auto;
     scroll-snap-type: x mandatory;
-    width: -webkit-fill-available;
+    /* width: -webkit-fill-available; */
 }
 
 .blocPrice {

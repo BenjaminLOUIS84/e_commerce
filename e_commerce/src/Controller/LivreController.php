@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Livre;
 use App\Form\LivreType;
+use App\Entity\Commande;
 use App\Entity\FormatLivre;
 use App\Service\FileUploader;
 use App\Repository\LivreRepository;
@@ -133,13 +135,18 @@ class LivreController extends AbstractController
 
     #[Route('/livre/{id}', name: 'show_livre')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(Livre $livre, FormatLivreRepository $formatLivreRepository): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
+    public function show(Livre $livre,
+    // User $user,
+    // Commande $commande,
+    FormatLivreRepository $formatLivreRepository): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
 
     {
         $formatLivres = $formatLivreRepository->findAll();
-
+        
         return $this->render('livre/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier livre)
             'livre' => $livre,
+            // 'user' => $user,
+            // 'commande' => $commande,
             'formatLivres' =>$formatLivres
 
         ]);
