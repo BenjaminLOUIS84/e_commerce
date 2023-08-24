@@ -29,17 +29,17 @@ class LivreController extends AbstractController
         $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
         "ASC"]);      
            
-        // $formatLivres = $formatLivreRepository->findAll();              // Pour récupérer la liste de tous les prix unitaire et de tous les formats
+        $formatLivres = $formatLivreRepository->findAll();              // Pour récupérer la liste de tous les prix unitaire et de tous les formats
 
         // $formatLivre = $formatLivreRepository->find($id);            // Pour récupérer un prix unitaire et un format selon l'ID
-        $formatLivres = $formatLivreRepository->findBy(["id" => "{id:livre.id}"],["id" => "ASC"]);  
+        // $formatLivres = $formatLivreRepository->findBy(["id"=>"1"],["id" => "ASC"], [0]);  
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
 
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
             'formatLivres' => $formatLivres,                            // Pour passer la variable $formatLivres en argument 'formatLivres'
             // 'formatLivre' => $formatLivre                            // Pour passer la variable $formatLivre en argument 'formatLivre'
-            
+
         ]);
     }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
 
@@ -134,14 +134,18 @@ class LivreController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE LIVRES
 
-    // #[Route('/livre/{id}', name: 'show_livre')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    #[Route('/livre/{id}', name: 'show_livre')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    // public function show(Livre $livre, FormatLivre $formatLivre): Response   // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
+    public function show(Livre $livre, 
+    // FormatLivre $formatLivre
+    
+    ): Response   // Créer une fonction show() dans le controller pour afficher le détail d'un livre 
 
-    // {
-    //     return $this->render('livre/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier livre)
-    //         'formatLivre' => $formatLivre
-    //     ]);
-    // }
+    {
+        return $this->render('livre/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier livre)
+            'livre' => $livre,
+            // 'formatLivre' => $formatLivre
+        ]);
+    }
 
 }                                                                       

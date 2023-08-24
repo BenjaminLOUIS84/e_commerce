@@ -27,18 +27,7 @@
                 <header>
                     <!-- Cette page concerne le détail de chaque livres-->
                     <h3>DETAILS</h3>
-
-                    {# Lire et afficher toutes les notifications #}
-
-                    {% for label, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="flash-{{ label }}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
                     
-
                     <section class="price">
 
                         {# {% for livre in livres %} #}
@@ -48,11 +37,10 @@
                                 <div class="pack">   
 
                                     <div class="front">
-
-                                        {% for formatLivre in livre.formatLivre %}
-                                            {# POUR AFFICHER LE FORMAT #}
-                                            <h2>{{ formatLivre.format }}</h2>
-                                        {% endfor %}
+                                        {# POUR AFFICHER LE FORMAT #}
+                                        {# {% for livre in formatLivre.livre %} #}
+                                            {# <h2>{{ formatLivre.format }}</h2> #}
+                                        {# {% endfor %} #}
 
                                         {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
                                         <figure>
@@ -72,11 +60,11 @@
 
                                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
                                         <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
-
-                                        {% for formatLivre in livre.formatLivre %}
-                                            {# POUR AFFICHER LE PRIX UNITAIRE #}
-                                            <h3>Prix : {{ formatLivre }} € ttc</h3>
-                                        {% endfor %}
+                                        
+                                        {# POUR AFFICHER LE PRIX UNITAIRE #}
+                                        {# {% for formatLivre in livre.formatLivre %} #}
+                                            {# <h3>Prix : {{ formatLivre }} € ttc</h3> #}
+                                        {# {% endfor %} #}
 
                                         <h6>(Dont 4 € de frais de port)</h6>
 
@@ -85,16 +73,6 @@
                                         {%  if app.user %}
                                             {# Pour ajouter un livre à la commande #}
                                             <a href=""><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
-                                        {% endif %}
-                                        
-                                        {% if is_granted('ROLE_ADMIN') %}
-                                            <div class="liste">
-                                                {# Seul l'admin peut modifier et/ou supprimer un livre #}
-                                                <div class="option">
-                                                    <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                    <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                                </div>  
-                                            </div>
                                         {% endif %}
 
                                     </div>
