@@ -456,6 +456,7 @@ h5 {
     align-items: center;
     /* position:relative; */
     margin: auto;
+    width: 360px;
 }
 
 .livres h3 {
@@ -932,8 +933,8 @@ h6 {
 
     .boutonScroll {
         position: fixed;
-        top: 560px;
-        left: 980px;
+        top: 600px;
+        left: 1000px;
         transition: .5s ease-in-out;
     }
 
@@ -1472,7 +1473,8 @@ h6 {
         display: flex;
         justify-content: left;
         flex-direction: row;
-        width: 330px;
+        width: 360px;
+        
     }
 
     .blocPrice:hover {
