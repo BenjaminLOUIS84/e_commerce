@@ -30,58 +30,54 @@
                     
                     <section class="price">
 
-                        {# {% for livre in livres %} #}
+                        <div class="blocPrice">
+                            
+                            <div class="pack">   
 
-                            <div class="blocPrice">
-                                
-                                <div class="pack">   
+                                <div class="front">
+                                    {# POUR AFFICHER LE FORMAT #}
+                                    {# {% for livre in formatLivre.livre %} #}
+                                        {# <h2>{{ formatLivre.format }}</h2> #}
+                                    {# {% endfor %} #}
 
-                                    <div class="front">
-                                        {# POUR AFFICHER LE FORMAT #}
-                                        {# {% for livre in formatLivre.livre %} #}
-                                            {# <h2>{{ formatLivre.format }}</h2> #}
-                                        {# {% endfor %} #}
+                                    {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
+                                    <figure>
+                                        {# Pour afficher les couvertures de chaque livres #}
+                                        <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couvertures des livres de la collection Revolutions" class="log">
+                                    </figure>
+                                    <div class="acheter1">ACHETEZ-MOI</div> 
 
-                                        {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
-                                        <figure>
-                                            {# Pour afficher les couvertures de chaque livres #}
-                                            <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couvertures des livres de la collection Revolutions" class="log">
-                                        </figure>
-                                        <div class="acheter1">ACHETEZ-MOI</div> 
-
-                                    </div>
-                    
-                                    <div class="back">
-
-                                        <figure>
-                                                {# Pour afficher les tomes de chaque livres #}
-                                            <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
-                                        </figure>
-
-                                        {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
-                                        <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
-                                        
-                                        {# POUR AFFICHER LE PRIX UNITAIRE #}
-                                        {# {% for formatLivre in livre.formatLivre %} #}
-                                            {# <h3>Prix : {{ formatLivre }} € ttc</h3> #}
-                                        {# {% endfor %} #}
-
-                                        <h6>(Dont 4 € de frais de port)</h6>
-
-                                        <p>{{ livre.resume }}</p> 
-                                        
-                                        {%  if app.user %}
-                                            {# Pour ajouter un livre à la commande #}
-                                            <a href=""><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
-                                        {% endif %}
-
-                                    </div>
-                                
                                 </div>
-                                
-                            </div>
+                
+                                <div class="back">
 
-                        {# {% endfor %} #}
+                                    <figure>
+                                            {# Pour afficher les tomes de chaque livres #}
+                                        <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                                    </figure>
+
+                                    {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
+                                    <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
+                                    
+                                    {# POUR AFFICHER LE PRIX UNITAIRE #}
+                                    {# {% for formatLivre in livre.formatLivre %} #}
+                                        {# <h3>Prix : {{ formatLivre }} € ttc</h3> #}
+                                    {# {% endfor %} #}
+
+                                    <h6>(Dont 4 € de frais de port)</h6>
+
+                                    <p>{{ livre.resume }}</p> 
+                                    
+                                    {%  if app.user %}
+                                        {# Pour ajouter un livre à la commande #}
+                                        <a href=""><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                    {% endif %}
+
+                                </div>
+                            
+                            </div>
+                            
+                        </div>
 
                     </section> 
 
