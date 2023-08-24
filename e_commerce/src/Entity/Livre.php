@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Entity\Livre;
 use App\Entity\Serie;
 use App\Entity\Format;
-use App\Entity\FormatLivre;
 use App\Entity\CommandeLivre;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,18 +40,16 @@ class Livre
     #[ORM\Column(length: 255)]
     private ?string $tome = null;
 
-    #[ORM\OneToMany(mappedBy: 'livre', targetEntity: CommandeLivre::class)]
-    private Collection $commandeLivres;
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // Ajouter cascade: 'persist' et orphanRemoval:true dans l'ORM 
-    #[ORM\OneToMany(mappedBy: 'livre',  cascade: ['persist'], orphanRemoval:true, targetEntity: FormatLivre::class)]
-    private Collection $formatLivres;
+    #[ORM\ManyToOne(inversedBy: 'livre')]
+    private ?Format $format = null;
+
+    #[ORM\Column]
+    private ?int $prix_unitaire = null;
+
 
     public function __construct()
     {
         $this->commandeLivres = new ArrayCollection();
-        $this->formatLivres = new ArrayCollection();
     }
 
 
@@ -110,7 +107,6 @@ class Livre
         return $this;
     }
 
-    
     ////////////////////////////////////////////////////////////////////////
     // Il est possible de créer d'autres fonctions ici
 
@@ -162,36 +158,6 @@ class Livre
         return $this;
     }
 
-    /**
-     * @return Collection<int, FormatLivre>
-     */
-    public function getFormatLivres(): Collection
-    {
-        return $this->formatLivres;
-    }
-
-    public function addFormatLivre(FormatLivre $formatLivre): static
-    {
-        if (!$this->formatLivres->contains($formatLivre)) {
-            $this->formatLivres->add($formatLivre);
-            $formatLivre->setLivre($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFormatLivre(FormatLivre $formatLivre): static
-    {
-        if ($this->formatLivres->removeElement($formatLivre)) {
-            // set the owning side to null (unless already changed)
-            if ($formatLivre->getLivre() === $this) {
-                $formatLivre->setLivre(null);
-            }
-        }
-
-        return $this;
-    }
-
     //Pour permettre l'affichage du champ serie dans le formulaire de création de livres
     /**
      * Get the value of serie
@@ -212,4 +178,29 @@ class Livre
 
         return $this;
     }
+
+    public function getFormat(): ?Format
+    {
+        return $this->format;
+    }
+
+    public function setFormat(?Format $format): static
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    public function getPrixUnitaire(): ?int
+    {
+        return $this->prix_unitaire;
+    }
+
+    public function setPrixUnitaire(int $prix_unitaire): static
+    {
+        $this->prix_unitaire = $prix_unitaire;
+
+        return $this;
+    }
+
 }

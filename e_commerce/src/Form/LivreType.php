@@ -69,14 +69,16 @@ class LivreType extends AbstractType
                 'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
-        
-
-
             ->add('serie', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Collection',
                 'class' => Serie::class, 
                 'attr' => ['class' => 'form-control'],
                 'choice_label' => 'intitule'
+            ])
+
+            ->add('prix_unitaire' , IntegerType::class, [
+                'label' => 'Prix',
+                'attr' => ['min' => 1, 'max' => 30]
             ])
 
             ->add('valider', SubmitType::class, [               // Ajouter directement le bouton submit ici
