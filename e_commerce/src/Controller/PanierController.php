@@ -110,4 +110,11 @@ class PanierController extends AbstractController
         $session->set('panier', $panier);               // Pour mettre le livre dans la session 
         return $this->redirectToRoute('panier_index');  // Redirection vers la page du panier
     }
+
+    #[Route('/empty', name: 'empty')]
+    public function empty(SessionInterface $session)
+    {
+        $session->remove('panier');                     // Supprimer tous les livres du panier dans la session
+        return $this->redirectToRoute('panier_index');  // Redirection vers la page du panier
+    }
 }
