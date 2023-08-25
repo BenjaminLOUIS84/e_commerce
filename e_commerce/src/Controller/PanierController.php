@@ -39,7 +39,7 @@ class PanierController extends AbstractController
             ];
 
             $total += $livre->getPrixUnitaire() * $quantity;
-            // dd($data);
+            dd($data);
         }
 
     }
