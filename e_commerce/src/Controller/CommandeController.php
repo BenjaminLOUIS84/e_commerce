@@ -100,7 +100,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
         //////////////////////////////////////////////////////////////////////////
 
-
         return $this->render('commande/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)
             'form' => $form,
             'edit' => $commande->getId(),
@@ -113,25 +112,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(Commande $commande, 
-    // LivreRepository $livreRepository,
-    // CommandeLivre $commandelivre
-
-    
-    
-    
-
-    ): Response             // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
+    public function show(Commande $commande, CommandeLivreRepository $commandeLivreRepository): Response             // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
 
     {
-        // $livres = $livreRepository->findAll();
-        // $livre->$livreRepository->find($id);
+        $commandeLivres = $commandeLivreRepository->findAll();
        
         return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
             'commande' => $commande,
-            // 'commandeLivre' => $commandeLivre
-            
-            
+            'commandeLivres' => $commandeLivres,
+            // 'user' => $user
         ]);
     }
 

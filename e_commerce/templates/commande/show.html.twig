@@ -31,33 +31,37 @@
 
                 {# Afficher les coordonnées du client #}
                 <div class="order">
-                    {{ commande.coordonnees }}
-
+                    <h2>Adresse de Livraison :</h2>{{ commande.coordonnees }}
+                    
                     <div class="articles">
                         
-                        {# {% for livre in livres %} #}
-                        {# {% for commandeLivre in commandeLivres %} #}
+                        {% for commandeLivre in commandeLivres %}
+                        
                             <figure>
                                 {# Pour afficher les couvertures de chaque livres #}
-                                {# <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover"> #}
+                                <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
                             </figure>
-                        {# {% endfor %} #}
-                        
+                            <figcaption>
+                                <h2>Quantité :</h2>{{ commandeLivre}}
+                                <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc
+                                <h2>Total :</h2>  € ttc 
+                            </figcaption>
+                            
+                        {% endfor %}
+
                     </div>
-                
+                    
+                    <h3>TOTAL :</h3>
+
                     <nav id="men">
                         <div id="menu">
-
                             <a href=""><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
-                            
-                            {# {% for user in users%} #}
-                                {# <a href="{{ path ('show_user', {id: user.id}) }}"><img class="icone2" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a> #}
-                            {# {% endfor %} #}
-
                             <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à l'espace personnel"></a>
                         </div>
                     </nav>
-                </div>    
+
+                </div> 
+
             </div>
         </body>
 

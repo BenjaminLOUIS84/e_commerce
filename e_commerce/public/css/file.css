@@ -354,7 +354,7 @@ header {
 .order {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),white);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), white);
     border-radius: 10px;
     box-shadow: 0px 6px 10px black;
     font-size: 1em;
@@ -379,7 +379,7 @@ header {
 .edition {
     display: flex;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),white);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), white);
     border-radius: 10px;
     box-shadow: 0px 6px 10px black;
     font-size: 1.5em;
@@ -561,7 +561,7 @@ h6 {
         font-size: 2em;
     }
 
-    .icone, 
+    .icone,
     .icone1 {
         width: 20%;
     }
@@ -613,5 +613,12 @@ h6 {
 
     .articles {
         flex-wrap: wrap;
+    }
+
+    figcaption {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-size: 0.8em;
     }
 }

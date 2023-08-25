@@ -21,7 +21,7 @@ class UserController extends AbstractController
     public function index(
 
         UserRepository $userRepository,
-        //User $user,
+        // User $user,
         // int $id
 
     ): Response
@@ -38,7 +38,7 @@ class UserController extends AbstractController
         // $user = $userRepository->find($id);
         
         return $this->render('user/index.html.twig', [
-            'users' => $users
+            'users' => $users,
             //  'user' => $user
         ]);
     }
