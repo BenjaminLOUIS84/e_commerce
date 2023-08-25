@@ -32,16 +32,6 @@
                     <!-- Cette page concerne MON PANIER-->
                     <h3>MON PANIER</h3>
 
-                    {# Lire et afficher toutes les notifications #}
-
-                    {# {% for label, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="flash-{{ label }}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endfor %} #}
-
                     <table class="table">
                         <thead>
                             <tr>
@@ -83,7 +73,7 @@
                     </table>
 
                     {# Bouton pour mettre le panier dans une commande #}
-                    <a href="#" class="btn btn-dark">Valider le panier</a>
+                    <a href="{{ path ('app_commande_add') }}" class="btn btn-dark">Valider le panier</a>
 
                     <nav id="men">
                         <div id="menu">
