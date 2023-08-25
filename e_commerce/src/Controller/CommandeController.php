@@ -55,16 +55,20 @@ class CommandeController extends AbstractController
             $commande->addCommandeLivre($commandeLivre);       // Ajouter les détail dans la commande
         }
         /////////////////////////////////////////////////////// GERER LE TRAITEMENT EN BDD avec Persist et Flush
-
         //prepare PDO
         $em->persist($commande);                               // Dire à Doctrine que je veux sauvegarder la nouvelle commande           
-        //execute PDO
         $em->flush();                                          // Mettre la nouvelle commande dans la BDD
+        $session->remove('panier');                            // Remettre à zero le panier
 
+        $this->addFlash(                                       // Envoyer une notification
+            'success',
+            'Commande créee avec succès'
+        );
 
-        return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandeController'
-        ]);
+        // return $this->render('commande/index.html.twig', [
+        //     'controller_name' => 'CommandeController'
+        // ]);
+        return $this->redirectToRoute('app_commande');         // Rediriger vers la page de la commande
         
        
     }
