@@ -26,7 +26,7 @@
             <div class="wrapper">
                 <header>
                     <!-- Cette page concerne le format des livres Papier ou Numérique -->
-                    <h3>FORMATS</h3>
+                    <h3>LES FORMATS D'EDITION</h3>
 
                     {# Lire et afficher toutes les notifications #}
 
@@ -41,14 +41,11 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau format #}
                         <a class="crud" href="{{ path ('new_format') }}">AJOUTER</a>
-                    
 
                         {# BDD L'élément de la format #}
                         {# Créer une boucle for #}
                         {% for format in formats %}
                             <div class="liste">
-                                
-                                
 
                                 {# Seul l'admin peut modifier et/ou supprimer une format #}
                                 <div class="option">
