@@ -42,10 +42,9 @@
 
                         <div class="liste">    
                             <div class="option">
-                                <a class="crud" href="{{ path ('app_commande_show_commande', {id: commande.id}) }}">N°{{ commande.numeroCommande }}</a>
+                                <a class="crud" href="{{ path ('app_commande_show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
                                 <a class="crud" href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                 <a class="crud" href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                <a href=""><img class="icone2" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             </div>  
                         </div>
 

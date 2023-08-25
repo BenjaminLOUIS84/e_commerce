@@ -18,13 +18,11 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
-
             <title>Détail de la commande</title>
         </head>
-        {# Détail de la commande cible à savoir la liste des livres #}
+
         <h3>Détail de la commande du {{ commande.dateCommande | date("d-m-Y") }} de {{commande.user.pseudo}}</h3>
         <body>
-
             <div class="wrapperLivres">
 
                 {# Afficher les coordonnées du client #}
@@ -35,26 +33,24 @@
                         
                         {% for commandeLivre in commandeLivres %}
                         
+                            <h2>{{ commande.numeroCommande }}</h2>
                             <figure>
                                 {# Pour afficher les couvertures de chaque livres #}
                                 <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
                             </figure>
                             <figcaption>
-                                <h2>Quantité :</h2>{{ commandeLivre}}
+                                <h2>Quantité :</h2>{{ commandeLivre }}
                                 <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc
-                                <h2>Total :</h2>  € ttc 
                             </figcaption>
                             
                         {% endfor %}
 
                     </div>
-                    
-                    <h3>TOTAL :</h3>
 
                     <nav id="men">
                         <div id="menu">
-                            <a href=""><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
-                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à l'espace personnel"></a>
+                            <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
+                            <a href="{{ path ('app_commande_index') }}"><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Retour aux commandes" title="Retourner aux commandes"></a>
                         </div>
                     </nav>
 
