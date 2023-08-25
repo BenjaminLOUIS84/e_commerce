@@ -32,13 +32,14 @@
                     <div class="articles">
                         
                         {% for commandeLivre in commandeLivres %}
-                        
-                            <h2>{{ commande.numeroCommande }}</h2>
+
                             <figure>
                                 {# Pour afficher les couvertures de chaque livres #}
                                 <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
                             </figure>
+                            
                             <figcaption>
+                                <h2>N°</h2>{{ commande.numeroCommande }}
                                 <h2>Quantité :</h2>{{ commandeLivre }}
                                 <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc
                             </figcaption>
