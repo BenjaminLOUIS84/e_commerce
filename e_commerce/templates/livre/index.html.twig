@@ -66,7 +66,7 @@
                                     <div class="back">
 
                                         <figure>
-                                                {# Pour afficher les tomes de chaque livres #}
+                                            {# Pour afficher les tomes de chaque livres #}
                                             <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
                                         </figure>
                                         
@@ -81,10 +81,8 @@
 
                                             <p>{{ livre.resume }}</p> 
                                             
-                                            {%  if app.user %}
-                                                {# Pour ajouter un livre à la commande #}
-                                                <a href="{{ path ('new_commande') }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
-                                            {% endif %}
+                                            {# Pour ajouter le livre au panier #}
+                                            <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
 
                                         {% endif %}
                                         

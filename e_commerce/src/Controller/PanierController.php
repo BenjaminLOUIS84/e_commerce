@@ -2,17 +2,19 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Livre;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/panier', name: 'panier_')]
 class PanierController extends AbstractController
 {
-    #[Route('/panier', name: 'app_panier')]
-    public function index(): Response
+    #[Route('/add/{id}', name: 'add')]
+    public function add(Livre $livre, SessionInterface $session)
     {
-        return $this->render('panier/index.html.twig', [
-            'controller_name' => 'PanierController',
-        ]);
+
+        dd($session); // Pour dumper la variable session et voir ce qu'il y a dedans
+
     }
 }
