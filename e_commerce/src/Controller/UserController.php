@@ -20,8 +20,8 @@ class UserController extends AbstractController
 
     public function index(
 
-        UserRepository $userRepository,
-        // User $user,
+        // UserRepository $userRepository,
+        User $user,
         // int $id
 
     ): Response
@@ -31,15 +31,15 @@ class UserController extends AbstractController
         // $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);
         
         // Affiche un utilisateur précis
-        $users = $userRepository->findBy(["Pseudo" => "Benby"], ["Pseudo" => "ASC"]);
+        // $users = $userRepository->findBy(["Pseudo" => "Benby"], ["Pseudo" => "ASC"]);
         
         // Affiche un utilisateur en fonction de son id
         // $users = $userRepository->findBy(["id" => $id], ["Pseudo" => "ASC"]);
         // $user = $userRepository->find($id);
         
         return $this->render('user/index.html.twig', [
-            'users' => $users
-            //  'user' => $user
+            // 'users' => $users
+             'user' => $user
         ]);
     }
 
