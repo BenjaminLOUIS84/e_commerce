@@ -19,7 +19,7 @@
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 
-            <title>MA COMMANDE</title>
+            <title>COMMANDES</title>
         </head>
 
         <body>
@@ -27,7 +27,7 @@
                 <header>
 
                     <!-- Cette partie concerne toutes les commandes faites par les utilisateurs sur le site -->
-                    <h3>MA COMMANDE</h3>
+                    <h3>MES COMMANDES</h3>
 
                     {# Lire et afficher toutes les notifications #}
                     {% for label, messages in app.flashes %}
@@ -39,13 +39,13 @@
                     {% endfor %}
 
                     {% for commande in commandes%}
-                    
-                        {{ commande.numeroCommande }}
 
                         <div class="liste">    
                             <div class="option">
-                                <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                <a class="crud" href="{{ path ('app_commande_show_commande', {id: commande.id}) }}">N°{{ commande.numeroCommande }}</a>
+                                <a class="crud" href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                <a class="crud" href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                <a href=""><img class="icone2" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             </div>  
                         </div>
 
@@ -53,7 +53,6 @@
 
                     <nav id="men">
                         <div id="menu">
-                            <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
                         </div>
                     </nav>
