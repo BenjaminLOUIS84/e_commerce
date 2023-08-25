@@ -39,30 +39,29 @@
                         {% endfor %}
                     {% endfor %}
 
-                    {# Ce que l'administrateur peut voir #}
-                    {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
-                    {# {% if commandes | length >0 %} #}
+                    <h2>Adresse de Livraison :</h2>
+                    {# {{ commande.coordonnees }} #}
 
-                        {# {% for commande in commandes %} #}
+                    {% if user.commande | length >0 %}
 
-                            <div class="liste">
-
-                                {# <br><h2>Commande de {{ commande.user.Pseudo}}</h2><br> #}
-
-                                <div class="option">
-                                    {# Accéder au détail en cliquant sur la date de commande #}
-                                    {# <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('see_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a> #}
-                                </div>
+                        {% for commande in user.commande %}
                             
+                            <div class="liste">    
+                                <div class="option">
+                                    <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                </div>  
                             </div>
-                        {# {% endfor %} #}
 
-                    {# {% else %} #}
-                        {# <p>Aucunes commandes</p> #}
-                    {# {% endif %} #}
+                        {% endfor %}
+
+                    {% else %}
+                        <p>Aucunes commandes</p>
+                    {% endif %}
                     
                     <nav id="men">
                         <div id="menu">
+                            <a href=""><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
                         </div>
                     </nav>

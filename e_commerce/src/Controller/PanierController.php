@@ -24,11 +24,6 @@ class PanierController extends AbstractController
         $data = [];
         $total = 0;
 
-        ////////////////////////////////////////////
-        // ACTIVER pour effacer le panier manuellement
-        // $session->set('panier', []);
-        ////////////////////////////////////////////
-
         foreach($panier as $id => $quantity){       //  Faire une boucle pour réaliser l'action automatique pour chaque ajout de livres
 
             $livre = $livreRepository->find($id);   // Récupérer le livre suivant son id
@@ -42,13 +37,7 @@ class PanierController extends AbstractController
             // dd($data);
         }
 
-        // $this->addFlash(                            // Envoyer une notification
-        //     'success',
-        //     'Livre ajouté avec succès!'
-        // );
-
         return $this->render('panier/index.html.twig', compact('data', 'total'));
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
