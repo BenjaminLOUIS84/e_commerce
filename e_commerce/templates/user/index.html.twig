@@ -36,12 +36,14 @@
                         <br><a href="{{ path ('app_serie')}}">Gérer les collections</a>
                     {% endif %}   
                     
+                    {# Fonctions pour les utilisateurs #}
                     <a href="{{ path ('app_format')}}">Mode d'édition</a> 
 
                     <nav id="men">
                         <div id="menu">
                             <a href="{{ path ('app_livre')}}"><img class="lk" src="{{ asset('img/book-solid.svg') }}" title="Voir les livres" alt="Voir les livres"></a>
                             <a href="{{ path ('panier_index') }}"><img class="icone2" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
+                            
                             <a href="{{ path ('app_param') }}"><img class="lk" src="{{ asset('img/gear-solid.svg') }}" title="Gérer son compte" alt="Gérer son compte"></a>
                             <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retourner à la page d'accueil" alt="Retour à la page d'accueil"></a>
                         </div>
