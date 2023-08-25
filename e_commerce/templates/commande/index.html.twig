@@ -30,7 +30,6 @@
                     <h3>MA COMMANDE</h3>
 
                     {# Lire et afficher toutes les notifications #}
-
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
                             <div class="flash-{{ label }}">
@@ -39,26 +38,19 @@
                         {% endfor %}
                     {% endfor %}
 
-                    <h2>Adresse de Livraison :</h2>
-                    {# {{ commande.coordonnees }} #}
-
-                    {# {% if commande | length >0 %} #}
-
-                        {# {% for commande in user.commande %} #}
-                            
-                            <div class="liste">    
-                                <div class="option">
-                                    {# <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
-                                    {# <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> #}
-                                </div>  
-                            </div>
-
-                        {# {% endfor %} #}
-
-                    {# {% else %}
-                        <p>Aucunes commandes</p>
-                    {% endif %} #}
+                    {% for commande in commandes%}
                     
+                        {{ commande.numeroCommande }}
+
+                        <div class="liste">    
+                            <div class="option">
+                                <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                            </div>  
+                        </div>
+
+                    {% endfor %}
+
                     <nav id="men">
                         <div id="menu">
                             <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
