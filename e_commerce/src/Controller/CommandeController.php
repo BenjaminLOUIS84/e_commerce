@@ -15,6 +15,7 @@ use App\Repository\CommandeLivreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/commande', name: 'app_commande_')]
@@ -24,14 +25,33 @@ class CommandeController extends AbstractController
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
     #[Route('/ajout', name: 'add')]
-    public function add(): Response
+    public function add(SessionInterface $session): Response   // Récupérer la session du panier
     {    
         // $this->denyAccesUnlessGranted('ROLE_USER');         // Permet de vérifier si un user est connecté pour passer une commande
-        //if (app.user === true){
-            return $this->render('commande/index.html.twig', [
-                'controller_name' => 'CommandeController'
-            ]);
-        //} 
+       
+        $panier = $session->get('panier', []);                 // Récupérer le panier ou un tableau vide
+        // dd($panier);                                        // Vérifier si le panier est bien récupéré
+
+        if($panier === []){                                    // Si le panier est vide alors
+            $this->addFlash(                                   // Envoyer une notification
+                'notice',
+                'Votre panier est vide'
+            );
+            return $this->redirectToRoute('app_livre');        // Rediriger vers la liste des livres
+        }
+
+        $commande = new Commande();                            // Si le panier n'est pas vide, alors créer la commande
+
+        // Parcourir le panier pour créer les détails de la commande
+
+        foreach ($panier as $item => $quantity) {
+            $commandeLivre = new CommandeLivre();
+        }
+
+        return $this->render('commande/index.html.twig', [
+            'controller_name' => 'CommandeController'
+        ]);
+        
        
     }
 

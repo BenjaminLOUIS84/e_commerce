@@ -27,6 +27,9 @@ class CommandeLivre
     #[ORM\JoinColumn(nullable: false)]
     private ?Livre $livre = null;
 
+    #[ORM\Column]
+    private ?int $prix_unitaire = null;
+
 
     public function getId(): ?int
     {
@@ -72,5 +75,17 @@ class CommandeLivre
     public function __toString() {  
 
         return $this->quantite. " ";                                               
+    }
+
+    public function getPrixUnitaire(): ?int
+    {
+        return $this->prix_unitaire;
+    }
+
+    public function setPrixUnitaire(int $prix_unitaire): static
+    {
+        $this->prix_unitaire = $prix_unitaire;
+
+        return $this;
     }  
 }
