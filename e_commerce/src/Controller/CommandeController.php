@@ -42,7 +42,6 @@ class CommandeController extends AbstractController
         $commande = new Commande();                            // Si le panier n'est pas vide, alors créer la commande
         $commande->setUser($this->getUser());                  // Remplir la commande
         $commande->setNumeroCommande(uniqid());
-        $commande->setDateCommande(uniqid());
 
         foreach ($panier as $item => $quantite) {              // Parcourir le panier pour créer les détails de la commande
 

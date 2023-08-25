@@ -24,7 +24,7 @@ class Commande
     private ?string $numero_commande = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[ORM\JoinColumn(nullable: false)]
+    // #[ORM\JoinColumn(nullable: false)]
     private ?\DateTimeInterface $date_commande = null;
 
     #[ORM\Column(length: 100)]
