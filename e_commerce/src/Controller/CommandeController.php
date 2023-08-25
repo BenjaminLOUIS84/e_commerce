@@ -22,6 +22,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CommandeController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LA COMMANDE
+
+    #[Route('/', name: 'index')]
+    public function index(SessionInterface $session)
+    {
+
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
     #[Route('/ajout', name: 'add')]                            // Récupérer la session du panier, le repository du livre, et l'entité de la table associative
@@ -70,29 +79,6 @@ class CommandeController extends AbstractController
         ]);
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION ADMINISTRATEUR POUR AFFICHER TOUTES LES COMMANDES
-
-    // #[Route('/commande', name: 'app_commande')]
-    // public function index(CommandeRepository $commandeRepository): Response
-
-    // {                                                               
-        
-        // $commandes = $commandeRepository->findBy([], ["date_commande" => "ASC"]);
-
-
-        //$commandeLivre = $commandeLivreRepository->find($id)
-
-        // return $this->render('commande/index.html.twig', [
-            // 'commandes' => $commandes,
-            // 'commandeLivres' => $commandeLivres,
-            // 'livres' => $livres,
-
-            // 'commandeLivre => commandeLivre
-        // ]);
-    // }
-
-    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION UTILISATEUR POUR SUPPRIMER UNE COMMANDE
 

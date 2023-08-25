@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping\Entity;
 class UserController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LES UTILISATEURS DANS L'ESPACE PERSONNEL
+    // FONCTION POUR AFFICHER L'ESPACE PERSONNEL
 
     #[Route('/user', name: 'app_user')]
     public function index(UserRepository $userRepository): Response
@@ -21,7 +21,7 @@ class UserController extends AbstractController
         $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
         
         return $this->render('user/index.html.twig', [
-            'users' => $users,
+            'users' => $users
         ]);
     }
 
