@@ -28,8 +28,11 @@ class CommandeController extends AbstractController
     public function index(SessionInterface $session)
     {
 
+        return $this->render('commande/index.html.twig', [     // Rediriger vers la page de la commande
+            'controller_name' => 'CommandeController'
+        ]);
     }
-    
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
