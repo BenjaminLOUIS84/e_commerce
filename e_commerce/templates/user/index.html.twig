@@ -33,7 +33,7 @@
 
                     {# Fonction pour l'Administrateur #}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <br><a href="{{ path ('app_serie')}}">Gérer les collections</a>
+                        <br><a href="{{ path ('app_serie')}}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Gérer les collections" alt="Gérer les collections"></a>
                     {% endif %}   
                     
                     {# Fonctions pour les utilisateurs #}
