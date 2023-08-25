@@ -76,7 +76,7 @@
                                 <td colspan="3">Total</td>
                                 <td>{{ total }} €</td>
                                 <td>
-                                    <a href="" class="btn btn-dark">Vider</a>
+                                    <a href="{{ path('panier_delete', {id: element.livre.id})}}" class="btn btn-dark">Vider</a>
                                 </td>
                             </tr>
                         </tfoot>
