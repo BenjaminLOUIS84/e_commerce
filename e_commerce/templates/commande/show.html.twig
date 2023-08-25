@@ -21,7 +21,11 @@
             <title>Détail de la commande</title>
         </head>
 
-        <h3>Détail de la commande du {{ commande.dateCommande | date("d-m-Y") }} de {{commande.user.pseudo}}</h3>
+        <h3>Commande n° {{ commande.numeroCommande }}<br>
+            faite le {{ commande.dateCommande | date("d-m-Y") }}<br> 
+            par {{commande.user.pseudo}}
+        </h3>
+
         <body>
             <div class="wrapperLivres">
 
@@ -37,9 +41,8 @@
                                 {# Pour afficher les couvertures de chaque livres #}
                                 <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
                             </figure>
-                            
+
                             <figcaption>
-                                <h2>N°</h2>{{ commande.numeroCommande }}
                                 <h2>Quantité :</h2>{{ commandeLivre }}
                                 <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc
                             </figcaption>
