@@ -42,22 +42,22 @@
                     <h2>Adresse de Livraison :</h2>
                     {# {{ commande.coordonnees }} #}
 
-                    {% if user.commande | length >0 %}
+                    {# {% if commande | length >0 %} #}
 
-                        {% for commande in user.commande %}
+                        {# {% for commande in user.commande %} #}
                             
                             <div class="liste">    
                                 <div class="option">
-                                    <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                    <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                    {# <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
+                                    {# <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> #}
                                 </div>  
                             </div>
 
-                        {% endfor %}
+                        {# {% endfor %} #}
 
-                    {% else %}
+                    {# {% else %}
                         <p>Aucunes commandes</p>
-                    {% endif %}
+                    {% endif %} #}
                     
                     <nav id="men">
                         <div id="menu">
