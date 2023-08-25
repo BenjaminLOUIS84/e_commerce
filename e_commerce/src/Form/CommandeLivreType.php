@@ -28,8 +28,13 @@ class CommandeLivreType extends AbstractType
                 'choice_label' => 'titre'
             ])
 
-            ->add('quantite' , IntegerType::class, [
+            ->add('prix_unitaire' , IntegerType::class, [
                 'label' => 'Quantité',
+                'attr' => ['min' => 1, 'max' => 90]
+            ])
+
+            ->add('prix_unitaire' , IntegerType::class, [
+                'label' => 'Prix',
                 'attr' => ['min' => 1, 'max' => 90]
             ])
         ;

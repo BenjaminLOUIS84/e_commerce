@@ -19,10 +19,12 @@ class Commande
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $numero_commande = null;
+    // Modifier l'ORM pour rendre le numéro de commande unique
+    #[ORM\Column(unique: true)]
+    private ?string $numero_commande = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?\DateTimeInterface $date_commande = null;
 
     #[ORM\Column(length: 100)]
@@ -45,6 +47,7 @@ class Commande
     private Collection $Facture;
 
     #[ORM\ManyToOne(inversedBy: 'commande')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,12 +68,12 @@ class Commande
         return $this->id;
     }
 
-    public function getNumeroCommande(): ?int
+    public function getNumeroCommande(): ?string
     {
         return $this->numero_commande;
     }
 
-    public function setNumeroCommande(int $numero_commande): static
+    public function setNumeroCommande(string $numero_commande): static
     {
         $this->numero_commande = $numero_commande;
 

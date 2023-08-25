@@ -24,11 +24,10 @@ class CommandeController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
-    #[Route('/ajout', name: 'add')]
-    public function add(SessionInterface $session): Response   // Récupérer la session du panier
+    #[Route('/ajout', name: 'add')]                            // Récupérer la session du panier, le repository du livre, et l'entité de la table associative
+    public function add(SessionInterface $session, LivreRepository $livreRepository, EntityManagerInterface $em): Response  
     {    
         // $this->denyAccesUnlessGranted('ROLE_USER');         // Permet de vérifier si un user est connecté pour passer une commande
-       
         $panier = $session->get('panier', []);                 // Récupérer le panier ou un tableau vide
         // dd($panier);                                        // Vérifier si le panier est bien récupéré
 
@@ -41,12 +40,28 @@ class CommandeController extends AbstractController
         }
 
         $commande = new Commande();                            // Si le panier n'est pas vide, alors créer la commande
+        $commande->setUser($this->getUser());                  // Remplir la commande
+        $commande->setNumeroCommande(uniqid());
+        $commande->setDateCommande(uniqid());
 
-        // Parcourir le panier pour créer les détails de la commande
+        foreach ($panier as $item => $quantite) {              // Parcourir le panier pour créer les détails de la commande
 
-        foreach ($panier as $item => $quantity) {
-            $commandeLivre = new CommandeLivre();
+            $commandeLivre = new CommandeLivre();              // Créer le détail 
+            $livre = $livreRepository->find($item);            // Récupérer le livre
+            // dd($livre);
+            $prix_unitaire = $livre->getPrixUnitaire();        // Récupérer le prix
+            $commandeLivre->setLivre($livre);                  // Créer le détail de la commande
+            $commandeLivre->setPrixUnitaire($prix_unitaire);   // Créer le prix et la quantité
+            $commandeLivre->setQuantite($quantite);
+            $commande->addCommandeLivre($commandeLivre);       // Ajouter les détail dans la commande
         }
+        /////////////////////////////////////////////////////// GERER LE TRAITEMENT EN BDD avec Persist et Flush
+
+        //prepare PDO
+        $em->persist($commande);                               // Dire à Doctrine que je veux sauvegarder la nouvelle commande           
+        //execute PDO
+        $em->flush();                                          // Mettre la nouvelle commande dans la BDD
+
 
         return $this->render('commande/index.html.twig', [
             'controller_name' => 'CommandeController'
