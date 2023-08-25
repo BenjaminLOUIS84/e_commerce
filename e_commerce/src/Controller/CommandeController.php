@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Livre;
 use App\Entity\Commande;
 use App\Form\CommandeType;
+use App\Entity\CommandeLivre;
 use App\Repository\UserRepository;
 use App\Repository\LivreRepository;
 use App\Repository\CommandeRepository;
@@ -113,8 +114,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
     public function show(Commande $commande, 
-    LivreRepository $livreRepository,
-    
+    // LivreRepository $livreRepository,
+    // CommandeLivre $commandelivre
 
     
     
@@ -123,12 +124,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     ): Response             // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
 
     {
-        $livres = $livreRepository->findAll();
+        // $livres = $livreRepository->findAll();
         // $livre->$livreRepository->find($id);
        
         return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
             'commande' => $commande,
-            'livres' => $livres
+            // 'commandeLivre' => $commandeLivre
             
             
         ]);
