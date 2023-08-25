@@ -22,25 +22,42 @@
         </head>
 
         <body>
-            <div class="wrapper">
+            <div class="wrapperPanier">
                 <header>
                     <!-- Cette page concerne MON PANIER-->
                     <h3>MON PANIER</h3>
 
                     {# Lire et afficher toutes les notifications #}
 
-                    {# {% for label, messages in app.flashes %}
+                    {% for label, messages in app.flashes %}
                         {% for message in messages %}
                             <div class="flash-{{ label }}">
                                 {{ message }}
                             </div>
                         {% endfor %}
-                    {% endfor %} #}
+                    {% endfor %}
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for element in data %}
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
                     
 
                     <nav id="men">
                         <div id="menu">
-                            {# <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>                        </div> #}
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>                        </div>
                         </div>
                     </nav>
 

@@ -42,7 +42,12 @@ class PanierController extends AbstractController
             // dd($data);
         }
 
-        return $this->render('panier/index.html.twig', compact('data'));
+        $this->addFlash(                            // Envoyer une notification
+            'success',
+            'Livre ajouté avec succès!'
+        );
+
+        return $this->render('panier/index.html.twig', compact('data', 'total'));
 
     }
 
