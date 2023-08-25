@@ -39,8 +39,10 @@ class PanierController extends AbstractController
             ];
 
             $total += $livre->getPrixUnitaire() * $quantity;
-            dd($data);
+            // dd($data);
         }
+
+        return $this->render('panier/index.html.twig', compact('data'));
 
     }
 
