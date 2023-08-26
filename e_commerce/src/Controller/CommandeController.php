@@ -36,6 +36,15 @@ class CommandeController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // // FONCTION POUR AFFICHER LES COMMANDES D'UN UTILISATEUR
+
+    // #[Route('/{slug}', name: 'userCom')]
+    // public function userCom(Commande $commande)
+    // {
+    //     return $this->render('commande/userCom.html.twig', compact('commande'));
+    // }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
     #[Route('/ajout', name: 'add')]                            // Récupérer la session du panier, le repository du livre, et l'entité de la table associative
