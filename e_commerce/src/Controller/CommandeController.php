@@ -79,11 +79,7 @@ class CommandeController extends AbstractController
             'Commande créee avec succès'
         );
 
-        // return $this->render('commande/index.html.twig', [     // Rediriger vers la page de la commande
-        //     'controller_name' => 'CommandeController'
-        // ]);
-
-        return $this->redirectToRoute('app_commande_index');                     // Rediriger vers la liste des commandes
+        return $this->redirectToRoute('app_commande_index');   // Rediriger vers la liste des commandes
 
     }
 
