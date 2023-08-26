@@ -43,7 +43,7 @@
                         <div class="liste">    
                             <div class="option">
                                 <a class="crud" href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                <a class="crud" href="{{ path ('app_commande_show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
+                                <a class="crud" href="{{ path ('app_commande_show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a> 
                                 <a class="crud" href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                             </div>  
                         </div>

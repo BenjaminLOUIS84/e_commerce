@@ -22,13 +22,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CommandeController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LA COMMANDE
+    // FONCTION POUR AFFICHER TOUTE LES COMMANDES ()
 
     #[Route('/', name: 'index')]
     public function index(SessionInterface $session, CommandeRepository $commandeRepository)
     {
         $commandes = $commandeRepository->findBy([],["nom" => "ASC"]);
-
+        
         return $this->render('commande/index.html.twig', [     // Rediriger vers la page de la commande
             'controller_name' => 'CommandeController',
             'commandes' => $commandes
