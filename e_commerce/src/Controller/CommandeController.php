@@ -22,27 +22,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CommandeController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER TOUTE LES COMMANDES ()
+    // FONCTION POUR AFFICHER TOUTE LES COMMANDES 
 
     #[Route('/', name: 'index')]
     public function index(SessionInterface $session, CommandeRepository $commandeRepository)
     {
         $commandes = $commandeRepository->findBy([],["nom" => "ASC"]);
         
-        return $this->render('commande/index.html.twig', [     // Rediriger vers la page de la commande
+        return $this->render('commande/index.html.twig', [     // Rediriger vers la page des commandes
             'controller_name' => 'CommandeController',
             'commandes' => $commandes
         ]);
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // // FONCTION POUR AFFICHER LES COMMANDES D'UN UTILISATEUR
-
-    // #[Route('/{slug}', name: 'userCom')]
-    // public function userCom(Commande $commande)
-    // {
-    //     return $this->render('commande/userCom.html.twig', compact('commande'));
-    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE

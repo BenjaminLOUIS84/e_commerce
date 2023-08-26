@@ -19,12 +19,23 @@ class UserController extends AbstractController
     #[Route('/user', name: 'app_user')]
     public function index(UserRepository $userRepository): Response
     { 
-        $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
+        // $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
+       
+        $users = $userRepository->findBy(["Pseudo" => "Lady"], ["Pseudo" => "ASC"]);      // Affiche Un utilisateur précis
 
         return $this->render('user/index.html.twig', [
             'users' => $users
         ]);
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER L'ESPACE PERSONNEL
+
+    // #[Route('/user/{id}', name: 'app_user')]
+    // public function index(User $user): Response
+    // { 
+    //     return $this->render('user/index.html.twig', compact('user'));
+    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN COMPTE
