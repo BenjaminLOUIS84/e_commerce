@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
@@ -17,25 +18,12 @@ class UserController extends AbstractController
     // FONCTION POUR AFFICHER L'ESPACE PERSONNEL
 
     #[Route('/user', name: 'app_user')]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository)
     { 
-        // $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
-       
-        $users = $userRepository->findBy(["Pseudo" => "Lady"], ["Pseudo" => "ASC"]);      // Affiche Un utilisateur précis
+        $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
 
-        return $this->render('user/index.html.twig', [
-            'users' => $users
-        ]);
+        return $this->render('user/index.html.twig', compact('users'));
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER L'ESPACE PERSONNEL
-
-    // #[Route('/user/{id}', name: 'app_user')]
-    // public function index(User $user): Response
-    // { 
-    //     return $this->render('user/index.html.twig', compact('user'));
-    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN COMPTE
