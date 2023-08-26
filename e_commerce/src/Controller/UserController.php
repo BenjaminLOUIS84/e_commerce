@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Commande;
+use Doctrine\ORM\Mapping\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Doctrine\ORM\Mapping\Entity;
 
 class UserController extends AbstractController
 {
@@ -21,7 +22,8 @@ class UserController extends AbstractController
         $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
         
         return $this->render('user/index.html.twig', [
-            'users' => $users
+            'users' => $users,
+            // 'commande' => $commande
         ]);
     }
 
