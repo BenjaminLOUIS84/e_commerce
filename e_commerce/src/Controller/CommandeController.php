@@ -25,14 +25,12 @@ class CommandeController extends AbstractController
     // FONCTION POUR AFFICHER TOUTE LES COMMANDES 
 
     #[Route('/', name: 'index')]
-    public function index(SessionInterface $session, CommandeRepository $commandeRepository)
+    public function index(CommandeRepository $commandeRepository)
     {
         $commandes = $commandeRepository->findBy([],["nom" => "ASC"]);
         
-        return $this->render('commande/index.html.twig', [     // Rediriger vers la page des commandes
-            'controller_name' => 'CommandeController',
-            'commandes' => $commandes
-        ]);
+        return $this->render('commande/index.html.twig', compact('commandes'));   // Rediriger vers la page des commandes
+    
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
