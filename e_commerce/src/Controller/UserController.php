@@ -63,7 +63,7 @@ class UserController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDES
 
-    #[Route('/user/{id}/detail', name: 'detail_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    #[Route('/user/{id}/detail', name: 'detail_commande')]              // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(Commande $commande, CommandeRepository $commandeRepository, CommandeLivreRepository $commandeLivreRepository): Response             
     {                                                              // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
         $commandes = $commandeRepository->findAll();
