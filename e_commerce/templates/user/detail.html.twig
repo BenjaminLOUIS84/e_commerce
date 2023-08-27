@@ -35,19 +35,19 @@
                     
                     <div class="articles">
     
-                        {# {% for commandeLivre in commandeLivres %} #}
+                        {% for commandeLivre in commandeLivres %}
 
                             <figure>
                                 {# Pour afficher les couvertures de chaque livres #}
-                                {# <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover"> #}
+                                <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
                             </figure>
 
                             <figcaption>
-                                {# <h2>Quantité :</h2>{{ app.commandeLivre }} #}
-                                {# <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc #}
+                                <h2>Quantité :</h2>{{ commandeLivre }}
+                                <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc
                             </figcaption>
                             
-                        {# {% endfor %} #}
+                        {% endfor %}
 
                     </div>
 
