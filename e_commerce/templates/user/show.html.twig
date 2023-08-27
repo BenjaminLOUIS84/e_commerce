@@ -19,7 +19,7 @@
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 
-            <title>MON PANIER</title>
+            <title>MES COMMANDES</title>
         </head>
 
         <body>
@@ -37,10 +37,10 @@
                     {% endfor %}
 
                     <!-- Cette partie concerne les commandes de chaque utilisateurs -->
-                    <h3>MON PANIER</h3>
+                    <h3>MES COMMANDES</h3>
 
                     {% if app.user %}
-                        <a class="crud" href="{{ path ('new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
+                        <a class="crud" href="{{ path ('app_commande_new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
                     {% endif %}
 
                     {# Ce que les utiliseurs peuvent voir #}
@@ -53,12 +53,12 @@
                             <div class="liste">
                                     
                                 <div class="option">
-                                    <a class="crud" href="{{ path ('edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    <a class="crud" href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
 
                                     {# Accéder au détail en cliquant sur la date de commande #}
-                                    <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('app_commande_show_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
                                     
-                                    <a class="crud" href="{{ path ('delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                    <a class="crud" href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 </div>
                                 
                             </div>
@@ -71,7 +71,7 @@
                     
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_user', {id: user.id}) }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+                            <a href="{{ path ('app_user', {id: user.id}) }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retourner à mon espace" title="Retourner à mon espace"></a>
                         </div>
                     </nav>
 

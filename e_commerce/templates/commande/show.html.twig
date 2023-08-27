@@ -54,7 +54,8 @@
                     <nav id="men">
                         <div id="menu">
                             <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
-                            <a href="{{ path ('app_commande_index', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
+                            
+                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
                         </div>
                     </nav>
 

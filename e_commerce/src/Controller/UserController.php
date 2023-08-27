@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Commande;
 use Doctrine\ORM\Mapping\Entity;
 use App\Repository\UserRepository;
+use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,11 +48,14 @@ class UserController extends AbstractController
 
     #[Route('/user/{id}', name: 'show_user')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(User $user): Response             // Créer une fonction show() dans le controller pour afficher le détail d'un user 
+    public function show(User $user, CommandeRepository $commandeRepository): Response             // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {
+        $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);      // Affiche tous les commandes
+
         return $this->render('user/show.html.twig', [      // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
-            'user' => $user
+            'user' => $user,
+            'commandes' => $commandes
         ]);
     }
 
