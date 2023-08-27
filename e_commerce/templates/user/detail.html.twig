@@ -40,7 +40,7 @@
                     
                     <div class="articles">
     
-                        {% for commandeLivre in commande.commandeLivres %}
+                        {% for commandeLivre in commandeLivres %}
              
                             <table class="table">
                                 <thead>
@@ -48,7 +48,6 @@
                                         <th>Livre</th>
                                         <th>Quantité</th>
                                         <th>Prix unitaire</th>
-                                        <th>Sous-total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,18 +55,19 @@
                                         <td><img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover"></td>
                                         <td>{{ commandeLivre }}</td>
                                         <td>{{ commandeLivre.Livre.prixUnitaire }} € ttc</td>
-                                        <td>{{ commandeLivre.sousTotal }} € ttc</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="3">TOTAL</td>
-                                        <td>€ TTC</td> 
+                                        <td colspan="2">Total</td>
+                                        <td>{{ commandeLivre.sousTotal }} € ttc</td> 
                                     </tr>
                                 </tfoot>
                             </table>
-
+                            
                         {% endfor %}
+                            <h3>Nombre total de livres : {{ commande.total }}</h3>
+                        <h2>TOTAL A PAYER  € TTC </h2>
 
                     </div>
 
