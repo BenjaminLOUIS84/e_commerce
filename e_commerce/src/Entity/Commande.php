@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use App\Entity\Livre;
 use App\Entity\Facture;
+use App\Entity\Commande;
 use App\Entity\CommandeLivre;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
