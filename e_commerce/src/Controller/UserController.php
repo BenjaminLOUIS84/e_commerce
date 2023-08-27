@@ -65,20 +65,18 @@ class UserController extends AbstractController
 
     #[Route('/user/{id}/detail', name: 'detail_commande')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(
-        // User $user,
+       
         Commande $commande,
-        // CommandeLivre $commandeLivre, 
         CommandeLivreRepository $commandeLivreRepository
     
     ): Response
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
-        $commandeLivres = $commandeLivreRepository->findBy(["livre" => 47], ["livre" => "ASC"]);
+        $commandeLivres = $commandeLivreRepository->findBy([], ["livre" => "ASC"]);
        
         return $this->render('user/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier commande)
-            // 'user' => $user,
+        
             'commande' => $commande,
-            // 'commandeLivre' => $commandeLivre,
             'commandeLivres' => $commandeLivres
         ]);
     }

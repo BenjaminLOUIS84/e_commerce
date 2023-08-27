@@ -19,24 +19,24 @@ class CommandeLivreType extends AbstractType
             
             ->add('commande', HiddenType::class)
 
-            ->add('livre', EntityType::class, [ 
-                // 'multiple' => true, 
-                // 'expanded' =>true,                   // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-                'label' => 'Livre',
-                'class' => Livre::class, 
-                'attr' => ['class' => 'form-control'],
-                'choice_label' => 'titre'
-            ])
+            // ->add('livre', EntityType::class, [ 
+            //     // 'multiple' => true, 
+            //     // 'expanded' =>true,                   // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            //     'label' => 'Livre',
+            //     'class' => Livre::class, 
+            //     'attr' => ['class' => 'form-control'],
+            //     'choice_label' => 'titre'
+            // ])
 
-            ->add('prix_unitaire' , IntegerType::class, [
-                'label' => 'Quantité',
-                'attr' => ['min' => 1, 'max' => 90]
-            ])
+            // ->add('quantite' , IntegerType::class, [
+            //     'label' => 'Quantité',
+            //     'attr' => ['min' => 1, 'max' => 90]
+            // ])
 
-            ->add('prix_unitaire' , IntegerType::class, [
-                'label' => 'Prix',
-                'attr' => ['min' => 1, 'max' => 90]
-            ])
+            // ->add('prix_unitaire' , IntegerType::class, [
+            //     'label' => 'Prix',
+            //     'attr' => ['min' => 1, 'max' => 90]
+            // ])
         ;
     }
 
