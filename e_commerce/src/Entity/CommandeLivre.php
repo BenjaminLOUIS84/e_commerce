@@ -87,5 +87,19 @@ class CommandeLivre
         $this->prix_unitaire = $prix_unitaire;
 
         return $this;
-    }  
+    } 
+
+    // Créer un fonction pour calculer le sous-total et le total de la commande
+
+    public function getSousTotal(): int
+    {
+       return  $this->prix_unitaire * $this->quantite; 
+    }
+
+    // public function getTotal(): int
+    // {
+    //    return  $this->prix_unitaire * $this->quantite; 
+    // }
+    ////////////////////////////////////////////////////////////////////////
+
 }
