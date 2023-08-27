@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Entity;
 use App\Repository\UserRepository;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommandeLivreRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -44,7 +45,7 @@ class UserController extends AbstractController
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER COMMANDE DE CHAQUE UTILISATEURS
+    // FONCTION POUR AFFICHER LES COMMANDES DE CHAQUE UTILISATEURS
 
     #[Route('/user/{id}', name: 'show_user')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
@@ -56,6 +57,20 @@ class UserController extends AbstractController
         return $this->render('user/show.html.twig', [      // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
             'user' => $user,
             'commandes' => $commandes
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDES
+
+    #[Route('/user/{id}/detail', name: 'detail_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    public function detail(Commande $commande, CommandeLivreRepository $commandeLivreRepository): Response             
+    {                                                              // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
+        $commandeLivres = $commandeLivreRepository->findAll();
+       
+        return $this->render('commande/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier commande)
+            'commande' => $commande,
+            'commandeLivres' => $commandeLivres
         ]);
     }
 
