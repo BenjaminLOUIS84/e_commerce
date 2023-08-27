@@ -141,14 +141,14 @@ class CommandeController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDE
 
-    #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
-    public function show(Commande $commande, CommandeLivreRepository $commandeLivreRepository): Response             
-    {                                                              // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
-        $commandeLivres = $commandeLivreRepository->findAll();
+    // #[Route('/commande/{id}', name: 'show_commande')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    // public function show(Commande $commande, CommandeLivreRepository $commandeLivreRepository): Response             
+    // {                                                              // Créer une fonction show() dans le controller pour afficher le détail d'une commande 
+    //     $commandeLivres = $commandeLivreRepository->findAll();
        
-        return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
-            'commande' => $commande,
-            'commandeLivres' => $commandeLivres,
-        ]);
-    }
+    //     return $this->render('commande/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier commande)
+    //         'commande' => $commande,
+    //         'commandeLivres' => $commandeLivres,
+    //     ]);
+    // }
 }

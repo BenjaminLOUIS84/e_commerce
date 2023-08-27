@@ -21,33 +21,33 @@
             <title>Détail de la commande</title>
         </head>
 
-        {# <h3>Commande n° {{ commande.numeroCommande }}<br>
+        <h3>Commande n° {{ commande.numeroCommande }}<br>
             faite le {{ commande.dateCommande | date("d-m-Y") }}<br> 
             par {{commande.user.pseudo}}
-        </h3> #}
+        </h3>
 
         <body>
             <div class="wrapperLivres">
 
                 {# Afficher les coordonnées du client #}
                 <div class="order">
-                    {# <h2>Adresse de Livraison</h2>{{ commande.coordonnees }} #}
+                    <h2>Adresse de Livraison</h2>{{ commande.coordonnees }}
                     
                     <div class="articles">
     
-                        {# {% for commandeLivre in commandeLivres %} #}
+                        {% for commandeLivre in commandeLivres %}
 
                             <figure>
                                 {# Pour afficher les couvertures de chaque livres #}
-                                {# <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover"> #}
+                                <img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover">
                             </figure>
 
-                            {# <figcaption>
+                            <figcaption>
                                 <h2>Quantité :</h2>{{ commandeLivre }}
                                 <h2>Prix :</h2>{{ commandeLivre.Livre.prixUnitaire }} € ttc
-                            </figcaption> #}
+                            </figcaption>
                             
-                        {# {% endfor %} #}
+                        {% endfor %}
 
                     </div>
 
@@ -55,7 +55,7 @@
                         <div id="menu">
                             <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             
-                            {# <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a> #}
+                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
                         </div>
                     </nav>
 
