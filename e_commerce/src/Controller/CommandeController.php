@@ -113,10 +113,11 @@ class CommandeController extends AbstractController
 
             $this->addFlash(                                       // Envoyer une notification
                 'success',
-                'Opération réalisée avec succès!'
+                'Coordonnées enregistrées'
             );
 
-            return $this->redirectToRoute('app_user');              // Rediriger vers la liste des commandes
+            return $this->redirectToRoute('app_user');              // Rediriger vers l'espace personnel
+            // return $this->redirectToRoute('detail_commande', ['id: commande.id']);              // Rediriger vers la commande
         }
         
         return $this->render('commande/new.html.twig', [            // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)

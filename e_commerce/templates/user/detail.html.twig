@@ -53,7 +53,14 @@
 
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
+
+                            {# Créer une condition pour changer le bouton de finalisation en bouton de paiement après avoir remplit le formulaire #}
+                            {# {% if commande.coordonnees | true %} #}
+                                {# <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Payer" title="Payer"></a> #}
+                            {# {% else %} #}
+                                <a href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>  
+                            {# {% endif %} #}
+
                             <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
                         </div>
                     </nav>

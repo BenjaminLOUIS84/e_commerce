@@ -36,7 +36,6 @@ class CommandeType extends AbstractType
             //     'widget' =>'single_text',
             //     'attr' =>['class' =>'form-control']
             // ])
-
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('adresse', TextType::class)
@@ -49,8 +48,7 @@ class CommandeType extends AbstractType
             //     'prototype' => true,                            // Pour autoriser l'ajout de nouveaux éléments dans l'entité session qui seront persistés grâce aux cascade persist sur l'élément programme 
             //                                                     // Permet d'activer un data prototype qui sera un élément html qu'on pourra manipuler en JS
             //     'allow_add' => true,                            // Permet d'ajouter plusieurs éléments
-            //     'allow_delete' => true,                         // Permet de supprimer plusieurs éléments
-                
+            //     'allow_delete' => true,                         // Permet de supprimer plusieurs éléments   
             //     'by_reference' => false                         // OBLIGATOIRE Car Livre n'a pas de setFormatLivre, c'est FormatLivre qui contient setSession (Programme est propriétaire de la relation)
             // ])                                                  // Cela évite un mapping false
 
