@@ -26,8 +26,10 @@
             <div class="wrapper">
                 <header>
 
-                    {# Lire et afficher toutes les notifications #}
+                    <!-- Cette partie concerne les commandes de chaque utilisateurs -->
+                    <h3>MES COMMANDES</h3>
 
+                    {# Lire et afficher toutes les notifications #}
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
                             <div class="flash-{{ label }}">
@@ -35,13 +37,6 @@
                             </div>
                         {% endfor %}
                     {% endfor %}
-
-                    <!-- Cette partie concerne les commandes de chaque utilisateurs -->
-                    <h3>MES COMMANDES</h3>
-
-                    {% if app.user %}
-                        <a class="crud" href="{{ path ('app_commande_new_commande') }}"><img class="icone" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter une commande" title="Ajouter une commande"></a>
-                    {% endif %}
 
                     {# Ce que les utiliseurs peuvent voir #}
                     {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}

@@ -77,7 +77,7 @@ class CommandeController extends AbstractController
             'Commande créee avec succès'
         );
 
-        return $this->redirectToRoute('show_user');   // Rediriger vers la liste des commandes
+        return $this->redirectToRoute('app_user');   // Rediriger vers la liste des commandes
 
     }
 
@@ -128,7 +128,7 @@ class CommandeController extends AbstractController
                 'Opération réalisée avec succès!'
             );
 
-            return $this->redirectToRoute('show_user');              // Rediriger vers la liste des commandes
+            return $this->redirectToRoute('app_user');              // Rediriger vers la liste des commandes
         }
         
         return $this->render('commande/new.html.twig', [            // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)

@@ -30,7 +30,16 @@
                     <!-- Cette page contient L'espace personnel des utilisateurs -->
                     <h3>MON ESPACE</h3>
                     <h2>Bienvenue dans votre espace personnel {{ app.user }} </h2><br>
-                      
+                    
+                    {# Lire et afficher toutes les notifications #}
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
                     {# Fonction pour l'Administrateur #}
                     {% if is_granted('ROLE_ADMIN') %}
                         <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Gérer les collections" alt="Gérer les collections"></a>
