@@ -116,8 +116,7 @@ class CommandeController extends AbstractController
                 'Coordonnées enregistrées'
             );
 
-            return $this->redirectToRoute('app_user');              // Rediriger vers l'espace personnel
-            // return $this->redirectToRoute('detail_commande', ['id: commande.id']);              // Rediriger vers la commande
+            return $this->redirectToRoute('detail_commande', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER);  // Rediriger vers la commande
         }
         
         return $this->render('commande/new.html.twig', [            // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)

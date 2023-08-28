@@ -247,12 +247,16 @@ class Commande
         return $this;
     }
 
-    // Créer un fonction pour calculer le Total de la commande
+    // Créer un fonction pour calculer le nombre de livres différents commandés
 
-    public function getTotal(): int
-    {
-       return  $this->getCommandeLivres()->count(); 
-    }
+    // public function getNbLivres(): int
+    // {
+    //    return  $this->getCommandeLivres()->count(); 
+    // }
+
+    // Créer un fonction pour calculer le montant total de la commande
+
+   
    
     
 }
