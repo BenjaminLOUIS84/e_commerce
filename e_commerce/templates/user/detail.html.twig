@@ -71,7 +71,7 @@
                             <h2>TOTAL A PAYER {{ commandeLivre.total }} € TTC</h2>
                         {% endfor %} #}
                         
-                        {# <h2>TOTAL A PAYER {{ commande.total }} € TTC</h2> #}
+                        <h2>TOTAL A PAYER {{ commande.total }} € TTC</h2>
 
                     </div>
 
@@ -80,7 +80,7 @@
 
                             {# Créer une condition pour changer le bouton de finalisation en bouton de paiement après avoir remplit le formulaire #}
                             {% if commande.nom|length >0 %}
-                                <a href=""><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Payer" title="Payer"></a>     
+                                <a href="/create-checkout-session"><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Payer" title="Payer"></a>     
                             {% else %}
                                 <a href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             {% endif %}

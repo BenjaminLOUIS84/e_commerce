@@ -32,25 +32,25 @@ class CommandeLivreRepository extends ServiceEntityRepository
     //     ;
     // }
 
-    public function total($commande_id): ?CommandeLivre
-    {
-        $em = $this->getEntityManager();
+    // public function total($commandeLivres)
+    // {
+    //     $em = $this->getEntityManager();
 
-        $requete = $em->createQueryBuilder();
+    //     $requete = $em->createQueryBuilder('cl');
 
-        $qB = $requete;
+    //     $qB = $requete;
 
-        $qB
-            ->select('SUM(quantite * prix_unitaire)')
-            ->from('App\Entity\commande_livre')
-            ->where('commande_id = :id')
-            ->setParameter(':id', $commmandeLivre)
-        ;
+    //     $qB
+    //         ->select('SUM(cl.quantite * cl.prix_unitaire)')
+    //         ->from('App\Entity\commande_livre')
+    //         ->where('cl.commande_id = :id')
+    //         ->setParameter('id', $commandeLivres)
+    //     ;
             
-        $query = $requete->getQuery();
-        return $query->getResult();
+    //     $query = $requete->getQuery();
+    //     return $query->getResult();
         
-    }
+    // }
     
     //    public function findOneBySomeField($value): ?CommandeLivre
     //    {
