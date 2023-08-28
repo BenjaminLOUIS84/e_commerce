@@ -37,6 +37,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    ////////////////////////////////////////////////////////////////////////////
+    // Créer une propriété qui va stocker le jeton de connexion d'un utilisateur
+    // #[ORM\Column(type: 'string', length: 100)]
+    // private $resetToken;
+    ////////////////////////////////////////////////////////////////////////////
+
     #[ORM\Column(length: 255)] // Spécifie que le pseudo est unique (à ajouter)
     private ?string $Pseudo = null;
 
@@ -129,6 +135,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /////////////////////////////////////////////////////////////////////
+    // Créer le getteur et le setteur
+    // public function getResetToken(): ?string
+    // {
+    //     return $this->resetToken;
+    // }
+
+    // public function setResetToken(?string $resetToken): self
+    // {
+    //     $this->resetToken = $resetToken;
+
+    //     return $this;
+    // }
+    /////////////////////////////////////////////////////////////////////
 
     public function getPseudo(): ?string
     {
