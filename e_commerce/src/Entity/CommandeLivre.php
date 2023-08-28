@@ -25,6 +25,7 @@ class CommandeLivre
 
     #[ORM\ManyToOne(inversedBy: 'commandeLivres')]
     #[ORM\JoinColumn(nullable: false)]
+
     private ?Livre $livre = null;
 
     #[ORM\Column]
@@ -94,7 +95,6 @@ class CommandeLivre
     {
        return  $this->prix_unitaire * $this->quantite; 
     }
-
     ////////////////////////////////////////////////////////////////////////
 
 }

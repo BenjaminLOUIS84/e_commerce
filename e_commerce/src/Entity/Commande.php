@@ -248,15 +248,14 @@ class Commande
     }
     
     // Créer un fonction pour calculer le Total de la commande
-    public function getTotal(): int
-    {
-    
-       return  $this->getCommandeLivres()
-       ->count()
-       
-       ; 
-    }
- 
+
+    public function getTotalCommande(){
+        $total = 0;
+        foreach ($this->getCommandeLivres() as $commandeLivres){
+          $total += $commandeLivres->getSousTotal();
+        }
+        return $total;
+      }
     ////////////////////////////////////////////////////////////////////////
     
 }
