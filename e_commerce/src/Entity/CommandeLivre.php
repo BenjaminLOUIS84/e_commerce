@@ -90,7 +90,6 @@ class CommandeLivre
     } 
 
     // Créer un fonction pour calculer le sous-total de la commande
-
     public function getSousTotal(): int
     {
        return  $this->prix_unitaire * $this->quantite; 
@@ -98,4 +97,9 @@ class CommandeLivre
 
     ////////////////////////////////////////////////////////////////////////
 
+    // Créer un fonction pour calculer le Total de la commande
+     
+ 
+    ////////////////////////////////////////////////////////////////////////
+ 
 }

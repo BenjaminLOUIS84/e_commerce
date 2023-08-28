@@ -251,7 +251,10 @@ class Commande
     public function getTotal(): int
     {
     
-    //    return  $this->getCommandeLivres()->count(['prix_unitaire']); 
+       return  $this->getCommandeLivres()
+       ->count()
+       
+       ; 
     }
  
     ////////////////////////////////////////////////////////////////////////
