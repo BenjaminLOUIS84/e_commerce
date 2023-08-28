@@ -26,28 +26,42 @@ class CommandeLivreRepository extends ServiceEntityRepository
     //     return $this
     //         ->createQueryBuilder('commandeLivre')
     //         ->andWhere('commande_id = :id')
-    //         ->setParameter(SUM('quantite' * 'prix_unitaire'))
+    //         ->setParameter("SUM('quantite' * 'prix_unitaire')")
     //         ->getQuery()
     //         ->getResult()
     //     ;
     // }
 
-    public function total(): ?int
+    public function total($commande_id): ?CommandeLivre
     {
         $em = $this->getEntityManager();
-        $requete = $em->createQuerBuilder();
+
+        $requete = $em->createQueryBuilder();
+
         $qB = $requete;
 
         $qB
-            ->selectSUM(('quantite' * 'prix_unitaire'))
-            ->from('commande_livre')
+            ->select('SUM(quantite * prix_unitaire)')
+            ->from('App\Entity\commande_livre')
             ->where('commande_id = :id')
+            ->setParameter(':id', $commmandeLivre)
         ;
             
         $query = $requete->getQuery();
         return $query->getResult();
         
     }
+    
+    //    public function findOneBySomeField($value): ?CommandeLivre
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+
     //    /**
     //     * @return CommandeLivre[] Returns an array of CommandeLivre objects
     //     */
@@ -63,14 +77,5 @@ class CommandeLivreRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?CommandeLivre
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 
 }

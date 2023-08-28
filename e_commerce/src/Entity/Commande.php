@@ -248,14 +248,14 @@ class Commande
     }
     
     // Créer un fonction pour calculer le Total de la commande
-    public function getTotal(): int
-    {
+    // public function getTotal(): int
+    // {
     
-       return  $this->getCommandeLivres()
-       ->count()
+    //    return  $this->getCommandeLivres()
+    //    ->count()
        
-       ; 
-    }
+    //    ; 
+    // }
  
     ////////////////////////////////////////////////////////////////////////
     
