@@ -31,11 +31,11 @@ class CommandeType extends AbstractType
             //     'choice_label' => 'pseudo'
             // ])
 
-            // ->add('date_commande', DateType::class, [   // Ajouter après class ['widget' => 'single_text', 'attr' =>['class' =>'form-control']] Propiété BootStrap pour améliorer l'affichage de la date
-            //     'label' => 'Date de commande',
-            //     'widget' =>'single_text',
-            //     'attr' =>['class' =>'form-control']
-            // ])
+            ->add('date_commande', DateType::class, [   // Ajouter après class ['widget' => 'single_text', 'attr' =>['class' =>'form-control']] Propiété BootStrap pour améliorer l'affichage de la date
+                'label' => 'Date de commande',
+                'widget' =>'single_text',
+                'attr' =>['class' =>'form-control']
+            ])
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('adresse', TextType::class)
