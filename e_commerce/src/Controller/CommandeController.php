@@ -60,12 +60,12 @@ class CommandeController extends AbstractController
         $em->flush();                                          // Mettre la nouvelle commande dans la BDD
         $session->remove('panier');                            // Remettre à zero le panier
 
-        $this->addFlash(                                       // Envoyer une notification
-            'success',
-            'Commande créee avec succès'
-        );
+        // $this->addFlash(                                       // Envoyer une notification
+        //     'success',
+        //     'Commande créee avec succès'
+        // );
 
-        return $this->redirectToRoute('app_user');   // Rediriger vers la liste des commandes
+        return $this->redirectToRoute('detail_commande', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Rediriger vers la commande
 
     }
 
@@ -111,10 +111,10 @@ class CommandeController extends AbstractController
             //execute PDO
             $entityManager->flush();                               // Mettre la nouvelle commande dans la BDD
 
-            $this->addFlash(                                       // Envoyer une notification
-                'success',
-                'Coordonnées enregistrées'
-            );
+            // $this->addFlash(                                       // Envoyer une notification
+            //     'success',
+            //     'Coordonnées enregistrées'
+            // );
 
             return $this->redirectToRoute('detail_commande', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER);  // Rediriger vers la commande
         }
