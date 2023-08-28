@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Commande;
+use App\Entity\CommandeLivre;
 use Doctrine\ORM\Mapping\Entity;
 use App\Repository\UserRepository;
 use App\Repository\CommandeRepository;

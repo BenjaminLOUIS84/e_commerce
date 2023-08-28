@@ -66,9 +66,11 @@
                             </table>
                             
                         {% endfor %}
-                            {# <h4>Nombre de livres différents : {{ commande.nbLivres }}</h4> #}
-                        <h2>TOTAL A PAYER  € TTC </h2>
-
+                            
+                        {% for commandeLivre in commande.commandeLivres %}
+                            <h2>TOTAL A PAYER {{ commandeLivre.sousTotal }} € TTC</h2>
+                        {% endfor %}
+                        
                     </div>
 
                     <nav id="men">
