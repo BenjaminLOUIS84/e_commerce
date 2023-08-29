@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use App\Form\ResetPasswordRequestType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,10 +37,26 @@ class SecurityController extends AbstractController
 
     // Fonction pour reset le password
     #[Route(path: '/oubli-pass', name: 'forgotten_password')]
-    public function forgottenPassword(): Response
-    {
+    public function forgottenPassword(Request $request, UserRepository $userRepository): Response
+    {                                                                       // Injecter les dépendances dont on a besoin dans la fonction et importer les class pour utiliser les variable $request et $user
         $form = $this->createForm(ResetPasswordRequestType::class);         // Récupérer le formulaire
         
+        $form->handleRequest($request);                                     // Pour traiter le formulaire
+
+        if($form->isSubmitted() && $form->isvalid()){                       // Pour vérifier si le formulaire est valide et soumis
+            
+            // On va chercher l'utilisateur par son email
+            $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
+        
+            // On vérifie si on un utilisateur
+            if($user){
+
+            }
+            // Cas où $user est NULL
+            $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers la page de connexion et le message s'affichera dans cette page (*)
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('security/reset_password_request.html.twig', [ // Passer le formulaire en arguement dans un tableau
             
             'requestPassForm' => $form->createView()                        // Demande pour créer le formulaire 'requestPassFrom' et pour afficher selui-ci dans une vue

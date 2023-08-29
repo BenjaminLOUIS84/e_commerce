@@ -31,6 +31,15 @@
                     
                     <h3>CONNEXION</h3>
 
+                    {# (*) Pour afficher le message d'erreur de la fonction forgottenPassword() #}
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
                     <div class="formAddConnexion">
 
                         <label for="inputEmail">Email</label>
