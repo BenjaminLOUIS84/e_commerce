@@ -84,7 +84,7 @@ class SecurityController extends AbstractController
                     'etrefouetsage@gmail.com',                              // Emetteur
                     $user->getEmail(),                                      // Destinataire
                     'Réinitialisation de mot de passe',                     // Titre
-                    'password_reset',                                       // Template (n'existe pas encore)
+                    'password_reset',                                       // Template 
                     $context
                 );
 
