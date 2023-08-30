@@ -42,7 +42,7 @@ class RegistrationFormType extends AbstractType
                 'second_options' => ['label' => 'Confirmer'],
             
                 'constraints' => [                                                      
-                    new Length([                                // Pour faire en sorte que le password contienne minimum 12 caractères
+                    new Length([                                // Pour faire en sorte que le password contienne minimum 8 caractères
                         
                         'min' => 8,
                         'minMessage' => 'Votre mot de passe doit contenir au moins 8 caractères',
