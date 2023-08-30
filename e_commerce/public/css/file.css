@@ -169,6 +169,10 @@ h3 {
     color: rgba(204, 0, 0, 1);
 }
 
+.flash-danger {
+    display: flex;
+}
+
 a {
     color: white;
     text-decoration: none;
