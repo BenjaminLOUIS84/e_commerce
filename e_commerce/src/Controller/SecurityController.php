@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ResetPasswordType;
 use App\Service\SendMailService;
 use App\Repository\UserRepository;
 use App\Form\ResetPasswordRequestType;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class SecurityController extends AbstractController
@@ -74,7 +76,7 @@ class SecurityController extends AbstractController
             
                 // On génère un lien de réinitialisation du mot de passe
                 $url = $this->generateUrl('reset_pass', ['token' => $token],
-                UrlGeneratorInterface::ABSOLUTE_URL);
+                UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
 
                 // On créer les données du mail
                 $context = compact('url', 'user');
@@ -103,10 +105,27 @@ class SecurityController extends AbstractController
         ]);  
     }
 
-    #[Route('/oubli-pass/{token}', name:'reset_pass')]
-    public function resetPass(): Response
+    #[Route('/oubli-pass/{token}', name:'reset_pass')]                      // Cette nouvelle route permet d'afficher un autre formulaire pour créer un nouveau mot de passe
+    public function resetPass(
+        string $token,
+        Request $request,
+        UserRepository $userRepository,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $passwordHasher
+    ): Response
     {
+        // On vérifie si on a ce token dans la BDD
+        $user = $userRepository->findOneByResetToken($token);
+    
+        if($user){
 
+            $form = $this->createForm(ResetPasswordType::class);            // Créer le formulaire pour créer un nouveau mot de passe
+
+            return $this->render('security/reset_password.html.twig', [
+                'passForm' => $form->createView()                           // Afficher ce formulaire dans la vue reset_password.html.twig 
+            ]);
+        }
+        $this->addFlash('danger', 'Jeton invalide');
+        return $this->redirectToRoute('app_login');
     }
-
 }
