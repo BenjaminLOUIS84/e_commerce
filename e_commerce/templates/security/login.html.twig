@@ -32,12 +32,12 @@
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
                     
-                    <h3>CONNEXION</h3>
+                    <h1>CONNEXION</h1>
 
                     {# (*) Pour afficher le message d'erreur de la fonction forgottenPassword() #}
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
-                        
+
                             {# Forme du message simple #}
                             {# <div class="flash-{{ label }}">
                                 {{ message }}
@@ -62,13 +62,9 @@
                         <label for="inputPassword">Mot de passe</label>
                         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-                        <input type="hidden" name="_csrf_token"
-                            value="{{ csrf_token('authenticate') }}"
-                        >
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                        <button class="btn" type="submit">
-                            Valider
-                        </button>
+                        <button class="btn btn-dark" type="submit">Valider</button>
 
                     </div>
                     
