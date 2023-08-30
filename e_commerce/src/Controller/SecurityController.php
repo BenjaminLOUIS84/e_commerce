@@ -47,7 +47,7 @@ class SecurityController extends AbstractController
         EntityManagerInterface $entityManager,
 
         //Créer un service pour envoyer des mail ou utiliser mailHog
-        SendMailService $mail
+        // SendMailService $mail
 
     ): Response
 
@@ -65,15 +65,15 @@ class SecurityController extends AbstractController
             if($user){
 
                 // On génère un token de réinitialisation
-                $token = $tokenGenerator->generateToken();
-                $user->setResetToken($token);
+                // $token = $tokenGenerator->generateToken();
+                // $user->setResetToken($token);
 
-                $entityManager->persist($user);                             // Pour gérer le traitement en BDD
-                $entityManager->flush();                                    
+                // $entityManager->persist($user);                             // Pour gérer le traitement en BDD
+                // $entityManager->flush();                                    
             
                 // On génère un lien de réinitialisation du mot de passe
-                $url = $this->generateUrl('reset_pass', ['token' => $token],
-                UrlGeneratorInterface::ABSOLUTE_URL);
+                // $url = $this->generateUrl('reset_pass', ['token' => $token],
+                // UrlGeneratorInterface::ABSOLUTE_URL);
 
                 // On créer les données du mail
                 // $context = compact('url', 'user');
@@ -87,8 +87,8 @@ class SecurityController extends AbstractController
                 //     $context
                 // );
 
-                $this->addFlash('success', 'Email envoyé avec succès');
-                return $this->redirectToRoute('app_login');                 // Redirection vers la page de connexion
+                // $this->addFlash('success', 'Email envoyé avec succès');
+                // return $this->redirectToRoute('app_login');                 // Redirection vers la page de connexion
 
             }
             // Cas où $user est NULL
