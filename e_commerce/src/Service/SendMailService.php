@@ -30,6 +30,6 @@ class SendMailService
             ->context($context);
 
         // On envoie le mail
-        $this->mail->send($email);
+        $this->mailer->send($email);
     }
 }
