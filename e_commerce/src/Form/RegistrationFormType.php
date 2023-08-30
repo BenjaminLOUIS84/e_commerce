@@ -44,8 +44,8 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [                                                      
                     new Length([                                // Pour faire en sorte que le password contienne minimum 12 caractères
                         
-                        'min' => 12,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins 12 caractères',
+                        'min' => 8,
+                        'minMessage' => 'Votre mot de passe doit contenir au moins 8 caractères',
                         
                         'max' => 4096                           // Nombre maximum de caractères autorisé par Symfony
                     ]),
