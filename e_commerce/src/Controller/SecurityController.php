@@ -40,7 +40,7 @@ class SecurityController extends AbstractController
 
     // Fonction pour reset le password
     #[Route(path: '/oubli-pass', name: 'forgotten_password')]
-    public function forgottenPassword(
+    public function forgottenPassword(                                      // Injecter les dépendances dont on a besoin dans la fonction et importer les class pour utiliser les variable $request et $user
         Request $request,
         UserRepository $userRepository,
         TokenGeneratorInterface $tokenGenerator,
@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
 
     ): Response
 
-    {                                                                       // Injecter les dépendances dont on a besoin dans la fonction et importer les class pour utiliser les variable $request et $user
+    {                                                                       
         $form = $this->createForm(ResetPasswordRequestType::class);         // Récupérer le formulaire
         
         $form->handleRequest($request);                                     // Pour traiter le formulaire
