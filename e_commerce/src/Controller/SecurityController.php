@@ -121,6 +121,25 @@ class SecurityController extends AbstractController
 
             $form = $this->createForm(ResetPasswordType::class);            // Créer le formulaire pour créer un nouveau mot de passe
 
+            $form->handleRequest($request);                                 // Pour le traitement, ci-dessous pour gérer le traitement
+
+            if($form->isSubmitted() && $form->isvalid()){
+                // On efface le token
+                $user->setResetToken('');
+                $user->setPassword(
+                    $passwordHasher->hashPassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Mot de passe changé avec succès' );
+                return $this->redirectToRoute('app_login');
+
+            }
+
             return $this->render('security/reset_password.html.twig', [
                 'passForm' => $form->createView()                           // Afficher ce formulaire dans la vue reset_password.html.twig 
             ]);
