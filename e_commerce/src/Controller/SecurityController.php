@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\SendMailService;
 use App\Repository\UserRepository;
 use App\Form\ResetPasswordRequestType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -47,7 +48,7 @@ class SecurityController extends AbstractController
         EntityManagerInterface $entityManager,
 
         //Créer un service pour envoyer des mail ou utiliser mailHog
-        // SendMailService $mail
+        SendMailService $mail
 
     ): Response
 
@@ -65,30 +66,30 @@ class SecurityController extends AbstractController
             if($user){
 
                 // On génère un token de réinitialisation
-                // $token = $tokenGenerator->generateToken();
-                // $user->setResetToken($token);
+                $token = $tokenGenerator->generateToken();
+                $user->setResetToken($token);
 
-                // $entityManager->persist($user);                             // Pour gérer le traitement en BDD
-                // $entityManager->flush();                                    
+                $entityManager->persist($user);                             // Pour gérer le traitement en BDD
+                $entityManager->flush();                                    
             
                 // On génère un lien de réinitialisation du mot de passe
-                // $url = $this->generateUrl('reset_pass', ['token' => $token],
-                // UrlGeneratorInterface::ABSOLUTE_URL);
+                $url = $this->generateUrl('reset_pass', ['token' => $token],
+                UrlGeneratorInterface::ABSOLUTE_URL);
 
                 // On créer les données du mail
-                // $context = compact('url', 'user');
+                $context = compact('url', 'user');
 
-                // Envoi du mail (Utiliser le service mail CF Tuto 9)
-                // $mail->send(
-                //     'no-reply@e-commerce.fr',           // Emetteur
-                //     $user->getEmail(),                  // Destinataire
-                //     'Réinitialisation de mot de passe', // Titre
-                //     'password_reset',                   // Template (n'existe pas encore)
-                //     $context
-                // );
+                // Envoi du mail (Utiliser le service mail)
+                $mail->send(
+                    'etrefouetsage@gmail.com',                              // Emetteur
+                    $user->getEmail(),                                      // Destinataire
+                    'Réinitialisation de mot de passe',                     // Titre
+                    'password_reset',                                       // Template (n'existe pas encore)
+                    $context
+                );
 
-                // $this->addFlash('success', 'Email envoyé avec succès');
-                // return $this->redirectToRoute('app_login');                 // Redirection vers la page de connexion
+                $this->addFlash('success', 'Email envoyé avec succès');
+                return $this->redirectToRoute('app_login');                 // Redirection vers la page de connexion
 
             }
             // Cas où $user est NULL
