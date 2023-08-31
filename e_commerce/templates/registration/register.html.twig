@@ -44,14 +44,14 @@
                         }) }}
 
                         {# Créer un champ caché pour récevoir et valider le token #}
-                        <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+                        {# <input type="hidden" id="recaptchaResponse" name="recaptcha-response"> #}
 
                         <button type="submit" class="btn">Validez</button>
                     {{ form_end(registrationForm) }}
 
                 </div>
 
-                <script src="https://www.google.com/recaptcha/api.js?render=6Lef_esnAAAAALtcsc9XaWku4Gz_QIfhYDxXD-3G"></script>
+                {# <script src="https://www.google.com/recaptcha/api.js?render=6Lef_esnAAAAALtcsc9XaWku4Gz_QIfhYDxXD-3G"></script>
                 <script>
                     function onClick(e) {
                       e.preventDefault();
@@ -62,7 +62,7 @@
                         });
                       });
                     }
-                </script>
+                </script> #}
 
                 
 
