@@ -18,7 +18,7 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-
+            
             <title>Formulaire d'inscription</title>
         </head>
 
@@ -43,10 +43,28 @@
                             label: 'CGV'
                         }) }}
 
+                        {# Créer un champ caché pour récevoir et valider le token #}
+                        <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+
                         <button type="submit" class="btn">Validez</button>
                     {{ form_end(registrationForm) }}
 
                 </div>
+
+                <script src="https://www.google.com/recaptcha/api.js?render=6Lef_esnAAAAALtcsc9XaWku4Gz_QIfhYDxXD-3G"></script>
+                <script>
+                    function onClick(e) {
+                      e.preventDefault();
+                      grecaptcha.ready(function() {
+                        grecaptcha.execute('6Lef_esnAAAAALtcsc9XaWku4Gz_QIfhYDxXD-3G', {action: 'submit'}).then(function(token) {
+                            // Pour gérer le traitement du token
+                            document.getElementById("recaptcha-response").value = token
+                        });
+                      });
+                    }
+                </script>
+
+                
 
                 <div class="informations">
                     <div id="menu">
