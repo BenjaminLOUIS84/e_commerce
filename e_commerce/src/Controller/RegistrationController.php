@@ -37,10 +37,10 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
-            if(empty($_POST['recaptcha-response'])){    // Cela empèche l'attaque des robots
-                header('Location: app_register');
+            // if(empty($_POST['recaptcha-response'])){    // Cela empèche l'attaque des robots
+            //     header('Location: app_register');
 
-            }else{ // Sinon on éxécute les instructions
+            // }else{ // Sinon on éxécute les instructions
 
                 // encode the plain password
                 $user->setPassword(
@@ -69,7 +69,7 @@ class RegistrationController extends AbstractController
                     $authenticator,
                     $request
                 );
-            }
+            // }
         }
 
         return $this->render('registration/register.html.twig', [
