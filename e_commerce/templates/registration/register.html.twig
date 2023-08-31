@@ -58,7 +58,7 @@
                       grecaptcha.ready(function() {
                         grecaptcha.execute('6Lef_esnAAAAALtcsc9XaWku4Gz_QIfhYDxXD-3G', {action: 'submit'}).then(function(token) {
                             // Pour gérer le traitement du token
-                            document.getElementById("recaptcha-response").value = token
+                            document.getElementById("recaptchaResponse").value = token
                         });
                       });
                     }
