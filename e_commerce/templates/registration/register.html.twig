@@ -43,10 +43,23 @@
                             label: 'CGV'
                         }) }}
 
+                        {# Créer un champ caché pour récevoir et valider le token #}
+                        <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+
                         <button type="submit" class="btn">Validez</button>
                     {{ form_end(registrationForm) }}
 
                 </div>
+
+                <script src="https://www.google.com/recaptcha/api.js?render=6Ld2fOwnAAAAADuwsoV8dGTaupkK1MDVfausaUSs"></script>
+                <script>
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Ld2fOwnAAAAADuwsoV8dGTaupkK1MDVfausaUSs', {action: 'homepage'}).then(function(token) {
+                        // Pour gérer le traitement du token
+                        document.getElementById("recaptchaResponse").value = token
+                    });
+                });   
+                </script>
 
                 <div class="informations">
                     <div id="menu">
