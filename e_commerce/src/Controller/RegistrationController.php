@@ -53,6 +53,7 @@ class RegistrationController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
             
+            
 
                 // generate a signed url and email it to the user (utilise le bundle de symfonyCast)
                 $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -68,8 +69,7 @@ class RegistrationController extends AbstractController
                     $user,
                     $authenticator,
                     $request
-                );
-                
+                ); 
             }
 
         }
