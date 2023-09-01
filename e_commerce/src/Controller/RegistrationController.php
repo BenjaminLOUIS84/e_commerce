@@ -36,33 +36,40 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
+            // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
+            if(empty($_POST['recaptcha-response'])){
+                header('Location: app_register');
+
+            }else{ // Sinon on éxécute les instructions
+                
+                // encode the plain password
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+            
+                $entityManager->persist($user);
+                $entityManager->flush();
+            
+
+                // generate a signed url and email it to the user (utilise le bundle de symfonyCast)
+                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                    (new TemplatedEmail())
+                        ->from(new Address('etrefouetsage@gmail.com', 'Daniel Aaron'))
+                        ->to($user->getEmail())
+                        ->subject('Confirmer votre email')
+                        ->htmlTemplate('registration/confirmation_email.html.twig')
+                );
+                // do anything else you need here, like send an email
+
+                return $userAuthenticator->authenticateUser(
                     $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-        
-            $entityManager->persist($user);
-            $entityManager->flush();
-        
-
-            // generate a signed url and email it to the user (utilise le bundle de symfonyCast)
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('etrefouetsage@gmail.com', 'Daniel Aaron'))
-                    ->to($user->getEmail())
-                    ->subject('Confirmer votre email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+                    $authenticator,
+                    $request
+                );
+            }
 
         }
 
