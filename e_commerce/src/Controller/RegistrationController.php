@@ -41,7 +41,7 @@ class RegistrationController extends AbstractController
                 header('Location: app_register');
 
             }else{ // Sinon on éxécute les instructions
-                
+
                 // encode the plain password
                 $user->setPassword(
                     $userPasswordHasher->hashPassword(
@@ -69,6 +69,7 @@ class RegistrationController extends AbstractController
                     $authenticator,
                     $request
                 );
+                
             }
 
         }
