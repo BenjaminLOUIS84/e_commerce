@@ -55,7 +55,6 @@
                 <script src="https://www.google.com/recaptcha/api.js?render=6Lda1u8nAAAAADoZUlOmeUXHkkpvDsbw1J0Q1N_P"></script>
                 <script>
                     
-                    e.preventDefault();
                     grecaptcha.ready(function() {
                         grecaptcha.execute('6Lda1u8nAAAAADoZUlOmeUXHkkpvDsbw1J0Q1N_P', {action: 'home_page'}).then(function(token) {
                             // Gérer le traitement du token
