@@ -43,11 +43,28 @@
                             label: 'CGV'
                         }) }}
 
+                        {# Créer un champ caché pour recevoir et valider le token #}
+                        <input type="hidden" id="recaptchaResponse" name:"recaptcha-response">
+
                         <button type="submit" class="btn">Validez</button>
                     {{ form_end(registrationForm) }}
 
                 </div>
-                
+
+                {# Script JS pour éxécuter le Captcha de Google #}
+                <script src="https://www.google.com/recaptcha/api.js?render=6Lda1u8nAAAAADoZUlOmeUXHkkpvDsbw1J0Q1N_P"></script>
+                <script>
+                    
+                    e.preventDefault();
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6Lda1u8nAAAAADoZUlOmeUXHkkpvDsbw1J0Q1N_P', {action: 'home_page'}).then(function(token) {
+                            // Gérer le traitement du token
+                            document.getElementById("recaptchaResponse").value = token
+                        });
+                    });
+                    
+                </script>
+
                 <div class="informations">
                     <div id="menu">
                         <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retour à l'accueil" alt="Retour à la page d'accueil"></a>
