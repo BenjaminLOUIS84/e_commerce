@@ -39,7 +39,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     ////////////////////////////////////////////////////////////////////////////
     // Créer une propriété qui va stocker le jeton de connexion d'un utilisateur
-    #[ORM\Column(type: 'string', length: 100)]
+    #[ORM\Column(type: 'string', length: 100, nullable:true)]
     private $resetToken;
     ////////////////////////////////////////////////////////////////////////////
 
