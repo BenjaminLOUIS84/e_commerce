@@ -40,7 +40,7 @@ class RegistrationController extends AbstractController
             if(empty($_POST['recaptcha-response'])){
                 header('Location: app_register'); 
 
-            }else{ // On préparer l'URL
+            }else{ // On prépare l'URL
                 $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
                 // On vérifie si CURL est installé
