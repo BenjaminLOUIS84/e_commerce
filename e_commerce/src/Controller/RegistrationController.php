@@ -38,63 +38,61 @@ class RegistrationController extends AbstractController
 
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
             if(empty($_POST['recaptcha-response'])){
-                header('Location: app_register');
-                // echo "<pre>";
-                // var_dump($_POST);
-                // echo "</pre>";
+                header('Location: app_register'); 
 
             }else{ // On préparer l'URL
-                // $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
                 // On vérifie si CURL est installé
-                // if(function_exist('curl_version')){
-                //     $curl = curl_init($url);
-                //     curl_setopt($curl, CURLOPT_HEADER, false);
-                //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                //     curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-                //     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-                //     $response = curl_exec($curl);
-                // }else{
-                    // $response = file_get_contents($url);
-                // }
+                if(function_exists('curl_version')){
+                    $curl = curl_init($url);
+                    curl_setopt($curl, CURLOPT_HEADER, false);
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($curl);
+                }else{
+                    $response = file_get_contents($url);
+                }
 
                 // On vérifie si on a une réponse
-                // if(empty($response) || )
-                // $data = json_decode($response);
-                // echo "<pre>";
-                // var_dump($data->success);
-                // echo "</pre>";
+                if(empty($response) || is_null($response)){
+                    header('Location: app_register'); 
+                }else{
+                    $data = json_decode($response);
+                    if($data->success){
 
-                // Sinon on éxécute les instructions encode the plain password
-                $user->setPassword(
-                    $userPasswordHasher->hashPassword(
-                        $user,
-                        $form->get('plainPassword')->getData()
-                    )
-                );
-            
-                $entityManager->persist($user);
-                $entityManager->flush();
-            
-            
+                        // Sinon on éxécute les instructions encode the plain password
+                        $user->setPassword(
+                            $userPasswordHasher->hashPassword(
+                            $user,
+                                $form->get('plainPassword')->getData()
+                            )
+                        );
+                    
+                        $entityManager->persist($user);
+                        $entityManager->flush();
 
-                // generate a signed url and email it to the user (utilise le bundle de symfonyCast)
-                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                    (new TemplatedEmail())
-                        ->from(new Address('etrefouetsage@gmail.com', 'Daniel Aaron'))
-                        ->to($user->getEmail())
-                        ->subject('Confirmer votre email')
-                        ->htmlTemplate('registration/confirmation_email.html.twig')
-                );
-                // do anything else you need here, like send an email
+                        // generate a signed url and email it to the user (utilise le bundle de symfonyCast)
+                        $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                            (new TemplatedEmail())
+                                ->from(new Address('etrefouetsage@gmail.com', 'Daniel Aaron'))
+                                ->to($user->getEmail())
+                                ->subject('Confirmer votre email')
+                                ->htmlTemplate('registration/confirmation_email.html.twig')
+                        );
+                        // do anything else you need here, like send an email
 
-                return $userAuthenticator->authenticateUser(
-                    $user,
-                    $authenticator,
-                    $request
-                ); 
+                        return $userAuthenticator->authenticateUser(
+                            $user,
+                            $authenticator,
+                            $request
+                        ); 
+                    }else{
+                        header('Location: app_register'); 
+                    }
+                }   
             }
-
         }
 
         return $this->render('registration/register.html.twig', [
