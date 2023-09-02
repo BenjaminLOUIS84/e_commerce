@@ -40,9 +40,10 @@ class RegistrationController extends AbstractController
             if(empty($_POST['recaptcha-response'])){
                 header('Location: app_register');
 
-            }else{ // Sinon on éxécute les instructions
+            }else{ // On préparer l'URL
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
-                // encode the plain password
+                // Sinon on éxécute les instructions encode the plain password
                 $user->setPassword(
                     $userPasswordHasher->hashPassword(
                         $user,

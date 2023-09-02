@@ -52,10 +52,10 @@
                 </div>
 
                 {# Script JS pour éxécuter le Captcha de Google #}
-                <script src="https://www.google.com/recaptcha/api.js?render=6Lda1u8nAAAAADoZUlOmeUXHkkpvDsbw1J0Q1N_P"></script>
+                <script src="https://www.google.com/recaptcha/api.js?render=6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE"></script>
                 <script> 
                 grecaptcha.ready(function() {
-                    grecaptcha.execute('6Lda1u8nAAAAADoZUlOmeUXHkkpvDsbw1J0Q1N_P', {action: 'homepage'}).then(function(token) {
+                    grecaptcha.execute('6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE', {action: 'homepage'}).then(function(token) {
                         // Gérer le traitement du token
                         document.getElementById("recaptchaResponse").value = token
                     });
