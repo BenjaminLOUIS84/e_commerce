@@ -76,7 +76,9 @@
 
                             {# Créer une condition pour changer le bouton de finalisation en bouton de paiement après avoir remplit le formulaire #}
                             {% if commande.nom|length >0 %}
-                                <a href="/create-checkout-session"><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Payer" title="Payer"></a>     
+                                {# Lien pour accéder à la page de paiement STRIPE #}
+                                <a href="{{ path ('payment_stripe', {numero_commande: commande.numeroCommande}) }}"><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Payer" title="Payer"></a>     
+                            
                             {% else %}
                                 <a href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"></a>
                             {% endif %}
