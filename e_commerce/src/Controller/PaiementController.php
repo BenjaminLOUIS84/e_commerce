@@ -53,9 +53,9 @@ class PaiementController extends AbstractController
             ];
         }
 
-        dd($produitStripe);
+        // dd($produitStripe);
 
-        Stripe::setApiKey(sk_test_51NaRzqLHfEAyziyoqwIGsIW3m3ZmEZfH6YTCqder78KaGkloVP2YUyR3mgY1or2fQewoEZoSbV9qPR8HAPMKfM8800WdKOnu4v);
+        Stripe::setApiKey('sk_test_51NaRzqLHfEAyziyoqwIGsIW3m3ZmEZfH6YTCqder78KaGkloVP2YUyR3mgY1or2fQewoEZoSbV9qPR8HAPMKfM8800WdKOnu4v');
         
         $checkout_session = Session::create([
 
@@ -71,32 +71,36 @@ class PaiementController extends AbstractController
             'success_url' => $this->generator->generate(
                 'payment_success', 
                 ['numero_commande' => $commande->getNumeroCommande()], 
-                Type:UrlGeneratorInterface::ABSOLUTE_URL
+                UrlGeneratorInterface::ABSOLUTE_URL
             ),
 
             'cancel_url' => $this->generator->generate(
                 'payment_error', 
                 ['numero_commande' => $commande->getNumeroCommande()], 
-                Type:UrlGeneratorInterface::ABSOLUTE_URL
+                UrlGeneratorInterface::ABSOLUTE_URL
             )
             
         ]);
 
-        $commande->setStripeSessionId($checkout_session->id);
-        $this->em->flush();
+        // $commande->setStripeSessionId($checkout_session->id);
+        // $this->em->flush();
 
         return new RedirectResponse($checkout_session->url);
 
     }
 
     #[Route('/commande/success/{numero_commande}', name: 'payment_success')]                           
-    public function StripeSuccess($numero_commande, CartService $service): Response
+    public function StripeSuccess($numero_commande,
+        //CartService $service
+    ): Response
     {
         return $this->render(view: 'commande/success.html.twig');
     }
 
     #[Route('/commande/error/{numero_commande}', name: 'payment_error')]                           
-    public function StripeError($numero_commande, CartService $service): Response
+    public function StripeError($numero_commande,
+       //CartService $service
+    ): Response
     {
         return $this->render(view: 'commande/error.html.twig');
     }
