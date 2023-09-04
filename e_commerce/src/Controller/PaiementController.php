@@ -29,19 +29,26 @@ class PaiementController extends AbstractController
         // dd($commande);                                                                                           // Vérifier si on récupère bien la commande
 
         foreach ($commande->getCommandeLivres()->getValues() as $livre){
-            
+
             // dd($livre);
             
-            $livreData = $this->em->getRepository(Livre::class)->findOneBy(['titre' => $livre->getLivre()]);
-            dd($livreData);
+            $livreData = $this->em->getRepository(Livre::class)->findOneBy(['id' => $livre->getLivre()]);
 
-            $produitStripe[] =[
+            // dd($livreData);
+
+            $produitStripe[] = [
                 'price_data' => [
                     'currency' => 'eur',
-                    'unit_amount' => $produitStripe
-                ]
+                    'unit_amount' => $livreData->getPrixUnitaire(),
+                    'product_data' => [
+                        'name' => $livre->getLivre()->getTitre()
+                    ]
+                ],
+                'quantity' => $livre->getQuantite()
             ];
         }
+
+        dd($produitStripe);
 
         Stripe::setApiKey(sk_test_51NaRzqLHfEAyziyoqwIGsIW3m3ZmEZfH6YTCqder78KaGkloVP2YUyR3mgY1or2fQewoEZoSbV9qPR8HAPMKfM8800WdKOnu4v);
         
