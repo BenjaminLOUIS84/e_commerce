@@ -48,10 +48,16 @@
                             <div class="liste">
                                     
                                 <div class="option">
-                                    
-                                    {# Permet d'afficher la page des factures propre à chaque commandes #}
-                                    <a class="crud" href="{{ path ('app_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
+
+                                    {# {% if facture.commande | length >0 %} #}
+
+                                        {# Permet d'afficher la page des factures propre à chaque commandes #}
+                                        <a class="crud" href="{{ path ('app_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
                         
+                                    {# {% else %} #}
+                                        
+                                    {# {% endif %} #}
+                                    
                                     {# <a class="crud" href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
 
                                     {# Accéder au détail en cliquant sur la date de commande #}
