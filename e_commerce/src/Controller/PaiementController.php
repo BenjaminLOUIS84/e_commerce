@@ -34,7 +34,7 @@ class PaiementController extends AbstractController
         
         // dd($commande);                                                                                           // Vérifier si on récupère bien la commande
 
-        foreach ($commande->getCommandeLivres()->getValues() as $livre){
+        foreach ($commande->getCommandeLivres()->getValues() as $livre){                                            // Ajouter la liste des livres commandés
 
             // dd($livre);
             
@@ -52,6 +52,7 @@ class PaiementController extends AbstractController
                 ],
                 'quantity' => $livre->getQuantite()
             ];
+
         }
 
         // dd($produitStripe);
@@ -61,16 +62,16 @@ class PaiementController extends AbstractController
         $checkout_session = Session::create([
 
             'customer_email' => $this->getUser()->getEmail(),                                                       // Afficher automatiquement l'email de l'utilisateur
-            
+            //'billing_address_collection' => 'required',
             'payment_method_types' => ['card'],                                                                     // Préciser le mode de paiement par carte
             
-            'line_items' => [[
+            'line_items' => [[                                                                                      // Pour afficher la liste des livres commandés dans la page de paiement
                 $produitStripe
             ]],
 
             'mode' => 'payment',
 
-            'success_url' => $this->generator->generate(
+            'success_url' => $this->generator->generate(                                                            // Rediriger vers une page en cas de succès ou d'erreur
                 'payment_success', 
                 ['numero_commande' => $commande->getNumeroCommande()], 
                 UrlGeneratorInterface::ABSOLUTE_URL
@@ -84,7 +85,7 @@ class PaiementController extends AbstractController
             
         ]);
 
-        return new RedirectResponse($checkout_session->url);
+        return new RedirectResponse($checkout_session->url);                                                        // Permet d'afficher la page de paiement
 
     }
 
