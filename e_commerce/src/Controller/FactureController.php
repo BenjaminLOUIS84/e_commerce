@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Facture;
+use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FactureController extends AbstractController
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LES COMMANDES DE CHAQUE FACTURES
+    // FONCTION POUR AFFICHER LA FACTURE DE CHAQUE COMMANDE
 
     #[Route('/facture/{id}', name: 'app_facture')]
 
@@ -25,6 +26,26 @@ class FactureController extends AbstractController
             'commandes' => $commandes
         ]);
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES
+
+    #[Route('/facture/{id}/detail', name: 'detail_facture')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
+    
+    public function detail(Facture $facture, FactureRepository $factureRepository): Response
+
+    {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
+        $factures = $factureRepository->findBy([], ["livre" => "ASC"]);
+        
+        return $this->render('user/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
+        
+            'facture' => $facture,
+            'factures' => $factures
+
+        ]);
+    }
+
+    
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
