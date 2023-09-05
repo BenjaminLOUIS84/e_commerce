@@ -9,6 +9,7 @@ use Stripe\Checkout\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -44,7 +45,7 @@ class PaiementController extends AbstractController
             $produitStripe[] = [                                                                                    // Instancier les caractéristiques de la page de commande
                 'price_data' => [
                     'currency' => 'eur',
-                    'unit_amount' => $livreData->getPrixUnitaire(),
+                    'unit_amount' => $livreData->getPrixUnitaire()*100,                                             // Ajouter *100  Pour afficher les prix au bon format 19.00€ (non 0.19€)
                     'product_data' => [
                         'name' => $livre->getLivre()->getTitre()
                     ]
@@ -60,6 +61,7 @@ class PaiementController extends AbstractController
         $checkout_session = Session::create([
 
             'customer_email' => $this->getUser()->getEmail(),                                                       // Afficher automatiquement l'email de l'utilisateur
+            
             'payment_method_types' => ['card'],                                                                     // Préciser le mode de paiement par carte
             
             'line_items' => [[
@@ -82,25 +84,18 @@ class PaiementController extends AbstractController
             
         ]);
 
-        // $commande->setStripeSessionId($checkout_session->id);
-        // $this->em->flush();
-
         return new RedirectResponse($checkout_session->url);
 
     }
 
     #[Route('/commande/success/{numero_commande}', name: 'payment_success')]                           
-    public function StripeSuccess($numero_commande,
-        //CartService $service
-    ): Response
+    public function StripeSuccess($numero_commande): Response
     {
         return $this->render(view: 'commande/success.html.twig');
     }
 
     #[Route('/commande/error/{numero_commande}', name: 'payment_error')]                           
-    public function StripeError($numero_commande,
-       //CartService $service
-    ): Response
+    public function StripeError($numero_commande): Response
     {
         return $this->render(view: 'commande/error.html.twig');
     }
