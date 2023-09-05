@@ -6,11 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/facture', name: 'app_facture')]
 class FactureController extends AbstractController
 {
-    #[Route('/facture', name: 'app_facture')]
-    public function index(): Response
+   
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR METTRE LA COMMANDE EN FACTURE
+
+    #[Route('/ajout', name: 'add')]
+    public function add(): Response
     {
+        $commande = $session->get('commande', []);
+        dd($commande); 
+
+
         return $this->render('facture/index.html.twig', [
             'controller_name' => 'FactureController',
         ]);
