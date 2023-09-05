@@ -71,13 +71,13 @@ class PaiementController extends AbstractController
 
             'mode' => 'payment',
 
-            'success_url' => $this->generator->generate(                                                            // Rediriger vers une page en cas de succès ou d'erreur
+            'success_url' => $this->generator->generate(                                                            // Rediriger vers une page en cas de succès de paiement
                 'payment_success', 
                 ['numero_commande' => $commande->getNumeroCommande()], 
                 UrlGeneratorInterface::ABSOLUTE_URL
             ),
 
-            'cancel_url' => $this->generator->generate(
+            'cancel_url' => $this->generator->generate(                                                             // Rediriger vers une page en cas d'annulation
                 'payment_error', 
                 ['numero_commande' => $commande->getNumeroCommande()], 
                 UrlGeneratorInterface::ABSOLUTE_URL
@@ -89,7 +89,7 @@ class PaiementController extends AbstractController
 
     }
 
-    #[Route('/commande/success/{numero_commande}', name: 'payment_success')]                           
+    #[Route('/commande/success/{numero_commande}', name: 'payment_success')]                                        // Routes pour les redirections
     public function StripeSuccess($numero_commande): Response
     {
         return $this->render(view: 'commande/success.html.twig');
