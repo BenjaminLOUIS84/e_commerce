@@ -52,7 +52,7 @@
                                     {# {% if facture.commande | length >0 %} #}
 
                                         {# Permet d'afficher la page des factures propre à chaque commandes #}
-                                        <a class="crud" href="{{ path ('detail_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
+                                        <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
                         
                                     {# {% else %} #}
                                         
