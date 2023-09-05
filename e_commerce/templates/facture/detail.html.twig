@@ -31,7 +31,7 @@
 
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
                         </div>
                     </nav>
 

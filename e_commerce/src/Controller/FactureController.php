@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Facture;
+use App\Entity\Commande;
 use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,30 +20,21 @@ class FactureController extends AbstractController
     #[Route('/facture/{id}/detail', name: 'detail_facture')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(
 
-        Facture $facture, 
-        FactureRepository $factureRepository
+        Commande $commande,
+        CommandeRepository $commandeRepository,
 
     ): Response
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
-        $factures = $factureRepository->findBy([], ["numero_facture" => "ASC"]);
+        $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         
         return $this->render('facture/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
         
-            'facture' => $facture,
-            'factures' => $factures
+            'commande' => $commande,
+            'commandes' => $commandes,
 
         ]);
     }
 
     
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR METTRE LA COMMANDE EN FACTURE
-
-    // #[Route('/ajout', name: 'add')]
-    // public function add(): Response
-    // {
-    //     $commande = $session->get('commande', []);
-    //     dd($commande); 
