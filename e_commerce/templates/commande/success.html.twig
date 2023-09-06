@@ -3,45 +3,39 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html lang="fr">
+    <!DOCTYPE html>
+    <html lang="fr">
 
-<head>
-    <meta charset="utf-8">
+        <head>
+            <meta charset="utf-8">
 
-    <link rel="stylesheet" href="{{ asset('css/file.css') }}">
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-
-
-    <title>Succès</title>
-</head>
-
-<body>
-    <div class="wrapper">
-        <header>
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
             
-            <h3>Paiement accepté !</h3>
-            <p>Merci pour votre commande, celle-ci est en cours de préparation et sera expédiée dans quelques jours.</p>
-            <h2>Votre facture est disponible dans votre espace personnel</h2>
-            <p>Téléchager votre facture ici</p>
-           
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
-            <div class="informations">
-                <div id="menu">
-                    <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" title="Retourner à mon espace" alt="Retourner à mon espace"></a>
-                </div>
+            <title>Succès</title>
+        </head>
+
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                    <h3>Paiement accepté !</h3>
+                    <p>Merci pour votre commande, celle-ci est en cours de préparation et sera expédiée dans quelques jours.</p>
+                    
+                    <div class="informations">
+                        <div id="menu">
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" title="Retourner à mon espace" alt="Retourner à mon espace"></a>
+                        </div>
+                    </div>
+                </header>
             </div>
-        </header>
-    </div>
-    <!-- <script>src = "script.js"</script> -->
-</body>
+        </body>
 
-</html
+    </html
 {% endblock %}

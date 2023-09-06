@@ -54,6 +54,7 @@ class UserController extends AbstractController
 
     {
         $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);      // Affiche tous les commandes
+        
 
         return $this->render('user/show.html.twig', [      // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
             'user' => $user,

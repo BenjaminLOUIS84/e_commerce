@@ -55,8 +55,6 @@
                                         <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
                         
                                     {# {% else %} #}
-                                        
-                                    
 
                                         {# Accéder au détail en cliquant sur la date de commande #}
                                         <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>

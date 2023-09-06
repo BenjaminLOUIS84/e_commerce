@@ -6,13 +6,37 @@ use App\Entity\Facture;
 use App\Entity\Commande;
 use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/facture', name: 'app_facture_')]  
 class FactureController extends AbstractController
 {
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR METTRE LA COMMANDE EN FACTURE
+
+    #[Route('/ajout/{id}', name: 'add')]
+    public function add(SessionInterface $session, Commande $commande, CommandeRepository $commandeRepository, EntityManagerInterface $em): Response  
+    { 
+
+        $id = $commande->getId();
+        $commande = $commandeRepository->find($id);
+        // $commande = $session->get('commande', []);
+        dd($commande);
+
+        // $data = [];
+
+
+        $facture = new Facture();
+        $facture->setCommande($this->getCommande());
+        $facture->setNumeroFacture(uniqid());
+        // dd($facture);
+
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES

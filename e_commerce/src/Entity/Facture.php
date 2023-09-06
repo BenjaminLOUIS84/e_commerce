@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\FactureRepository;
+use App\Entity\Facture;
+use App\Entity\Commande;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FactureRepository;
 
 #[ORM\Entity(repositoryClass: FactureRepository::class)]
 class Facture
@@ -14,13 +16,14 @@ class Facture
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $numero_facture = null;
+    #[ORM\Column(unique: true)]
+    private ?string $numero_facture = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable:true)]
     private ?\DateTimeInterface $date_facture = null;
 
     #[ORM\ManyToOne(inversedBy: 'Facture')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Commande $commande = null;
 
     public function getId(): ?int
@@ -28,12 +31,12 @@ class Facture
         return $this->id;
     }
 
-    public function getNumeroFacture(): ?int
+    public function getNumeroFacture(): ?string
     {
         return $this->numero_facture;
     }
 
-    public function setNumeroFacture(int $numero_facture): static
+    public function setNumeroFacture(string $numero_facture): static
     {
         $this->numero_facture = $numero_facture;
 
