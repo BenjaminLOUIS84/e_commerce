@@ -46,6 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th>Livre</th>
+                                        <th>Format</th>
                                         <th>Quantité</th>
                                         <th>Prix unitaire</th>
                                     </tr>
@@ -53,6 +54,7 @@
                                 <tbody>
                                     <tr>
                                         <td><img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover"></td>
+                                        <td>{{ commandeLivre.livre.format }}</td>
                                         <td>{{ commandeLivre }}</td>
                                         <td>{{ commandeLivre.Livre.prixUnitaire }} € ttc</td>
                                     </tr>
