@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Facture;
 use App\Entity\Commande;
+use App\Entity\CommandeLivre;
 use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommandeLivreRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -26,16 +28,20 @@ class FactureController extends AbstractController
         // Facture $facture,
         // FactureRepository $factureRepository,
         Commande $commande,
-        CommandeRepository $commandeRepository,
+        // CommandeLivre $commandeLivres,
+        // CommandeLivreRepository $commandeLivreRepository,
+        // CommandeRepository $commandeRepository,
         EntityManagerInterface $em
         
         ): Response  
     { 
+        // $session->getCommande();
 
         $id = $commande->getId();
-        $commande = $commandeRepository->find($id);
-        // $commande = $session->get('commande', []);
-        dd($commande);
+        // $id = $commandeLivres->getId();
+        // $commande = $commandeRepository->find($id);
+        // $commande = setCommande($this->getCommandeLivres());
+        // dd($commande);
 
         // $id = $facture->getId();
         // $id = $facture->$factureRepository->find($id);
@@ -44,7 +50,14 @@ class FactureController extends AbstractController
         $facture = new Facture();
         // $facture->setCommande($this->getCommande());
         $facture->setNumeroFacture(uniqid());
-        // dd($facture);
+        // $facture->setDateFacture($this->getDateFacture());
+
+        dd($facture);
+
+        $em->persist($facture);
+        $em->flush();
+        
+        return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
 
     }
 

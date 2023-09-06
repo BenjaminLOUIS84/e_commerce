@@ -19,7 +19,9 @@ class Facture
     #[ORM\Column(unique: true)]
     private ?string $numero_facture = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable:true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, 
+    nullable:true
+    )]
     private ?\DateTimeInterface $date_facture = null;
 
     #[ORM\ManyToOne(inversedBy: 'Facture')]
