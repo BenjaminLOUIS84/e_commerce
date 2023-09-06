@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Livre;
+use App\Entity\Facture;
 use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Entity\CommandeLivre;
 use App\Repository\UserRepository;
 use App\Repository\LivreRepository;
+use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommandeLivreRepository;

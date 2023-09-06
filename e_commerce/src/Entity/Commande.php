@@ -45,7 +45,7 @@ class Commande
     private ?string $ville = null;
 
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Facture::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', cascade: ['persist'], orphanRemoval:true, targetEntity: Facture::class)]
     private Collection $Facture;
 
     #[ORM\ManyToOne(inversedBy: 'commande')]

@@ -20,13 +20,25 @@ class FactureController extends AbstractController
     // FONCTION POUR METTRE LA COMMANDE EN FACTURE
 
     #[Route('/ajout/{id}', name: 'add')]
-    public function add(SessionInterface $session, Commande $commande, CommandeRepository $commandeRepository, EntityManagerInterface $em): Response  
+    public function add(
+
+        SessionInterface $session,
+        Facture $facture,
+        FactureRepository $factureRepository,
+        Commande $commande,
+        CommandeRepository $commandeRepository,
+        EntityManagerInterface $em
+        
+        ): Response  
     { 
 
-        $id = $commande->getId();
+        // $id = $commande->getId();
         // $commande = $commandeRepository->find($id);
         // $commande = $session->get('commande', []);
-        dd($commande);
+        // dd($commande);
+        $id = $facture->getId();
+        // $id = $facture->$factureRepository->find($id);
+        dd($facture);
 
         // $data = [];
 
