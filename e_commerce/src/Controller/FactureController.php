@@ -54,20 +54,20 @@ class FactureController extends AbstractController
     #[Route('/facture/{id}/detail', name: 'detail_facture')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(
 
-        // Commande $commande,
+        Commande $commande,
         Facture $facture,
-        // CommandeRepository $commandeRepository,
+        CommandeRepository $commandeRepository,
         FactureRepository $factureRepository,
 
         ): Response
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
-        // $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
+        $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         $facture = $factureRepository->findBy([], ["numero_facture" => "ASC"]);
         
         return $this->render('facture/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
-            // 'commande' => $commande,
+            'commande' => $commande,
             'facture' => $facture,
-            // 'commandes' => $commandes
+            'commandes' => $commandes
             'factures' => $factures
 
         ]);
