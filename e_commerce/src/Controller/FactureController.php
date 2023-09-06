@@ -23,8 +23,8 @@ class FactureController extends AbstractController
     public function add(
 
         SessionInterface $session,
-        Facture $facture,
-        FactureRepository $factureRepository,
+        // Facture $facture,
+        // FactureRepository $factureRepository,
         Commande $commande,
         CommandeRepository $commandeRepository,
         EntityManagerInterface $em
@@ -32,18 +32,18 @@ class FactureController extends AbstractController
         ): Response  
     { 
 
-        // $id = $commande->getId();
-        // $commande = $commandeRepository->find($id);
+        $id = $commande->getId();
+        $commande = $commandeRepository->find($id);
         // $commande = $session->get('commande', []);
-        // dd($commande);
+        dd($commande);
 
         // $id = $facture->getId();
         // $id = $facture->$factureRepository->find($id);
         // dd($facture);
 
-        // $facture = new Facture();
+        $facture = new Facture();
         // $facture->setCommande($this->getCommande());
-        // $facture->setNumeroFacture(uniqid());
+        $facture->setNumeroFacture(uniqid());
         // dd($facture);
 
     }
