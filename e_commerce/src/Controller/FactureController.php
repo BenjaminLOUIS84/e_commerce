@@ -36,16 +36,14 @@ class FactureController extends AbstractController
         // $commande = $commandeRepository->find($id);
         // $commande = $session->get('commande', []);
         // dd($commande);
-        $id = $facture->getId();
+
+        // $id = $facture->getId();
         // $id = $facture->$factureRepository->find($id);
-        dd($facture);
+        // dd($facture);
 
-        // $data = [];
-
-
-        $facture = new Facture();
-        $facture->setCommande($this->getCommande());
-        $facture->setNumeroFacture(uniqid());
+        // $facture = new Facture();
+        // $facture->setCommande($this->getCommande());
+        // $facture->setNumeroFacture(uniqid());
         // dd($facture);
 
     }
