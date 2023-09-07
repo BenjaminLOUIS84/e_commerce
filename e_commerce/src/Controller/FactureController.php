@@ -18,6 +18,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FactureController extends AbstractController
 {
 
+    private EntityManagerInterface $em;                                                                             // Initialiser la variable $em
+    
+    public function __construct(EntityManagerInterface $em){
+        
+        $this-> em = $em;
+
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LA COMMANDE EN FACTURE
 
@@ -25,32 +33,25 @@ class FactureController extends AbstractController
     public function add(
 
         SessionInterface $session,
-        // Facture $facture,
-        // FactureRepository $factureRepository,
+        EntityManagerInterface $em,
         Commande $commande,
-        // CommandeLivre $commandeLivres,
-        // CommandeLivreRepository $commandeLivreRepository,
         CommandeRepository $commandeRepository,
-        EntityManagerInterface $em
-        
+
         ): Response  
-    { 
-        // $session->getCommande();
+    {
 
-        $id = $commande->getId();
-        // $id = $commandeLivres->getId();
-        $commande = $commandeRepository->find($id);
-        // $commande = setCommande($this->getCommandeLivres());
-        // dd($commande);
-
-        // $id = $facture->getId();
-        // $id = $facture->$factureRepository->find($id);
-        // dd($facture);
+        // $session = $commande->getId();   // Pour récupérer l'ID de la commande
+        $id = $commande->getId();        // Pour récupérer la commande sans commandeLivres
+        
+        
+        // dd($session);
+        dd($commande);
 
         $facture = new Facture();
-        // $facture->setCommande($this->getCommande());
         $facture->setNumeroFacture(uniqid());
-        // $facture->setDateFacture($this->getDateFacture());
+
+        // $facture->setCommande($session);
+        $facture->setCommande($id);
 
         // dd($facture);
 
