@@ -52,7 +52,7 @@ class FactureController extends AbstractController
         $facture->setNumeroFacture(uniqid());
         // $facture->setDateFacture($this->getDateFacture());
 
-        dd($facture);
+        // dd($facture);
 
         $em->persist($facture);
         $em->flush();
@@ -62,8 +62,7 @@ class FactureController extends AbstractController
             'Facture ajoutée avec succès!'
         );
 
-        // return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
-        return $this->redirectToRoute('app_user'); // Redirige vers le détail de la facture
+        return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
 
     }
 
