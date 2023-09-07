@@ -40,25 +40,19 @@ class FactureController extends AbstractController
         ): Response  
     {
 
-        // $session = $commande->getId();   // Pour récupérer l'ID de la commande
-        $id = $commande->getId();        // Pour récupérer la commande sans commandeLivres
-        
-        
-        // dd($session);
-        dd($commande);
+        $commande->getId();                         // Pour récupérer la commande 
+        // dd($commande);
 
-        $facture = new Facture();
-        $facture->setNumeroFacture(uniqid());
-
-        // $facture->setCommande($session);
-        $facture->setCommande($id);
+        $facture = new Facture();                   // Créer une facture
+        $facture->setNumeroFacture(uniqid());       // Instencier le numéro de facture
+        $facture->setCommande($commande);           // Lier la commande à la facture
 
         // dd($facture);
 
         $em->persist($facture);
         $em->flush();
         
-        $this->addFlash(                                                // Envoyer une notification
+        $this->addFlash(                            // Envoyer une notification
             'success',
             'Facture ajoutée avec succès!'
         );
