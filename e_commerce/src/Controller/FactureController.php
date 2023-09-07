@@ -21,13 +21,13 @@ class FactureController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LA COMMANDE EN FACTURE
 
-    #[Route('/ajout/{id}', name: 'add')]
+    #[Route('/ajout', name: 'add')]
     public function add(
 
         SessionInterface $session,
         // Facture $facture,
         // FactureRepository $factureRepository,
-        Commande $commande,
+        // Commande $commande,
         // CommandeLivre $commandeLivres,
         // CommandeLivreRepository $commandeLivreRepository,
         // CommandeRepository $commandeRepository,
@@ -37,7 +37,7 @@ class FactureController extends AbstractController
     { 
         // $session->getCommande();
 
-        $id = $commande->getId();
+        // $id = $commande->getId();
         // $id = $commandeLivres->getId();
         // $commande = $commandeRepository->find($id);
         // $commande = setCommande($this->getCommandeLivres());
@@ -52,12 +52,13 @@ class FactureController extends AbstractController
         $facture->setNumeroFacture(uniqid());
         // $facture->setDateFacture($this->getDateFacture());
 
-        dd($facture);
+        // dd($facture);
 
         $em->persist($facture);
         $em->flush();
         
-        return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
+        // return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
+        return $this->redirectToRoute('app_user'); // Redirige vers le détail de la facture
 
     }
 
