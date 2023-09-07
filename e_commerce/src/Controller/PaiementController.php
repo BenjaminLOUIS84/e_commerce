@@ -90,9 +90,11 @@ class PaiementController extends AbstractController
     }
 
     #[Route('/commande/success/{numero_commande}', name: 'payment_success')]                                        // Routes pour les redirections
-    public function StripeSuccess($numero_commande): Response
+    public function StripeSuccess($numero_commande, Commande $commande): Response
     {
-        return $this->render(view: 'commande/success.html.twig');
+        return $this->render('commande/success.html.twig', [
+            'commande' => $commande,
+        ]);
     }
 
     #[Route('/commande/error/{numero_commande}', name: 'payment_error')]                           
