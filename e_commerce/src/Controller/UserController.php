@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Facture;
 use App\Entity\Commande;
 use App\Entity\CommandeLivre;
 use Doctrine\ORM\Mapping\Entity;
 use App\Repository\UserRepository;
+use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommandeLivreRepository;
@@ -50,15 +52,16 @@ class UserController extends AbstractController
 
     #[Route('/user/{id}', name: 'show_user')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(User $user, CommandeRepository $commandeRepository): Response             // Créer une fonction show() dans le controller pour afficher le détail d'un user 
+    public function show(User $user, FactureRepository $factureRepository, CommandeRepository $commandeRepository): Response             // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {
         $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);      // Affiche tous les commandes
-        
+        $factures = $factureRepository->findAll();      // Affiche tous les commandes
 
         return $this->render('user/show.html.twig', [      // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
             'user' => $user,
-            'commandes' => $commandes
+            'commandes' => $commandes,
+            'factures' => $factures
         ]);
     }
 
