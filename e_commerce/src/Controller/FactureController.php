@@ -18,14 +18,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FactureController extends AbstractController
 {
 
-    private EntityManagerInterface $em;                                                                             // Initialiser la variable $em
-    
-    public function __construct(EntityManagerInterface $em){
-        
-        $this-> em = $em;
-
-    }
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LA COMMANDE EN FACTURE
 
