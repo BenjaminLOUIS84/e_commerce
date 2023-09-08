@@ -51,7 +51,6 @@ class FactureController extends AbstractController
         );
 
         return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,10 +64,9 @@ class FactureController extends AbstractController
         Commande $commande,
         CommandeLivreRepository $commandeLivreRepository,
         CommandeRepository $commandeRepository
-
         )
-    {
 
+    {
         $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();
 
@@ -77,12 +75,10 @@ class FactureController extends AbstractController
             'commande' => $commande,
             'commandeLivres' => $commandeLivres,
             'commandes' => $commandes
-
         ]);
 
         $pdf->showPdfFile($html);
     }
-    
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES

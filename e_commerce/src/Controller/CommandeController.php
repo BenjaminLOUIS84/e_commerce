@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Livre;
 use App\Entity\Facture;
+use App\Service\GenPdf;
 use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Entity\CommandeLivre;
@@ -78,10 +79,11 @@ class CommandeController extends AbstractController
     #[Route('/commande/{id}/delete', name: 'delete_commande')]          // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
     public function delete(Commande $commande, EntityManagerInterface $entityManager): Response   
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une commande            
+        
         $entityManager->remove($commande);                              // Supprime une commande
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
-        // $this->addFlash(                                                // Envoyer une notification
+        // $this->addFlash(                                             // Envoyer une notification
         //     'success',
         //     'Commande supprimée avec succès!'
         // );
