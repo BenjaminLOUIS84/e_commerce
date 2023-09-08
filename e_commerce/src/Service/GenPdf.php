@@ -15,19 +15,21 @@ class GenPdf
 
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Courier'); // Paramétrer la police
-        $pdfOptions->set('A4', 'portrait');    // Paramétrer la taille et l'orientation
+        // $pdfOptions->set('A4', 'portrait');      // Paramétrer la taille et l'orientation
         
         // $domPdf = new Dompdf($options); Equivaut à ci-dessous
         $this->domPdf->setOptions($pdfOptions);
 
     }
 
+    /////////////////////////////////////////////////FONCTION POUR AFFICHER LA FACTURE EN PDF 
+
     public function showPdfFile($html) {            // Pour afficher le pdf
 
         $this->domPdf->loadHtml($html);             // Pour mettre du html dans le PDF
         $this->domPdf->render();                    // Pour générer le PDF
-        
-        // $this->domPdf->stream('facture.pdf');    // Pour permettre le téléchargement du fichier PDF
+
+        // $this->domPdf->stream('facture.pdf');    // Pour télécharger le PDF
 
         $this->domPdf->stream('facture.pdf', [
             'Attachement' => false                  // Pour afficher le PDF
@@ -35,7 +37,19 @@ class GenPdf
 
     }
 
-    // public function generateBinaryPDF($html) {        
+    /////////////////////////////////////////////////FONCTION TEST
+
+    public function showPdf() {            // Pour afficher le pdf
+
+        $this->domPdf->loadHtml('Bonjour');         // Pour mettre du html dans le PDF
+        $this->domPdf->render();                // Pour générer le PDF
+        $this->domPdf->stream('test.pdf');   // Pour permettre le téléchargement du fichier PDF
+    }
+
+}
+
+/////////////////////////////////////////////////AUTRE FONCTION
+// public function generateBinaryPDF($html) {        
 
     //     $this->domPdf->loadHtml($html);
     //     $this->domPdf->render();
@@ -43,8 +57,7 @@ class GenPdf
 
     // }
 
-}
-
+/////////////////////////////////////////////////DOCUMENTATION
 // Instancier un objet de la class domPDF
 // $dompdf = new Dompdf();
 
