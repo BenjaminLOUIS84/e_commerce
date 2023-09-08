@@ -72,7 +72,7 @@ class FactureController extends AbstractController
         $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();
 
-        $html = $this->render('facture/detail.html.twig', [
+        $html = $this->render('facture/facture.html.twig', [
             'facture' => $facture,
             'commande' => $commande,
             'commandeLivres' => $commandeLivres,

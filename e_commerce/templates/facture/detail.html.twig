@@ -69,12 +69,14 @@
 
                     <nav id="men">
                         <div id="menu">
-
-                            {# <a href="{{ path ('app_download_pdf') }}"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Télécharger" title="Télécharger"></a> #}
-
+                            {# Pour télécharger la Facture #}
                             <a href="{{ path ('app_facture_facture_pdf', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger" title="Télécharger"></a>
                             
-                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
+                            {# Pour supprimer la commande et la facture après l'avoir téléchargé #}
+                            <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
+                            
+                            {# Revenir en arrière #}
+                            {# <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a> #}
                         
                         </div>
                     </nav>
