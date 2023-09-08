@@ -39,11 +39,14 @@ class GenPdf
 
     /////////////////////////////////////////////////FONCTION TEST
 
-    public function showPdf() {            // Pour afficher le pdf
+    public function showPdf($html) {            // Pour afficher le pdf
 
-        $this->domPdf->loadHtml('Bonjour');         // Pour mettre du html dans le PDF
+        $this->domPdf->loadHtml($html);         // Pour mettre du html dans le PDF
         $this->domPdf->render();                // Pour générer le PDF
-        $this->domPdf->stream('test.pdf');   // Pour permettre le téléchargement du fichier PDF
+        
+        $this->domPdf->stream('test.pdf', [
+            'Attachement' => true                 
+        ]);                                     // Pour permettre le téléchargement du fichier PDF
     }
 
 }

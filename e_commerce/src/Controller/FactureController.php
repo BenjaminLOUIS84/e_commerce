@@ -88,7 +88,11 @@ class FactureController extends AbstractController
     #[Route('/pdf', name: 'pdf')]
     public function generatePdf(GenPdf $pdf) {
        
-        $pdf->showPdf();
+        $html = $this->renderView('facture/facture.html.twig', [
+            'title' => "Bonjour"
+        ]);
+
+        $pdf->showPdf($html);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
