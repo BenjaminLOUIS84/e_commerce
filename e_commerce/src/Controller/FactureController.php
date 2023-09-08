@@ -80,5 +80,14 @@ class FactureController extends AbstractController
         ]);
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR GENERER LE FICHIER PDF DE CHAQUE FACTURES
+
+    #[Route('/pdf/{id}', name: 'facture_pdf')]
+    public function generatePdfFacture(Facture $facture = null, GenPdf $pdf){
+
+        $html = $this->render('facture/detail.html.twig', ['facture' => $facture]);
+        $pdf->showPdfFile($html);
+    }
     
 }
