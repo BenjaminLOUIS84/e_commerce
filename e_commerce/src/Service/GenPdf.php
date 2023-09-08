@@ -15,9 +15,8 @@ class GenPdf
 
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Courier'); // Paramétrer la police
-        // $pdfOptions->set('A4', 'portrait');      // Paramétrer la taille et l'orientation
+        $pdfOptions->set('A4', 'portrait');      // Paramétrer la taille et l'orientation
         
-        // $domPdf = new Dompdf($options); Equivaut à ci-dessous
         $this->domPdf->setOptions($pdfOptions);
 
     }
@@ -28,25 +27,12 @@ class GenPdf
 
         $this->domPdf->loadHtml($html);             // Pour mettre du html dans le PDF
         $this->domPdf->render();                    // Pour générer le PDF
-
-        // $this->domPdf->stream('facture.pdf');    // Pour télécharger le PDF
+        ob_get_clean();                             // Pour permettre le téléchargement et l'affichage du fichier PDF
 
         $this->domPdf->stream('facture.pdf', [
             'Attachement' => false                  // Pour afficher le PDF
         ]);
 
-    }
-
-    /////////////////////////////////////////////////FONCTION TEST
-
-    public function showPdf($html) {            // Pour afficher le pdf
-
-        $this->domPdf->loadHtml($html);         // Pour mettre du html dans le PDF
-        $this->domPdf->render();                // Pour générer le PDF
-        
-        $this->domPdf->stream('test.pdf', [
-            'Attachement' => true                 
-        ]);                                     // Pour permettre le téléchargement du fichier PDF
     }
 
 }

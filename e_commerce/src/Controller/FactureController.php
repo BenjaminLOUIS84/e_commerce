@@ -57,43 +57,32 @@ class FactureController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR GENERER LE FICHIER PDF DE CHAQUE FACTURES
 
-    // #[Route('/pdf/{id}', name: 'facture_pdf')]
-    // public function generatePdfFacture(
+    #[Route('/pdf/{id}', name: 'facture_pdf')]
+    public function generatePdfFacture(
 
-    //     Facture $facture = null,
-    //     GenPdf $pdf,
-    //     Commande $commande,
-    //     CommandeLivreRepository $commandeLivreRepository,
-    //     CommandeRepository $commandeRepository
+        Facture $facture = null,
+        GenPdf $pdf,
+        Commande $commande,
+        CommandeLivreRepository $commandeLivreRepository,
+        CommandeRepository $commandeRepository
 
-    //     )
-    // {
+        )
+    {
 
-    //     $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
-    //     $commandeLivres = $commandeLivreRepository->findAll();
+        $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
+        $commandeLivres = $commandeLivreRepository->findAll();
 
-    //     $html = $this->render('facture/detail.html.twig', [
-    //         'facture' => $facture,
-    //         'commande' => $commande,
-    //         'commandeLivres' => $commandeLivres,
-    //         'commandes' => $commandes
+        $html = $this->render('facture/detail.html.twig', [
+            'facture' => $facture,
+            'commande' => $commande,
+            'commandeLivres' => $commandeLivres,
+            'commandes' => $commandes
 
-    //     ]);
-
-    //     $pdf->showPdfFile($html);
-    // }
-    
-    // FONCTION POUR GENERER UN FICHIER PDF 
-
-    #[Route('/pdf', name: 'pdf')]
-    public function generatePdf(GenPdf $pdf) {
-       
-        $html = $this->renderView('facture/facture.html.twig', [
-            'title' => "Bonjour"
         ]);
 
-        $pdf->showPdf($html);
+        $pdf->showPdfFile($html);
     }
+    
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES
