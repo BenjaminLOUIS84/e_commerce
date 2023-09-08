@@ -95,11 +95,13 @@ class FactureController extends AbstractController
         )
     {
 
+        $commandeLivres = $commandeLivreRepository->findAll();
+        
         $html = $this->render('facture/detail.html.twig', [
             'facture' => $facture,
             'commande' => $commande,
             'commandeLivres' => $commandeLivres
-            
+
         ]);
 
         $pdf->showPdfFile($html);
