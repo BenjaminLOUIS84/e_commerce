@@ -107,5 +107,5 @@ class FactureController extends AbstractController
 
         $pdf->showPdfFile($html);
     }
-    
+
 }
