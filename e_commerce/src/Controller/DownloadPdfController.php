@@ -11,13 +11,6 @@ use Dompdf\Options;
 
 class DownloadPdfController extends AbstractController
 {
-    // #[Route('/download/pdf', name: 'app_download_pdf')]
-    // public function index(): Response
-    // {
-    //     return $this->render('download_pdf/index.html.twig', [
-    //         'controller_name' => 'DownloadPdfController',
-    //     ]);
-    // }
 
     #[Route('/download/pdf', name: 'app_download_pdf')]
     public function download(){

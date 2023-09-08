@@ -29,8 +29,8 @@ class GenPdf
         $this->domPdf->render();                    // Pour générer le PDF
         ob_get_clean();                             // Pour permettre le téléchargement et l'affichage du fichier PDF
 
-        $this->domPdf->stream('facture.pdf', [
-            'Attachement' => false                  // Pour afficher le PDF
+        $this->domPdf->stream('Facture.pdf', [
+            'Attachement' => false                  // Pour ENVOYER le PDF
         ]);
 
     }

@@ -72,8 +72,6 @@
 
                             {# <a href="{{ path ('app_download_pdf') }}"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Télécharger" title="Télécharger"></a> #}
 
-                            {# <a href="{{ path ('app_facture_pdf') }}">TEST</a> #}
-
                             <a href="{{ path ('app_facture_facture_pdf', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger" title="Télécharger"></a>
                             
                             <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
