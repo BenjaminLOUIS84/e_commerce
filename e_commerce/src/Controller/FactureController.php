@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Facture;
+use App\Service\GenPdf;
 use App\Entity\Commande;
 use App\Entity\CommandeLivre;
 use App\Repository\FactureRepository;
