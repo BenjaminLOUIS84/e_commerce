@@ -55,31 +55,6 @@ class FactureController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES
-
-    #[Route('/facture/{id}/detail', name: 'detail_facture')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
-    public function detail(
-
-        Commande $commande,
-        CommandeLivreRepository $commandeLivreRepository,
-        CommandeRepository $commandeRepository,
-        
-
-        ): Response
-    {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
-        $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
-        $commandeLivres = $commandeLivreRepository->findAll();
-        
-        return $this->render('facture/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
-            'commande' => $commande,
-            'commandeLivres' => $commandeLivres,
-            'commandes' => $commandes,
-            
-
-        ]);
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR GENERER LE FICHIER PDF DE CHAQUE FACTURES
 
     #[Route('/pdf/{id}', name: 'facture_pdf')]
@@ -106,6 +81,31 @@ class FactureController extends AbstractController
         ]);
 
         $pdf->showPdfFile($html);
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES
+
+    #[Route('/facture/{id}/detail', name: 'detail_facture')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
+    public function detail(
+
+        Commande $commande,
+        CommandeLivreRepository $commandeLivreRepository,
+        CommandeRepository $commandeRepository,
+        
+
+        ): Response
+    {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
+        $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
+        $commandeLivres = $commandeLivreRepository->findAll();
+        
+        return $this->render('facture/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
+            'commande' => $commande,
+            'commandeLivres' => $commandeLivres,
+            'commandes' => $commandes,
+            
+
+        ]);
     }
 
 }

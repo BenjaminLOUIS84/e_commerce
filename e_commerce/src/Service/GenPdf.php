@@ -24,25 +24,24 @@ class GenPdf
 
     public function showPdfFile($html) {            // Pour afficher le pdf
 
-        $this->domPdf->loadHtml($html);
-        $this->domPdf->render();
-
+        $this->domPdf->loadHtml($html);             // Pour mettre du html dans le PDF
+        $this->domPdf->render();                    // Pour générer le PDF
         
-        // $this->domPdf->stream();
+        // $this->domPdf->stream('facture.pdf');    // Pour permettre le téléchargement du fichier PDF
 
         $this->domPdf->stream('facture.pdf', [
-            'Attachement' => false
+            'Attachement' => false                  // Pour afficher le PDF
         ]);
 
     }
 
-    public function generateBinaryPDF($html) {        
+    // public function generateBinaryPDF($html) {        
 
-        $this->domPdf->loadHtml($html);
-        $this->domPdf->render();
-        $this->domPdf->output();
+    //     $this->domPdf->loadHtml($html);
+    //     $this->domPdf->render();
+    //     $this->domPdf->output();
 
-    }
+    // }
 
 }
 
