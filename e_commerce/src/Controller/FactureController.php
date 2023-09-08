@@ -61,10 +61,9 @@ class FactureController extends AbstractController
     public function detail(
 
         Commande $commande,
-        // Facture $facture,
         CommandeLivreRepository $commandeLivreRepository,
         CommandeRepository $commandeRepository,
-        // FactureRepository $factureRepository,
+        
 
         ): Response
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
@@ -74,9 +73,8 @@ class FactureController extends AbstractController
         return $this->render('facture/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
             'commande' => $commande,
             'commandeLivres' => $commandeLivres,
-            // 'facture' => $facture,
             'commandes' => $commandes,
-            // 'factures' => $factures
+            
 
         ]);
     }
@@ -90,17 +88,20 @@ class FactureController extends AbstractController
         Facture $facture = null,
         GenPdf $pdf,
         Commande $commande,
-        CommandeLivreRepository $commandeLivreRepository
+        CommandeLivreRepository $commandeLivreRepository,
+        CommandeRepository $commandeRepository
 
         )
     {
 
+        $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();
-        
+
         $html = $this->render('facture/detail.html.twig', [
             'facture' => $facture,
             'commande' => $commande,
-            'commandeLivres' => $commandeLivres
+            'commandeLivres' => $commandeLivres,
+            'commandes' => $commandes
 
         ]);
 

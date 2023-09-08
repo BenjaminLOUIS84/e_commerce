@@ -27,11 +27,12 @@ class GenPdf
         $this->domPdf->loadHtml($html);
         $this->domPdf->render();
 
-        $this->domPdf->stream();
+        
+        // $this->domPdf->stream();
 
-        // $this->domPdf->stream('facture.pdf', [
-        //     'Attachement' => false
-        // ]);
+        $this->domPdf->stream('facture.pdf', [
+            'Attachement' => false
+        ]);
 
     }
 
