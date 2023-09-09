@@ -62,7 +62,7 @@ class PaiementController extends AbstractController
         $checkout_session = Session::create([
 
             'customer_email' => $this->getUser()->getEmail(),                                                       // Afficher automatiquement l'email de l'utilisateur
-            //'billing_address_collection' => 'required',
+            'billing_address_collection' => 'required',
             'payment_method_types' => ['card'],                                                                     // Préciser le mode de paiement par carte
             
             'line_items' => [[                                                                                      // Pour afficher la liste des livres commandés dans la page de paiement
