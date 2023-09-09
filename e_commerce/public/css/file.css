@@ -256,6 +256,11 @@ a:hover {
     width: 30%;
 }
 
+.description thead {
+    background-color: rgba(204, 0, 0, 1);
+    color: white;
+}
+
 .description {
     display: flex;
     flex-direction: column;
