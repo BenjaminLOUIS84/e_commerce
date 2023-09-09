@@ -42,17 +42,18 @@
 
                     <div class="articles">
     
-                        {% for commandeLivre in commandeLivres %}
-             
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Livre</th>
-                                        <th>Format</th>
-                                        <th>Quantité</th>
-                                        <th>Prix unitaire</th>
-                                    </tr>
-                                </thead>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Livre</th>
+                                    <th>Format</th>
+                                    <th>Quantité</th>
+                                    <th>Prix unitaire</th>
+                                </tr>
+                            </thead>
+
+                            {% for commandeLivre in commandeLivres %}
+
                                 <tbody>
                                     <tr>
                                         <td>{{ commandeLivre.livre.titre }}</td>
@@ -61,10 +62,11 @@
                                         <td>{{ commandeLivre.Livre.prixUnitaire }} € ttc</td>
                                     </tr>
                                 </tbody>
-                            </table>
-                            
-                        {% endfor %}
-                            
+
+                            {% endfor %}
+
+                        </table>
+                        
                         <h2>TOTAL {{ commande.totalCommande }} € TTC</h2>
                         <h3>REGLEE</h3>
 
