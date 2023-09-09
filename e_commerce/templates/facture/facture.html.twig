@@ -9,7 +9,7 @@
         <head>
             <meta charset="utf-8">
 
-            <linkrel rel="stylesheet" href="{{ absolute_url('asset/css/file.css') }}">
+            <linkrel rel="stylesheet" href="{{ absolute_url(asset('/css/file.css')) }}">
             
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
                 <header>
                     <!-- Cette page concerne les factures -->
 
-                    <img src="{{ absolute_url('/asset/img/logo.jpg')) }}"/>
+                    <img src="{{ absolute_url(asset('/img/logo.jpg')) }}"/>
 
                     {% for facture in factures %}
                         <h2>Facture n° {{ facture }}</h2> 

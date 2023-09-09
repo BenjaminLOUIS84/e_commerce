@@ -14,11 +14,11 @@ class GenPdf
         $this->domPdf = new DomPdf();
 
         $pdfOptions = new Options();
+        $pdfOptions->set('isRemoteEnabled', true);  // Pour activer les options
         $pdfOptions->set('defaultFont', 'Courier'); // Paramétrer la police
-        $pdfOptions->set('A4', 'portrait');      // Paramétrer la taille et l'orientation
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isRemoteEnabled', true);
-        
+        $pdfOptions->set('A4', 'portrait');         // Paramétrer la taille et l'orientation
+        $pdfOptions->set('dompdf_dpi', '300');      // Pour gérer la résolution des images
+
         $this->domPdf->setOptions($pdfOptions);
 
     }
@@ -57,6 +57,9 @@ class GenPdf
 
 // (Optional) Setup the paper size and orientation Choisir le format et l'orientation
 // $dompdf->setPaper('A4', 'landscape');
+
+// $pdfOptions->set('isHtml5ParserEnabled', true);
+// $pdfOptions->set('isRemoteEnabled', true);
 
 // Render the HTML as PDF Générer le PDF
 // $dompdf->render();
