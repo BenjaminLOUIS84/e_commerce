@@ -247,10 +247,6 @@ a:hover {
     margin-top: 20px;
     margin-bottom: 30px;
 }
-.entreprise {
-    display: flex;
-    flex-direction: row;
-}
 
 .ent {
     text-align: center;
