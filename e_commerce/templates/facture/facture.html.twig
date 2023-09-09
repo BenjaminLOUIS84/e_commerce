@@ -38,18 +38,19 @@
                     <h4>Livraison : {{ commande.coordonnees }}</h4>
 
                     <div class="description">
-    
-                        {% for commandeLivre in commandeLivres %}
              
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Livre</th>
-                                        <th>Format</th>
-                                        <th>Quantité</th>
-                                        <th>Prix unitaire</th>
-                                    </tr>
-                                </thead>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Livre</th>
+                                    <th>Format</th>
+                                    <th>Quantité</th>
+                                    <th>Prix unitaire</th>
+                                </tr>
+                            </thead>
+
+                            {% for commandeLivre in commandeLivres %}
+
                                 <tbody>
                                     <tr>
                                         <td>{{ commandeLivre.livre.titre }}</td>
@@ -58,10 +59,11 @@
                                         <td>{{ commandeLivre.Livre.prixUnitaire }} € ttc</td>
                                     </tr>
                                 </tbody>
-                            </table>
+
+                            {% endfor %} 
+
+                        </table>
                             
-                        {% endfor %} 
-                        
                     </div>
                 </header>
             </div>
