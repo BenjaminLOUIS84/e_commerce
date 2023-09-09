@@ -28,14 +28,19 @@
         <body>
             <div class="wrapperLivres">
                 <header>
-                    <!-- Cette page concerne les factures -->
-                    <h2>MA FACTURE</h2>
+
+                    {# <img src="{{ (asset('img/logo.jpg')) }}"/> #}
+
+                    {% for facture in factures %}
+                        <!-- Cette page concerne les factures -->
+                        <h2>Facture n° {{ facture }}</h2> 
+                    {% endfor %}
 
                     <h3>
                         Commande n° {{ commande.numeroCommande }}<br>
                         faite le {{ commande.dateCommande | date("d-m-Y") }}<br>   
                     </h3>
-                    <p> {{ commande.coordonnees }}</p>
+                    <p>Livraison : {{ commande.coordonnees }}</p>
 
                     <div class="articles">
     
@@ -63,7 +68,7 @@
                         {% endfor %}
                             
                         <h2>TOTAL {{ commande.totalCommande }} € TTC</h2>
-                        <h1>REGLEE</h1>
+                        <h3>REGLEE</h3>
 
                     </div>
 

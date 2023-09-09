@@ -62,19 +62,22 @@ class FactureController extends AbstractController
         Facture $facture = null,
         GenPdf $pdf,
         Commande $commande,
+        FactureRepository $factureRepository,
         CommandeLivreRepository $commandeLivreRepository,
         CommandeRepository $commandeRepository
         )
 
     {
         $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
+        $factures = $factureRepository->findBy([], ["numero_facture" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();
 
         $html = $this->render('facture/facture.html.twig', [
             'facture' => $facture,
             'commande' => $commande,
             'commandeLivres' => $commandeLivres,
-            'commandes' => $commandes
+            'commandes' => $commandes,
+            'factures' => $factures
         ]);
 
         $pdf->showPdfFile($html);
@@ -88,6 +91,7 @@ class FactureController extends AbstractController
     public function detail(
 
         Commande $commande,
+        FactureRepository $factureRepository,
         CommandeLivreRepository $commandeLivreRepository,
         CommandeRepository $commandeRepository,
         
@@ -95,10 +99,12 @@ class FactureController extends AbstractController
         ): Response
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
         $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
+        $factures = $factureRepository->findBy([], ["numero_facture" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();
         
         return $this->render('facture/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier facture)
             'commande' => $commande,
+            'factures' => $factures,
             'commandeLivres' => $commandeLivres,
             'commandes' => $commandes,
             

@@ -16,6 +16,8 @@ class GenPdf
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Courier'); // Paramétrer la police
         $pdfOptions->set('A4', 'portrait');      // Paramétrer la taille et l'orientation
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
         
         $this->domPdf->setOptions($pdfOptions);
 
