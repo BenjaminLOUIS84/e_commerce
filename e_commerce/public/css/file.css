@@ -230,6 +230,59 @@ a:hover {
     border-radius: 10px;
 }
 
+/* FACTURES */
+
+.wrapperFactures {
+    background-image: url(/img/collection.jpg);
+    font-family: 'Libre Baskerville', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+}
+
+.wrapperFactures h3 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.entreprise {
+    display: flex;
+    flex-direction: row;
+}
+
+.ent {
+    text-align: center;
+}
+
+.logoFou {
+    width: 30%;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    background-color: whitesmoke;
+}
+
+.total {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    color: white;
+    background-color: rgba(204, 0, 0, 1);
+    text-align: left;
+}
+
+
 /*FORMULAIRES INSCRIPTION & CONNEXION*/
 
 form {

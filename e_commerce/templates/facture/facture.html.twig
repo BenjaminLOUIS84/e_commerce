@@ -9,7 +9,7 @@
         <head>
             <meta charset="utf-8">
 
-            <linkrel rel="stylesheet" href="{{ absolute_url(asset('/css/file.css')) }}">
+            <link rel="stylesheet" href="{{ absolute_url(asset('/css/file.css')) }}">
             
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,20 +26,18 @@
         </head>
 
         <body>
-            <div class="wrapperLivres">
+            <div class="wrapperFactures">
                 <header>
                     <!-- Cette page concerne les factures -->
 
-                    <img src="{{ absolute_url(asset('/img/logo.jpg')) }}"/>
-
                     {% for facture in factures %}
-                        <h2>Facture n° {{ facture }}</h2> 
+                        <h3>Facture n° {{ facture }}</h3> 
                     {% endfor %}
 
-                    <h3>Commande n° {{ commande.numeroCommande }} faite le {{ commande.dateCommande | date("d-m-Y") }}<br></h3>
-                    <p>Livraison : {{ commande.coordonnees }}</p>
+                    <h2>Commande n° {{ commande.numeroCommande }} faite le {{ commande.dateCommande | date("d-m-Y") }}<br></h2>
+                    <h4>Livraison : {{ commande.coordonnees }}</h4>
 
-                    <div class="articles">
+                    <div class="description">
     
                         {% for commandeLivre in commandeLivres %}
              
@@ -62,14 +60,26 @@
                                 </tbody>
                             </table>
                             
-                        {% endfor %}
-                            
-                        <h2>TOTAL {{ commande.totalCommande }} € TTC</h2>
-                        <h3>REGLEE</h3>
-
+                        {% endfor %} 
+                        
                     </div>
 
                 </header>
+
+            </div>
+
+            <div class="total">
+                <h2>TOTAL {{ commande.totalCommande }} € TTC MONTANT SOLDEE</h2>
+            </div>  
+            
+            <div class="entreprise">
+                <img src="{{ absolute_url(asset('/img/logo.jpg')) }}" class="logoFou"/>
+
+                <div class="ent">
+                    <h3>MT&CO<br></h3>
+                    <h4>98 rue Bobillot 75013 PARIS 13 FRANCE</h4>
+                    <h4>Email : etrefouetsage@gmail.com Auteur/Ecrivain : Daniel Aaron</h4>
+                </div>
             </div>
 
             {# Framework Bootstrap #}
