@@ -30,7 +30,7 @@
                 <header>
                     <!-- Cette page concerne les factures -->
 
-                    {% for facture in factures %}
+                    {% for facture in commande.factures %}
                         <h3>Facture n° {{ facture }}</h3> 
                     {% endfor %}
 
@@ -49,7 +49,7 @@
                                 </tr>
                             </thead>
 
-                            {% for commandeLivre in commandeLivres %}
+                            {% for commandeLivre in commande.commandeLivres %}
 
                                 <tbody>
                                     <tr>
