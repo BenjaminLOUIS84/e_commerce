@@ -40,35 +40,35 @@
                     
                     <div class="articles">
     
-                        {% for commandeLivre in commandeLivres %}
-             
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Livre</th>
-                                        <th>Format</th>
-                                        <th>Quantité</th>
-                                        <th>Prix unitaire</th>
-                                    </tr>
-                                </thead>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Livre</th>
+                                    <th>Titre</th>
+                                    <th>Format</th>
+                                    <th>Quantité</th>
+                                    <th>Prix unitaire</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+
+                            {% for commandeLivre in commandeLivres %}
+
                                 <tbody>
                                     <tr>
                                         <td><img src="{{ asset('uploads/images/'~ commandeLivre.livre.couverture) }}" alt="Couverture des Livres de la collection sélectionnée" class="cover"></td>
+                                        <td>{{ commandeLivre.livre.titre }}</td>
                                         <td>{{ commandeLivre.livre.format }}</td>
                                         <td>{{ commandeLivre }}</td>
                                         <td>{{ commandeLivre.Livre.prixUnitaire }} € ttc</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2">Total</td>
                                         <td>{{ commandeLivre.sousTotal }} € ttc</td> 
                                     </tr>
-                                </tfoot>
-                            </table>
-                            
-                        {% endfor %}
-                            
+                                </tbody>
+
+                            {% endfor %}
+
+                        </table>
+                        
                         <h2>TOTAL A PAYER {{ commande.totalCommande }} € TTC</h2>
 
                     </div>

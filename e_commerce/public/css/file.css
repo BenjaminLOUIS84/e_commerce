@@ -189,7 +189,7 @@ a {
     transition: ease-in-out 0.5s;
     margin: 10px;
     border-radius: 10px;
-    width: max-content;
+    width: 340px;
     text-align: center;
 }
 
@@ -722,5 +722,9 @@ h6 {
         align-items: baseline;
         gap: 10px;
         font-size: 0.8em;
+    }
+
+    .order {
+        font-size: 0.7em;
     }
 }
