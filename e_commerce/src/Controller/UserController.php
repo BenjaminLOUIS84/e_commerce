@@ -48,7 +48,7 @@ class UserController extends AbstractController
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LES COMMANDES DE CHAQUE UTILISATEURS
+    // FONCTION POUR AFFICHER LES COMMANDES ET LES FACTURES DE CHAQUE UTILISATEURS
 
     #[Route('/user/{id}', name: 'show_user')]                               // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
