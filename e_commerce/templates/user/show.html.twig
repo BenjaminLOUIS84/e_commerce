@@ -49,18 +49,18 @@
                                     
                                 <div class="option">
 
-                                    {# {% if commande.facture | length >0 %} #}
+                                    {% if commande.facture | length >0 %}
 
                                         {# Permet d'afficher la page des factures propre à chaque commandes #}
-                                        {# <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a> #}
-                                        {# <h2>FACTURE</h2> #}
+                                        <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
+                                        <h2>FACTURE</h2>
                                         
-                                    {# {% else %} #}
+                                    {% else %}
 
                                         {# Accéder au détail en cliquant sur la date de commande #}
                                         <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">{{ commande.dateCommande | date("d-m-Y") }}</a>
                                         
-                                    {# {% endif %} #}
+                                    {% endif %}
 
                                     {# Pour supprimer la commande et la facture #}
                                     <a class="crud" href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>

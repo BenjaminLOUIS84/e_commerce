@@ -50,17 +50,24 @@ class UserController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LES COMMANDES DE CHAQUE UTILISATEURS
 
-    #[Route('/user/{id}', name: 'show_user')]              // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    #[Route('/user/{id}', name: 'show_user')]                               // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
-    public function show(User $user, FactureRepository $factureRepository, CommandeRepository $commandeRepository): Response             // Créer une fonction show() dans le controller pour afficher le détail d'un user 
+    public function show(
+        User $user,
+        FactureRepository $factureRepository,
+        CommandeRepository $commandeRepository,
+        CommandeLivreRepository $commandeLivreRepository
+        ): Response                                                         // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {
-        $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);      // Affiche tous les commandes
-        $factures = $factureRepository->findAll();      // Affiche tous les commandes
+        $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes
+        $commandeLivres = $commandeLivreRepository->findAll();     
+        $factures = $factureRepository->findAll();      
 
-        return $this->render('user/show.html.twig', [      // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
+        return $this->render('user/show.html.twig', [                       // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
             'user' => $user,
             'commandes' => $commandes,
+            'commandeLivres' => $commandeLivres,
             'factures' => $factures
         ]);
     }
@@ -72,6 +79,7 @@ class UserController extends AbstractController
     public function detail(
        
         Commande $commande,
+        // CommandeLivre $commandeLivre,
         CommandeLivreRepository $commandeLivreRepository
     
     ): Response
@@ -83,6 +91,7 @@ class UserController extends AbstractController
         return $this->render('user/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier commande)
         
             'commande' => $commande,
+            // 'commandeLivre' => $commandeLivre,
             'commandeLivres' => $commandeLivres
 
         ]);
