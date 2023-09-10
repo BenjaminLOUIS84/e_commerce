@@ -45,10 +45,10 @@ class FactureController extends AbstractController
         $em->persist($facture);
         $em->flush();
         
-        // $this->addFlash(                            // Envoyer une notification
-        //     'success',
-        //     'Facture ajoutée avec succès!'
-        // );
+        $this->addFlash(                            // Envoyer une notification
+            'success',
+            'Facture ajoutée avec succès!'
+        );
 
         return $this->redirectToRoute('app_facture_detail_facture', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Redirige vers le détail de la facture
     }

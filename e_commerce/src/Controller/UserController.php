@@ -79,21 +79,19 @@ class UserController extends AbstractController
     public function detail(
        
         Commande $commande,
-        // CommandeLivre $commandeLivre,
-        CommandeLivreRepository $commandeLivreRepository
+        CommandeLivreRepository $commandeLivreRepository,
     
     ): Response
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
-        // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 67], ["livre" => "ASC"]);
+        // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 78], ["livre" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findBy([], ["livre" => "ASC"]);
-        
+       
+    
         return $this->render('user/detail.html.twig', [          // Pour faire le lien entre le controller et la vue detail.html.twig (il faut donc la créer dans le dossier commande)
         
             'commande' => $commande,
-            // 'commandeLivre' => $commandeLivre,
             'commandeLivres' => $commandeLivres
-
         ]);
     }
 
