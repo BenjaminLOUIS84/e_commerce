@@ -83,10 +83,10 @@ class CommandeController extends AbstractController
         $entityManager->remove($commande);                              // Supprime une commande
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
-        // $this->addFlash(                                             // Envoyer une notification
-        //     'success',
-        //     'Commande supprimée avec succès!'
-        // );
+        $this->addFlash(                                                // Envoyer une notification
+            'success',
+            'Supprimée avec succès!'
+        );
 
         return $this->redirectToRoute('app_user');                     // Rediriger vers la liste des commandes
     }
