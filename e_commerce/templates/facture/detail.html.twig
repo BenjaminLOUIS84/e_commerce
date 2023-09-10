@@ -33,10 +33,7 @@
                         <h2>Facture n° {{ facture }}</h2> 
                     {% endfor %}
 
-                    <h3>
-                        Commande n° {{ commande.numeroCommande }}<br>
-                        faite le {{ commande.dateCommande | date("d-m-Y") }}<br>   
-                    </h3>
+                    <h3>Commande n° {{ commande.numeroCommande }} du {{ commande.dateCommande | date("d-m-Y") }}</h3><br>
                     <p>Livraison : {{ commande.coordonnees }}</p>
 
                     <div class="articles">
@@ -67,8 +64,11 @@
                         </table>
                         
                         <h2>TOTAL {{ commande.totalCommande }} € TTC</h2>
-                        <h3>REGLEE</h3>
 
+                        {% for facture in commande.Facture %}
+                            <h3>Soldée le {{ facture.dateFacture | date("d-m-Y") }}</h3> 
+                        {% endfor %}
+                        
                     </div>
 
                     <nav id="men">
@@ -76,9 +76,6 @@
 
                             {# Pour télécharger la Facture #}
                             <a href="{{ path ('app_facture_facture_pdf', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger" title="Télécharger"></a>
-                            
-                            {# Pour supprimer la commande et la facture après l'avoir téléchargé #}
-                            {# <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a> #}
                             
                             {# Revenir en arrière #}
                             <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>

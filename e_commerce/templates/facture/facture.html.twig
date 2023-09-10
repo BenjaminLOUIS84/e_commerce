@@ -34,7 +34,7 @@
                         <h3>Facture n° {{ facture }}</h3> 
                     {% endfor %}
 
-                    <h2>Commande n° {{ commande.numeroCommande }} faite le {{ commande.dateCommande | date("d-m-Y") }}<br></h2>
+                    <h2>Commande n° {{ commande.numeroCommande }} du {{ commande.dateCommande | date("d-m-Y") }}<br></h2>
                     <h4>Livraison : {{ commande.coordonnees }}</h4>
 
                     <div class="description">
@@ -69,8 +69,12 @@
             </div>
 
             <div class="total">
-                <h2>TOTAL {{ commande.totalCommande }} € TTC MONTANT SOLDEE</h2>
+                <h2>TOTAL {{ commande.totalCommande }} € TTC</h2>
             </div>  
+
+            {% for facture in commande.Facture %}
+                <h3>Soldée le {{ facture.dateFacture | date("d-m-Y") }}</h3> 
+            {% endfor %}
                 
             <div class="ent">
                 <img src="{{ absolute_url(asset('/img/logo.jpg')) }}" class="logoFou"/>
