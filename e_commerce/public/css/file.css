@@ -189,8 +189,11 @@ a {
     transition: ease-in-out 0.5s;
     margin: 10px;
     border-radius: 10px;
-    width: 340px;
+    width: max-content;
     text-align: center;
+}
+#menu a {
+    width: 340px;
 }
 
 .ml {
