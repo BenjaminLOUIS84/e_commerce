@@ -45,6 +45,8 @@
                                     <th>Format</th>
                                     <th>Quantité</th>
                                     <th>Prix unitaire</th>
+                                    
+                                    <th>Téléchargement</th>
                                 </tr>
                             </thead>
 
@@ -56,6 +58,14 @@
                                         <td>{{ commandeLivre.livre.format }}</td>
                                         <td>{{ commandeLivre }}</td>
                                         <td>{{ commandeLivre.Livre.prixUnitaire }} € ttc</td>
+
+                                        {# Si le format du livre est numérique alors télécharger le livre #}
+                                        {% if commandeLivre.livre.format.id == 7 %}
+
+                                            <td><a href="{{ asset('ppsx/TOME 3 ARGENTS.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
                                     </tr>
                                 </tbody>
 
@@ -75,7 +85,7 @@
                         <div id="menu">
 
                             {# Pour télécharger la Facture #}
-                            <a href="{{ path ('app_facture_facture_pdf', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger" title="Télécharger"></a>
+                            <a href="{{ path ('app_facture_facture_pdf', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger la facture" title="Télécharger la facture"></a>
                             
                             {# Revenir en arrière #}
                             <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
