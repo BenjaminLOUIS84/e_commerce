@@ -22,7 +22,7 @@ class LivreController extends AbstractController
     
     public function index(LivreRepository $livreRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
     {                                                                                                                       
-        $livres = $livreRepository->findBy([],["id" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
+        $livres = $livreRepository->findBy([],["id" =>                  // Pour récupérer la liste des livres classées par ID ordre croissant
         "ASC"]);      
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
