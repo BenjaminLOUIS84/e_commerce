@@ -18,16 +18,16 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
 class LivreController extends AbstractController
-{                                                                       // AFFICHER LA LISTE DES LIVRES
+{                                                                       // AFFICHER LA LISTE DE TOUS LES LIVRES
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
     
     public function index(LivreRepository $livreRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
     {                                                                                                                       
         $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
         "ASC"]);      
-           
+
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
-            'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'
+            'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'                                     
         ]);
     }                                                                   // Pour afficher cet argument dans la vue il faut créer un echo représenté par {{ }} Dans le fichier index.html.twig du dossier livre
 
