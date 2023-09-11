@@ -9,7 +9,6 @@ use App\Entity\Commande;
 use App\Service\FileUploader;
 use App\Repository\LivreRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\FormatLivreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
