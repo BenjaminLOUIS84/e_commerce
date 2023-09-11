@@ -41,6 +41,9 @@
                     {# Ce que les utiliseurs peuvent voir #}
                     {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
                     
+                    {# Livre Tome 3 version numérique à télécharger #}
+                    {# <a href="{{ asset('ppsx/TOME 3 ARGENTS.ppsx') }}"/>Tome3</a> #}
+
                     {% if user.commande | length >0 %}
 
                         {% for commande in user.commande %}
