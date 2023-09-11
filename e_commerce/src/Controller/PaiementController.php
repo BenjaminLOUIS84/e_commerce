@@ -47,8 +47,10 @@ class PaiementController extends AbstractController
                     'currency' => 'eur',
                     'unit_amount' => $livreData->getPrixUnitaire()*100,                                             // Ajouter *100  Pour afficher les prix au bon format 19.00€ (non 0.19€)
                     'product_data' => [
-                        'name' => $livre->getLivre()->getTitre()
+                        'name' => $livre->getLivre()->getTitre(),                                                   // Afficher le titre des livres
+                        'description' => $livre->getLivre()->getFormat()                                            // Afficher le format
                     ]
+            
                 ],
                 'quantity' => $livre->getQuantite()
             ];
