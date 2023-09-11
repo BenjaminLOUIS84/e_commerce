@@ -61,8 +61,54 @@
 
                                         {# Si le format du livre est numérique alors télécharger le livre #}
                                         {% if commandeLivre.livre.format.id == 7 %}
+                                            
+                                            {# Conditions pour que le fichier numérique corresponde au bon livre #}
+                                            {% if commandeLivre.livre.id == 58 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 59 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 60 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 61 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 62 %}
+                                                <td><a href="{{ asset('ppsx/TOME 3 ARGENTS.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 63 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 64 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 65 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 66 %}
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
 
-                                            <td><a href="{{ asset('ppsx/TOME 3 ARGENTS.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
                                         {% else %}
                                             <td></td>
                                         {% endif %}
