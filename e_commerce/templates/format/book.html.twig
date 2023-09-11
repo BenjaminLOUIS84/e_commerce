@@ -25,7 +25,7 @@
             <div class="wrapper">
                 <header>
                     <!-- Cette page concerne les livres-->
-                    <h3>LES LIVRES</h3>
+                    <h3>Les Livres en version {{ format }}</h3>
 
                     {# Lire et afficher toutes les notifications #}
 
@@ -44,7 +44,7 @@
 
                     <section class="price">
 
-                        {% for livre in format.livres %}
+                        {% for livre in livres %}
 
                             <div class="blocPrice">
                                 
@@ -110,7 +110,7 @@
 
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>                        </div>
+                            <a href="{{ path ('show_format', {id:format.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
                         </div>
                     </nav>
 

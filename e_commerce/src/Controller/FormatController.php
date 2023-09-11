@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Format;
 use App\Form\FormatType;
 use App\Service\FileUploader;
+use App\Repository\LivreRepository;
 use App\Repository\FormatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -116,17 +117,18 @@ class FormatController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LA LISTE DES LIVRES PAR FORMAT
 
-    #[Route('/format/{id}', name: 'list_livre')]                        // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
+    #[Route('/format/{id}/book', name: 'list_livre')]                        // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
     
-    public function book(LivreRepository $livreRepository, FormatRepository $formatRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
+    public function book(Format $format, LivreRepository $livreRepository, FormatRepository $formatRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
     {                                                                                                                       
         $livres = $livreRepository->findBy([],["date_publication" =>    // Pour récupérer la liste des livres classées par date de publication ordre croissant
         "ASC"]);      
 
         $livres = $livreRepository->findAll(); 
-        
+
         return $this->render('format/book.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'                                     
+            'format' => $format,                                                                         
         ]);
     }        
 }                                                                          
