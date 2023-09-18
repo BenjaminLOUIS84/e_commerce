@@ -145,17 +145,6 @@ class FactureController extends AbstractController
             // On vérifie si on un utilisateur
             if($user){
 
-                // On génère un token de réinitialisation
-                //$token = $tokenGenerator->generateToken();
-                //$user->setResetToken($token);
-
-                //$entityManager->persist($user);                             // Pour gérer le traitement en BDD
-                //$entityManager->flush();                                    
-            
-                // On génère un lien de réinitialisation du mot de passe
-                //$url = $this->generateUrl('reset_pass', ['token' => $token],
-                //UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
-
                 // On créer les données du mail
                 $context = compact('user');
 
