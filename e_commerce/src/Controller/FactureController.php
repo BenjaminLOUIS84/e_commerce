@@ -157,15 +157,15 @@ class FactureController extends AbstractController
                 //UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
 
                 // On créer les données du mail
-                //$context = compact('url', 'user');
+                $context = compact('user');
 
                 // Envoi du mail (Utiliser le service mail)
                 $mail->send(
                     'etrefouetsage@gmail.com',                                  // Emetteur
                     $user->getEmail(),                                          // Destinataire
                     'Notification',                                             // Titre
-                    'Newsletter',                                               // Template 
-                  //  $context
+                    'notif',                                                    // Template 
+                  $context
                 );
 
                 $this->addFlash('success', 'Email envoyé avec succès');
@@ -179,7 +179,7 @@ class FactureController extends AbstractController
 
         return $this->render('facture/notif.html.twig', [ // Passer le formulaire en arguement dans un tableau
             
-            'requestPassForm' => $form->createView()                        // Demande pour créer le formulaire 'requestPassFrom' et pour afficher selui-ci dans une vue
+            'notifForm' => $form->createView()                        // Demande pour créer le formulaire 'requestPassFrom' et pour afficher selui-ci dans une vue
         ]);  
     }
 
