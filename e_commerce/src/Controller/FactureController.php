@@ -112,4 +112,11 @@ class FactureController extends AbstractController
         ]);
     }
 
+    #[Route('/', name: 'notif')]
+    public function notif(): Response
+    {
+        return $this->render('facture/notif.html.twig', [
+            'controller_name' => 'factureController',
+        ]);
+    }
 }

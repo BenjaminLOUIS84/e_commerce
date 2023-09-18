@@ -71,20 +71,25 @@
                                             {% if commandeLivre.livre.id == 59 %}
                                                 <td><a href="{{ asset('ppsx/tome2.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
                                             {% else %}
-                                                
+                                             
+                                            {# Notifications pour garder en mémoire la commande et garantir la précommande, 
+                                            permet de prévenir l'utilisateur que sa demande à bien été prise en compte 
+                                            et que celle-ci sera traitée prochainement #}
+
                                             {% endif %}
                                             {% if commandeLivre.livre.id == 60 %}
+                                                <td><a href="{{ path ('app_facture_notif') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                            {% else %}
+                                                
+                                            
+                                            {% endif %}
+                                            {% if commandeLivre.livre.id == 61 %}
                                                 <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
                                             {% else %}
                                                 
                                             {% endif %}
-                                            {% if commandeLivre.livre.id == 61 %}
-                                                <td><a href="{{ asset('ppsx/tome0.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
-                                            {% else %}
-                                                
-                                            {% endif %}
                                             {% if commandeLivre.livre.id == 62 %}
-                                                <td><a href="{{ asset('ppsx/tome3.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
+                                                <td><a href=""><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
                                             {% else %}
                                                 
                                             {% endif %}
