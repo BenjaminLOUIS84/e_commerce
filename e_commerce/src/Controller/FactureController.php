@@ -169,12 +169,12 @@ class FactureController extends AbstractController
                 );
 
                 $this->addFlash('success', 'Email envoyé avec succès');
-                return $this->redirectToRoute('app_login');                 // Redirection vers la page de connexion
+                return $this->redirectToRoute('app_user');                 // Redirection vers l'espace personnel'
 
             }
             // Cas où $user est NULL
-            $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers la page de connexion et le message s'affichera dans cette page (*)
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
+            return $this->redirectToRoute('app_user');
         }
 
         return $this->render('facture/notif.html.twig', [ // Passer le formulaire en arguement dans un tableau
