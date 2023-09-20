@@ -57,15 +57,20 @@
                         {% endfor %}
                     {% endfor %}
 
-                    {# Fonction pour l'Administrateur #}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Gérer les collections" alt="Gérer les collections"></a>
-                    {% endif %}   
-                    
+                    <div class="admin">
+                        {# Fonction pour l'Administrateur #}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Ajouter une nouvelle Collection" alt="Ajouter une nouvelle Collection"></a>
+                            <br><a href=""><img class="icone2" src="{{ asset('img/people-roof-solid.svg') }}" title="Gérer les Clients" alt="Gérer les Clients"></a>
+                        {% endif %}   
+                    </div>
                     {# Fonctions pour les utilisateurs #}
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/circle-info-solid.svg') }}" title="En savoir plus" alt="En savoir plus"></a>
+
+                            <a href=""><img class="lk" src="{{ asset('img/earth-americas-solid.svg') }}" title="Fil d'actualités" alt="Fil d'actualités"></a>
+
+                            <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/circle-info-solid.svg') }}" title="Voir les formats d'édition" alt="Voir les formats d'édition"></a>
                             <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/book-solid.svg') }}" title="Voir tous les livres" alt="Voir tous les livres"></a>
                             
                             <a href="{{ path ('panier_index') }}"><img class="lk" src="{{ asset('img/cart-arrow-down-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
@@ -75,6 +80,7 @@
                 
                             <a href="{{ path ('app_param') }}"><img class="lk" src="{{ asset('img/gear-solid.svg') }}" title="Gérer mon compte" alt="Gérer mon compte"></a>
                             <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retourner à la page d'accueil" alt="Retour à la page d'accueil"></a>
+                        
                         </div>
                     </nav>
                 </header>

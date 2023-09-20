@@ -400,6 +400,13 @@ header {
 
 /*OPTIONS DU CRUD*/
 
+.admin {
+    background-color: whitesmoke;
+    box-shadow: 0px 6px 10px black;
+    display: flex;
+    margin-bottom: 40px;
+}
+
 .crud {
     color: black;
     background: none;
