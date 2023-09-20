@@ -64,4 +64,13 @@ class Article
 
         return $this;
     }
+
+    ////////////////////////////////////////////////////////////////////////
+    // Il est possible de créer d'autres fonctions ici
+
+    public function __toString() {  // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->contenu. " ";     // L'élément affiché de la liste des commande est seulement la date de commande
+    }                                       
+
 }

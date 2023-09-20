@@ -145,16 +145,18 @@
 
   <main>
 
+    {# Position de la page Fil d'actualités dans la page d'accueil #}
+    {% block body %}
+    {# Mettre en place tout ce qui va changer d'une vue à l'autre  CF index.html.twig du template article #}
+    {% endblock %}
+
     <section class="accueil">
       <figure>
         <img class="illustrationC" src="{{ asset('img/collection1.jpg') }}" alt="livres et machine à écrire">
       </figure>
     </section>
 
-    {% block body %}
-    {# Mettre en place tout ce qui va changer d'une vue à l'autre #}
-    {% endblock %}
-
+    
   </main>
 
   <footer>
