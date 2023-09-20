@@ -3,12 +3,89 @@
 {% block title %}Actualités{% endblock %}
 
 {% block body %}
-    
-
-    <div class="articles">
+    <div class="actu">
         <h1>ACTUALITES</h1>
+        {# Lire et afficher toutes les notifications #}
 
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                
+            {% endfor %}
+        {% endfor %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            {# Seul l'admin peut ajouter un nouveau livre #}
+            {# <a href="{{ path ('new_livre') }}">AJOUTER</a> #}
+        {% endif %}
+
+        <section class="price">
+
+            {# {% for livre in livres %} #}
+
+                <div class="blocPrice">
+                    
+                    <div class="pack">   
+
+                        <div class="front">
+
+                            {# <h2>{{ livre.format }}</h2> #}
+
+                            {# Afficher et accéder aux commentaires #}
+                        
+                        </div>
         
-       
+                        <div class="back">
+
+                            <figure>
+                                {# Pour afficher les tomes de chaque livres #}
+                                {# <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log"> #}
+                            </figure>
+                            
+                            {%  if app.user %}
+                        
+                                {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
+                                {# <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br> #}
+                                {# <h3>Prix : {{ livre.prixUnitaire }} € ttc</h3> #}
+                                {# <h6>(Dont 4 € de frais de port)</h6> #}
+                                {# <p>{{ livre.resume }}</p> #}
+
+                                {# Condition pour gérer le stock de livres #}
+                                {# {% if livre.stock > 0 %} #}
+                                    {# Pour ajouter le livre au panier #}
+                                    {# <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
+                                    {# {% else %} #}
+                                    {# <h2>Temporairement en rupture de stock</h2> #}
+                                {# {% endif %} #}
+
+                            {% endif %}
+                            
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="liste">
+                                    {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                    <div class="option">
+                                        {# <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
+                                        {# <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> #}
+                                    </div>  
+                                </div>
+                            {% endif %}
+
+                        </div>
+                        
+                    </div>
+                        
+                </div>
+
+            {# {% endfor %} #}
+
+        </section> 
+    
+    
+        {# <div id="menu">
+            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+        </div> #}
+
     </div>
+
 {% endblock %}

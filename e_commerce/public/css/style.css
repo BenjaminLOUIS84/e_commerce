@@ -153,10 +153,13 @@ h2 {
 
 /* ACTU ////////////////////////////////////////////////////////////////*/
 
-.articles {
+.actu {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+}
+
+.actu h1 {
+    text-align: center;
+    margin-top: 40px;
 }
 
 /* ACCUEIL ////////////////////////////////////////////////////////////////*/
