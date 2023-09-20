@@ -158,9 +158,12 @@ h2 {
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
-    /* position: absolute;
-    left: 120px;
-    top: 300px; */
+    text-align: center;
+}
+
+.flash-success {
+    display: flex;
+    flex-direction: column;
 }
 
 .article {
