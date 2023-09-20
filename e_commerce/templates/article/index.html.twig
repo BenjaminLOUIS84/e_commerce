@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="actu">
-        <h1>ACTUALITES</h1>
+        <h1 id="fil">ACTUALITES</h1>
         {# Lire et afficher toutes les notifications #}
 
         {% for label, messages in app.flashes %}
@@ -16,35 +16,34 @@
         {% endfor %}
 
         {% if is_granted('ROLE_ADMIN') %}
-            {# Seul l'admin peut ajouter un nouveau livre #}
-            <a href="">AJOUTER</a>
+            {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
+            <a href="" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un article" title="Ajouter un article"></a>
         {% endif %}
 
-        <section class="price">
+        <section class="article">
 
-            {# {% for livre in livres %} #}
+            {% for article in articles %}
 
-                <div class="blocPrice">
+                <div class="blocArticle">
                     
                     <div class="pack">   
 
-                        <div class="front">
+                        <div class="frt">
 
-                            {# <h2>{{ livre.format }}</h2> #}
-
+                            {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}  
+                            <h3>{{  article.dateArt | date("d-m-Y") }}</h3>
+                            <p>{{ article }}</p>
                             {# Afficher et accéder aux commentaires #}
                         
                         </div>
         
-                        <div class="back">
-
-                            <figure>
-                                {# Pour afficher les tomes de chaque livres #}
-                                {# <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log"> #}
-                            </figure>
+                        <div class="bck">
                             
                             {%  if app.user %}
                         
+                                {# <p>{{ article }}</p> #}
+                                {# Afficher et accéder aux commentaires #}
+
                                 {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
                                 {# <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br> #}
                                 {# <h3>Prix : {{ livre.prixUnitaire }} € ttc</h3> #}
@@ -65,8 +64,12 @@
                                 <div class="liste">
                                     {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                     <div class="option">
-                                        {# <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
-                                        {# <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> #}
+                                        <a class="crud" href="
+                                        {# {{ path ('edit_livre', {id: livre.id}) }} #}
+                                        "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                        <a class="crud" href="
+                                        {# {{ path ('delete_livre', {id: livre.id}) }} #}
+                                        "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                     </div>  
                                 </div>
                             {% endif %}
@@ -77,7 +80,7 @@
                         
                 </div>
 
-            {# {% endfor %} #}
+            {% endfor %}
 
         </section> 
     

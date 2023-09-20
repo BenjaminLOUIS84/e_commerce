@@ -156,11 +156,86 @@ h2 {
 .actu {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    z-index: 1;
+    align-items: center;
+    margin-top: 40px;
+    /* position: absolute;
     left: 120px;
-    top: 300px;
+    top: 300px; */
 }
+
+.article {
+    display: flex;
+    flex-direction: row;
+    background: whitesmoke;
+    border-radius: 20px;
+    justify-content: left;
+    align-items: center;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    height: 700px;
+}
+
+.blocArticle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 980px;
+}
+
+/*Effet de carte retournée*/
+
+.blocArticle:hover .pack {
+    transform: rotateY(180deg);
+    transition: ease-in-out 1s;
+}
+
+.frt {
+    position: absolute;
+    box-shadow: 0px 5px 10px black;
+    backface-visibility: hidden;
+    width: 310px;
+    left: 50px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.bck {
+    /* position: absolute; */
+    background: white;
+    position: sticky;
+    object-fit: cover;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    box-shadow: 0px 6px 10px black;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+    padding: 10px;
+    height: max-content;
+    /* width: 400px; */
+    width: 410px;
+    text-align: center;
+}
+
+.bck p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.bck h2 {
+
+    padding-bottom: 20px;
+    font-size: 2em;
+}
+
+.ajouter {
+    color: black;
+    text-align: center;
+}
+
 
 
 /* ACCUEIL ////////////////////////////////////////////////////////////////*/
@@ -175,6 +250,7 @@ h2 {
     background: url(/img/collection1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    position: sticky;
 }
 
 .illustrationC {
@@ -960,7 +1036,7 @@ h6 {
 @media (min-width: 769px) and (max-width: 1024px) {
 
     .wrapper {
-        width: 120%;
+       
         margin: auto;
     }
 
@@ -988,6 +1064,16 @@ h6 {
         margin-left: 0px;
     }
 
+    .social,
+    .socialA,
+    .illustrationB {
+        display: none;
+    }
+
+    .name {
+        margin-left: 0px;
+    }
+
     /*////////////////////////////MENU BURGER///////////////////////////*/
 
     .menu {
@@ -998,6 +1084,7 @@ h6 {
         border-radius: 10px;
         margin-right: 20px;
         display: flex;
+        width: 150%;
     }
 
     /*//////////////////////////////////////////////////////////////////*/
@@ -1006,8 +1093,7 @@ h6 {
         padding-right: 0px;
         padding-top: 0px;
         padding-bottom: 0px;
-        margin-bottom: 40px;
-        margin-left: 60px;
+       
     }
 
     .bloc {
@@ -1030,6 +1116,14 @@ h6 {
 
     .illustration {
         display: none;
+    }
+
+    figure {
+        margin: auto;
+    }
+
+    a .actu {
+        color: black;
     }
 
 
@@ -1110,6 +1204,8 @@ h6 {
     .reseaux {
         padding-top: 0px;
         padding-bottom: 0px;
+        gap: 15px;
+        width: 25%;
     }
 
     .text3 {
@@ -1125,6 +1221,11 @@ h6 {
 
     #info {
         padding-bottom: 0px;
+        font-size: 2em;
+    }
+
+    footer figure {
+        display: none;
     }
 
 }

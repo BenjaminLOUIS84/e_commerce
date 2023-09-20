@@ -407,6 +407,7 @@ header {
     margin-bottom: 40px;
 }
 
+
 .crud {
     color: black;
     background: none;
@@ -737,4 +738,9 @@ h6 {
     .order {
         font-size: 0.7em;
     }
+
+    .admin {
+        flex-direction: column;
+    }
+    
 }
