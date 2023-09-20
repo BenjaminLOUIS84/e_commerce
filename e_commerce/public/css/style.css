@@ -19,13 +19,14 @@ html {
     display: flex;
     flex-direction: column;
     font-family: 'Libre Baskerville', sans-serif;
-    margin-top: 40px;
 }
 
 
 main {
     font-family: 'Libre Baskerville', sans-serif;
 }
+
+
 
 /*HEADER///////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -148,6 +149,14 @@ h2 {
     font-size: 2em;
     color: white;
     padding-bottom: 10px;
+}
+
+/* ACTU ////////////////////////////////////////////////////////////////*/
+
+.articles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ACCUEIL ////////////////////////////////////////////////////////////////*/
