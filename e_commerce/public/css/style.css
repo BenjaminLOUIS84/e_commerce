@@ -155,12 +155,13 @@ h2 {
 
 .actu {
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+    left: 120px;
+    top: 300px;
 }
 
-.actu h1 {
-    text-align: center;
-    margin-top: 40px;
-}
 
 /* ACCUEIL ////////////////////////////////////////////////////////////////*/
 
