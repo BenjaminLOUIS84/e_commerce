@@ -405,6 +405,7 @@ header {
     box-shadow: 0px 6px 10px black;
     display: flex;
     margin-bottom: 40px;
+    border-radius: 10px;
 }
 
 
@@ -693,6 +694,10 @@ h6 {
 
     .formAddInscription {
         line-height: 2;
+    }
+
+    textarea {
+        width: 100%;
     }
 
     .formAddInscription input {

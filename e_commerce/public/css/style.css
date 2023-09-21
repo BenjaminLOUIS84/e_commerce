@@ -167,19 +167,21 @@ h2 {
 
 .article {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background: whitesmoke;
     border-radius: 20px;
     justify-content: left;
     align-items: center;
-    overflow: auto;
+    overflow: initial;
     scroll-snap-type: y mandatory;
-    height: 700px;
-    width: -webkit-fill-available;
+    /* height: 1140px; */
+    margin-top: 40px;
+   
 }
 
 h1 {
     text-align: center;
+    margin-top: 60px;
 }
 
 .blocArticle {
@@ -199,11 +201,8 @@ h1 {
 }
 
 .frt {
-    position: absolute;
     box-shadow: 0px 5px 10px black;
     backface-visibility: hidden;
-    width: 310px;
-    left: 50px;
     text-align: justify;
     border-radius: 5px;
     padding: 10px;
