@@ -206,10 +206,11 @@ h1 {
     text-align: justify;
     border-radius: 5px;
     padding: 10px;
+    background: radial-gradient(white, transparent);
 }
 
 .bck {
-    background: white;
+    background: radial-gradient(white, transparent);
     position: sticky;
     object-fit: cover;
     flex-shrink: 0;

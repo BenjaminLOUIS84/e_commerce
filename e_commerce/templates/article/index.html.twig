@@ -31,28 +31,37 @@
                 
                 <div class="pack">   
 
+                    {# Afficher l'article #}
                     <div class="frt">
 
                         {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}  
                         <h3>{{ article.dateArt | date("d-m-Y") }}</h3>
                         <h2> {{ article.user}} </h2>
+                        
+                        <figure>
+                            {# Pour afficher les photos de chaque articles #}
+                            <img src="{{ asset('uploads/images/'~ article.picture) }}" alt="Plusieurs images au format jpg importées pour illustrer un article" class="log">
+                        </figure>
+
                         <p>{{ article }}</p>
-                        {# Afficher et accéder aux commentaires #}
                     
                     </div>
-    
+
+                    {# Accéder au contenu et aux commentaires #}
                     <div class="bck">
-                        
-                        {%  if app.user %}
+                        <h2>COMMENTAIRES</h2>
+                        {% if app.user %}
                     
-                            {# Afficher et accéder aux commentaires #}
+                            {# Afficher le contenu #}
+
+                            {# {{ article }} #}
 
                             <div class="liste">
-                                {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                {# Tous les utilisateurs peuvent commenter #}
                                 <div class="option">
                                     <a class="crud" href="
                                     {# {{ path ('edit_livre', {id: livre.id}) }} #}
-                                    "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Commenter" title="Commenter"></a>
+                                    "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
                                 </div>  
                             </div>
 

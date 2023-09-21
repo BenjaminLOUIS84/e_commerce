@@ -24,6 +24,9 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $picture = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +74,18 @@ class Article
     public function __toString() {  // Pour faciliter l'affichage des autres informations d'une entité
 
         return $this->contenu. " ";     // L'élément affiché de la liste des commande est seulement la date de commande
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): static
+    {
+        $this->picture = $picture;
+
+        return $this;
     }                                       
 
 }

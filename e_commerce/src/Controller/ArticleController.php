@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Service\FileUploader;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,13 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController  // Afficher la liste de tous les articles classés par date ASC
 {
-    #[Route('/article', name: 'app_article')]
+    #[Route('/article', name: 'app_article')] // Route pour accéder à la vue
 
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository): Response // Fonction pour afficher la liste de tous les articles
     {
-        $articles = $articleRepository->findBy([], ["id" => "ASC"]);
+        $articles = $articleRepository->findBy([], ["dateArt" => "DESC"]); // Classer les articles par date de publication du plus récent au plus ancien DESC
 
-        return $this->render('article/index.html.twig', [
+        return $this->render('article/index.html.twig', [   // Emplacement et disposition de la vue 
             'controller_name' => 'ArticleController',
             'articles' => $articles
         ]);
@@ -53,7 +54,7 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
     public function new_edit(
         Article $article  = null,
         Request $request, 
-        // FileUploader $fileUploader, 
+        FileUploader $fileUploader, 
         EntityManagerInterface $entityManager
         
         ): Response   
@@ -74,18 +75,18 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             
             $article = $form->getData();                              // Récupérer les informations du nouveau article
             
-            // $couvertureFile = $form->get('couverture')->getData();
+            $pictureFile = $form->get('picture')->getData();
             // $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau article
             
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
             
-            // if ($couvertureFile) {
-                // Envoie les données au Service FileUploader 
-                // $couvertureFileName = $fileUploader->upload($couvertureFile);
-                // $article->setCouverture($couvertureFileName);   
-            // }
+            if ($pictureFile) {
+                //Envoie les données au Service FileUploader 
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $article->setpicture($pictureFileName);   
+            }
 
             // if ($tomeFile) {
                 // Envoie les données au Service FileUploader 
