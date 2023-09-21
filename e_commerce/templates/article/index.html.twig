@@ -19,7 +19,9 @@
 
             {% if is_granted('ROLE_ADMIN') %}
                 {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
-                <a href="{{ path ('article_add', {id: user.id}) }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un article" title="Ajouter un article"></a>
+                <a href="
+                {{ path ('new_article') }}
+                " class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un article" title="Ajouter un article"></a>
             {% endif %}
 
         </div>
@@ -34,7 +36,8 @@
                         <div class="frt">
 
                             {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}  
-                            <h3>{{  article.dateArt | date("d-m-Y") }}</h3>
+                            <h3>{{ article.dateArt | date("d-m-Y") }}</h3>
+                            <h2> {{ article.user.id}} </h2>
                             <p>{{ article }}</p>
                             {# Afficher et accéder aux commentaires #}
                         
@@ -61,10 +64,8 @@
                                 <div class="liste">
                                     {# Seul l'admin peut modifier et/ou supprimer un article #}
                                     <div class="option">
-                                        <a class="crud" href="
-                                        {# {{ path ('edit_livre', {id: livre.id}) }} #}
-                                        "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                        
+
+                                        <a class="crud" href="{{ path ('edit_article', {id: article.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                         <a class="crud" href="{{ path ('delete_article', {id: article.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                     </div>  
                                 </div>
@@ -79,11 +80,6 @@
             {% endfor %}
 
         </section> 
-    
-    
-        <div id="menu">
-            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
-        </div>
 
     </div>
 

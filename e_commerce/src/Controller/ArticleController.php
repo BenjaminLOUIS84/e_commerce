@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -102,6 +103,8 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                 'success',
                 'Opération réalisée avec succès!'
             );
+
+            // Envoyer un mail groupé aux utilisateurs
 
             return $this->redirectToRoute('app_article');        // Rediriger vers la liste des articles
 
