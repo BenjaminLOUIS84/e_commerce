@@ -127,7 +127,7 @@ class FactureController extends AbstractController
         // TokenGeneratorInterface $tokenGenerator,
         EntityManagerInterface $entityManager,
 
-        //Créer un service pour envoyer des mail ou utiliser mailHog
+        //Créer un service pour envoyer des mails 
         SendMailService $mail
 
     ): Response

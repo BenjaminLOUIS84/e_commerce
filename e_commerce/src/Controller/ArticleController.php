@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\FileUploader;
+use App\Service\SendMailService;
+use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,8 +56,14 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
     public function new_edit(
         Article $article  = null,
         Request $request, 
+
+        UserRepository $userRepository,                             // Pour accéder aux propriétés de l'entité User
+
         FileUploader $fileUploader, 
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+
+        //Utiliser le service SendMailService.php 
+        SendMailService $mail
         
         ): Response   
     
@@ -73,7 +81,7 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
 
         if ($form->isSubmitted() && $form->isValid()) {             // Si le formulaire soumis est valide alors
             
-            $article = $form->getData();                              // Récupérer les informations du nouveau article
+            $article = $form->getData();                              // Récupérer les informations du nouvel article
             
             $pictureFile = $form->get('picture')->getData();
             // $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau article
@@ -100,6 +108,33 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             $entityManager->persist($article);                   // Dire à Doctrine que je veux sauvegarder le nouveau article           
             //execute PDO
             $entityManager->flush();                           // Mettre le nouveau article dans la BDD
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // On va chercher l'utilisateur par son email
+            $user = $userRepository->findByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
+        
+            // On vérifie si on un utilisateur
+            if($user){
+
+                // On créer les données du mail
+                $context = compact('user');
+
+                // Envoi du mail (Utiliser le service mail)
+                $mail->send(
+                    'etrefouetsage@gmail.com',                                  // Emetteur
+                    $user->getEmail(),                                          // Destinataire
+                    'Notification',                                             // Titre
+                    'news',                                                    // Template 
+                    $context
+                );
+
+                // $this->addFlash('success', 'Email envoyé avec succès');
+
+            }
+            // Cas où $user est NULL
+            $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
+            return $this->redirectToRoute('app_article');
+            
 
             $this->addFlash(                                   // Envoyer une notification
                 'success',
