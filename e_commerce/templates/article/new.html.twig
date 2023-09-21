@@ -34,19 +34,18 @@
                 {% if edit %}
                     <h3>Modifier un article</h3>
                 {% else %}
-                    <h3>Ajouter un nouveau article</h3> 
+                    <h3>Ajouter un nouvel article</h3> 
                 {% endif %}
 
                 <div class="formAddInscription">
 
                     {# Affiche le formulaire #}
                     {{ form_start(form) }}
-
-                        {{ form_row(form.date_art) }}
+                        {{ form_row(form.dateArt) }}
+                        <br>
                         {# {{ form_row(form.couverture) }}
                         {{ form_row(form.tome) }} #}
                         {{ form_row(form.contenu) }}
-            
                     {{ form_end(form) }}
 
                 </div>
