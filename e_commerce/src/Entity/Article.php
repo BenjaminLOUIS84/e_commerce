@@ -21,7 +21,7 @@ class Article
     private ?\DateTimeInterface $dateArt = null;
 
     #[ORM\ManyToOne(inversedBy: 'article')]
-    // #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     public function getId(): ?int
