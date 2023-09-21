@@ -176,7 +176,9 @@ h2 {
     overflow: auto;
     scroll-snap-type: y mandatory;
     height: 700px;
+    /* width: -webkit-fill-available; */
 }
+
 
 .blocArticle {
     display: flex;
@@ -184,7 +186,7 @@ h2 {
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 980px;
+    width: 500px;
 }
 
 /*Effet de carte retournée*/
