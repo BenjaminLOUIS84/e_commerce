@@ -160,6 +160,9 @@ h2 {
 
 .fil {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .article {
@@ -172,9 +175,12 @@ h2 {
     overflow: auto;
     scroll-snap-type: y mandatory;
     height: 700px;
-    /* width: -webkit-fill-available; */
+    width: -webkit-fill-available;
 }
 
+h1 {
+    text-align: center;
+}
 
 .blocArticle {
     display: flex;
@@ -204,7 +210,6 @@ h2 {
 }
 
 .bck {
-    /* position: absolute; */
     background: white;
     position: sticky;
     object-fit: cover;
@@ -216,7 +221,6 @@ h2 {
     transform: rotateY(-180deg);
     padding: 10px;
     height: max-content;
-    /* width: 400px; */
     width: 410px;
     text-align: center;
 }
@@ -1116,6 +1120,18 @@ h6 {
         margin-left: 40px;
     }
 
+    .ajouter {
+        color: black;
+        text-align: center;
+    }
+
+    .fil {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .illustration {
         display: none;
     }
@@ -1123,11 +1139,6 @@ h6 {
     figure {
         margin: auto;
     }
-
-    a .actu {
-        color: black;
-    }
-
 
     /*////////////////////////////FEATURES///////////////////////////*/
 

@@ -3,10 +3,10 @@
 {% block title %}Actualités{% endblock %}
 
 {% block body %}
-
-    <h1 id="fil">ACTUALITES</h1>
-
     <div class="fil">
+        
+        <h1 id="fil">ACTUALITES</h1>
+   
         {# Lire et afficher toutes les notifications #}
 
         {% for label, messages in app.flashes %}
@@ -19,9 +19,7 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
-            <a href="
-            {{ path ('new_article') }}
-            " class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un article" title="Ajouter un article"></a>
+            <a href="{{ path ('new_article') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un article" title="Ajouter un article"></a>
         {% endif %}
 
     </div>
