@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -19,6 +21,9 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+            // ->add('email', HiddenType::class)
+            // ->add('email', EmailType::class)
 
             ->add('picture', FileType::class, [                    // Champs pour ajouter un fichier (les images jpg uniquement)
                 'mapped' => false,
@@ -48,6 +53,8 @@ class ArticleType extends AbstractType
                 'attr' =>['class' =>'form-control']
             ])
 
+            // ->add('user', HiddenType::class)
+            
             ->add('user', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
                 'label' => 'Auteur',
                 'class' => User::class, 

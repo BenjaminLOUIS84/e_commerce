@@ -62,8 +62,8 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
         FileUploader $fileUploader, 
         EntityManagerInterface $entityManager,
 
-        //Utiliser le service SendMailService.php 
-        SendMailService $mail
+        
+        SendMailService $mail                                       // Utiliser le service SendMailService.php 
         
         ): Response   
     
@@ -114,18 +114,18 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             // $users = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
             // $users = $userRepository->findBy([], ["email" => "DESC"]);
             // ($this->get('email')->getData());
-            $users = $userRepository->findAll(); 
+            $user = $userRepository->findOneByEmail($form->get('email')->getData());
         
             // On vérifie si on un utilisateur
-            if($users){
+            if($user){
 
                 // On créer les données du mail
-                $context = compact('users');
+                $context = compact('user');
 
                 // Envoi du mail (Utiliser le service mail)
                 $mail->send(
                     'etrefouetsage@gmail.com',                                  // Emetteur
-                    $users->getEmail(),                                          // Destinataire
+                    $user->getEmail(),                                          // Destinataire
                     'Notification',                                             // Titre
                     'news',                                                    // Template 
                     $context
