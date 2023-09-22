@@ -111,18 +111,21 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // On va chercher l'utilisateur par son email
-            $user = $userRepository->findByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
+            // $users = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
+            // $users = $userRepository->findBy([], ["email" => "DESC"]);
+            // ($this->get('email')->getData());
+            $users = $userRepository->findAll(); 
         
             // On vérifie si on un utilisateur
-            if($user){
+            if($users){
 
                 // On créer les données du mail
-                $context = compact('user');
+                $context = compact('users');
 
                 // Envoi du mail (Utiliser le service mail)
                 $mail->send(
                     'etrefouetsage@gmail.com',                                  // Emetteur
-                    $user->getEmail(),                                          // Destinataire
+                    $users->getEmail(),                                          // Destinataire
                     'Notification',                                             // Titre
                     'news',                                                    // Template 
                     $context
