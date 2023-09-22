@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController  // Afficher la liste de tous les articles classés par date ASC
@@ -110,11 +111,13 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             $entityManager->flush();                           // Mettre le nouveau article dans la BDD
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Indiquer l'Url pour renvoyer l'utilisateur vers le fil d'actualité lien dans le mail vers espace de connection
+            // $url = "{{ path ('app_login') }}";
+
             // On va chercher l'utilisateur par son email
-            
             // $users = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
             // $users = $userRepository->findBy([], ["email" => "ASC"]); 
-
+           
             $user = $userRepository->findOneBy([], ["email" => "ASC"]); // Pour cibler un utilisateur
             
             // ($this->get('email')->getData()); 
@@ -130,7 +133,11 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
 
                 // On créer les données du mail
                 // $context = compact('users');
-                $context = compact('user');
+
+                // On génère un lien de redirection vers la page de connexion
+                $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
+
+                $context = compact('url','user');
 
                 // dd($context);
 
