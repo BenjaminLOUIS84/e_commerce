@@ -57,13 +57,9 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
     public function new_edit(
         Article $article  = null,
         Request $request, 
-
         UserRepository $userRepository,                             // Pour accéder aux propriétés de l'entité User
-
         FileUploader $fileUploader, 
         EntityManagerInterface $entityManager,
-
-        
         SendMailService $mail                                       // Utiliser le service SendMailService.php 
         
         ): Response   
@@ -135,9 +131,12 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                 // $context = compact('users');
 
                 // On génère un lien de redirection vers la page de connexion
-                $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
+                // $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
 
-                $context = compact('url','user');
+                $context = compact(
+                    //'url',
+                    'user'
+                );
 
                 // dd($context);
 
