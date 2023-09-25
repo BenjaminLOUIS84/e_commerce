@@ -123,14 +123,12 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             // if($users){
             if($user){
 
-                // On créer les données du mail
-                // $context = compact('users');
-
                 // On génère un lien de redirection vers la page de connexion
-                // $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
+                $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
 
+                // On créer les données du mail
                 $context = compact(
-                    //'url',
+                    'url',
                     'user'
                 );
 
@@ -140,10 +138,8 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                 $mail->send(
                     'etrefouetsage@gmail.com',                                  // Emetteur
                     $user->getEmail(),                                          // Destinataire
-                    // $user = $this->getEmail(),                                          // Destinataire
-
                     'Notification',                                             // Titre
-                    'news',                                                    // Template 
+                    'news',                                                     // Template 
                     $context
                 );
 
@@ -158,6 +154,7 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
 
             return $this->redirectToRoute('app_article');        // Rediriger vers la liste des articles
 
+            return $this->render('security/login.html.twig');
         }
 
         //////////////////////////////////////////////////////////////////////////
