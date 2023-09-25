@@ -116,10 +116,6 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
            
             $user = $userRepository->findOneBy([], ["email" => "ASC"]); // Pour cibler un utilisateur
             
-            // ($this->get('email')->getData()); 
-            // $user = $userRepository->findOneByEmail($form->get('email')->getData());
-            // $user = $userRepository->findOneById($id);
-           
             // dd($users);
             // dd($user);
 
@@ -143,7 +139,6 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                 // Envoi du mail (Utiliser le service mail)
                 $mail->send(
                     'etrefouetsage@gmail.com',                                  // Emetteur
-                    
                     // $users->getEmail(),                                          // Destinataire
                     $user->getEmail(),                                          // Destinataire
 
@@ -152,20 +147,14 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                     $context
                 );
 
-                // $this->addFlash('success', 'Email envoyé avec succès');
+                // dd($mail);
 
             }
-            // Cas où $user est NULL
-            $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
-            return $this->redirectToRoute('app_article');
-            
 
             $this->addFlash(                                   // Envoyer une notification
                 'success',
                 'Opération réalisée avec succès!'
             );
-
-            // Envoyer un mail groupé aux utilisateurs
 
             return $this->redirectToRoute('app_article');        // Rediriger vers la liste des articles
 
