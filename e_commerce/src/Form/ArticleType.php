@@ -22,9 +22,6 @@ class ArticleType extends AbstractType
     {
         $builder
 
-            // ->add('email', HiddenType::class)
-            // ->add('email', EmailType::class)
-
             ->add('picture', FileType::class, [                    // Champs pour ajouter un fichier (les images jpg uniquement)
                 'mapped' => false,
                 'label' => "Ajouter votre photo",
