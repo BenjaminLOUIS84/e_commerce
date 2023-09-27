@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
@@ -145,8 +146,12 @@ class FactureController extends AbstractController
             // On vérifie si on un utilisateur
             if($user){
 
+                // On génère un lien de redirection vers la page de connexion
+                $url = $this->generateUrl('app_article', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
+                
+
                 // On créer les données du mail
-                $context = compact('user');
+                $context = compact('url', 'user');
 
                 // Envoi du mail (Utiliser le service mail)
                 $mail->send(
