@@ -107,42 +107,44 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             $entityManager->flush();                           // Mettre le nouveau article dans la BDD
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // Indiquer l'Url pour renvoyer l'utilisateur vers le fil d'actualité lien dans le mail vers espace de connection
-            // $url = "{{ path ('app_login') }}";
-
             // On va chercher l'utilisateur par son email
-            // $users = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
+            // $user = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
             // $user = $userRepository->findBy([], ["email" => "ASC"]); 
            
             $user = $userRepository->findOneBy([], ["email" => "ASC"]); // Pour cibler un utilisateur
-            
-            // dd($users);
+           
             // dd($user);
 
             // On vérifie si on un utilisateur
-            // if($users){
             if($user){
 
                 // On génère un lien de redirection vers la page de connexion
                 $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
+                
+                // foreach ($form->get('user')->getData() as $user) {
+                    // On créer les données du mail
+                    $context = compact(
+                        'url',
+                        'user'
+                    );
 
-                // On créer les données du mail
-                $context = compact(
-                    'url',
-                    'user'
-                );
+                    // dd($context);
 
-                // dd($context);
+                    // Envoi du mail (Utiliser le service mail)
+                    // foreach ($form->get('user')->getData() as $user) {
+                
 
-                // Envoi du mail (Utiliser le service mail)
-                $mail->send(
-                    'etrefouetsage@gmail.com',                                  // Emetteur
-                    $user->getEmail(),                                          // Destinataire
-                    'Notification',                                             // Titre
-                    'news',                                                     // Template 
-                    $context
-                );
+                    $mail->send(
 
+                        'etrefouetsage@gmail.com',                                  // Emetteur                        
+                        $user->getEmail(),                                       // Destinataire
+                        // $user->getEmail(),                                       // Destinataire
+                        'Notification',                                             // Titre
+                        'news',                                                     // Template 
+                        $context
+                    );
+                
+                // }
                 // dd($mail);
 
             }
