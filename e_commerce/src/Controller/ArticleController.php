@@ -61,8 +61,9 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
         UserRepository $userRepository,                             // Pour accéder aux propriétés de l'entité User
         FileUploader $fileUploader, 
         EntityManagerInterface $entityManager,
-        SendMailService $mail                                       // Utiliser le service SendMailService.php 
-        // SendNewsletter $mail                                       // Utiliser le service SendMailService.php 
+        // SendMailService $mail                                       // Utiliser le service SendMailService.php 
+        
+        SendNewsletter $mail                                       // Utiliser le service SendMailService.php 
         
         ): Response   
     
@@ -112,7 +113,7 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             // On va chercher l'utilisateur par son email
             // $user = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
             // $user = $userRepository->findBy([], ["email" => "ASC"]); 
-           
+
             $user = $userRepository->findOneBy([], ["email" => "ASC"]); // Pour cibler un utilisateur
            
             // dd($user);
@@ -139,14 +140,14 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                     $mail->send(
 
                         'etrefouetsage@gmail.com',                                  // Emetteur                        
-                        // $user = array('email' => 'pseudo'),                                      // Tous les destinataires
+                        // $user->to(...$recipients),                                                // Tous les destinataires
                         $user->getEmail(),                                       // Destinataire
                         'Notification',                                             // Titre
                         'news',                                                     // Template 
                         $context
                     );
                 
-                // }
+                // 
                 // dd($mail);
 
             }

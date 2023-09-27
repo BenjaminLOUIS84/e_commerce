@@ -16,17 +16,27 @@ class SendNewsletter
     public function send(
         string $from,
         string $to,
-        string $cc,
         string $subject,
         string $template,
         array $context
     ):void
     {
+
+        $recipients = [
+            'ladylouis1971@gmail.com',
+            'etrefouetsage@gmail.com'
+        ];
+
+        // $users = $em->;
+        // $recipients = array_map(function ($user) {
+        //     return new Address($user->getEmail());
+            
+        // }, $users);
+
         // On créer le mail
         $email = (new TemplatedEmail())
             ->from($from)
-            ->to($to)
-            ->cc('user')
+            ->to(...$recipients)
             ->subject($subject)
             ->htmlTemplate("email/$template.html.twig")
             ->context($context);
