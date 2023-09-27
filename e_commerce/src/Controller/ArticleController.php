@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\FileUploader;
+use App\Service\SendNewsletter;
 use App\Service\SendMailService;
 use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
@@ -61,6 +62,7 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
         FileUploader $fileUploader, 
         EntityManagerInterface $entityManager,
         SendMailService $mail                                       // Utiliser le service SendMailService.php 
+        // SendNewsletter $mail                                       // Utiliser le service SendMailService.php 
         
         ): Response   
     
@@ -137,8 +139,8 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                     $mail->send(
 
                         'etrefouetsage@gmail.com',                                  // Emetteur                        
+                        // $user = array('email' => 'pseudo'),                                      // Tous les destinataires
                         $user->getEmail(),                                       // Destinataire
-                        // $user->getEmail(),                                       // Destinataire
                         'Notification',                                             // Titre
                         'news',                                                     // Template 
                         $context
