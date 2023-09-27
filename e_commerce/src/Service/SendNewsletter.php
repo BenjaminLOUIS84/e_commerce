@@ -36,7 +36,7 @@ class SendNewsletter
         // On créer le mail
         $email = (new TemplatedEmail())
             ->from($from)
-            ->to(...$recipients)
+            ->to(...$recipients)        // Pour décompresser le tableau contenant la liste des adresses mail
             ->subject($subject)
             ->htmlTemplate("email/$template.html.twig")
             ->context($context);

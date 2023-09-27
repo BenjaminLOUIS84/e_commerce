@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\FileUploader;
+
 use App\Service\SendNewsletter;
 use App\Service\SendMailService;
+
 use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -113,7 +115,6 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             // On va chercher l'utilisateur par son email
             // $user = $userRepository->findAll();    // Pour chercher les emails de tous les utilisateurs
             // $user = $userRepository->findBy([], ["email" => "ASC"]); 
-
             $user = $userRepository->findOneBy([], ["email" => "ASC"]); // Pour cibler un utilisateur
            
             // dd($user);
@@ -124,30 +125,23 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
                 // On génère un lien de redirection vers la page de connexion
                 $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
                 
-                // foreach ($form->get('user')->getData() as $user) {
-                    // On créer les données du mail
-                    $context = compact(
-                        'url',
-                        'user'
-                    );
+                // On créer les données du mail
+                $context = compact(
+                    'url',
+                    'user'
+                );
 
-                    // dd($context);
+                // dd($context);   
 
-                    // Envoi du mail (Utiliser le service mail)
-                    // foreach ($form->get('user')->getData() as $user) {
-                
+                $mail->send(
 
-                    $mail->send(
-
-                        'etrefouetsage@gmail.com',                                  // Emetteur                        
-                        // $user->to(...$recipients),                                                // Tous les destinataires
-                        $user->getEmail(),                                       // Destinataire
-                        'Notification',                                             // Titre
-                        'news',                                                     // Template 
-                        $context
-                    );
-                
-                // 
+                    'etrefouetsage@gmail.com',                                  // Emetteur                        
+                    $user->getEmail(),                                          // Destinataire
+                    'Notification',                                             // Titre
+                    'news',                                                     // Template 
+                    $context
+                );
+                 
                 // dd($mail);
 
             }
