@@ -30,7 +30,7 @@ class Users
     #[ORM\Column]
     private ?bool $is_valid = false;
 
-    #[ORM\ManyToMany(targetEntity: Categories::class, mappedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'users')]
     private Collection $categories;
 
     public function __construct()
