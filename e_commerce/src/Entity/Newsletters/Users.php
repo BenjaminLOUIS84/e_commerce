@@ -116,7 +116,7 @@ class Users
     {
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
-            $category->addUser($this);
+            // $category->addUser($this);
         }
 
         return $this;
@@ -124,9 +124,7 @@ class Users
 
     public function removeCategory(Categories $category): static
     {
-        if ($this->categories->removeElement($category)) {
-            $category->removeUser($this);
-        }
+        $this->categories->removeElement($category);
 
         return $this;
     }
