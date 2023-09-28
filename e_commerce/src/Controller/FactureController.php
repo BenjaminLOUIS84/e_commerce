@@ -166,7 +166,9 @@ class FactureController extends AbstractController
         $this->addFlash('danger', 'Un problème est survenu');          // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
         return $this->redirectToRoute('app_user');
     
-        return $this->render('facture/notif.html.twig');  
+        return $this->render('facture/notif.html.twig', [
+            'controller_name' => 'FactureController',
+        ]);  
     }
     
 }
