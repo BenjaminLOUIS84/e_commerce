@@ -127,7 +127,6 @@ class FactureController extends AbstractController
     public function notif(
         Request $request,
         UserRepository $userRepository,
-        // TokenGeneratorInterface $tokenGenerator,
         EntityManagerInterface $entityManager,
 
         //Créer un service pour envoyer des mails 
