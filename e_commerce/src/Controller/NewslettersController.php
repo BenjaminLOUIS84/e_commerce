@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Newsletters\Users;
 use App\Form\NewslettersUsersType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,10 +13,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NewslettersController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $user = new Users();
         $form = $this->createForm(NewslettersUsersType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {             // Si le formulaire soumis est valide alors
+       
+            $token = hash('sha256', uniqId());
+            $user->setValidationToken($token);
+        
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+        
+            $this->addFlash('message', 'Inscription en attente de validation');
+            return $this->redirectToRoute('app_home');
+        }
+
         
         return $this->render('newsletters/index.html.twig', [
             'form' => $form->createView(),
