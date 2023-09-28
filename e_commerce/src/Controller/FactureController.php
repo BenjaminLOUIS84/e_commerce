@@ -173,7 +173,7 @@ class FactureController extends AbstractController
 
         return $this->render('facture/notif.html.twig', [ // Passer le formulaire en arguement dans un tableau
             
-            'notifForm' => $form->createView()                        // Demande pour créer le formulaire 'requestPassFrom' et pour afficher selui-ci dans une vue
+            'notifForm' => $form->createView()                        // Demande pour créer le formulaire 'notifFrom' et pour afficher selui-ci dans une vue
         ]);  
     }
 
