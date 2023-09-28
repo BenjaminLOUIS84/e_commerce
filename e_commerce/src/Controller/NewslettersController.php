@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Newsletters\Users;
 use App\Form\NewslettersUsersType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
