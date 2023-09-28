@@ -135,51 +135,38 @@ class FactureController extends AbstractController
     ): Response
 
     {
-        $user = new Users();
-        $form = $this->createForm(NewslettersUsersType::class, $user);
+    
+        // On va chercher l'utilisateur par son email
+        $user = $userRepository->findOneBy([], ["email" => "ASC"]);     // Pour cibler un utilisateur
         
-        $form->handleRequest($request);                                     // Pour traiter le formulaire
+        // $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
+    
+        // On vérifie si on un utilisateur
+        if($user){
 
-        if($form->isSubmitted() && $form->isvalid()){                       // Pour vérifier si le formulaire est valide et soumis
-            
-            // On va chercher l'utilisateur par son email
-            // $user = $userRepository->findOneBy([], ["email" => "ASC"]);     // Pour cibler un utilisateur
-            
-            $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
-        
-            // On vérifie si on un utilisateur
-            if($user){
+            $url = $this->generateUrl('app_article', [], UrlGeneratorInterface::ABSOLUTE_URL);     // Permet de générer l'url pour utiliser la nouvelle route pour accéder au fil d'actualités
 
-                // On génère un lien de redirection vers la page de connexion
-                $url = $this->generateUrl('app_article', [], UrlGeneratorInterface::ABSOLUTE_URL);                       // Permet de générer l'url pour utiliser la nouvelle route pour créer un nouveau mot de passe
-                
+            // On créer les données du mail
+            $context = compact('url', 'user');
 
-                // On créer les données du mail
-                $context = compact('url', 'user');
+            // Envoi du mail (Utiliser le service mail)
+            $mail->send(
+                'etrefouetsage@gmail.com',                                  // Emetteur
+                $user->getEmail(),                                          // Destinataire
+                'Notification',                                             // Titre
+                'notif',                                                    // Template 
+                $context
+            );
 
-                // Envoi du mail (Utiliser le service mail)
-                $mail->send(
-                    'etrefouetsage@gmail.com',                                  // Emetteur
-                    $user->getEmail(),                                          // Destinataire
-                    'Notification',                                             // Titre
-                    'notif',                                                    // Template 
-                  $context
-                );
+            $this->addFlash('success', 'Email envoyé avec succès');
+            return $this->redirectToRoute('app_user');                 // Redirection vers l'espace personnel'
 
-                $this->addFlash('success', 'Email envoyé avec succès');
-                return $this->redirectToRoute('app_user');                 // Redirection vers l'espace personnel'
-
-            }
-            // Cas où $user est NULL
-            $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
-            return $this->redirectToRoute('app_user');
         }
-
-        return $this->render('facture/notif.html.twig', [ // Passer le formulaire en arguement dans un tableau
-            
-            'form' => $form->createView()                        // Demande pour créer le formulaire 'notifFrom' et pour afficher selui-ci dans une vue
-        ]);  
+        // Cas où $user est NULL
+        $this->addFlash('danger', 'Un problème est survenu');          // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
+        return $this->redirectToRoute('app_user');
+    
+        return $this->render('facture/notif.html.twig');  
     }
-
     
 }
