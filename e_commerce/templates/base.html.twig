@@ -143,11 +143,18 @@
 
     </div>
 
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      <div class="alert-message">
-          <strong>Inscription en attente de validation</strong>
-    </div>
+    {% for label, messages in app.flashes %}
+      {% for message in messages %}
+          
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="alert-message">
+                <strong>{{ message }}</strong>
+            </div>
+        </div>
+        
+      {% endfor %}
+    {% endfor %}
 
     </header>
 
