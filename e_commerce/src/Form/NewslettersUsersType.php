@@ -26,7 +26,7 @@ class NewslettersUsersType extends AbstractType
                 'expanded' => true
             ])
             ->add('is_rgpd', CheckboxType::class, [
-                'contraints' => [
+                'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter la collecte de vos 
                         données personnelles'

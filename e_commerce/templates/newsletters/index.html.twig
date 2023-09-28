@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Inscription aux Newsletters{% endblock %}
 
 {% block body %}
-    <h1>Choisissez vos Newsletters</h1>
-    {{ form(form) }}
+
+    <h1>Newsletters</h1>
+    <h2>Choisissez vos Newsletters</h2>
+    <div class="formAddInscription">
+        {{ form(form) }}
+    </div>
+
 {% endblock %}
