@@ -6,7 +6,6 @@ use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\FileUploader;
 
-use App\Service\SendNewsletter;
 use App\Service\SendMailService;
 
 use App\Repository\UserRepository;
