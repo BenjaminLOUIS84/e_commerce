@@ -7,6 +7,8 @@ use App\Service\GenPdf;
 use App\Entity\Commande;
 use App\Entity\CommandeLivre;
 use App\Service\SendMailService;
+use App\Entity\Newsletters\Users;
+use App\Form\NewslettersUsersType;
 use App\Repository\UserRepository;
 use App\Repository\FactureRepository;
 use App\Form\ResetPasswordRequestType;
@@ -134,16 +136,17 @@ class FactureController extends AbstractController
     ): Response
 
     {
-        $form = $this->createForm(ResetPasswordRequestType::class);         // Récupérer le formulaire
+        $user = new Users();
+        $form = $this->createForm(NewslettersUsersType::class, $user);
         
         $form->handleRequest($request);                                     // Pour traiter le formulaire
 
         if($form->isSubmitted() && $form->isvalid()){                       // Pour vérifier si le formulaire est valide et soumis
             
             // On va chercher l'utilisateur par son email
-            $user = $userRepository->findOneBy([], ["email" => "ASC"]);     // Pour cibler un utilisateur
+            // $user = $userRepository->findOneBy([], ["email" => "ASC"]);     // Pour cibler un utilisateur
             
-            // $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
+            $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
         
             // On vérifie si on un utilisateur
             if($user){
@@ -175,7 +178,7 @@ class FactureController extends AbstractController
 
         return $this->render('facture/notif.html.twig', [ // Passer le formulaire en arguement dans un tableau
             
-            'notifForm' => $form->createView()                        // Demande pour créer le formulaire 'notifFrom' et pour afficher selui-ci dans une vue
+            'form' => $form->createView()                        // Demande pour créer le formulaire 'notifFrom' et pour afficher selui-ci dans une vue
         ]);  
     }
 
