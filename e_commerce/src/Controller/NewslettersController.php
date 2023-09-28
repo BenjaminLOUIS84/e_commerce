@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Newsletters\Users;
 use App\Form\NewslettersUsersType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NewslettersController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new Users();
         $form = $this->createForm(NewslettersUsersType::class, $user);
@@ -22,12 +23,12 @@ class NewslettersController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {             // Si le formulaire soumis est valide alors
        
-            $token = hash('sha256', uniqId());
+            $token = hash('sha256', uniqid());
             $user->setValidationToken($token);
         
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+
+            $entityManager->persist($user);
+            $entityManager->flush();
         
             $this->addFlash('message', 'Inscription en attente de validation');
             return $this->redirectToRoute('app_home');
