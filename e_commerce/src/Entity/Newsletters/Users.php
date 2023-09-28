@@ -35,7 +35,7 @@ class Users
 
     public function __construct()
     {
-        $this->created_at = new \DateTime();    // Pour injecter la date automatiquement
+        $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement
         $this->categories = new ArrayCollection();
     }
 
