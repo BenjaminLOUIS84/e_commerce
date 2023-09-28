@@ -63,9 +63,8 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
         UserRepository $userRepository,                             // Pour accéder aux propriétés de l'entité User
         FileUploader $fileUploader, 
         EntityManagerInterface $entityManager,
-        // SendMailService $mail                                       // Utiliser le service SendMailService.php 
+        SendMailService $mail                                       // Utiliser le service SendMailService.php 
         
-        SendNewsletter $mail                                       // Utiliser le service SendMailService.php 
         
         ): Response   
     
@@ -163,5 +162,6 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
             'edit' => $article->getId()
         ]);
     }
+
 
 }
