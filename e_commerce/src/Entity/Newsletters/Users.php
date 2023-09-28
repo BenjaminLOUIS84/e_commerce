@@ -15,7 +15,7 @@ class Users
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column]
