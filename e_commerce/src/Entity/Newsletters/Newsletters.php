@@ -30,6 +30,9 @@ class Newsletters
     #[ORM\JoinColumn(nullable: false)]
     private ?Categories $categories = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $picture = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();    // Pour injecter la date automatiquement
@@ -96,6 +99,18 @@ class Newsletters
     public function setCategories(?Categories $categories): static
     {
         $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): static
+    {
+        $this->picture = $picture;
 
         return $this;
     }
