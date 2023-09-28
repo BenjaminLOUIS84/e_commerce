@@ -138,8 +138,6 @@ class FactureController extends AbstractController
     
         // On va chercher l'utilisateur par son email
         $user = $userRepository->findOneBy([], ["email" => "ASC"]);     // Pour cibler un utilisateur
-        
-        // $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
     
         // On vérifie si on un utilisateur
         if($user){
@@ -159,16 +157,11 @@ class FactureController extends AbstractController
             );
 
             $this->addFlash('success', 'Email envoyé avec succès');
-            return $this->redirectToRoute('app_user');                 // Redirection vers l'espace personnel'
+            // return $this->redirectToRoute('app_user');                 // Redirection vers l'espace personnel'
 
         }
-        // Cas où $user est NULL
-        $this->addFlash('danger', 'Un problème est survenu');          // En cas d'erreur on est redirigé vers l'espace personnel' et le message s'affichera dans cette page (*)
-        return $this->redirectToRoute('app_user');
-    
-        return $this->render('facture/notif.html.twig', [
-            'controller_name' => 'FactureController',
-        ]);  
+        
+        return $this->render('facture/notif.html.twig');  
     }
     
 }
