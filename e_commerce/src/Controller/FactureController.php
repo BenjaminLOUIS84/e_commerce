@@ -141,7 +141,9 @@ class FactureController extends AbstractController
         if($form->isSubmitted() && $form->isvalid()){                       // Pour vérifier si le formulaire est valide et soumis
             
             // On va chercher l'utilisateur par son email
-            $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
+            $user = $userRepository->findOneBy([], ["email" => "ASC"]);     // Pour cibler un utilisateur
+            
+            // $user = $userRepository->findOneByEmail($form->get('email')->getData());    // Pour chercher les données dans l'email qui est inscrit dans le formulaire
         
             // On vérifie si on un utilisateur
             if($user){
