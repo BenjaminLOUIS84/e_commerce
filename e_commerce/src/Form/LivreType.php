@@ -88,7 +88,7 @@ class LivreType extends AbstractType
                 'attr' => ['min' => 1, 'max' => 30]
             ])
 
-            ->add('valider', SubmitType::class, [               // Ajouter directement le bouton submit ici
+            ->add('Valider', SubmitType::class, [               // Ajouter directement le bouton submit ici
                 'attr' =>['class' => 'btn btn-dark']
             ])                                                  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
         ;

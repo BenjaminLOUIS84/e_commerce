@@ -19,6 +19,7 @@ class NewslettersUsersType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
+
             ->add('categories', EntityType::class,[
                 'class' => Categories::class,
                 'choice_label' => 'name',
@@ -34,7 +35,9 @@ class NewslettersUsersType extends AbstractType
                 ],
                 'label' => 'J\'accepte la collecte de mes données personnelles'
             ])
-            ->add('Enregistrer', SubmitType::class)
+            ->add('Enregistrer', SubmitType::class, [               // Ajouter directement le bouton submit ici
+                'attr' =>['class' => 'btn btn-dark']
+            ])                                  
         ;
     }
 
