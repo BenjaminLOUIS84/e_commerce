@@ -20,6 +20,38 @@
         {% if is_granted('ROLE_ADMIN') %}
             {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
             <a href="{{ path ('app_newsletters_prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"></a>
+        
+            {# Tableau pour gérer les envois des newsletters #}
+            <h1>Liste des Newsletters</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Catégorie</th>
+                        <th>Date</th>
+                        <th>Titre</th>
+                        <th>Inscrit</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for newsletters in newsletters %}
+                        <tr>
+                            <td>{{ newsletters.id }}</td>
+                            <td>{{ newsletters.categories.name }}</td>
+                            <td>{{ newsletters.createdAt|date("d-m-Y")}}</td>
+                            <td>{{ newsletters.name}}</td>
+                            <td>{{ newsletters.categories.users|length}}</td>
+                            <td>
+                                {% if newsletters.isSent == false %}
+                                    <a href="" class="btn btn-dark">Envoyer</a>
+                                {% endif %}
+                            </td>
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% endif %}
 
     </div>
