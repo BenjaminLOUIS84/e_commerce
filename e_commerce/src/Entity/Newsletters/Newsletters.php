@@ -67,6 +67,15 @@ class Newsletters
         return $this;
     }
 
+    ////////////////////////////////////////////////////////////////////////
+    // Il est possible de créer d'autres fonctions ici
+
+    public function __toString() {  // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->content. " ";     
+    }
+
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;

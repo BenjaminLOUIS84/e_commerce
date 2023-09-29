@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %} 
+    {# Le design de cette page dépend du fichier base.html.twig et doit s'éxécuter sur la page d'accueil #}
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+    <div class="fil">
+        
+        <h1 id="fil">ACTUALITES</h1>
+   
+        {# Lire et afficher toutes les notifications #}
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                
+            {% endfor %}
+        {% endfor %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
+            <a href="{{ path ('prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"></a>
+        {% endif %}
+
+    </div>
+    <section class="article">
+
+        {% for newsletters in newsletters %}
+
+            <div class="blocArticle">
+                
+                <div class="pack">   
+
+                    {# Afficher la newsletter #}
+                    <div class="frt">
+
+                        <h2> {{ newsletters.categories}} </h2>
+                        {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}  
+                        <h3>{{ newsletters.createdAt | date("d-m-Y") }}</h3>
+                        <h2> {{ newsletters.name}} </h2>
+                       
+                        
+                        <figure>
+                            {# Pour afficher les photos de chaque newsletters #}
+                            <img src="{{ asset('uploads/images/'~ newsletters.picture) }}" alt="Plusieurs images au format jpg importées pour illustrer un article" class="log">
+                        </figure>
+
+                        <p>{{ newsletters }}</p>
+                    
+                    </div>
+
+                    {# Accéder au contenu et aux commentaires #}
+                    <div class="bck">
+                        <h2>COMMENTAIRES</h2>
+                        {% if app.user %}
+                    
+                            {# Afficher le contenu #}
+
+                            {# {{ article }} #}
+
+                            <div class="liste">
+                                {# Tous les utilisateurs peuvent commenter #}
+                                <div class="option">
+                                    <a class="crud" href="
+                                    {# {{ path ('edit_livre', {id: livre.id}) }} #}
+                                    "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
+                                </div>  
+                            </div>
+
+                        {% endif %}
+                        
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="liste">
+                                {# Seul l'admin peut modifier et/ou supprimer un article #}
+                                <div class="option">
+
+                                    <a class="crud" href="
+                                    {# {{ path ('edit_article', {id: article.id}) }} #}
+                                    "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    
+                                    <a class="crud" href="
+                                    {# {{ path ('delete_article', {id: article.id}) }} #}
+                                    "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                
+                                </div>  
+                            </div>
+                        {% endif %}
+
+                    </div>
+                    
+                </div>
+                    
+            </div>
+
+        {% endfor %}
+
+    </section> 
+
+{% endblock %}

@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\Newsletters\NewslettersRepository;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -114,6 +115,8 @@ class NewslettersController extends AbstractController
             $entityManager->persist($entityManager);                        // Dire à Doctrine que je veux sauvegarder la nouvelle newsletter          
             // Execute PDO
             $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
+        
+            return $this->redirectToRoute('newsletters_list');
         }
 
         return $this->render('newsletters/prepare.html.twig', [
@@ -121,5 +124,21 @@ class NewslettersController extends AbstractController
         ]);
         
     }
+    
+    // FONCTION pour afficher les newsletters dans un fil d'actualité
+
+    #[Route('/list', name: 'list')]
+    public function list(NewslettersRepository $newslettersRepository): Response
+
+    {
+
+        $newsletters = $newslettersRepository->findBy([], ["createdAt" => "DESC"]); // Classer les newsletters par date de publication du plus récent au plus ancien DESC
+
+        return $this->render('newsletters/list.html.twig', [                   // Emplacement et disposition de la vue 
+            'controller_name' => 'NewslettersController',
+            'newsletters' => $newsletters
+        ]);
+    }
+    
  
 }
