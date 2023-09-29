@@ -52,7 +52,7 @@ class CommandeType extends AbstractType
             //     'by_reference' => false                         // OBLIGATOIRE Car Livre n'a pas de setFormatLivre, c'est FormatLivre qui contient setSession (Programme est propriétaire de la relation)
             // ])                                                  // Cela évite un mapping false
 
-            ->add('valider', SubmitType::class, [       // Ajouter directement le bouton submit ici
+            ->add('Valider', SubmitType::class, [       // Ajouter directement le bouton submit ici
             'attr' =>['class' => 'btn btn-dark']])      // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
         ;
         

@@ -90,16 +90,36 @@ class NewslettersController extends AbstractController
     ): Response
 
     {
+        $newsletters = new Newsletters();                                   // Créer une newsletter
 
-        $newsletters = new Newsletters();   // Créer une newsletter
+        $form = $this->createForm(NewslettersType :: class, $newsletters);  // Créer le formulaire
+        $form->handleRequest($request);                                     // Activer le formulaire
 
-        $form = $this->createForm(NewslettersType :: class, $newsletters); // Créer le formulaire
-        $form->handleRequest($request);     // Activer le formulaire
+        if ($form->isSubmitted() && $form->isValid()) {                     // Si le formulaire soumis est valide alors
+            
+            $newsletters = $form->getData();                                // Récupérer les informations 
+            
+            $pictureFile = $form->get('picture')->getData();                // Récupérer les images
+            //////////////////////////////////////////////////////////////////////////
+            // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
+            
+            if ($pictureFile) {
+                //Envoie les données au Service FileUploader 
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $newsletters->setpicture($pictureFileName);   
+            }
+            //////////////////////////////////////////////////////////////////////////
+
+            //prepare PDO
+            $entityManager->persist($entityManager);                        // Dire à Doctrine que je veux sauvegarder la nouvelle newsletter          
+            //execute PDO
+            $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
+        }
 
         return $this->render('newsletters/prepare.html.twig', [
             'form' => $form->createView()
         ]);
-
+        
     }
  
 }

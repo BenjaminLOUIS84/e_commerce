@@ -51,7 +51,7 @@ class NewslettersType extends AbstractType
                 'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
-            ->add('valider', SubmitType::class, [               // Ajouter directement le bouton submit ici
+            ->add('Enregistrer', SubmitType::class, [               // Ajouter directement le bouton submit ici
                 'attr' =>['class' => 'btn btn-dark']
             ])                                                  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
        
