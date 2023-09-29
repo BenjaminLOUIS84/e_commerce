@@ -29,13 +29,12 @@
         <body>
             <div class="wrapper">
         
-                <h3>Ajouter une newsletter</h3>
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie un article #}
-                {# {% if edit %}
-                    <h3>Modifier un article</h3>
+                {% if edit %}
+                    <h3>Modifier une newsletter</h3>
                 {% else %}
-                    <h3>Ajouter un nouvel article</h3> 
-                {% endif %} #}
+                    <h3>Ajouter une nouvelle newsletter</h3> 
+                {% endif %}
 
                 <div class="formAddInscription">
 
@@ -43,7 +42,6 @@
                     {{ form_start(form) }}
 
                         {{ form_row(form.categories) }}
-                        {# {{ form_row(form.createdAt) }} #}
                         {{ form_row(form.name) }}
                         {{ form_row(form.picture) }}
                         {{ form_row(form.content) }}

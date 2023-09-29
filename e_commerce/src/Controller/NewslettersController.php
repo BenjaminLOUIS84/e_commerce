@@ -84,7 +84,9 @@ class NewslettersController extends AbstractController
     // FONCTION pour préparer les newsletters
 
     #[Route('/prepare', name: 'prepare')]
+    #[Route('/prepare/{id}/edit', name: 'edit')]
     public function prepare(
+        Newsletters $newsletters = null,
         Request $request,
         FileUploader $fileUploader,
         EntityManagerInterface $entityManager, 
@@ -92,7 +94,10 @@ class NewslettersController extends AbstractController
     ): Response
 
     {
-        $newsletters = new Newsletters();                                   // Créer une newsletter
+        if(!$newsletters){
+            $newsletters = new Newsletters();                              // Créer une newsletter s'il n'y en a pas
+        }
+                                        
 
         $form = $this->createForm(NewslettersType :: class, $newsletters);  // Créer le formulaire
         $form->handleRequest($request);                                     // Activer le formulaire
@@ -112,7 +117,7 @@ class NewslettersController extends AbstractController
             //////////////////////////////////////////////////////////////////////////
 
             // Prepare PDO
-            $entityManager->persist($entityManager);                        // Dire à Doctrine que je veux sauvegarder la nouvelle newsletter          
+            $entityManager->persist($newsletters);                        // Dire à Doctrine que je veux sauvegarder la nouvelle newsletter          
             // Execute PDO
             $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
         
@@ -120,7 +125,8 @@ class NewslettersController extends AbstractController
         }
 
         return $this->render('newsletters/prepare.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $newsletters->getId()
         ]);
         
     }
@@ -132,12 +138,30 @@ class NewslettersController extends AbstractController
 
     {
 
-        $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]); // Classer les newsletters par date de publication du plus récent au plus ancien DESC
+        $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
 
-        return $this->render('newsletters/list.html.twig', [                   // Emplacement et disposition de la vue 
+        return $this->render('newsletters/list.html.twig', [                            // Emplacement et disposition de la vue 
             'controller_name' => 'NewslettersController',
             'newsletters' => $newsletters
         ]);
+    }
+
+     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION pour supprimer les newsletters
+
+    #[Route('/newsletters/{id}/delete', name: 'delete_newsletters')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+
+    public function delete(Newsletters $newsletters, EntityManagerInterface $entityManager): Response   
+    {                                                                                   // Créer une fonction delete() dans le controller pour supprimer un newsletters            
+        $entityManager->remove($newsletters);                                           // Supprime une newsletters
+        $entityManager->flush();                                                        // Exécute l'action DANS LA BDD
+
+        $this->addFlash(                                                                // Envoyer une notification
+            'success',
+            'Supprimé avec succès!'
+        );
+
+        return $this->redirectToRoute('app_newsletters_list');                               // Rediriger vers la liste des newsletterss
     }
     
  
