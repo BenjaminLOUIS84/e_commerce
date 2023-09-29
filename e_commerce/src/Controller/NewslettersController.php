@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/newsletters', name: 'app_newsletters_')]
@@ -33,12 +34,18 @@ class NewslettersController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            //$url = $this->generateUrl('app_newsletters_confirm, id: user.id, token: token',[] , UrlGeneratorInterface::ABSOLUTE_URL); 
+
             $email = (new TemplatedEmail())
             ->from('etrefouetsage@gmail.com')
             ->to($user->getEmail())
             ->subject('Votre inscritpion à la newsletter')
             ->htmlTemplate('email/inscription.html.twig')
-            ->context(compact('user', 'token'))
+            ->context(compact( 
+                //'url', 
+                'user', 
+                'token'
+                ))
             ;
 
             $mailer->send($email);
