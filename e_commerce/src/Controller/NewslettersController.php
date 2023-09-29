@@ -121,7 +121,7 @@ class NewslettersController extends AbstractController
             // Execute PDO
             $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
         
-            return $this->redirectToRoute('newsletters_list');
+            return $this->redirectToRoute('app_newsletters_list');
         }
 
         return $this->render('newsletters/prepare.html.twig', [
