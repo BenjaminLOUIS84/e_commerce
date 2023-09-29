@@ -85,7 +85,8 @@ class NewslettersController extends AbstractController
     #[Route('/prepare', name: 'prepare')]
     public function prepare(
         Request $request,
-        FileUploader $fileUploader, 
+        FileUploader $fileUploader,
+        EntityManagerInterface $entityManager, 
 
     ): Response
 
@@ -103,16 +104,15 @@ class NewslettersController extends AbstractController
             //////////////////////////////////////////////////////////////////////////
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
             
-            if ($pictureFile) {
-                //Envoie les données au Service FileUploader 
+            if ($pictureFile) {                                             //Envoie les données au Service FileUploader 
                 $pictureFileName = $fileUploader->upload($pictureFile);
                 $newsletters->setpicture($pictureFileName);   
             }
             //////////////////////////////////////////////////////////////////////////
 
-            //prepare PDO
+            // Prepare PDO
             $entityManager->persist($entityManager);                        // Dire à Doctrine que je veux sauvegarder la nouvelle newsletter          
-            //execute PDO
+            // Execute PDO
             $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
         }
 
