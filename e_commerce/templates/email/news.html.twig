@@ -1,9 +1,13 @@
-<h1>NEWSLETTER</h1>
-
+<h1>NEWSLETTERS</h1>
+{{newsletters.name}}
 <p>
     Bonjour!
-    Daniel Aaron vient de poster un nouvel article<br>
+    Daniel Aaron vient de poster un nouvel article dans la catégorie {{newsletters.categories.name}}<br>
 
+    <div>
+        {{newsletters.content|raw}}
+    </div>
     <br><a href="{{ url|raw }}">Connectez-vous pour consulter cet article</a><br>
 
+    <br><a href="">Pour vous désinscrire de la Newsletters</a>
 </p>

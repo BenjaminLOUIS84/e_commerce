@@ -146,7 +146,32 @@ class NewslettersController extends AbstractController
         ]);
     }
 
-     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION pour envoyer par mail les newsletters à tous les utilisateurs inscrit à la newsletters
+
+    #[Route('/send/{id}', name: 'send')]
+    public function send(Newsletters $newsletters, MailerInterface $mailer): Response
+
+    {
+       $users = $newsletters->getCategories()->getUsers();      // Pour rechercher les utilisateurs inscrits à chacune des catégories
+    
+       // Faire une boucle pour envoyer un mail à chaque utilisateurs inscrit
+       foreach($users as $user){
+            if(user->getIsValid()){
+                $email = (new TemplatedEmail())
+                    ->from('etrefouetsage@gmail.com')
+                    ->to($user->getEmail())
+                    ->subject($newsletters->getName())
+                    ->htmlTemplate('email/news.html.twig')
+                    ->context(compact('newsletters', 'user'))
+                ;
+                $mailer->send($email);
+            }
+       }
+
+       return $this->redirectToRoute('app_newsletters_list');
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION pour supprimer les newsletters
 
     #[Route('/newsletters/{id}/delete', name: 'delete_newsletters')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
