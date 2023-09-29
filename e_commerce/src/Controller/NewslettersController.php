@@ -157,16 +157,18 @@ class NewslettersController extends AbstractController
        // Faire une boucle pour envoyer un mail à chaque utilisateurs inscrit
        foreach($users as $users){
 
-            if($users->getIsvalid()){
+            if($users->isIsValid()){
+
+                $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
                 $email = (new TemplatedEmail())
                     ->from('etrefouetsage@gmail.com')
                     ->to($users->getEmail())
                     ->subject($newsletters->getName())
                     ->htmlTemplate('email/news.html.twig')
-                    ->context(compact('newsletters', 'users'))
+                    ->context(compact('url', 'newsletters', 'users'))
                 ;
-                
+
                 $mailer->send($email);
             }
        }
