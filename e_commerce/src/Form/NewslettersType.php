@@ -50,12 +50,12 @@ class NewslettersType extends AbstractType
             ->add('content', TextareaType::class , [              // Champs pour les textes long, zone de texte pour les résumés
                 'label' => 'Contenu',
                 'attr' => ['class' => 'tinymce'],
-                'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
+                'required' => false                               // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
-            ->add('Enregistrer', SubmitType::class, [               // Ajouter directement le bouton submit ici
+            ->add('Enregistrer', SubmitType::class, [             // Ajouter directement le bouton submit ici
                 'attr' =>['class' => 'btn btn-dark']
-            ])                                                  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
+            ])                                                    // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton   
        
         ;
     }

@@ -81,7 +81,7 @@ class NewslettersController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
-    // FONCTION pour préparer les newsletters
+    // FONCTION pour préparer et ajouter les newsletters
 
     #[Route('/prepare', name: 'prepare')]
     #[Route('/prepare/{id}/edit', name: 'edit')]
@@ -121,6 +121,7 @@ class NewslettersController extends AbstractController
             // Execute PDO
             $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
         
+            $this->addFlash('message', 'Newsletter ajoutée avec succès');
             return $this->redirectToRoute('app_newsletters_list');
         }
 
