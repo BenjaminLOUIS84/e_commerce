@@ -132,7 +132,7 @@ class NewslettersController extends AbstractController
 
     {
 
-        $newsletters = $newslettersRepository->findBy([], ["createdAt" => "DESC"]); // Classer les newsletters par date de publication du plus récent au plus ancien DESC
+        $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]); // Classer les newsletters par date de publication du plus récent au plus ancien DESC
 
         return $this->render('newsletters/list.html.twig', [                   // Emplacement et disposition de la vue 
             'controller_name' => 'NewslettersController',

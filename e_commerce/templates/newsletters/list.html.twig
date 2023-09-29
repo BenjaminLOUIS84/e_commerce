@@ -19,7 +19,7 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
-            <a href="{{ path ('prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"></a>
+            <a href="{{ path ('app_newsletters_prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"></a>
         {% endif %}
 
     </div>
