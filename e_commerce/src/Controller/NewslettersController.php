@@ -195,5 +195,26 @@ class NewslettersController extends AbstractController
         return $this->redirectToRoute('app_newsletters_list');                               // Rediriger vers la liste des newsletterss
     }
     
+    // FONCTION pour se désinscrire de la newsletter 
+
+    #[Route('/unsubscribe/{id}/{newsletters}/{token}', name: 'unsubscribe')]
+    public function unsubscribe(Users $user, Newsletters $newsletters, $token, EntityManagerInterface $entityManager): Response
+
+    {
+        if($user->getValidationToken() != $token){
+            throw $this->createNotFoundException('Page non trouvée');
+        }
+
+        if(count($user->getCategories()) >1){          // Si l'utilisateur est inscrit à plus d'une catégorie
+            $user->removeCategory($newsletters->getCategories());
+            $entityManager->persist($user);
+        }else{
+            $entityManager->remove($user);
+        }
+        $entityManager->flush();
+
+        $this->addFlash('message', 'Newsletters supprimée avec succès');
+        return $this->redirectToRoute('app_home');
+    }
  
 }
