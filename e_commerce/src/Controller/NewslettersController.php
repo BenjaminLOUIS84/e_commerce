@@ -84,9 +84,9 @@ class NewslettersController extends AbstractController
     // FONCTION pour préparer les newsletters
 
     #[Route('/prepare', name: 'prepare')]
-    // #[Route('/prepare/{id}/edit', name: 'edit')]
+    #[Route('/prepare/{id}/edit', name: 'edit')]
     public function prepare(
-        // Newsletters $newsletters = null,
+        Newsletters $newsletters = null,
         Request $request,
         FileUploader $fileUploader,
         EntityManagerInterface $entityManager, 
@@ -94,9 +94,9 @@ class NewslettersController extends AbstractController
     ): Response
 
     {
-        // if(!$newsletters){
+        if(!$newsletters){
             $newsletters = new Newsletters();                              // Créer une newsletter s'il n'y en a pas
-        // }
+        }
                                         
 
         $form = $this->createForm(NewslettersType :: class, $newsletters);  // Créer le formulaire
@@ -126,7 +126,7 @@ class NewslettersController extends AbstractController
 
         return $this->render('newsletters/prepare.html.twig', [
             'form' => $form->createView(),
-            // 'edit' => $newsletters->getId()
+            'edit' => $newsletters->getId()
         ]);
         
     }
