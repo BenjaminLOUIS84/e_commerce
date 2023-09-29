@@ -65,7 +65,7 @@ class ArticleController extends AbstractController  // Afficher la liste de tous
         SendMailService $mail                                       // Utiliser le service SendMailService.php 
         
         
-        ): Response   
+    ): Response   
     
     // Créer une fonction new() dans le controller pour permettre l'ajout de article
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création

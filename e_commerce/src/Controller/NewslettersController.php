@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Form\NewslettersType;
+use App\Service\FileUploader;
 use App\Entity\Newsletters\Users;
 use App\Form\NewslettersUsersType;
+use App\Entity\Newsletters\Newsletters;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -77,4 +80,26 @@ class NewslettersController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
+    // FONCTION pour préparer les newsletters
+
+    #[Route('/prepare', name: 'prepare')]
+    public function prepare(
+        Request $request,
+        FileUploader $fileUploader, 
+
+    ): Response
+
+    {
+
+        $newsletters = new Newsletters();   // Créer une newsletter
+
+        $form = $this->createForm(NewslettersType :: class, $newsletters); // Créer le formulaire
+        $form->handleRequest($request);     // Activer le formulaire
+
+        return $this->render('newsletters/prepare.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+    }
+ 
 }

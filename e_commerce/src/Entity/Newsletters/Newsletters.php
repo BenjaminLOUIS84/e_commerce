@@ -35,7 +35,7 @@ class Newsletters
 
     public function __construct()
     {
-        $this->created_at = new \DateTime();    // Pour injecter la date automatiquement
+        $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement
     }
 
     public function getId(): ?int
