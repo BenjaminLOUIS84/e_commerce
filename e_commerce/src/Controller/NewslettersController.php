@@ -173,6 +173,7 @@ class NewslettersController extends AbstractController
             }
        }
 
+       $this->addFlash('message', 'Newsletter envoyée avec succès');
        return $this->redirectToRoute('app_newsletters_list');
     }
 
