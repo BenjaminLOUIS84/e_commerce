@@ -149,7 +149,11 @@ class NewslettersController extends AbstractController
     // FONCTION pour envoyer par mail les newsletters à tous les utilisateurs inscrit à la newsletters
 
     #[Route('/send/{id}', name: 'send')]
-    public function send(Newsletters $newsletters, MailerInterface $mailer): Response
+    public function send(
+        Newsletters $newsletters, 
+        MailerInterface $mailer, 
+        EntityManagerInterface $entityManager
+    ): Response
 
     {
        $users = $newsletters->getCategories()->getUsers();      // Pour rechercher les utilisateurs inscrits à chacune des catégories
@@ -172,6 +176,13 @@ class NewslettersController extends AbstractController
                 $mailer->send($email);
             }
        }
+
+        // Pour que le bouton Envoyer disparaisse après l'envoi de la newsletter
+        $newsletters->setIsSent(true);
+        // Prepare PDO
+        $entityManager->persist($newsletters);                              
+        // Execute PDO
+        $entityManager->flush(); 
 
        $this->addFlash('message', 'Newsletter envoyée avec succès');
        return $this->redirectToRoute('app_newsletters_list');
