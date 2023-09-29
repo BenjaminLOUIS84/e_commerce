@@ -60,15 +60,17 @@
                     <div class="admin">
                         {# Fonction pour l'Administrateur #}
                         {% if is_granted('ROLE_ADMIN') %}
+                        
                             <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Ajouter une nouvelle Collection" alt="Ajouter une nouvelle Collection"></a>
                             {# <br><a href=""><img class="icone2" src="{{ asset('img/people-roof-solid.svg') }}" title="Gérer les Clients" alt="Gérer les Clients"></a> #}
+                        
                         {% endif %}   
                     </div>
                     {# Fonctions pour les utilisateurs #}
                     <nav id="men">
                         <div id="menu">
 
-                            <a href="{{ path ('list')}}#fil"><img class="lk" src="{{ asset('img/earth-americas-solid.svg') }}" title="Fil d'actualités" alt="Fil d'actualités"></a>
+                            <a href="{{ path ('list') }}#fil"><img class="lk" src="{{ asset('img/earth-americas-solid.svg') }}" title="Fil d'actualités" alt="Fil d'actualités"></a>
 
                             <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/circle-info-solid.svg') }}" title="Voir les formats d'édition" alt="Voir les formats d'édition"></a>
                             <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/book-solid.svg') }}" title="Voir tous les livres" alt="Voir tous les livres"></a>
