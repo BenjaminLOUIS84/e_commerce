@@ -142,7 +142,7 @@ class FactureController extends AbstractController
         // On vérifie si on un utilisateur
         if($user){
 
-            $url = $this->generateUrl('list', [], UrlGeneratorInterface::ABSOLUTE_URL);     // Permet de générer l'url pour utiliser la nouvelle route pour accéder au fil d'actualités
+            $url = $this->generateUrl('app_newsletters_list', [], UrlGeneratorInterface::ABSOLUTE_URL);     // Permet de générer l'url pour utiliser la nouvelle route pour accéder au fil d'actualités
 
             // On créer les données du mail
             $context = compact('url', 'user');
