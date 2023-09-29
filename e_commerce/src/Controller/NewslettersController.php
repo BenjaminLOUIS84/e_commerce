@@ -155,15 +155,18 @@ class NewslettersController extends AbstractController
        $users = $newsletters->getCategories()->getUsers();      // Pour rechercher les utilisateurs inscrits à chacune des catégories
     
        // Faire une boucle pour envoyer un mail à chaque utilisateurs inscrit
-       foreach($users as $user){
-            if(user->getIsValid()){
+       foreach($users as $users){
+
+            if($users->getIsvalid()){
+
                 $email = (new TemplatedEmail())
                     ->from('etrefouetsage@gmail.com')
-                    ->to($user->getEmail())
+                    ->to($users->getEmail())
                     ->subject($newsletters->getName())
                     ->htmlTemplate('email/news.html.twig')
-                    ->context(compact('newsletters', 'user'))
+                    ->context(compact('newsletters', 'users'))
                 ;
+                
                 $mailer->send($email);
             }
        }

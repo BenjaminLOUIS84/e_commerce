@@ -44,7 +44,7 @@
                             <td>{{ newsletters.categories.users|length}}</td>
                             <td>
                                 {% if newsletters.isSent == false %}
-                                    <a href="" class="btn btn-dark">Envoyer</a>
+                                    <a href="{{ path ('app_newsletters_send', {id: newsletters.id}) }}" class="btn btn-dark">Envoyer</a>
                                 {% endif %}
                             </td>
                             
