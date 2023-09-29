@@ -213,7 +213,7 @@ class NewslettersController extends AbstractController
         }
         $entityManager->flush();
 
-        $this->addFlash('message', 'Newsletters supprimée avec succès');
+        $this->addFlash('message', 'Newsletters supprimées avec succès');
         return $this->redirectToRoute('app_home');
     }
  
