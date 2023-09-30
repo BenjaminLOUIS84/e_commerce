@@ -16,7 +16,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: max-content;
 }
 
 .wrapperCollection {
