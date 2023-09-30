@@ -1,0 +1,75 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="fr">
+
+        <head>
+            <meta charset="utf-8">
+
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
+            
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+
+            <title>CATEGORIES</title>
+        </head>
+
+        <body>
+            <div class="wrapperCollection">
+                <header>
+
+                    <h3>CATEGORIES</h3>
+
+                    {# Lire et afficher toutes les notifications #}
+
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    
+                    {# Seul l'admin peut ajouter une nouvelle collection #}
+                    <a class="crud" href="{{ path ('new_categories') }}">AJOUTER</a>
+
+                    {# BDD L'élément de la collection #}
+                    {# Créer une boucle for #}
+                    {% for categories in categories %}
+                        <div class="liste">
+                            
+                            {# Seul l'admin peut modifier et/ou supprimer une collection #}
+                            <div class="option">
+                                <a class="crud" href="{{ path ('edit_categories', {id: categories.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                
+                                {# Accéder à la liste des livres pour chaque collections en cliquant sur l'intitulé d'une collection #}
+                                {# <a class="btn" title="Accéder à la liste des livres de cette collection" href="{{ path ('show_categories', {id: categories.id}) }}">{{ serie }}</a> #}
+                                <h1>{{ categories }}</h1>
+
+                                <a class="crud" href="{{ path ('delete_categories', {id: categories.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                            </div>
+                            
+                        </div>
+                    {% endfor %}
+
+                    <nav id="men">
+                        <div id="menu">
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"></a>
+                        </div>
+                    </nav>
+
+                </header>
+            </div>
+            <!-- <script>src = "script.js"</script> -->
+        </body>
+
+    </html>
+{% endblock %}

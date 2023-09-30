@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Controller;
+
+use App\Form\CategoriesType;
+use App\Entity\Newsletters\Categories;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class CategoriesController extends AbstractController
+{
+    #[Route('/categories', name: 'app_categories')]
+    public function index(): Response
+    {
+        return $this->render('categories/index.html.twig', [
+            'controller_name' => 'CategoriesController',
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR SUPPRIMER UNE CATEGORIE
+
+    #[Route('/categories/delete', name: 'delete_categories')]                // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+
+    public function delete(Categories $categories, EntityManagerInterface $entityManager): Response   
+
+    {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
+        $entityManager->remove($categories);                                 // Supprime une CATEGORIE
+        $entityManager->flush();                                        // Exécute l'action DANS LA BDD
+
+        $this->addFlash(                                                // Envoyer une notification
+            'success',
+            'Supprimé avec succès!'
+        );
+
+        return $this->redirectToRoute('app_categories');                     // Rediriger vers la liste des CATEGORIES
+       
+    }
+
+     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION FORMULAIRE POUR AJOUTER et EDITER DES COLLECTIONS
+
+    #[Route('/categories/new', name: 'new_categories')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
+    #[Route('/categories/{id}/edit', name: 'edit_categories')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
+
+    public function new_edit(Categories $categories  = null, Request $request, EntityManagerInterface $entityManager): Response   
+    
+    // Créer une fonction new() dans le controller pour permettre l'ajout de collection
+    // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
+
+    {
+        if(!$categories){                                            // S'il n'ya pas de collection à modifier alors en créer une nouvelle
+            $categories = new Categories();                               // Après avoir importé la classe Request Déclarer une nouvelle collection
+        }
+
+        $form = $this->createForm(CategoriesType :: class, $categories);  // Créer un nouveau formulaire avec la méthode createForm() et importer le classe categoriesType
+
+        //////////////////////////////////////////////////////////////////////////
+        //                                                      GERER LE TRAITEMENT EN BDD
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {         // Si le formulaire soumis est valide alors
+            
+            $categories = $form->getData();                          // Récupérer les informations de la nouvelle collection 
+            //prepare PDO
+            $entityManager->persist($categories);                    // Dire à Doctrine que je veux sauvegarder la nouvelle collection           
+            //execute PDO
+            $entityManager->flush();                            // Mettre la nouvelle collection dans la BDD
+
+            $this->addFlash(                                    // Envoyer une notification
+                'success',
+                'Opération réalisée avec succès!'
+            );
+
+            return $this->redirectToRoute('app_categories');         // Rediriger vers la liste des collections
+        }
+
+        //////////////////////////////////////////////////////////////////////////
+
+
+        return $this->render('categories/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier categories)
+            'formAddCategories' => $form,
+            'edit' => $categories->getId()
+        ]);
+    }
+
+
+}
