@@ -201,6 +201,7 @@ h1 {
 }
 
 .frt {
+    position: absolute;
     box-shadow: 0px 5px 10px black;
     backface-visibility: hidden;
     text-align: justify;
@@ -211,7 +212,7 @@ h1 {
 
 .bck {
     background: radial-gradient(white, transparent);
-    position: sticky;
+    position: absolute;
     object-fit: cover;
     flex-shrink: 0;
     scroll-snap-align: start;
@@ -576,7 +577,6 @@ h5 {
     justify-content: center;
     align-items: end;
     transition: .5s ease-in-out;
-    /* position: absolute; */
     transition: all 1s ease;
     transform-style: preserve-3d;
     margin: 10px;
@@ -591,7 +591,7 @@ h5 {
 }
 
 .back {
-    /* position: absolute; */
+    
     background: white;
     position: sticky;
     object-fit: cover;
@@ -603,7 +603,6 @@ h5 {
     transform: rotateY(-180deg);
     padding: 10px;
     height: max-content;
-    /* width: 400px; */
     width: 410px;
     text-align: center;
 }

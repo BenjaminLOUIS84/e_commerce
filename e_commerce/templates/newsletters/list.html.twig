@@ -76,14 +76,16 @@
                             {# Pour afficher les photos de chaque newsletters #}
                             <img src="{{ asset('uploads/images/'~ newsletters.picture) }}" alt="Plusieurs images au format jpg importées pour illustrer un article" class="log">
                         </figure>
-
-                        <p>{{ newsletters }}</p>
                     
                     </div>
 
                     {# Accéder au contenu et aux commentaires #}
                     <div class="bck">
+
+                        <p>{{ newsletters }}</p>
+
                         <h2>COMMENTAIRES</h2>
+                        
                         {% if app.user %}
 
                             <div class="liste">
