@@ -255,12 +255,12 @@ h1 {
     flex-direction: row;
     align-items: center;
     margin-bottom: -5px;
-    padding-top: 600px;
-    padding-bottom: 430px;
+    padding-top: 160px;
+    padding-bottom: 160px;
     background: url(/img/collection1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    position: fixed;
+    background-attachment: fixed;
 }
 
 .illustrationC {
