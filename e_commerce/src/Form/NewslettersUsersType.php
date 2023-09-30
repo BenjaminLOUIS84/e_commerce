@@ -22,6 +22,7 @@ class NewslettersUsersType extends AbstractType
 
             ->add('categories', EntityType::class,[
                 'class' => Categories::class,
+                'label' => 'Choisissez une ou plusieurs catégories',
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true
