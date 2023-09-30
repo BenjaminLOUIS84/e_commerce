@@ -312,7 +312,7 @@ header {
 .formAddInscription {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(204, 0, 0, 1));
     color: black;
-    line-height: 3;
+    /* line-height: 3; */
     padding: 20px;
     width: auto;
     border-radius: 20px;
