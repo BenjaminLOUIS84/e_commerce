@@ -17,16 +17,16 @@ class CommentaireController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION pour afficher les commentaires dans un article
 
-    #[Route('/list', name: 'list')]
-    public function list(CommentaireRepository $commentaireRepository): Response
-    {
-        $commentaires = $commentaireRepository->findBy([], ["date_com" => "DESC"]);
+    // #[Route('/list', name: 'list')]
+    // public function list(CommentaireRepository $commentaireRepository): Response
+    // {
+    //     $commentaires = $commentaireRepository->findBy([], ["date_com" => "DESC"]);
 
-        return $this->render('commentaire/list.html.twig', [
-            'controller_name' => 'CommentaireController',
-            'commentaires' => $commentaires
-        ]);
-    }
+    //     return $this->render('commentaire/list.html.twig', [
+    //         'controller_name' => 'CommentaireController',
+    //         'commentaires' => $commentaires
+    //     ]);
+    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION pour préparer et ajouter les commentaires
@@ -60,7 +60,7 @@ class CommentaireController extends AbstractController
             $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
         
             $this->addFlash('message', 'Commentaire ajouté avec succès');
-            return $this->redirectToRoute('app_commentaire_list');
+            return $this->redirectToRoute('app_newsletters_list');
         }
 
         return $this->render('commentaire/prepare.html.twig', [
@@ -85,7 +85,7 @@ class CommentaireController extends AbstractController
             'Supprimé avec succès!'
         );
 
-        return $this->redirectToRoute('app_commentaire_list');                               // Rediriger vers la liste des newsletterss
+        return $this->redirectToRoute('app_newsletters_list');                               // Rediriger vers la liste des newsletterss
     }
 
 }

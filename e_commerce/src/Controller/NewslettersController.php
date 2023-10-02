@@ -8,6 +8,7 @@ use App\Entity\Newsletters\Users;
 use App\Form\NewslettersUsersType;
 use App\Entity\Newsletters\Newsletters;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommentaireRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -132,17 +133,18 @@ class NewslettersController extends AbstractController
         
     }
     
-    // FONCTION pour afficher les newsletters dans un fil d'actualité
+    // FONCTION pour afficher les newsletters dans un fil d'actualité ET afficher les commentaires dans les articles
 
     #[Route('/list', name: 'list')]
-    public function list(NewslettersRepository $newslettersRepository): Response
+    public function list(NewslettersRepository $newslettersRepository, CommentaireRepository $commentaireRepository): Response
 
     {
 
         $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
+        $commentaires = $commentaireRepository->findBy([], ["date_com" => "DESC"]);
 
         return $this->render('newsletters/list.html.twig', [                            // Emplacement et disposition de la vue 
-            'controller_name' => 'NewslettersController',
+            'commentaires' => $commentaires,
             'newsletters' => $newsletters
         ]);
     }
