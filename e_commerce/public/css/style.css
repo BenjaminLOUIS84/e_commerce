@@ -168,17 +168,16 @@ h2 {
 .article {
     display: flex;
     flex-direction: column;
-
     background: url(/img/collection.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-
     border-radius: 20px;
     justify-content: left;
     align-items: center;
     overflow: initial;
     scroll-snap-type: y mandatory;
     margin-top: 40px;
+    gap: 30px;
    
 }
 
@@ -211,6 +210,23 @@ h1 {
     border-radius: 5px;
     padding: 10px;
     background: radial-gradient(white, transparent);
+}
+
+.bckCom {
+    background-color: white;
+    object-fit: cover;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    box-shadow: 0px 6px 10px black;
+    border-radius: 5px;
+    padding: 10px;
+    height: max-content;
+    text-align: center;
+    border: 1px solid white;
+    width: 360px;
+    margin: 20px;
+    position:relative;
+    left:-55px;
 }
 
 .bck {

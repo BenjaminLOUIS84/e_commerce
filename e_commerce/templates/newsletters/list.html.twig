@@ -91,11 +91,11 @@
                             <div class="blocArticle">
 
                                 {# Accéder au contenu et aux commentaires #}
-                                <div class="frt">
+                                <div class="bckCom">
 
-                                    <h3>{{ commentaire.user.pseudo }} {{ commentaire.dateCom | date("d-m-Y") }}</h3><br>
+                                    <h3>{{ commentaire.user.pseudo }} {{ commentaire.dateCom | date("d-m-Y") }}</h3>
                                     
-                                    <br><p>{{ commentaire }}</p><br>
+                                    <p>{{ commentaire }}</p><br>
                                     
                                     {% if app.user %}
 
@@ -103,7 +103,7 @@
                                             
                                             <div class="option">
 
-                                                <a class="crud" href="
+                                                <br><a class="crud" href="
                                                 {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
                                                 "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                                 
