@@ -21,7 +21,7 @@ class Commentaire
     private ?string $commentaire = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateCom = null;
+    private ?\DateTimeInterface $date_com = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaire')]
     #[ORM\JoinColumn(nullable: false)]
@@ -32,7 +32,7 @@ class Commentaire
 
     public function __construct()
     {
-        $this->dateCom = new \DateTimeImmutable();    // Pour injecter la date automatiquement
+        $this->date_com = new \DateTimeImmutable();    // Pour injecter la date automatiquement
         $this->newsletters = new ArrayCollection();
     }
 
@@ -55,12 +55,12 @@ class Commentaire
 
     public function getDateCom(): ?\DateTimeInterface
     {
-        return $this->dateCom;
+        return $this->date_com;
     }
 
-    public function setDateCom(\DateTimeInterface $dateCom): static
+    public function setDateCom(\DateTimeInterface $date_com): static
     {
-        $this->dateCom = $dateCom;
+        $this->date_com = $date_com;
 
         return $this;
     }

@@ -5,7 +5,7 @@
 {% block body %}
     {# <div class="fil"> #}
         
-        <h1>COMMENTAIRES</h1>
+        {# <h1>COMMENTAIRES</h1> #}
    
         {# Lire et afficher toutes les notifications #}
 
@@ -24,35 +24,18 @@
         {% for commentaire in commentaires %}
 
             <div class="blocArticle">
-                
-                <div class="pack">   
 
-                   
-                    <div class="frt">
+                {# Accéder au contenu et aux commentaires #}
+                <div class="frt">
 
-                        
-                    </div>
+                    <h3>{{ commentaire.user.pseudo }} {{ commentaire.dateCom | date("d-m-Y") }}</h3><br>
+                    
+                    <br><p>{{ commentaire }}</p><br>
+                    
+                    {% if app.user %}
 
-                    {# Accéder au contenu et aux commentaires #}
-                    <div class="bck">
-
-                        <p>{{ commentaire }}</p>
-
-                        <h2>COMMENTAIRES</h2>
-                        
-                        {% if app.user %}
-
-                            <div class="liste">
-                                {# Tous les utilisateurs peuvent commenter #}
-                                <div class="option">
-                                    <a class="crud" href="{{ path ('app_commentaire_prepare') }}"><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
-                                </div>  
-                            </div>
-
-                        {% endif %}
-                        
                         <div class="liste">
-                           
+                            
                             <div class="option">
 
                                 <a class="crud" href="
@@ -65,11 +48,11 @@
                             
                             </div>  
                         </div>
-                    
-                    </div>
-                    
+
+                    {% endif %}
+                
                 </div>
-                    
+                
             </div>
 
         {% endfor %}
