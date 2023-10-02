@@ -32,6 +32,7 @@ class Commentaire
 
     public function __construct()
     {
+        $this->dateCom = new \DateTimeImmutable();    // Pour injecter la date automatiquement
         $this->newsletters = new ArrayCollection();
     }
 
