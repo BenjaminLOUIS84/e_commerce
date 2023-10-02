@@ -77,6 +77,14 @@ class Commentaire
         return $this;
     }
 
+    ////////////////////////////////////////////////////////////////////////
+    // Il est possible de créer d'autres fonctions ici
+
+    public function __toString() {  // Pour faciliter l'affichage des autres informations d'une entité
+
+        return $this->commentaire. " ";     
+    }
+
     /**
      * @return Collection<int, Newsletters>
      */
