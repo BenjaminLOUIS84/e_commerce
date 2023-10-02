@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Newsletters\Newsletters;
 use App\Repository\CommentaireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,6 +26,14 @@ class Commentaire
     #[ORM\ManyToOne(inversedBy: 'commentaire')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    #[ORM\ManyToMany(targetEntity: Newsletters::class, mappedBy: 'commentaire')]
+    private Collection $newsletters;
+
+    public function __construct()
+    {
+        $this->newsletters = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +72,33 @@ class Commentaire
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Newsletters>
+     */
+    public function getNewsletters(): Collection
+    {
+        return $this->newsletters;
+    }
+
+    public function addNewsletter(Newsletters $newsletter): static
+    {
+        if (!$this->newsletters->contains($newsletter)) {
+            $this->newsletters->add($newsletter);
+            $newsletter->addCommentaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNewsletter(Newsletters $newsletter): static
+    {
+        if ($this->newsletters->removeElement($newsletter)) {
+            $newsletter->removeCommentaire($this);
+        }
 
         return $this;
     }
