@@ -136,15 +136,15 @@ class NewslettersController extends AbstractController
     // FONCTION pour afficher les newsletters dans un fil d'actualité ET afficher les commentaires dans les articles
 
     #[Route('/list', name: 'list')]
-    public function list(NewslettersRepository $newslettersRepository, CommentaireRepository $commentaireRepository): Response
+    public function list(NewslettersRepository $newslettersRepository): Response
 
     {
 
         $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
-        $commentaires = $commentaireRepository->findBy([], ["date_com" => "DESC"]);
+       
 
         return $this->render('newsletters/list.html.twig', [                            // Emplacement et disposition de la vue 
-            'commentaires' => $commentaires,
+            
             'newsletters' => $newsletters
         ]);
     }
