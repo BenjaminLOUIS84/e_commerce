@@ -36,10 +36,14 @@ class Newsletters
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
 
+    #[ORM\OneToMany(mappedBy: 'newsletters', targetEntity: Commentaire::class, orphanRemoval: true)]
+    private Collection $commentaire;
+
     
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement
+        $this->commentaire = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -124,6 +128,36 @@ class Newsletters
     public function setPicture(string $picture): static
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaire(): Collection
+    {
+        return $this->commentaire;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaire->contains($commentaire)) {
+            $this->commentaire->add($commentaire);
+            $commentaire->setNewsletters($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaire->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getNewsletters() === $this) {
+                $commentaire->setNewsletters(null);
+            }
+        }
 
         return $this;
     }
