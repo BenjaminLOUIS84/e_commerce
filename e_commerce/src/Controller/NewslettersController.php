@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
+use App\Form\CommentaireType;
 use App\Form\NewslettersType;
 use App\Service\FileUploader;
 use App\Entity\Newsletters\Users;
@@ -126,9 +128,22 @@ class NewslettersController extends AbstractController
             return $this->redirectToRoute('app_newsletters_list');
         }
 
+        // Partie commentaires
+        // On créer le commentaire vierge
+        $commentaire = new Commentaire;
+
+        // On génère le formulaire
+        $commentaireForm = $this->createForm(CommentaireType::class, $commentaire);
+        $commentaireForm->handleRequest($request);
+
+        // Traitement du formulaire
+         
+
+
         return $this->render('newsletters/prepare.html.twig', [
             'form' => $form->createView(),
-            'edit' => $newsletters->getId()
+            'edit' => $newsletters->getId(),
+            'commentaireForm' => $commentaireForm->createView()         // Générer la vue du formulaire
         ]);
         
     }
