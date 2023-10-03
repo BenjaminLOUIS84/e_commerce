@@ -21,7 +21,7 @@ class Commentaire
     private ?string $content = null;
 
     #[ORM\Column]
-    private ?bool $active = null;
+    private ?bool $active = false; // Permet de mettre en place la modération des commentaires
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
