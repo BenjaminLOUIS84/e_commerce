@@ -178,6 +178,7 @@ h2 {
     scroll-snap-type: x mandatory;
     margin-top: 40px;
     gap: 30px;
+    height: 1000px;
 }
 
 h1 {
