@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Commentaire;
+use App\Entity\Newsletters\Newsletters;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -19,6 +21,13 @@ class CommentaireType extends AbstractType
     {
         $builder
             
+        ->add('newsletters', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
+            'label' => 'Sélectionnez la newsletter',
+            'class' => Newsletters::class, 
+            'attr' => ['class' => 'form-control'],
+            'choice_label' => 'name'
+        ])
+        
             ->add('content',TextareaType::class, [
                 'label' => 'Votre commentaire',
                 'attr' => [

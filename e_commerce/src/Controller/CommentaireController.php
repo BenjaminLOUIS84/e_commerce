@@ -46,7 +46,7 @@ class CommentaireController extends AbstractController
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
-            $commentaire->setNewsletters($this->getNewsletters());          // Injecter la newsletter concernée
+            // $commentaire->setNewsletters($this->getNewsletters());          // Injecter la newsletter concernée
 
         }                   
 
