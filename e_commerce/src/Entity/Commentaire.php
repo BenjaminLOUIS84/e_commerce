@@ -47,6 +47,7 @@ class Commentaire
 
     public function __construct()
     {
+        $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement
         $this->replies = new ArrayCollection();
     }
 
