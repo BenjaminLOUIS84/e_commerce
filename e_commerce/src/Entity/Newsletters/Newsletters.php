@@ -36,13 +36,10 @@ class Newsletters
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
 
-    #[ORM\ManyToMany(targetEntity: Commentaire::class, inversedBy: 'newsletters')]
-    private Collection $commentaire;
-
+    
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement
-        $this->commentaire = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,27 +128,4 @@ class Newsletters
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commentaire>
-     */
-    public function getCommentaire(): Collection
-    {
-        return $this->commentaire;
-    }
-
-    public function addCommentaire(Commentaire $commentaire): static
-    {
-        if (!$this->commentaire->contains($commentaire)) {
-            $this->commentaire->add($commentaire);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaire $commentaire): static
-    {
-        $this->commentaire->removeElement($commentaire);
-
-        return $this;
-    }
 }
