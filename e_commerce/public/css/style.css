@@ -178,7 +178,6 @@ h2 {
     scroll-snap-type: y mandatory;
     margin-top: 40px;
     gap: 30px;
-   
 }
 
 h1 {
@@ -195,9 +194,24 @@ h1 {
     width: 500px;
 }
 
+.blocCom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 500px;
+    overflow: scroll;
+}
+
 /*Effet de carte retournée*/
 
 .blocArticle:hover .pack {
+    transform: rotateY(180deg);
+    transition: ease-in-out 1s;
+}
+
+.blocCom:hover .pack {
     transform: rotateY(180deg);
     transition: ease-in-out 1s;
 }
@@ -227,6 +241,7 @@ h1 {
     margin: 20px;
     position:relative;
     left:-55px;
+    transform: rotateY(-180deg);
 }
 
 .bck {

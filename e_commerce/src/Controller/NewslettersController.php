@@ -140,18 +140,18 @@ class NewslettersController extends AbstractController
     #[Route('/list', name: 'list')]
     public function list(
         NewslettersRepository $newslettersRepository,
-        CommentaireRepository $commentaireRepository,
+        // CommentaireRepository $commentaireRepository,
        
         ): Response
 
     {
 
         $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
-        $commentaires = $commentaireRepository->findBy([], ["created_at" => "DESC"]);    // Classer les commentaires par date de publication du plus récent au plus ancien DESC
+        // $commentaires = $commentaireRepository->findBy([], ["created_at" => "DESC"]);    // Classer les commentaires par date de publication du plus récent au plus ancien DESC
         
         return $this->render('newsletters/list.html.twig', [                            // Emplacement et disposition de la vue 
             'newsletters' => $newsletters,
-            'commentaires' => $commentaires,
+            // 'commentaires' => $commentaires,
         ]);
     }
 

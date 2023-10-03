@@ -85,49 +85,49 @@
                         <p>{{ newsletters }}</p>
 
                         <h2>COMMENTAIRES</h2>
+                        <div class="blocCom">
 
-                        {% for commentaire in commentaires %}
+                            {% for commentaire in newsletters.commentaire %}
 
-                            <div class="blocArticle">
+                                <div class="blocArticle">
+                                        
+                                    {# Accéder au contenu et aux commentaires #}
+                                    <div class="bckCom">
+                                        <div class="grix xs2 sm3 gutter-0 card">
+                                            <div class="col-xs2 col-sm3">
 
-                                {# Accéder au contenu et aux commentaires #}
-                                <div class="bckCom">
-                                    <div class="grix xs2 sm3 gutter-0 card">
-                                        <div class="col-xs2 col-sm3">
-                                            <h3>Liste des commentaires</h3>
+                                                <h3>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y") }}</h3>
+                                                
+                                                <p>{{ commentaire }}</p><br>
+                                                
+                                                {# {% if app.user %}
+
+                                                    <div class="liste">
+                                                        
+                                                        <div class="option">
+
+                                                            <br><a class="crud" href="
+                                                            {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
+                                                            "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                            
+                                                            <a class="crud" href="
+                                                            {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}
+                                                            "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                                        
+                                                        </div>  
+                                                    </div>
+
+                                                {% endif %} #}
+
+                                            </div>
                                         </div>
+                                    
                                     </div>
                                     
-
-                                    <h3>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y") }}</h3>
-                                    
-                                    <p>{{ commentaire }}</p><br>
-                                    
-                                    {% if app.user %}
-
-                                        <div class="liste">
-                                            
-                                            <div class="option">
-
-                                                <br><a class="crud" href="
-                                                {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
-                                                "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                
-                                                <a class="crud" href="
-                                                {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}
-                                                "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                            
-                                            </div>  
-                                        </div>
-
-                                    {% endif %}
-                                
                                 </div>
-                                
-                            </div>
 
-                        {% endfor %}
-
+                            {% endfor %}
+                        </div>
                         
                         {% if app.user %}
 
