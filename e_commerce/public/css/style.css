@@ -167,15 +167,15 @@ h2 {
 
 .article {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background: url(/img/collection.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 20px;
     justify-content: left;
     align-items: center;
-    overflow: initial;
-    scroll-snap-type: y mandatory;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
     margin-top: 40px;
     gap: 30px;
 }
@@ -194,16 +194,6 @@ h1 {
     width: 500px;
 }
 
-.blocCom {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 500px;
-    overflow: scroll;
-}
-
 /*Effet de carte retournée*/
 
 .blocArticle:hover .pack {
@@ -211,13 +201,9 @@ h1 {
     transition: ease-in-out 1s;
 }
 
-.blocCom:hover .pack {
-    transform: rotateY(180deg);
-    transition: ease-in-out 1s;
-}
 
 .frt {
-    
+    position: absolute;
     box-shadow: 0px 5px 10px black;
     backface-visibility: hidden;
     text-align: justify;
@@ -237,16 +223,14 @@ h1 {
     height: max-content;
     text-align: center;
     border: 1px solid white;
-    width: 360px;
+    width: 290px;
+    position:sticky;
     margin: 20px;
-    position:relative;
-    left:-55px;
-    transform: rotateY(-180deg);
 }
 
 .bck {
     background: radial-gradient(white, transparent);
-    position: absolute;
+    position: sticky;
     object-fit: cover;
     flex-shrink: 0;
     scroll-snap-align: start;
@@ -625,7 +609,6 @@ h5 {
 }
 
 .back {
-    
     background: white;
     position: sticky;
     object-fit: cover;
@@ -648,7 +631,6 @@ h5 {
 }
 
 .back h2 {
-
     padding-bottom: 20px;
     font-size: 2em;
 }
