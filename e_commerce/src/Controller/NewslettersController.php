@@ -128,22 +128,9 @@ class NewslettersController extends AbstractController
             return $this->redirectToRoute('app_newsletters_list');
         }
 
-        // Partie commentaires
-        // On créer le commentaire vierge
-        $commentaire = new Commentaire;
-
-        // On génère le formulaire
-        $commentaireForm = $this->createForm(CommentaireType::class, $commentaire);
-        $commentaireForm->handleRequest($request);
-
-        // Traitement du formulaire
-         
-
-
         return $this->render('newsletters/prepare.html.twig', [
             'form' => $form->createView(),
             'edit' => $newsletters->getId(),
-            'commentaireForm' => $commentaireForm->createView()         // Générer la vue du formulaire
         ]);
         
     }
@@ -151,16 +138,20 @@ class NewslettersController extends AbstractController
     // FONCTION pour afficher les newsletters dans un fil d'actualité ET afficher les commentaires dans les articles
 
     #[Route('/list', name: 'list')]
-    public function list(NewslettersRepository $newslettersRepository): Response
+    public function list(
+        NewslettersRepository $newslettersRepository,
+        CommentaireRepository $CommentaireRepository,
+       
+        ): Response
 
     {
 
         $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
-       
-
+        $commentaires = $commentairesRepository->findBy([], ["created_at" => "DESC"]);    // Classer les commentaires par date de publication du plus récent au plus ancien DESC
+        
         return $this->render('newsletters/list.html.twig', [                            // Emplacement et disposition de la vue 
-            
-            'newsletters' => $newsletters
+            'newsletters' => $newsletters,
+            'commentaires' => $commentaires,
         ]);
     }
 
