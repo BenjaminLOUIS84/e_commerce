@@ -104,8 +104,14 @@
                                                 {% endif %}         
                                                 
                                                 <p>{{ commentaire }}</p><br>
+
+                                                <a class="btn btn-dark" href="
+                                                    {# {{ path ('app_commentaire_edit', {id: commentaire.id}) }} #}
+                                                    ">Répondre
+                                                </a>
+
                                                 {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
-                                                {# {% if app.user %}
+                                                {% if commentaire.user == app.user %}
 
                                                     <div class="liste">
                                                         
@@ -122,7 +128,7 @@
                                                         </div>  
                                                     </div>
 
-                                                {% endif %} #}
+                                                {% endif %}
 
                                             </div>
                                         </div>
