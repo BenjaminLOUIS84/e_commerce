@@ -19,10 +19,8 @@ class Facture
     #[ORM\Column(unique: true)]
     private ?string $numero_facture = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, 
-    nullable:true
-    )]
-    private ?\DateTimeInterface $date_facture = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $date_facture = null;
 
     #[ORM\ManyToOne(inversedBy: 'Facture')]
     #[ORM\JoinColumn(nullable: false)]
@@ -31,6 +29,11 @@ class Facture
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        $this->date_facture = new \DateTimeImmutable();    // Pour injecter la date automatiquement
     }
 
     public function getNumeroFacture(): ?string
@@ -45,12 +48,12 @@ class Facture
         return $this;
     }
 
-    public function getDateFacture(): ?\DateTimeInterface
+    public function getDateFacture(): ?\DateTimeImmutable
     {
         return $this->date_facture;
     }
 
-    public function setDateFacture(\DateTimeInterface $date_facture): static
+    public function setDateFacture(\DateTimeImmutable $date_facture): static
     {
         $this->date_facture = $date_facture;
 

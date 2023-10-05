@@ -25,9 +25,8 @@ class Commande
     #[ORM\Column(unique: true)]
     private ?string $numero_commande = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable:true)]
-    // #[ORM\JoinColumn(nullable: false)]
-    private ?\DateTimeInterface $date_commande = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $date_commande = null;
 
     #[ORM\Column(length: 100, nullable:true)]
     private ?string $nom = null;
@@ -60,6 +59,7 @@ class Commande
 
     public function __construct()
     {
+        $this->date_commande = new \DateTimeImmutable();    // Pour injecter la date automatiquement
         $this->Facture = new ArrayCollection();
         $this->commandeLivres = new ArrayCollection();
        
@@ -82,12 +82,12 @@ class Commande
         return $this;
     }
 
-    public function getDateCommande(): ?\DateTimeInterface
+    public function getDateCommande(): ?\DateTimeImmutable
     {
         return $this->date_commande;
     }
 
-    public function setDateCommande(\DateTimeInterface $date_commande): static
+    public function setDateCommande(\DateTimeImmutable $date_commande): static
     {
         $this->date_commande = $date_commande;
 
