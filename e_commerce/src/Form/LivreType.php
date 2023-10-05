@@ -56,7 +56,7 @@ class LivreType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg'
                         ],
-                        'mimeTypesMessage' => 'Image au format jpg uniquement',
+                        'mimeTypesMessage' => 'Image au format jpeg uniquement',
                     ])
                 ],
 
