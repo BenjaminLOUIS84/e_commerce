@@ -105,12 +105,8 @@
                                                 
                                                 <p>{{ commentaire }}</p><br>
 
-                                                <a class="btn btn-dark" href="
-                                                {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
-                                                "
-                                                
+                                                <a class="btn btn-dark" href="{{ path ('app_commentaire_prepare', {id: newsletters.id}) }}"
                                                     data-reply data-id="{{ commentaire.id }}">Répondre
-
                                                 </a>
 
                                                 {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
@@ -185,13 +181,15 @@
 
 {% endblock %}
 
-{% block javascripts %}
-    {# JAVASCRIPT On met un écouteur d'évènenments sur tous les boutons Répondre #}
+{# JAVASCRIPT On met un écouteur d'évènenments sur tous les boutons Répondre #}
+{# {% block javascripts %}    
     <script>
-        document.querySelectorAll("[data-reply]").forEach(element => {
-            element.addEventListener("click", function(){
-                console.log(this);
+        window.onload = () => {
+            document.querySelectorAll("[data-reply]").forEach(element => {
+                element.addEventListener("click", function(){
+                    console.log(this);
+                });
             });
-        });
+        }
     </script>
-{% endblock %}
+{% endblock %} #}
