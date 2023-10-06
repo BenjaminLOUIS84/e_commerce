@@ -10,24 +10,12 @@ use App\Repository\CommentaireRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\Newsletters\NewslettersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/commentaire', name: 'app_commentaire_')]
 class CommentaireController extends AbstractController
 {
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION pour afficher les commentaires dans un article
-
-    // #[Route('/list', name: 'list')]
-    // public function list(CommentaireRepository $commentaireRepository): Response
-    // {
-    //     $commentaires = $commentaireRepository->findBy([], ["date_com" => "DESC"]);
-
-    //     return $this->render('commentaire/list.html.twig', [
-    //         'controller_name' => 'CommentaireController',
-    //         'commentaires' => $commentaires
-    //     ]);
-    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION pour préparer et ajouter les commentaires
@@ -37,16 +25,21 @@ class CommentaireController extends AbstractController
     public function prepare(
         Commentaire $commentaire = null,
         Request $request,
-        EntityManagerInterface $entityManager, 
+        EntityManagerInterface $entityManager,
+        // NewslettersRepository $newslettersRepository 
         
     ): Response
 
     {
-        
+        // $newsletters = $newslettersRepository->findOneBy(["id" => 6], ["created_at" => "DESC"]); 
+        // dd($newsletters);
+
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
-            // $commentaire->setNewsletters($this->getNewsletters());          // Injecter la newsletter concernée
+
+            // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée
+            // $commentaire->setNewsletters($this->getNewsletters());                   
 
         }                   
 

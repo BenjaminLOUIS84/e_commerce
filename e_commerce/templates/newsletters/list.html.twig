@@ -106,8 +106,11 @@
                                                 <p>{{ commentaire }}</p><br>
 
                                                 <a class="btn btn-dark" href="
-                                                    {# {{ path ('app_commentaire_edit', {id: commentaire.id}) }} #}
-                                                    ">Répondre
+                                                {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
+                                                "
+                                                
+                                                    data-reply data-id="{{ commentaire.id }}">Répondre
+
                                                 </a>
 
                                                 {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
@@ -158,7 +161,7 @@
                                 {# Seul l'admin peut modifier et/ou supprimer un article #}
                                 <div class="option">
 
-                                    <a class="crud" href="
+                                    <a class="crud" href="#
                                     {{ path ('app_newsletters_edit', {id: newsletters.id}) }}
                                     "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                     
@@ -180,4 +183,15 @@
 
     </section> 
 
+{% endblock %}
+
+{% block javascripts %}
+    {# JAVASCRIPT On met un écouteur d'évènenments sur tous les boutons Répondre #}
+    <script>
+        document.querySelectorAll("[data-reply]").forEach(element => {
+            element.addEventListener("click", function(){
+                console.log(this);
+            });
+        });
+    </script>
 {% endblock %}
