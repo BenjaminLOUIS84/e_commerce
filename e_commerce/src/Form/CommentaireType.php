@@ -7,6 +7,7 @@ use App\Entity\Newsletters\Newsletters;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -33,6 +34,16 @@ class CommentaireType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
+            ])
+
+            ->add('is_rgpd', CheckboxType::class, [
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter la collecte de vos 
+                        données personnelles'
+                    ])
+                ],
+                'label' => 'J\'accepte la collecte de mes données personnelles'
             ])
 
             ->add('parentid', HiddenType::class, [
