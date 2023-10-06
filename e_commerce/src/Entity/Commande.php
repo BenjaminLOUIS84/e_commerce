@@ -55,6 +55,10 @@ class Commande
     // Ajouter cascade: 'persist' et orphanRemoval:true dans l'ORM 
     #[ORM\OneToMany(mappedBy: 'commande', cascade: ['persist'], orphanRemoval:true, targetEntity: CommandeLivre::class)]
     private Collection $commandeLivres;
+
+    #[ORM\Column]
+    // #[ORM\JoinColumn(nullable: false)]
+    private ?bool $is_rgpd = false;
    
 
     public function __construct()
@@ -257,5 +261,17 @@ class Commande
         return $total;
       }
     ////////////////////////////////////////////////////////////////////////
+
+    public function isIsRgpd(): ?bool
+    {
+        return $this->is_rgpd;
+    }
+
+    public function setIsRgpd(bool $is_rgpd): static
+    {
+        $this->is_rgpd = $is_rgpd;
+
+        return $this;
+    }
     
 }
