@@ -52,6 +52,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
+    #[ORM\Column]
+    private ?bool $is_rgpd = null;
+
 
     public function __construct()
     {
@@ -232,6 +235,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $commentaire->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsRgpd(): ?bool
+    {
+        return $this->is_rgpd;
+    }
+
+    public function setIsRgpd(bool $is_rgpd): static
+    {
+        $this->is_rgpd = $is_rgpd;
 
         return $this;
     }

@@ -42,6 +42,9 @@
                         {{ form_row(registrationForm.agreeTerms, {
                             label: 'CGV'
                         }) }}
+                        {{ form_row(registrationForm.is_rgpd, {
+                            label: 'RGPD'
+                        }) }}
 
                         {# Créer un champ caché pour recevoir et valider le token #}
                         <input type="hidden" id="recaptchaResponse" name="recaptcha-response">

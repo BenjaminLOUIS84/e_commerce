@@ -23,6 +23,17 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email',EmailType::class)
             ->add('pseudo', TextType::class)
+
+            ->add('is_rgpd', CheckboxType::class, [
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter la collecte de vos 
+                        données personnelles'
+                    ])
+                ],
+                'label' => 'J\'accepte la collecte de mes données personnelles'
+            ])
+
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -31,6 +42,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
+            
             ->add('plainPassword', RepeatedType::class, [
                 
                 'mapped' => false,
