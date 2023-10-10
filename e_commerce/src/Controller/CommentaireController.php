@@ -32,28 +32,27 @@ class CommentaireController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         // NewslettersRepository $newslettersRepository,
-        
 
     ): Response
 
     {
+        // $id = 7; 
+        // Formule pour récupérer l'id correspondant
         
-        // $id = 7; // Formule pour récupérer l'id correspondant
         // $id = $this->getNewsletters()->getNewsletters_id();
         // dd($id);
        
         // $newsletters = $this->getDoctrine()->getRepository('AppBundleNewsletters\Newsletters')->find($id);
 
         // $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
-        // $newsletters = $newslettersRepository->findOneBy([]);           // Rechercher la newsletter par son id
         // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
-        
         // dd($newsletters);
         
 
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
+
             // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                 
             
         }                   
