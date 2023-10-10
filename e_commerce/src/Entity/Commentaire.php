@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Entity\Newsletters\Newsletters;
-use App\Repository\CommentaireRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Newsletters\Newsletters;
+use App\Repository\CommentaireRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CommentaireRepository::class)]
 class Commentaire

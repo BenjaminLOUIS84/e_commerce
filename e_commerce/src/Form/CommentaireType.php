@@ -28,7 +28,7 @@ class CommentaireType extends AbstractType
         //     'attr' => ['class' => 'form-control'],
         //     'choice_label' => 'name'
         // ])
-        
+   
             ->add('content',TextareaType::class, [
                 'label' => 'Votre commentaire',
                 'attr' => [

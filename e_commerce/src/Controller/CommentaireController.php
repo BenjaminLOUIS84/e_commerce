@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Commentaire;
+
 use App\Form\CommentaireType;
 use App\Entity\Newsletters\Newsletters;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,20 +27,29 @@ class CommentaireController extends AbstractController
     // #[Route('/prepare/{slug}/edit', name: 'edit')]
 
     public function prepare(
+        // $id,
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
         NewslettersRepository $newslettersRepository,
-        // int $id
+        
 
     ): Response
 
     {
         
-        $id = 7;
+        // $id = 7; // Formule pour récupérer l'id correspondant
+        // $id = $this->getNewsletters()->getNewsletters_id();
+        // dd($id);
+       
+        // $newsletters = $this->getDoctrine()->getRepository('AppBundleNewsletters\Newsletters')->find($id);
 
-        $newsletters = $newslettersRepository->findOneBy(['id' => $id], []);           // Rechercher la newsletter par son id
-        dd($newsletters);
+        // $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
+        // $newsletters = $newslettersRepository->findOneBy([]);           // Rechercher la newsletter par son id
+        // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
+        
+        // dd($newsletters);
+        
 
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
