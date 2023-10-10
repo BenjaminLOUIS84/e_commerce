@@ -21,25 +21,32 @@ class CommentaireController extends AbstractController
     // FONCTION pour préparer et ajouter les commentaires
 
     #[Route('/prepare', name: 'prepare')]
+
     #[Route('/prepare/{id}/edit', name: 'edit')]
+    // #[Route('/prepare/{slug}/edit', name: 'edit')]
+
     public function prepare(
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-        // NewslettersRepository $newslettersRepository 
+
+        // NewslettersRepository $newslettersRepository,
+        // $id
+        // $slug
         
     ): Response
 
     {
-        // $newsletters = $newslettersRepository->findOneBy(["id" => 6], ["created_at" => "DESC"]); 
+        // $newsletters = $newslettersRepository->find($id); 
+        // $newsletters = $newslettersRepository->findOneBy(['id' => $id]); 
+        // $newsletters = $newslettersRepository->findOneBy(['slug' => $slug]); 
         // dd($newsletters);
 
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
 
-            // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée
-            // $commentaire->setNewsletters($this->getNewsletters());                   
+            // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                 
 
         }                   
 
@@ -48,8 +55,9 @@ class CommentaireController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {                     // Si le formulaire soumis est valide alors
 
-             $commentaire = $form->getData();                                // Récupérer les informations 
+            $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
             
+
             // Prepare PDO
             $entityManager->persist($commentaire);                          // Dire à Doctrine que je veux sauvegarder la nouveau commentaire          
             // Execute PDO
@@ -70,6 +78,8 @@ class CommentaireController extends AbstractController
     // FONCTION pour supprimer les commentaires
 
     #[Route('/commentaire/{id}/delete', name: 'delete_commentaire')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+    
+    // #[Route('/commentaire/{slug}/delete', name: 'delete_commentaire')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
 
     public function delete(Commentaire $commentaire, EntityManagerInterface $entityManager): Response   
     {                                                                                   // Créer une fonction delete() dans le controller pour supprimer un commentaire            

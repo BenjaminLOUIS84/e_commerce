@@ -118,10 +118,12 @@
 
                                                             <br><a class="crud" href="
                                                             {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
+                                                            {# {{ path ('app_commentaire_edit', {slug: commentaire.id}) }} #}
                                                             "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                                             
                                                             <a class="crud" href="
                                                             {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}
+                                                            {# {{ path ('app_commentaire_delete_commentaire', {slug: commentaire.id}) }} #}
                                                             "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                                         
                                                         </div>  
@@ -146,6 +148,7 @@
                                 <div class="option">
                                     <a class="crud" href="
                                     {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
+                                    {# {{ path ('app_commentaire_prepare', {slug: newsletters.id}) }} #}
                                     "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
                                 </div>  
                             </div>
