@@ -29,24 +29,18 @@ class CommentaireController extends AbstractController
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-
-        // NewslettersRepository $newslettersRepository,
-        // $id
-        // $slug
+        NewslettersRepository $newslettersRepository,
         
     ): Response
 
     {
-        // $newsletters = $newslettersRepository->find($id); 
-        // $newsletters = $newslettersRepository->findOneBy(['id' => $id]); 
-        // $newsletters = $newslettersRepository->findOneBy(['slug' => $slug]); 
+        $newsletters = $newslettersRepository->findOneBy([], []);           // Rechercher la newsletter par son id
         // dd($newsletters);
 
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
-
-            // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                 
+            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                 
 
         }                   
 
