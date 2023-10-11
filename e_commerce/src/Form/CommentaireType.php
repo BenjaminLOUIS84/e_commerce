@@ -21,14 +21,16 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            
-        // ->add('newsletters', EntityType::class, [                 // Particularité ici EntityType à besoin d'un tableau d'arguments pour fonctionner
-        //     'label' => 'Sélectionnez la newsletter',
-        //     'class' => Newsletters::class, 
-        //     'attr' => ['class' => 'form-control'],
-        //     'choice_label' => 'name'
-        // ])
-   
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+            // ->add('newsletters', EntityType::class, [                 // OBJ Séléctionner la newsletters à commenter automatiquement
+            //     'label' => 'Sélectionnez la newsletter',
+            //     'class' => Newsletters::class, 
+            //     'attr' => ['class' => 'form-control'],
+            //     'choice_label' => 'name'
+            // ])
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             ->add('content',TextareaType::class, [
                 'label' => 'Votre commentaire',
                 'attr' => [

@@ -30,22 +30,27 @@ class CommentaireController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         NewslettersRepository $newslettersRepository
-
+        
     ): Response
 
     {
-        $id = 7;
-        
-        $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
-        // dd($newsletters);
-        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // $id = ???;                                                       // Instancier l'id selon le choix de la newsletter
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        $id = 7;                                                            // Instancier l'id séléctionner par défaut 
+
+        $newsletters = $newslettersRepository->findOneBy(['id' => $id]);    // Rechercher la newsletter par son id
+       
+        dd($newsletters);                                                   // Vérifier ce qui est récupéré
+        
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
             
-            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                              
+            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                                             
         }                   
+       
 
         $form = $this->createForm(CommentaireType :: class, $commentaire);  // Créer le formulaire
         $form->handleRequest($request);                                     // Activer le formulaire
