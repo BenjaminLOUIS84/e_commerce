@@ -31,18 +31,19 @@ class CommentaireController extends AbstractController
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-        NewslettersRepository $newslettersRepository
+        // NewslettersRepository $newslettersRepository
+        Newsletters $newsletters
 
     ): Response
 
     {
-        $id = 7;
+        // $id = 7;
         
         // $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
 
-        $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
+        // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
         
-        dd($newsletters);
+        // dd($newsletters);
         
 
         if(!$commentaire){
@@ -59,7 +60,6 @@ class CommentaireController extends AbstractController
 
             $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
             
-
             // Prepare PDO
             $entityManager->persist($commentaire);                          // Dire à Doctrine que je veux sauvegarder la nouveau commentaire          
             // Execute PDO
@@ -70,7 +70,6 @@ class CommentaireController extends AbstractController
         }
 
         return $this->render('commentaire/prepare.html.twig', [
-            // 'newsletters' => $newsletters,
             'form' => $form->createView(),
             'edit' => $commentaire->getId(),
         ]);

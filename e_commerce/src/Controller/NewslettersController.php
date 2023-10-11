@@ -171,7 +171,7 @@ class NewslettersController extends AbstractController
        foreach($users as $users){
 
             if($users->isIsValid()){
-
+     
                 $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
                 $email = (new TemplatedEmail())
