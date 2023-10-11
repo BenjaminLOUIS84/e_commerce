@@ -46,7 +46,7 @@ class CommentaireController extends AbstractController
 
         // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
         
-        dd($newsletters);
+        // dd($newsletters);
         
 
         if(!$commentaire){
