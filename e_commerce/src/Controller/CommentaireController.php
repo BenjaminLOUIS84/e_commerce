@@ -31,26 +31,31 @@ class CommentaireController extends AbstractController
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-        // NewslettersRepository $newslettersRepository
-        Newsletters $newsletters
+        NewslettersRepository $newslettersRepository,
+        // Newsletters $newsletters
+        // $slug
+       
 
     ): Response
 
     {
-        // $id = 7;
+        $id = 7;
         
-        // $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
+        $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
+        // $newsletters = $newslettersRepository->findOneBy(['slug' => $slug]);           // Rechercher la newsletter par son id
 
         // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
         
-        // dd($newsletters);
+        dd($newsletters);
         
 
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
             
-            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                              
+            $commentaire->setNewsletters($newsletters
+                // ->getId()
+            );                     // Injecter la newsletter concernée                              
         }                   
 
         $form = $this->createForm(CommentaireType :: class, $commentaire);  // Créer le formulaire
@@ -66,12 +71,16 @@ class CommentaireController extends AbstractController
             $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
         
             $this->addFlash('message', 'Commentaire ajouté avec succès');
-            return $this->redirectToRoute('app_newsletters_list');
+            return $this->redirectToRoute(
+                'app_newsletters_list', 
+                // ['id' => $newsletters->getId()]
+            );
         }
 
         return $this->render('commentaire/prepare.html.twig', [
             'form' => $form->createView(),
             'edit' => $commentaire->getId(),
+            // 'newsletters' => $newsletters
         ]);
         
     }

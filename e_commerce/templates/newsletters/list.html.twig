@@ -105,7 +105,10 @@
                                                 
                                                 <p>{{ commentaire }}</p><br>
 
-                                                <a class="btn btn-dark" href="{{ path ('app_commentaire_prepare', {id: newsletters.id}) }}"
+                                                <a class="btn btn-dark" href="
+                                                {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
+                                                {# {{ path ('app_commentaire_prepare', {slug: newsletters.id}) }} #}
+                                                "
                                                     data-reply data-id="{{ commentaire.id }}">Répondre
                                                 </a>
 
@@ -119,11 +122,13 @@
                                                             <br><a class="crud" href="
                                                             {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
                                                             {# {{ path ('app_commentaire_edit', {slug: commentaire.id}) }} #}
+                                                            
                                                             "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                                             
                                                             <a class="crud" href="
                                                             {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}
                                                             {# {{ path ('app_commentaire_delete_commentaire', {slug: commentaire.id}) }} #}
+                                                            
                                                             "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                                         
                                                         </div>  
@@ -149,6 +154,7 @@
                                     <a class="crud" href="
                                     {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
                                     {# {{ path ('app_commentaire_prepare', {slug: newsletters.id}) }} #}
+
                                     "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
                                 </div>  
                             </div>
@@ -160,12 +166,16 @@
                                 {# Seul l'admin peut modifier et/ou supprimer un article #}
                                 <div class="option">
 
-                                    <a class="crud" href="#
+                                    <a class="crud" href="
                                     {{ path ('app_newsletters_edit', {id: newsletters.id}) }}
+                                    {# {{ path ('app_newsletters_edit', {slug: newsletters.id}) }} #}
+                                    
                                     "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                     
                                     <a class="crud" href="
                                     {{ path ('app_newsletters_delete_newsletters', {id: newsletters.id}) }}
+                                    {# {{ path ('app_newsletters_delete_newsletters', {slug: newsletters.id}) }} #}
+
                                     "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 
                                 </div>  
