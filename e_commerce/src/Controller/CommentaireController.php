@@ -22,19 +22,14 @@ class CommentaireController extends AbstractController
     // FONCTION pour préparer et ajouter les commentaires
 
     #[Route('/prepare', name: 'prepare')]
-
     #[Route('/prepare/{id}/edit', name: 'edit')]
-    // #[Route('/prepare/{slug}/edit', name: 'edit')]
 
     public function prepare(
         
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-        NewslettersRepository $newslettersRepository,
-        // Newsletters $newsletters
-        // $slug
-       
+        NewslettersRepository $newslettersRepository
 
     ): Response
 
@@ -42,10 +37,6 @@ class CommentaireController extends AbstractController
         $id = 7;
         
         $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
-        // $newsletters = $newslettersRepository->findOneBy(['slug' => $slug]);           // Rechercher la newsletter par son id
-
-        // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
-        
         // dd($newsletters);
         
 
@@ -53,9 +44,7 @@ class CommentaireController extends AbstractController
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
             
-            $commentaire->setNewsletters($newsletters
-                // ->getId()
-            );                     // Injecter la newsletter concernée                              
+            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                              
         }                   
 
         $form = $this->createForm(CommentaireType :: class, $commentaire);  // Créer le formulaire
@@ -71,16 +60,12 @@ class CommentaireController extends AbstractController
             $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
         
             $this->addFlash('message', 'Commentaire ajouté avec succès');
-            return $this->redirectToRoute(
-                'app_newsletters_list', 
-                // ['id' => $newsletters->getId()]
-            );
+            return $this->redirectToRoute('app_newsletters_list');
         }
 
         return $this->render('commentaire/prepare.html.twig', [
             'form' => $form->createView(),
             'edit' => $commentaire->getId(),
-            // 'newsletters' => $newsletters
         ]);
         
     }
@@ -90,8 +75,6 @@ class CommentaireController extends AbstractController
 
     #[Route('/commentaire/{id}/delete', name: 'delete_commentaire')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
     
-    // #[Route('/commentaire/{slug}/delete', name: 'delete_commentaire')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
-
     public function delete(Commentaire $commentaire, EntityManagerInterface $entityManager): Response   
     {                                                                                   // Créer une fonction delete() dans le controller pour supprimer un commentaire            
         $entityManager->remove($commentaire);                                           // Supprime une commentaire
