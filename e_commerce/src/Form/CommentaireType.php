@@ -25,26 +25,11 @@ class CommentaireType extends AbstractType
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
             // ->add('newsletters', EntityType::class, [                 // OBJ Séléctionner la newsletters à commenter automatiquement
-            //     'label' => 'Sélectionnez la newsletter',
+            //     'label' => 'Sélectionnez la newsletter',              // CF CommentaireController
             //     'class' => Newsletters::class, 
             //     'attr' => ['class' => 'form-control'],
             //     'choice_label' => 'name'
             // ])
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
-        //     ->add('newsletters', EntityType::class, [                 
-        //         'label' => 'Sélectionnez la newsletter',
-        //         'class' => Newsletters::class, 
-        //         'attr' => ['class' => 'form-control'],
-        //         'choice_label' => 'name',
-        //         'query_builder' => function (EntityRepository $er) {
-        //             return $er->createQueryBuilder('c')
-        //                 ->where('c.id <> :newsletters_id')
-        //                 ->setParameter('newsletters_id', $this->newsletters_id);
-             
-        //         }
-        //    ])
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
             ->add('content',TextareaType::class, [
