@@ -27,34 +27,29 @@ class CommentaireController extends AbstractController
     // #[Route('/prepare/{slug}/edit', name: 'edit')]
 
     public function prepare(
-        // $id,
+        
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-        // NewslettersRepository $newslettersRepository,
+        NewslettersRepository $newslettersRepository
 
     ): Response
 
     {
-        // $id = 7; 
-        // Formule pour récupérer l'id correspondant
+        $id = 7;
         
-        // $id = $this->getNewsletters()->getNewsletters_id();
-        // dd($id);
-       
-        // $newsletters = $this->getDoctrine()->getRepository('AppBundleNewsletters\Newsletters')->find($id);
-
         // $newsletters = $newslettersRepository->findOneBy(['id' => $id]);           // Rechercher la newsletter par son id
-        // $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
-        // dd($newsletters);
+
+        $newsletters = $newslettersRepository->find($id);           // Rechercher la newsletter par son id
+        
+        dd($newsletters);
         
 
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
-
-            // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                 
             
+            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                              
         }                   
 
         $form = $this->createForm(CommentaireType :: class, $commentaire);  // Créer le formulaire
@@ -75,6 +70,7 @@ class CommentaireController extends AbstractController
         }
 
         return $this->render('commentaire/prepare.html.twig', [
+            // 'newsletters' => $newsletters,
             'form' => $form->createView(),
             'edit' => $commentaire->getId(),
         ]);
