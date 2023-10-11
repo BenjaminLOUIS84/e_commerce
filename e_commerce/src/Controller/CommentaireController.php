@@ -29,7 +29,8 @@ class CommentaireController extends AbstractController
         Commentaire $commentaire = null,
         Request $request,
         EntityManagerInterface $entityManager,
-        // NewslettersRepository $newslettersRepository
+        NewslettersRepository $newslettersRepository
+        // Newsletters $newsletters
         
     ): Response
 
@@ -38,17 +39,17 @@ class CommentaireController extends AbstractController
         // $id = ???;                                                       // Instancier l'id selon le choix de la newsletter
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // $id = 7;                                                            // Instancier l'id séléctionner par défaut 
+        $id = 7;                                                            // Instancier l'id séléctionner par défaut 
 
-        // $newsletters = $newslettersRepository->findOneBy(['id' => $id]);    // Rechercher la newsletter par son id
+        $newsletters = $newslettersRepository->findOneBy(['id' => $id]);    // Rechercher la newsletter par son id
        
-        // dd($newsletters);                                                   // Vérifier ce qui est récupéré
+        dd($newsletters);                                                   // Vérifier ce qui est récupéré
         
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
             
-            // $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                                             
+            $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                                             
         }                   
        
 
@@ -71,6 +72,7 @@ class CommentaireController extends AbstractController
         return $this->render('commentaire/prepare.html.twig', [
             'form' => $form->createView(),
             'edit' => $commentaire->getId(),
+            
         ]);
         
     }
