@@ -1314,14 +1314,6 @@ h6 {
 
     /*////////////////////////////ACCUEIL///////////////////////////*/
 
-    .accueil {
-        width: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-    }
-
     .name {
         display: flex;
         flex-direction: row;
@@ -1448,8 +1440,10 @@ h6 {
     /*////////////////////////////FEATURES///////////////////////////*/
 
     .illustrationC {
-        display: flex;
-        width: 410px;
+        background: url(/img/collection1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
 
     .text1 {
@@ -1613,6 +1607,7 @@ h6 {
     .price {
         scroll-snap-type: x mandatory; 
         overflow: auto;
+        padding: 0px;
     }
 
     .blocPrice {
@@ -1688,6 +1683,7 @@ h6 {
         margin-top: 0px;
         font-size: 1em;
         gap: 10px;
+        flex-direction: column;
     }
 
     .acces a {

@@ -61,9 +61,9 @@
                         {# Fonction pour l'Administrateur #}
                         {% if is_granted('ROLE_ADMIN') %}
                         
-                            <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Ajouter une nouvelle Collection" alt="Ajouter une nouvelle Collection"></a>
+                            <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Ajouter une nouvelle Collection" alt="Ajouter une nouvelle Collection">Ajouter une nouvelle collection</a>
                             
-                            <br><a href="{{ path ('app_categories') }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" title="Gérer les catégories de la Newsletter" alt="Gérer les catégories de la Newsletter"></a>
+                            <br><a href="{{ path ('app_categories') }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" title="Gérer les catégories de la Newsletter" alt="Gérer les catégories de la Newsletter">Gérer les catégories de la Newsletter</a>
                             
                             {# <br><a href=""><img class="icone2" src="{{ asset('img/people-roof-solid.svg') }}" title="Gérer les Clients" alt="Gérer les Clients"></a> #}
                         
@@ -73,18 +73,18 @@
                     <nav id="men">
                         <div id="menu">
 
-                            <a href="{{ path ('app_newsletters_list') }}#fil"><img class="lk" src="{{ asset('img/earth-americas-solid.svg') }}" title="Fil d'actualités" alt="Fil d'actualités"></a>
+                            <a href="{{ path ('app_newsletters_list') }}#fil"><img class="lk" src="{{ asset('img/earth-americas-solid.svg') }}" title="Fil d'actualités" alt="Fil d'actualités"><br>Fil d'actualité</a>
 
-                            <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/circle-info-solid.svg') }}" title="Voir les formats d'édition" alt="Voir les formats d'édition"></a>
-                            <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/book-solid.svg') }}" title="Voir tous les livres" alt="Voir tous les livres"></a>
+                            <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/circle-info-solid.svg') }}" title="Voir les formats d'édition" alt="Voir les formats d'édition"><br>Formats d'édition</a>
+                            <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/book-solid.svg') }}" title="Voir tous les livres" alt="Voir tous les livres"><br>Livres</a>
                             
-                            <a href="{{ path ('panier_index') }}"><img class="lk" src="{{ asset('img/cart-arrow-down-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"></a>
+                            <a href="{{ path ('panier_index') }}"><img class="lk" src="{{ asset('img/cart-arrow-down-solid.svg') }}" alt="Voir mon panier" title="Voir mon panier"><br>Panier</a>
                             
                             {# Permet d'afficher la page des commandes propre à chaque utilisateurs #}
-                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir mes commandes et mes factures" title="Voir mes commandes et mes factures"></a>
+                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir mes commandes et mes factures" title="Voir mes commandes et mes factures"><br>Commandes & Factures</a>
                 
-                            <a href="{{ path ('app_param') }}"><img class="lk" src="{{ asset('img/gear-solid.svg') }}" title="Gérer mon compte" alt="Gérer mon compte"></a>
-                            <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retourner à la page d'accueil" alt="Retour à la page d'accueil"></a>
+                            <a href="{{ path ('app_param') }}"><img class="lk" src="{{ asset('img/gear-solid.svg') }}" title="Gérer mon compte" alt="Gérer mon compte"><br>Mon compte</a>
+                            <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retourner à la page d'accueil" alt="Retour à la page d'accueil"><br>Accueil</a>
                         
                         </div>
                     </nav>
@@ -98,6 +98,44 @@
                 
             {% endblock %}
         </body>
+
+        <footer>
+
+            <div id="info">
+        
+              <div class="pied">
+        
+                <figure>
+                  <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}"
+                      alt="QR Code de Daniel Aaron" class="logQR"></a>
+                </figure>
+        
+                <div class="reseaux">
+                  <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
+                  <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
+                  <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
+                  <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
+                  <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
+                  <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
+                  <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
+                  <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a>
+                </div>
+        
+              </div>
+        
+              <div class="acces">
+                <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
+                <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
+                <a href="{{ path ('app_newsletters_home') }}">NEWSLETTERS</a>
+                <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
+              </div>
+        
+              <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
+        
+            </div>
+        
+          </footer>
+        
 
     </html>
 

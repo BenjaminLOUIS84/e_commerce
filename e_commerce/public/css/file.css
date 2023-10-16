@@ -157,6 +157,11 @@ h1 {
     align-items: center;
 }
 
+#menu a {
+    text-decoration: none;
+    color: white;
+}
+
 #men {
     height: auto;
     margin-bottom: 40px;
@@ -741,6 +746,8 @@ h6 {
 
 .acces a {
     font-size: 1.2em;
+    text-decoration: none;
+    color: white;
 }
 
 .acces a:hover {
