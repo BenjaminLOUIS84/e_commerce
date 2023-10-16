@@ -665,6 +665,101 @@ h6 {
     font-family: 'Libre Baskerville', sans-serif;
 }
 
+/*//////////////////////////////FOOTER////////////////////////////////////*/
+#info {
+    display: flex;
+    flex-direction: column;
+    background: rgba(204, 0, 0, 1);
+    padding-top: 20px;
+    text-align: center;
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
+.logQR {
+    width: 10%;
+    align-items: center;
+    filter: invert(1);
+}
+
+.reseaux {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    width: 30%;
+}
+
+.pied {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.face {
+    opacity: 50%;
+    width: 80%;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+.reseaux 
+.icoFb,
+.reseaux
+.icoIn,
+.reseaux
+.icoLkd,
+.reseaux
+.icoTk,
+.reseaux
+.icoTw,
+.reseaux
+.icoYt,
+.reseaux
+.icoSp,
+.reseaux
+.icoPp {
+
+    width: 180%;
+    filter: invert();
+}
+
+.acces {
+    opacity: 50%;
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px   ;
+}
+
+.acces .text3 {
+    color: white;
+    margin-bottom: 0px;
+}
+
+.acces a {
+    font-size: 1.2em;
+}
+
+.acces a:hover {
+    color: black;
+}
+
+.boutonScroll {
+    width: 3%;
+    border-radius: 50%;
+    position: fixed;
+    top: 580px;
+    left: 1230px;
+    transition: .5s ease-in-out;
+}
+
+.boutonScroll:hover {
+    cursor: pointer;
+}
+/*//////////////////////////////////////////////////////////////////*/
 
 
 /*TELEPHONE//////////////////////////////////////////////////////*/
