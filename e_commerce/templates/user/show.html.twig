@@ -61,13 +61,10 @@
                                     {% else %}
 
                                         {# Accéder au détail en cliquant sur la date de commande #}
-                                        <a class="btnCom" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
+                                        <a title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
                                         
                                     {% endif %}
-                                    
-                                    {# Conditions pour supprimer les commandes mais pas les factures #}
-                                    {# <a class="crud" href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="icone2" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> #}
-                                        
+                                      
                                 </div>
                                 
                             </div>
@@ -80,7 +77,7 @@
                     
                     <nav id="men">
                         <div id="menu">
-                            <a href="{{ path ('app_user', {id: user.id}) }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retourner à mon espace" title="Retourner à mon espace"></a>
+                            <a href="{{ path ('app_user', {id: user.id}) }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retourner à mon espace" title="Retourner à mon espace"><br>Mon espace</a>
                         </div>
                     </nav>
 
