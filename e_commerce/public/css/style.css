@@ -564,6 +564,7 @@ h5 {
     align-items: center;
     overflow: auto;
     scroll-snap-type: x mandatory;
+    padding: 40px;
 }
 
 .blocPrice {
