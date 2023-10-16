@@ -199,8 +199,10 @@
         window.onload = () => {
             document.querySelectorAll("[data-reply]").forEach(element => {
                 element.addEventListener("click", function(){
+                     
+                    //Pour vérifier si au click l'ID correpsond au commentaire séléctionné
+                    console.log(this);
                     
-                    console.log(this); //Pour vérifier si au click l'ID correpsond au commentaire séléctionné
                     //Pour récupérer l'ID du commentaire sur lequel l'utilisateur souhaite répondre
                     //document.querySelector("#commentaire_parentid").value = this.dataset.id;
                 });
