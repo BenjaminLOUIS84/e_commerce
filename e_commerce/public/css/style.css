@@ -504,7 +504,7 @@ sur les divs design, colors et solutions*/
 }
 
 .team p {
-    text-align: justify;
+    text-align: center;
 }
 
 /* EFFET PARALLAX */
@@ -551,7 +551,7 @@ h5 {
 .book {
     display: flex;
     padding: 20px;
-    text-align: justify;
+    text-align: center;
     width: 400px;
     margin: auto;
 }
