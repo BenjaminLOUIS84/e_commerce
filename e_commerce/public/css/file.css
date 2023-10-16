@@ -127,6 +127,8 @@ nav .lk {
     align-items: center;
     line-height: 1;
     height: 120px;
+    margin-bottom: 40px;
+    margin-top: 40px;
 }
 
 .informations .lk {
@@ -155,6 +157,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 40px;
 }
 
 #menu a {
@@ -222,7 +225,7 @@ a {
 a:hover {
     opacity: 70%;
     color: black;
-    font-weight: bold;
+   
 }
 
 .mentions {
@@ -370,9 +373,9 @@ header {
 
 .btn {
     padding: 10px;
-    margin-top: 40px;
-    font-weight: bold;
-    border-radius: 20px;
+    /* margin-top: 40px;
+    font-weight: bold; */
+    border-radius: 10px;
     font-size: 1.5em;
     cursor: pointer;
     font-family: 'Libre Baskerville', sans-serif;
