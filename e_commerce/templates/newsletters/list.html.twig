@@ -9,13 +9,13 @@
    
         {# Lire et afficher toutes les notifications #}
 
-        {% for label, messages in app.flashes %}
+        {# {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="flash-{{ label }}">
                     {{ message }}
                 
             {% endfor %}
-        {% endfor %}
+        {% endfor %} #}
 
         {% if is_granted('ROLE_ADMIN') %}
             {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
