@@ -12,6 +12,7 @@ use App\Repository\FactureRepository;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommandeLivreRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -56,11 +57,16 @@ class UserController extends AbstractController
         User $user,
         FactureRepository $factureRepository,
         CommandeRepository $commandeRepository,
-        CommandeLivreRepository $commandeLivreRepository
+        CommandeLivreRepository $commandeLivreRepository,
         ): Response                                                         // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {
-        $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes
+
+        if($this->getUser() != $user){                                      // Si l'id de l'utilisateur dans l'url ne correspond pas à l'utilisateur connecté
+            throw $this->createNotFoundException('Page non trouvée');
+        }                                                       
+        
+        $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes de l'utilisateur connecté
         $commandeLivres = $commandeLivreRepository->findAll();     
         $factures = $factureRepository->findAll();      
 
@@ -70,6 +76,7 @@ class UserController extends AbstractController
             'commandeLivres' => $commandeLivres,
             'factures' => $factures
         ]);
+        
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
