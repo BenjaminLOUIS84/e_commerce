@@ -37,6 +37,7 @@ class NewslettersController extends AbstractController
             
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
             if(empty($_POST['recaptcha-response'])){
+
                 header('Location: app_newsletters_home'); 
 
             }else{ // On prépare l'URL
