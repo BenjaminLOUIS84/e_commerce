@@ -89,6 +89,8 @@ class NewslettersController extends AbstractController
                         $this->addFlash('message', 'Inscription en attente de validation');
                         return $this->redirectToRoute('app_home');
 
+                    }else{
+                        header('Location: app_newsletters_home'); 
                     }
                 }
 
