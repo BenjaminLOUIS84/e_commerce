@@ -93,30 +93,30 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isvalid()){                       // Pour vérifier si le formulaire est valide et soumis
             
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
-            if(empty($_POST['recaptcha-response'])){
-                header('Location: forgotten_password'); 
+            // if(empty($_POST['recaptcha-response'])){
+            //     header('Location: forgotten_password'); 
 
-            }else{ // On prépare l'URL
-                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
+            // }else{ // On prépare l'URL
+            //     $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
-                // On vérifie si CURL est installé
-                if(function_exists('curl_version')){
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_HEADER, false);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-                    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-                    $response = curl_exec($curl);
-                }else{
-                    $response = file_get_contents($url);
-                }
+            //     // On vérifie si CURL est installé
+            //     if(function_exists('curl_version')){
+            //         $curl = curl_init($url);
+            //         curl_setopt($curl, CURLOPT_HEADER, false);
+            //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            //         curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+            //         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            //         $response = curl_exec($curl);
+            //     }else{
+            //         $response = file_get_contents($url);
+            //     }
 
-                // On vérifie si on a une réponse
-                if(empty($response) || is_null($response)){
-                    header('Location: forgotten_password'); 
-                }else{
-                    $data = json_decode($response);
-                    if($data->success){
+            //     // On vérifie si on a une réponse
+            //     if(empty($response) || is_null($response)){
+            //         header('Location: forgotten_password'); 
+            //     }else{
+            //         $data = json_decode($response);
+            //         if($data->success){
 
                         // Sinon on éxécute les instructions
 
@@ -157,11 +157,11 @@ class SecurityController extends AbstractController
                         $this->addFlash('danger', 'Un problème est survenu');           // En cas d'erreur on est redirigé vers la page de connexion et le message s'affichera dans cette page (*)
                         return $this->redirectToRoute('app_login');
 
-                    }
+                    //}
 
-                }
+                //}
 
-            }
+            //}
             
 
         }
@@ -191,20 +191,56 @@ class SecurityController extends AbstractController
             $form->handleRequest($request);                                 // Pour le traitement, ci-dessous pour gérer le traitement
 
             if($form->isSubmitted() && $form->isvalid()){
-                // On efface le token
-                $user->setResetToken('');
-                $user->setPassword(
-                    $passwordHasher->hashPassword(
-                        $user,
-                        $form->get('plainPassword')->getData()
-                    )
-                );
-                $entityManager->persist($user);
-                $entityManager->flush();
+                
+                // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
+                // if(empty($_POST['recaptcha-response'])){
+                //     header('Location: reset_password'); 
 
-                $this->addFlash('success', 'Mot de passe changé avec succès' );
-                return $this->redirectToRoute('app_login');
+                // }else{ // On prépare l'URL
+                //     $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
+    
+                //     // On vérifie si CURL est installé
+                //     if(function_exists('curl_version')){
+                //         $curl = curl_init($url);
+                //         curl_setopt($curl, CURLOPT_HEADER, false);
+                //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                //         curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                //         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                //         $response = curl_exec($curl);
+                //     }else{
+                //         $response = file_get_contents($url);
+                //     }
 
+                //     // On vérifie si on a une réponse
+                //     if(empty($response) || is_null($response)){
+                //         header('Location: reset_password'); 
+                //     }else{
+                //         $data = json_decode($response);
+                //         if($data->success){
+
+                            // Sinon on éxécute les instructions
+
+                            // On efface le token
+                            $user->setResetToken('');
+                            $user->setPassword(
+                                $passwordHasher->hashPassword(
+                                    $user,
+                                    $form->get('plainPassword')->getData()
+                                )
+                            );
+                            $entityManager->persist($user);
+                            $entityManager->flush();
+
+                            $this->addFlash('success', 'Mot de passe changé avec succès' );
+                            return $this->redirectToRoute('app_login');
+
+                       // }
+
+
+                    //}
+
+                //}
+                
             }
 
             return $this->render('security/reset_password.html.twig', [
