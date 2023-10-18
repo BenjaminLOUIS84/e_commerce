@@ -35,6 +35,11 @@ class NewslettersController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {             // Si le formulaire soumis est valide alors
        
+            // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
+            if(empty($_POST['recaptcha-response'])){
+                header('Location: app_home'); 
+            }
+
             $token = hash('sha256', uniqid());
             $user->setValidationToken($token);
         
