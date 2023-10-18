@@ -29,14 +29,22 @@
         <body>
             <div class="wrapper">  
                 <h1>INSCRIPTION A LA NEWSLETTER</h1>
-
+                
                 <p>Choisissez vos Newsletters et renseignez votre email pour vous inscrire</p>
                 <div class="formAddInscription">
-                    {{ form(form) }}
                     
-                    {# Créer un champ caché pour recevoir et valider le token #}
-                    <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+                    {{ form_start(form) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.categories) }}
+                        {{ form_row(form.is_rgpd) }}
+                    
+                        {# Créer un champ caché pour recevoir et valider le token #}
+                        <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
 
+                        {{ form_row(form.Enregistrer) }}
+
+                    {{ form_end(form) }}
+                  
                 </div>
             </div>
 
