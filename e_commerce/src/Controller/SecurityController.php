@@ -24,40 +24,7 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
-        // if(empty($_POST['recaptcha-response'])){
-        //     header('Location: app_login'); 
-
-        // }else{
-        //     // On prépare l'URL
-        //     $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
-
-        //     // On vérifie si CURL est installé
-        //     if(function_exists('curl_version')){
-        //         $curl = curl_init($url);
-        //         curl_setopt($curl, CURLOPT_HEADER, false);
-        //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        //         curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-        //         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        //         $response = curl_exec($curl);
-        //     }else{
-        //         $response = file_get_contents($url);
-        //     }
-
-        //     // On vérifie si on a une réponse
-        //     if(empty($response) || is_null($response)){
-        //         header('Location: app_login'); 
-        //     }else{
-        //         $data = json_decode($response);
-        //         if($data->success){    
-                    ////////////////////////////???//////////////////////////
-                    
-                // }else{
-                //     header('Location: app_login'); 
-                // }
-            // }
-        // }
-
+        
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
