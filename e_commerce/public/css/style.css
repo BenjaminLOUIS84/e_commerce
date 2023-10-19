@@ -133,6 +133,7 @@ a {
 a:hover {
     opacity: 50%;
     transition: ease-in-out 0.5s;
+    /* color: var(--color-third); */
 }
 
 /* NAVIGATION ////////////////////////////////////////////////////////////////////*/
@@ -407,7 +408,7 @@ sur les divs design, colors et solutions*/
 
 .text3 {
     text-align: center;
-    color: var(--color-primary);
+    color: var(--color-third);
     margin-bottom: 10px;
     font-size: 1.2em;
 }
