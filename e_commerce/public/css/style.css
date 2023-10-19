@@ -8,8 +8,8 @@
 /* VARIABLES CSS pour changer les couleurs et la police de tout le site */
 :root {
     /* COULEURS */
+    /* --color-primary:  rgb(24, 57, 71); */
     --color-primary: rgba(204, 0, 0, 1);
-    /* --color-primary: rgb(61, 190, 241); */
     --color-secondary: rgb(242, 245, 247);
    
     /* POLICES */
@@ -621,7 +621,6 @@ h5 {
 
 .front {
     position: absolute;
-    box-shadow: 0px 5px 10px black;
     backface-visibility: hidden;
     width: 310px;
     left: 50px;
