@@ -46,7 +46,6 @@ header {
     /* background: rgba(204, 0, 0, 1); */
     /* Intégrer la variable CSS avec var()*/
     background:var(--color-primary);
-
     height: 60px;
     align-items: center;
     display: flex;
