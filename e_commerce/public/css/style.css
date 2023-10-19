@@ -420,7 +420,7 @@ sur les divs design, colors et solutions*/
     gap: 10px;
     justify-content: center;
     padding-bottom: 50px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 .staff {
@@ -455,7 +455,7 @@ sur les divs design, colors et solutions*/
     transition: 0.5s ease-in-out;
     opacity: 0;
     left: 170px;
-    top: 40px;
+    top: 80px;
     z-index: 1;
 }
 
@@ -469,7 +469,7 @@ sur les divs design, colors et solutions*/
     transition: 0.5s ease-in-out;
     opacity: 0;
     left: 20px;
-    top: 40px;
+    top: 80px;
     z-index: 1;
 }
 
@@ -490,6 +490,7 @@ sur les divs design, colors et solutions*/
     align-items: center;
     border-radius: 50%;
     margin: 0 auto;
+    margin-top: 40px;
 }
 
 .pcs1:hover {
