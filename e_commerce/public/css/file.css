@@ -272,7 +272,7 @@ a:hover {
 
 .wrapperFactures {
     background-image: url(/img/collection.jpg);
-    font-family: var(--police-primary);
+    font-family: 'Libre Baskerville', sans-serif;
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -295,8 +295,8 @@ a:hover {
 }
 
 .description thead {
-    background-color:var(--color-primary);
-    color:  var(--color-secondary);
+    background-color:rgba(204, 0, 0, 1);
+    color:   rgb(242, 245, 247);
 }
 
 .description {
@@ -306,7 +306,7 @@ a:hover {
     margin-right: 20px;
     margin-top: 80px;
     margin-bottom: 80px;
-    background-color:  var(--color-secondary);
+    background-color:  rgb(242, 245, 247);
 }
 
 .total {
@@ -316,8 +316,8 @@ a:hover {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-left: 20px;
-    color:  var(--color-secondary);
-    background-color:var(--color-primary);
+    color:   rgb(242, 245, 247);
+    background-color:rgba(204, 0, 0, 1);
     text-align: left;
 }
 

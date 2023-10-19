@@ -575,7 +575,7 @@ h5 {
 .price {
     display: flex;
     flex-direction: row;
-    background: var(--color-secondary)smoke;
+    background: whitesmoke;
     justify-content: left;
     align-items: center;
     overflow: auto;
