@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+/* VARIABLES CSS pour changer les couleurs et la police de tout le site */
+:root {
+    /* COULEURS */
+    --color-primary: rgba(204, 0, 0, 1);
+    /* --color-primary: rgb(61, 190, 241); */
+    --color-secondary: rgb(242, 245, 247);
+   
+    /* POLICES */
+    --police-primary: 'Libre Baskerville', sans-serif;
+    /* --police-primary: 'Libre Baskerville', sans-serif; */
+}
+
 /* Pour rendre tous les liens scrollables*/
 
 html {
@@ -14,16 +26,17 @@ html {
 /* wrapper  =   bloc contenant les réglages par défaut pour toute la page*/
 
 .wrapper {
-    /* background:  rgba(52, 191, 240, 1); */
+    
     text-align: center;
     display: flex;
     flex-direction: column;
-    font-family: 'Libre Baskerville', sans-serif;
+    /* font-family: 'Libre Baskerville', sans-serif; */
+    font-family: var(--police-primary);
 }
 
 
 main {
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 
@@ -31,7 +44,12 @@ main {
 /*HEADER///////////////////////////////////////////////////////////////////////////////////////////////*/
 
 header {
-    background: rgba(204, 0, 0, 1);
+    /* background: rgba(204, 0, 0, 1); */
+    /* Intégrer la variable CSS avec var()*/
+    background:var(--color-primary);
+    /* Pour gérer le temps de changement de couleurs */
+    transition: background 300ms ease-out;
+
     height: 60px;
     align-items: center;
     display: flex;
