@@ -462,6 +462,16 @@ header {
     padding: 10px;
 }
 
+.option a {
+    color: var(--color-secondary);
+    font-weight: 100;
+}
+
+.option a:hover{
+    color:black;
+}
+
+
 .liste {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),var(--color-primary));
     border-radius: 20px;
