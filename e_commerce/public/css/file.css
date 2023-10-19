@@ -754,7 +754,6 @@ h6 {
 }
 
 .acces {
-    opacity: 50%;
     font-size: 1em;
     justify-content: center;
     align-items: center;
@@ -772,6 +771,10 @@ h6 {
     font-size: 1.2em;
     text-decoration: none;
     color:  var(--color-secondary);
+}
+
+.acces p {
+    color: var(--color-secondary);
 }
 
 .acces a:hover {
