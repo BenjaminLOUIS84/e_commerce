@@ -47,8 +47,6 @@ header {
     /* background: rgba(204, 0, 0, 1); */
     /* Intégrer la variable CSS avec var()*/
     background:var(--color-primary);
-    /* Pour gérer le temps de changement de couleurs */
-    transition: background 300ms ease-out;
 
     height: 60px;
     align-items: center;
@@ -129,7 +127,7 @@ header {
 }
 
 a {
-    color: white;
+    color: var(--color-secondary);
     text-decoration: none;
     padding: 10px;
 }
@@ -166,7 +164,7 @@ nav .lk {
 
 h2 {
     font-size: 2em;
-    color: white;
+    color: var(--color-secondary);
     padding-bottom: 10px;
 }
 
@@ -229,11 +227,11 @@ h1 {
     text-align: justify;
     border-radius: 5px;
     padding: 10px;
-    background: radial-gradient(white, transparent);
+    background: radial-gradient(var(--color-secondary), transparent);
 }
 
 .bckCom {
-    background-color: white;
+    background-color: var(--color-secondary);
     object-fit: cover;
     flex-shrink: 0;
     scroll-snap-align: start;
@@ -242,14 +240,14 @@ h1 {
     padding: 10px;
     height: max-content;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid var(--color-secondary);
     width: 290px;
     position:sticky;
     margin: 20px;
 }
 
 .bck {
-    background: radial-gradient(white, transparent);
+    background: radial-gradient(var(--color-secondary), transparent);
     position: sticky;
     object-fit: cover;
     flex-shrink: 0;
@@ -304,7 +302,7 @@ h1 {
 
 h2 {
     font-size: 4em;
-    color: rgba(204, 0, 0, 1);
+    color: var(--color-primary);
     padding-bottom: 80px;
 }
 
@@ -320,7 +318,7 @@ h2 {
 /* ACTIVITES ///////////////////////////////////////////////////////////////////*/
 
 .features {
-    background: white;
+    background: var(--color-secondary);
     display: flex;
     flex-direction: column;
     padding-top: 10px;
@@ -372,8 +370,8 @@ h4 {
 }
 
 .feat {
-    background: rgba(204, 0, 0, 1);
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-secondary);
     border: none;
     border-radius: 10px;
     box-shadow: 0px 6px 10px black;
@@ -411,7 +409,7 @@ sur les divs design, colors et solutions*/
 
 .text3 {
     text-align: center;
-    color: rgba(204, 0, 0, 1);
+    color: var(--color-primary);
     margin-bottom: 10px;
     font-size: 1.2em;
 }
@@ -419,7 +417,7 @@ sur les divs design, colors et solutions*/
 .team {
     display: flex;
     flex-direction: row;
-    background: white;
+    background: var(--color-secondary);
     align-items: initial;
     gap: 10px;
     justify-content: center;
@@ -531,7 +529,7 @@ sur les divs design, colors et solutions*/
 /*  Pour mettre une image fixe en arrière plan*/
 
 .getStart {
-    color: white;
+    color: var(--color-secondary);
     background-image: url(/img/collection.jpg);
     background-attachment: fixed;
     background-size: cover;
@@ -579,7 +577,7 @@ h5 {
 .price {
     display: flex;
     flex-direction: row;
-    background: whitesmoke;
+    background: var(--color-secondary)smoke;
     justify-content: left;
     align-items: center;
     overflow: auto;
@@ -598,8 +596,8 @@ h5 {
 }
 
 .livres h3 {
-    color: white;
-    background: rgba(204, 0, 0, 1);
+    color: var(--color-secondary);
+    background: var(--color-primary);
     padding: 10px;
     text-align: center;
 }
@@ -631,7 +629,7 @@ h5 {
 }
 
 .back {
-    background: white;
+    background: var(--color-secondary);
     position: sticky;
     object-fit: cover;
     flex-shrink: 0;
@@ -696,7 +694,7 @@ h6 {
 
 .boutonJoinTue:hover {
     background: rgba(76, 137, 222, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -711,14 +709,14 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Femmes*/
 
 .boutonJoin {
-    color: rgba(204, 0, 0, 1);
-    border: 1px solid rgba(204, 0, 0, 1);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
     background: none;
     border-radius: 8px;
     font-size: 1.3em;
@@ -728,18 +726,18 @@ h6 {
 }
 
 .boutonJoin:hover {
-    background: rgba(204, 0, 0, 1);
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
 .acheter1 {
-    color: rgba(204, 0, 0, 1);
+    color: var(--color-primary);
     font-size: 1em;
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Juifs*/
@@ -756,7 +754,7 @@ h6 {
 
 .boutonJoinJuifs:hover {
     background:  rgba(1, 255, 249, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -771,7 +769,7 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Argents*/
@@ -788,7 +786,7 @@ h6 {
 
 .boutonJoinArgents:hover {
     background:  rgba(153, 153, 153, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -803,7 +801,7 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Foot*/
@@ -820,7 +818,7 @@ h6 {
 
 .boutonJoinFoot:hover {
     background:  rgba(103, 169, 75, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -835,7 +833,7 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Politique*/
@@ -852,7 +850,7 @@ h6 {
 
 .boutonJoinPolitique:hover {
     background:  rgba(1, 2, 253, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -867,7 +865,7 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Inclassable*/
@@ -884,7 +882,7 @@ h6 {
 
 .boutonJoinInclassable:hover {
     background: rgba(254, 0, 255, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -899,7 +897,7 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /*Ayant*/
@@ -916,7 +914,7 @@ h6 {
 
 .boutonJoinAyant:hover {
     background: rgba(244, 0, 4, 1);
-    color: white;
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
@@ -931,7 +929,7 @@ h6 {
     font-weight: bold;
     text-align: center;
     background: pink;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 /* INFO///////////////////////////////////////////////////////////////////// */
@@ -939,10 +937,10 @@ h6 {
 #info {
     display: flex;
     flex-direction: column;
-    background: rgba(204, 0, 0, 1);
+    background: var(--color-primary);
     padding-top: 20px;
     text-align: center;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: var(--police-primary);
 }
 
 .logQR {
@@ -1005,7 +1003,7 @@ h6 {
 }
 
 .acces .text3 {
-    color: white;
+    color: var(--color-secondary);
     margin-bottom: 0px;
 }
 
@@ -1411,7 +1409,8 @@ h6 {
         flex-direction: row;
         margin: 20px;
         height: 70px;
-        background: white;
+        background: var(--color-secondary);
+
         border-radius: 10px;
         box-shadow: 0px 10px 10px rgb(0, 0, 0);
 
@@ -1445,14 +1444,14 @@ h6 {
         text-align: center;
         margin-left: 0px;
         margin-right: 0px;
-        color: rgba(204, 0, 0, 1);
+        color: var(--color-primary);
         margin-top: 20px;
         margin-bottom: 20px;
     }
 
     h2 {
         font-size: 4em;
-        color: rgba(204, 0, 0, 1);
+        color: var(--color-primary);
         padding-bottom: 40px;
     }
 
