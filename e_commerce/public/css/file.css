@@ -192,6 +192,11 @@ h1 {
     color: black;
 }
 
+.admin a {
+    text-decoration: none;
+    color: white;
+}
+
 a {
     color: white;
     text-decoration: none;
