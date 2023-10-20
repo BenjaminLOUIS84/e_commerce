@@ -373,6 +373,10 @@ header {
     align-items: center;
 }
 
+#registration_form_is_rgpd {
+    width: 10%;
+}
+
 .formAddCommande {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),var(--color-primary));
     color: black;

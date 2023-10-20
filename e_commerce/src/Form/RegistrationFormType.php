@@ -34,14 +34,14 @@ class RegistrationFormType extends AbstractType
                 'label' => 'J\'accepte la collecte de mes données personnelles'
             ])
 
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Accepter les CGV pour vous inscrire',
-                    ]),
-                ],
-            ])
+            // ->add('agreeTerms', CheckboxType::class, [
+            //     'mapped' => false,
+            //     'constraints' => [
+            //         new IsTrue([
+            //             'message' => 'Lire et accepter les CGV pour vous inscrire',
+            //         ]),
+            //     ],
+            // ])
 
             
             ->add('plainPassword', RepeatedType::class, [
