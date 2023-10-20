@@ -345,7 +345,7 @@ header {
     line-height: 3;
     padding: 20px;
     width: auto;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0px 6px 10px black;
     text-align: end;
     display: flex;
@@ -361,6 +361,10 @@ header {
 .formAddInscription label {
     padding: 10px;
     font-size: 1.5em;
+}
+
+#registration_form_is_rgpd {
+    width: 10%;
 }
 
 /* NEWSLETTERS */
@@ -385,12 +389,6 @@ header {
     padding: 10px;
     font-size: 1.5em;
     /* display: table-footer-group; */
-}
-
-.check-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 /* COMMANDES */

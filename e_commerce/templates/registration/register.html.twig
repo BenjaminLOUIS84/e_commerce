@@ -28,7 +28,7 @@
         <div class="wrapper">
             <header>
                 <h3>INSCRIPTION</h3>
-
+                <p>Remplir le formulaire ci-dessous pour vous inscrire</p><br>
                 <div class="formAddInscription">
 
                     {{ form_errors(registrationForm) }}
@@ -45,11 +45,12 @@
                         {# {{ form_row(registrationForm.agreeTerms, {
                             label: 'CGV'
                         }) }} #}
-                        
+
+                        <br><p>En cochant cette case vous acceptez le traitement de vos données personnelles</p>
                         {{ form_row(registrationForm.is_rgpd, {
                             label: 'RGPD'
                         }) }}
-                            
+                        
                         {# Créer un champ caché pour recevoir et valider le token #}
                         <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
 
