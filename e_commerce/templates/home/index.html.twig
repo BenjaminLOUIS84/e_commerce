@@ -3,311 +3,385 @@
 {% block title %}FOUETSAGE{% endblock %}
 
 {% block body %}
-    <!DOCTYPE html>
-    <html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 
-        <head>
+<head>
 
-            {# Global site tag (gtag.js) - Google Analytics #}
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97102682-4"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+    <script src="/tarteaucitron/tarteaucitron.js"></script>
 
-                gtag('config', 'UA-97102682-4');
-            </script>
+    <script type="text/javascript">
+        tarteaucitron.init({
+            "privacyUrl": "", /* Privacy policy url */
+            "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
 
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+            "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+            "cookieName": "tarteaucitron", /* Cookie name */
 
+            "orientation": "middle", /* Banner position (top - bottom) */
 
-            <title>MENU</title>
-        </head>
-        <main>
+            "groupServices": false, /* Group services by category */
+            "showDetailsOnClick": true, /* Click to expand the description */
+            "serviceDefaultState": "wait", /* Default state (true - wait - false) */
+
+            "showAlertSmall": false, /* Show the small banner on bottom right */
+            "cookieslist": false, /* Show the cookie list */
+
+            "closePopup": false, /* Show a close X on the banner */
+
+            "showIcon": true, /* Show cookie icon to manage cookies */
+            //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+            "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+            "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+            "DenyAllCta": true, /* Show the deny all button */
+            "AcceptAllCta": true, /* Show the accept all button when highPrivacy on */
+            "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+
+            "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+            "removeCredit": false, /* Remove credit link */
+            "moreInfoLink": true, /* Show more info link */
+
+            "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+            "useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+
+            //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+
+            "readmoreLink": "", /* Change the default readmore link */
+
+            "mandatory": true, /* Show a message about mandatory cookies */
+            "mandatoryCta": true, /* Show the disabled accept button when mandatory on */
+
+            //"customCloserId": "" /* Optional a11y: Custom element ID used to open the panel */
+        });
+
         
-            <section class="team">
-                <div class="staff">
-                    <div class="member">
-                        <figure>
-                            <figcaption>
-                                <h3 id="team"></h3>
-                                
-                            </figcaption>
-                            <div class="icoPhoto">
-                                <div class="ico3">
-                                    <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src=" {{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
-                                    <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }} " alt="Lien vers le compte Instagram" title="Instagram"></a>
-                                    <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
-                                    <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
-                                </div>
-                                <div class="ico4">
-                                    <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
-                                    <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
-                                    <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
-                                    <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a>
-                                </div>
-                                <img class="pcs1" src="{{ asset('img/daniel1.jpg') }}" alt="Daniel Aaron">
-                            </div>
-                            <h1>Daniel Aaron</h1>
-                            <p class="text3">Écrivain Éditeur</p>
-                            <p>
-                                Qui suis-je ?
-                                Jumeau, père de 2 garçons merveilleux, autodidacte, instinctif, optimiste, amoureux toujours, ayant connu plusieurs carrières professionnelles. Ma provocation n'en est pas une, je veux faire mes “RévolutionS” ! Lisez moi...
-                                Fou et sage ? Sage et fou ? 
-                                Qui suis-je ?
-                            </p>
-                        </figure>
+        tarteaucitron.user.multiplegtagUa = ['UA-97102682-4'];
+        (tarteaucitron.job = tarteaucitron.job || []).push('multiplegtag');
+    
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+    <title>MENU</title>
+</head>
+<main>
+
+    <section class="team">
+        <div class="staff">
+            <div class="member">
+                <figure>
+                    <figcaption>
+                        <h3 id="team"></h3>
+
+                    </figcaption>
+                    <div class="icoPhoto">
+                        <div class="ico3">
+                            <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb"
+                                    src=" {{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook"
+                                    title="Facebook"></a>
+                            <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn"
+                                    src="{{ asset('img/instagram.svg') }} " alt="Lien vers le compte Instagram"
+                                    title="Instagram"></a>
+                            <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd"
+                                    src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn"
+                                    title="LinkedIn"></a>
+                            <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk"
+                                    src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok"
+                                    title="TikTok"></a>
+                        </div>
+                        <div class="ico4">
+                            <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt"
+                                    src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube"
+                                    title="Youtube"></a>
+                            <a href="https://twitter.com/Danielaaron67"><img class="icoTw"
+                                    src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter"
+                                    title="Twitter"></a>
+                            <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp"
+                                    src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify"
+                                    title="Spotify"></a>
+                            <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}"
+                                    alt="Lien vers Stripe" title="Stripe"></a>
+                        </div>
+                        <img class="pcs1" src="{{ asset('img/daniel1.jpg') }}" alt="Daniel Aaron">
                     </div>
-
-                </div>
-            </section>
-
-            <section class="getStart">
-                <div class ="revolution">
-                    <h5>Découvrir la Collection</h5><br>
-                    <img class="logRevolution" src="{{ asset('img/logo2.jpg') }}" alt="logo Revolutions">
-                </div>
-            </section>
-
-            <div class="livres">
-                <h3 id="prix">Les Livres de Daniel Aaron</h3>
+                    <h1>Daniel Aaron</h1>
+                    <p class="text3">Écrivain Éditeur</p>
+                    <p>
+                        Qui suis-je ?
+                        Jumeau, père de 2 garçons merveilleux, autodidacte, instinctif, optimiste, amoureux toujours,
+                        ayant connu plusieurs carrières professionnelles. Ma provocation n'en est pas une, je veux faire
+                        mes “RévolutionS” ! Lisez moi...
+                        Fou et sage ? Sage et fou ?
+                        Qui suis-je ?
+                    </p>
+                </figure>
             </div>
 
-            <div class="book">
-                <p>
-                    Pamphlet politique et intimiste, compilation de textes courts et incisifs,<br>
-                    le format de poche, souple, permet une lecture partout et suscitera questionnements et réflexions.<br>
-                    Un style provoquant pour dénoncer sans aucune concession, avec une indépendance totale,
-                    les grands maux de notre époque et ensuite proposer des solutions nées du terrain pour entretenir cette petite flamme d'espoir.<br>
-            
-                    <br>3 ans de travail, 1200 pages déclinées en 8 tomes
-                    qui forment la collection "RévolutionS" abordant
-                    chacun un thème essentiel de notre époque.
-                </p>
+        </div>
+    </section>
+
+    <section class="getStart">
+        <div class="revolution">
+            <h5>Découvrir la Collection</h5><br>
+            <img class="logRevolution" src="{{ asset('img/logo2.jpg') }}" alt="logo Revolutions">
+        </div>
+    </section>
+
+    <div class="livres">
+        <h3 id="prix">Les Livres de Daniel Aaron</h3>
+    </div>
+
+    <div class="book">
+        <p>
+            Pamphlet politique et intimiste, compilation de textes courts et incisifs,<br>
+            le format de poche, souple, permet une lecture partout et suscitera questionnements et réflexions.<br>
+            Un style provoquant pour dénoncer sans aucune concession, avec une indépendance totale,
+            les grands maux de notre époque et ensuite proposer des solutions nées du terrain pour entretenir cette
+            petite flamme d'espoir.<br>
+
+            <br>3 ans de travail, 1200 pages déclinées en 8 tomes
+            qui forment la collection "RévolutionS" abordant
+            chacun un thème essentiel de notre époque.
+        </p>
+    </div>
+
+    <section class="price">
+
+        <div class="blocPrice">
+            <div class="pack">
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
+                    </figure>
+                </div>
+
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome1.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
+
+                    <p>
+                        Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des femmes
+                        à travers cet amour,
+                        au niveau intime et collectif.
+                        Et toujours apporter un espoir…
+                    </p>
+                </div>
             </div>
+        </div>
 
-            <section class="price">
-
-                <div class="blocPrice">
-                    <div class="pack">
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
-                            </figure> 
-                        </div>
-
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome1.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
-                            </figure>
-                            
-                            <p>
-                                Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des femmes à travers cet amour,
-                                au niveau intime et collectif.
-                                Et toujours apporter un espoir…
-                            </p>
-                        </div>
-                    </div>
+        <div class="blocPrice">
+            <div class="pack">
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livreHS.jpg') }}" alt="livre Jeanne" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livreHS.jpg') }}" alt="livre Jeanne" class="log">
-                            </figure>
-                        </div>
-          
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tomeHS.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
-                            </figure>
-                        </div>
-                    </div>
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tomeHS.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <div class="blocPrice">
+            <div class="pack">
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre0.jpg') }}" alt="livre Une question qui tue" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre0.jpg') }}" alt="livre Une question qui tue" class="log">
-                            </figure>
-                        </div>
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome0.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
 
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome0.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
-                            </figure>
-                            
-                            <p>
-                                Pamphlet pour répondre à 4 questions : Qui suis-je ? Pourquoi écrire ? Pourquoi RévolutionS ?
-                                Un titre originel qui a surgi il y a plus de 20 ans déjà et qui est née suite à une question posée par un journaleux local
-                                et qui a failli me tuer.
-                                Et toujours apporter un espoir…
-                            </p> 
-                        </div>
-                    </div>
+                    <p>
+                        Pamphlet pour répondre à 4 questions : Qui suis-je ? Pourquoi écrire ? Pourquoi RévolutionS ?
+                        Un titre originel qui a surgi il y a plus de 20 ans déjà et qui est née suite à une question
+                        posée par un journaleux local
+                        et qui a failli me tuer.
+                        Et toujours apporter un espoir…
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="blocPrice">
+            <div class="pack">
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre2.jpg') }}" alt="livre Juifs" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre2.jpg') }}" alt="livre Juifs" class="log">
-                            </figure>
-                        </div>
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome2.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log2">
+                    </figure>
 
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome2.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                    class="log2">
-                            </figure>
-                    
-                            <p>
-                                Pamphlet émerveillé sur la première religion monothéiste, celle que toutes les autres ont prise en référence
-                                même si de nombreux fidèles l’ont oubliée. 
-                                Pamphlet personnel où l’auteur parle de son judaïsme, ou plutôt des chemins qu'il a empruntés. 
-                                Pamphlet acide sur l’antisémitisme où il appelle un chat un chat.
-                                Pamphlet passionné et argumenté sans concession sur Israël, plus beau pays au monde.
-                                Et toujours apporter un espoir…
-                            </p>
-                        </div>
-                    </div>
+                    <p>
+                        Pamphlet émerveillé sur la première religion monothéiste, celle que toutes les autres ont prise
+                        en référence
+                        même si de nombreux fidèles l’ont oubliée.
+                        Pamphlet personnel où l’auteur parle de son judaïsme, ou plutôt des chemins qu'il a empruntés.
+                        Pamphlet acide sur l’antisémitisme où il appelle un chat un chat.
+                        Pamphlet passionné et argumenté sans concession sur Israël, plus beau pays au monde.
+                        Et toujours apporter un espoir…
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="blocPrice">
+            <div class="pack">
+
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre3.jpg') }}" alt="livre Argent" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome3.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
 
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre3.jpg') }}" alt="livre Argent" class="log">
-                            </figure>
-                        </div>
+                    <p>
+                        Pamphlet éminemment politique et intime en deux parties.
+                        Un traité d’économie réelle avec une somme d’expériences professionnelles d’un auteur
+                        autodidacte
+                        dont l’approche est empreinte de réalité du terrain et surtout pas de grandes théories.
+                        Un mode d’emploi pour les porteurs de projet afin de mener à bien leurs entreprises
+                        selon une expertise reconnue et construite grâce aux 350 accompagnements réalisés dans 50
+                        secteurs par l’auteur…
+                        Avec une quinzaine de cas d’école pour illustrer les dysfonctionnements du système et comment le
+                        dépasser.
+                        Et toujours apporter un espoir…
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome3.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                    class="log">
-                            </figure>
-                            
-                            <p>
-                                Pamphlet éminemment politique et intime en deux parties.
-                                Un traité d’économie réelle avec une somme d’expériences professionnelles d’un auteur autodidacte 
-                                dont l’approche est empreinte de réalité du terrain et surtout pas de grandes théories.
-                                Un mode d’emploi pour les porteurs de projet afin de mener à bien leurs entreprises 
-                                selon une expertise reconnue et construite grâce aux 350 accompagnements réalisés dans 50 secteurs par l’auteur… 
-                                Avec une quinzaine de cas d’école pour illustrer les dysfonctionnements du système et comment le dépasser.
-                                Et toujours apporter un espoir…
-                            </p>
-                        </div>
-                    </div>
+        <div class="blocPrice">
+            <div class="pack">
+
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre5.jpg') }}" alt="livre Politique" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome5.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
 
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre5.jpg') }}" alt="livre Politique" class="log">
-                            </figure>
-                        </div>
+                    <p>
+                        Pamphlet engagé et sans compromis d’un auteur libre.
+                        Des cris sur beaucoup de sujets brûlants de notre époque et des propositions… des RévolutionS…
+                        et donc un espoir…
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome5.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                    class="log">
-                            </figure>
-                    
-                            <p>
-                                Pamphlet engagé et sans compromis d’un auteur libre.
-                                Des cris sur beaucoup de sujets brûlants de notre époque et des propositions… des RévolutionS… et donc un espoir…
-                            </p>
-                        </div>
-                    </div>
+        <div class="blocPrice">
+            <div class="pack">
+
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre4.jpg') }}" alt="livre Foot" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome4.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log1">
+                    </figure>
 
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre4.jpg') }}" alt="livre Foot" class="log">
-                            </figure>
-                        </div>
+                    <p>
+                        Pamphlet passionné et révolutionnaire sur le sport le plus populaire.
+                        Un traité de cinquante pages pour réinventer les règles du football et lui permettre d’extirper
+                        ses
+                        démons.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome4.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                    class="log1">
-                            </figure>
-                        
-                            <p>
-                                Pamphlet passionné et révolutionnaire sur le sport le plus populaire.
-                                Un traité de cinquante pages pour réinventer les règles du football et lui permettre d’extirper ses
-                                démons.
-                            </p>
-                        </div>
-                    </div>
+        <div class="blocPrice">
+            <div class="pack">
+
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre6.jpg') }}" alt="livre Inclassable" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome6.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
 
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre6.jpg') }}" alt="livre Inclassable" class="log">
-                            </figure>
-                        </div>
+                    <p>
+                        Pamphlet avec des sujets inclassables et pourtant essentiels.
+                        Portraits courts aussi de personnalités anonymes qui ont marqué l’auteur,
+                        des héros du quotidien à qui on devrait confier une mission… Révolutionner la France.
+                        Et toujours apporter un espoir…
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome6.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                    class="log">
-                            </figure>
-                
-                            <p>
-                                Pamphlet avec des sujets inclassables et pourtant essentiels. 
-                                Portraits courts aussi de personnalités anonymes qui ont marqué l’auteur,
-                                des héros du quotidien à qui on devrait confier une mission… Révolutionner la France.
-                                Et toujours apporter un espoir…
-                            </p>
-                        </div>
-                    </div>
+        <div class="blocPrice">
+            <div class="pack">
+
+                <div class="front">
+                    <figure>
+                        <img src="{{ asset('img/livre7.jpg') }}" alt="livre Une question qui tue" class="log">
+                    </figure>
                 </div>
 
-                <div class="blocPrice">
-                    <div class="pack">
+                <div class="back">
+                    <figure>
+                        <img src="{{ asset('img/tome7.jpg') }}"
+                            alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
+                    </figure>
 
-                        <div class="front">
-                            <figure>
-                                <img src="{{ asset('img/livre7.jpg') }}" alt="livre Une question qui tue" class="log">
-                            </figure>
-                        </div>
-
-                        <div class="back">
-                            <figure>
-                                <img src="{{ asset('img/tome7.jpg') }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique"
-                                    class="log">
-                            </figure>
-                        
-                            <p>
-                                Pamphlet intime. Pour comprendre cette collection, l’auteur a dû se livrer plus.
-                                “Bipolaire”, “à fond de cale”, perdu, amoureux, fou, sage, professionnel…
-                                sont les mots qui permettent de lire ses livres et de les… recommander.
-                                Et toujours apporter un espoir…
-                            </p>
-                        </div>
-                    </div>
+                    <p>
+                        Pamphlet intime. Pour comprendre cette collection, l’auteur a dû se livrer plus.
+                        “Bipolaire”, “à fond de cale”, perdu, amoureux, fou, sage, professionnel…
+                        sont les mots qui permettent de lire ses livres et de les… recommander.
+                        Et toujours apporter un espoir…
+                    </p>
                 </div>
+            </div>
+        </div>
 
-            </section>
-        </main>
-    </html>
+    </section>
+</main>
+
+</html>
 
 {% endblock %}
