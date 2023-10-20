@@ -320,8 +320,8 @@ a:hover {
     text-align: left;
 }
 
-
-/*FORMULAIRES INSCRIPTION & CONNEXION*/
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*FORMULAIRES INSCRIPTION */
 
 form {
     text-align: end;
@@ -342,18 +342,17 @@ header {
 .formAddInscription {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     color: black;
-    line-height: 3;
+    line-height: 2;
     padding: 20px;
     width: auto;
     border-radius: 10px;
     box-shadow: 0px 6px 10px black;
-    text-align: end;
     display: flex;
     justify-content: center;
 }
 
 .formAddInscription input {
-    padding: 10px;
+   
     border-radius: 10px;
     width: 500px;
 }
@@ -375,8 +374,6 @@ header {
     line-height: 2;
     padding: 20px;
     width: auto;
-    border-radius: 20px;
-    box-shadow: 0px 6px 10px black;
     display: flex;
     justify-content: center;
 }
@@ -388,7 +385,30 @@ header {
 .formAddNews label {
     padding: 10px;
     font-size: 1.5em;
-    /* display: table-footer-group; */
+}
+
+/* PASSWORD */
+
+.formPass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
+    color: black;
+    line-height: 2;
+    padding: 20px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px black;
+    display: flex;
+    justify-content: center;
+}
+
+.formPass input {
+    border-radius: 5px;
+}
+
+.formPass label {
+    padding: 10px;
+    font-size: 1.5em;
+    display: flex;
 }
 
 /* COMMANDES */
@@ -444,10 +464,11 @@ header {
     border: none;
     animation: appear 1s;
     transition: ease-in-out 0.5s;
-    margin: 10px;
+    margin: auto;
     border-radius: 10px;
     text-align: center;
     display: flex;
+    width: 120px;
 }
 
 /*OPTIONS DU CRUD*/
@@ -502,13 +523,15 @@ header {
     transition: ease-in-out 0.5s;
 }
 
+/*FORMULAIRES CONNEXION */
+
 .formAddConnexion {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     color: black;
-    line-height: 2;
+    line-height: 1;
     padding: 20px;
     width: 410px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0px 6px 10px black;
     text-align: left;
     display: flex;
@@ -850,7 +873,7 @@ h6 {
     }
 
     .formAddInscription {
-        line-height: 2;
+        line-height: 1;
     }
 
     textarea {
