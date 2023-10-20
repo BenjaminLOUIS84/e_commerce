@@ -11,11 +11,11 @@
     --color-primary: rgba(204, 0, 0, 1);
     --color-secondary: rgb(242, 245, 247);
     --color-third: rgb(59 191 241);
-   
+
     /* POLICES */
     --police-primary: 'Libre Baskerville', sans-serif;
     /* --police-primary:  Verdana, Geneva, Tahoma, sans-serif; */
-   /* font-family: */
+    /* font-family: */
 }
 
 
@@ -152,13 +152,13 @@ nav .lk {
 
 h1 {
     font-size: 3.7em;
-    color:  var(--color-secondary);
+    color: var(--color-secondary);
 }
 
 
 h3 {
     font-size: 2em;
-    color:var(--color-primary);
+    color: var(--color-primary);
     font-family: var(--police-primary);
     text-align: center;
 }
@@ -176,7 +176,7 @@ h1 {
 
 #menu a {
     text-decoration: none;
-    color:  var(--color-secondary);
+    color: var(--color-secondary);
     font-family: var(--police-primary);
 
 }
@@ -194,7 +194,7 @@ h1 {
 
 #reset a {
     background: none;
-    color:var(--color-primary);
+    color: var(--color-primary);
 }
 
 .flash-danger {
@@ -208,15 +208,15 @@ h1 {
 
 .admin a {
     text-decoration: none;
-    color:  var(--color-secondary);
+    color: var(--color-secondary);
 }
 
 a {
-    color:  var(--color-secondary);
+    color: var(--color-secondary);
     text-decoration: none;
     padding: 5px;
     font-size: 1.5em;
-    background:var(--color-primary);
+    background: var(--color-primary);
     background-size: 100px;
     border: none;
     animation: appear 1s;
@@ -294,8 +294,8 @@ a:hover {
 }
 
 .description thead {
-    background-color:rgba(204, 0, 0, 1);
-    color:   rgb(242, 245, 247);
+    background-color: rgba(204, 0, 0, 1);
+    color: rgb(242, 245, 247);
 }
 
 .description {
@@ -305,7 +305,7 @@ a:hover {
     margin-right: 20px;
     margin-top: 80px;
     margin-bottom: 80px;
-    background-color:  rgb(242, 245, 247);
+    background-color: rgb(242, 245, 247);
 }
 
 .total {
@@ -315,8 +315,8 @@ a:hover {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-left: 20px;
-    color:   rgb(242, 245, 247);
-    background-color:rgba(204, 0, 0, 1);
+    color: rgb(242, 245, 247);
+    background-color: rgba(204, 0, 0, 1);
     text-align: left;
 }
 
@@ -339,12 +339,8 @@ header {
     align-items: center;
 }
 
-#registration_form_agreeTerms {
-    width: 30px;
-}
-
 .formAddInscription {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),var(--color-primary));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     color: black;
     line-height: 3;
     padding: 20px;
@@ -367,18 +363,40 @@ header {
     font-size: 1.5em;
 }
 
+/* NEWSLETTERS */
+
+.formAddNews {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
+    color: black;
+    line-height: 2;
+    padding: 20px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px black;
+    display: flex;
+    justify-content: center;
+}
+
+.formAddNews input {
+    border-radius: 5px;
+}
+
+.formAddNews label {
+    padding: 10px;
+    font-size: 1.5em;
+    /* display: table-footer-group; */
+}
+
 .check-box {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#registration_form_is_rgpd {
-    width: 10%;
-}
+/* COMMANDES */
 
 .formAddCommande {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),var(--color-primary));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     color: black;
     line-height: 3;
     padding: 20px;
@@ -403,8 +421,6 @@ header {
 
 .btn {
     padding: 10px;
-    /* margin-top: 40px;
-    font-weight: bold; */
     border-radius: 10px;
     font-size: 1.5em;
     cursor: pointer;
@@ -439,7 +455,7 @@ header {
 /*OPTIONS DU CRUD*/
 
 .admin {
-    background-color:  var(--color-secondary);
+    background-color: var(--color-secondary);
     box-shadow: 0px 6px 10px black;
     display: flex;
     margin-bottom: 40px;
@@ -470,26 +486,26 @@ header {
     font-weight: 100;
 }
 
-.option a:hover{
-    color:black;
+.option a:hover {
+    color: black;
 }
 
 
 .liste {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),var(--color-primary));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     border-radius: 20px;
     box-shadow: 0px 6px 10px black;
     margin-top: 20px;
 }
 
 .btn:hover {
-    background:var(--color-primary);
-    color:  var(--color-secondary);
+    background: var(--color-primary);
+    color: var(--color-secondary);
     transition: ease-in-out 0.5s;
 }
 
 .formAddConnexion {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),var(--color-primary));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     color: black;
     line-height: 2;
     padding: 20px;
@@ -518,7 +534,7 @@ header {
 .order {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),  var(--color-secondary));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-secondary));
     border-radius: 10px;
     box-shadow: 0px 6px 10px black;
     font-size: 1em;
@@ -543,7 +559,7 @@ header {
 .edition {
     display: flex;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1),  var(--color-secondary));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-secondary));
     border-radius: 10px;
     box-shadow: 0px 6px 10px black;
     font-size: 1.5em;
@@ -581,7 +597,7 @@ header {
 .price {
     display: flex;
     flex-direction: row;
-    background:  var(--color-secondary);
+    background: var(--color-secondary);
     justify-content: left;
     align-items: center;
     overflow: auto;
@@ -599,8 +615,8 @@ header {
 }
 
 .livres h3 {
-    color:  var(--color-secondary);
-    background:var(--color-primary);
+    color: var(--color-secondary);
+    background: var(--color-primary);
     padding: 10px;
     text-align: center;
 }
@@ -632,7 +648,7 @@ header {
 }
 
 .back {
-    background:  var(--color-secondary);
+    background: var(--color-secondary);
     position: sticky;
     object-fit: cover;
     flex-shrink: 0;
@@ -691,7 +707,7 @@ h6 {
 /*Femmes*/
 
 .boutonJoin {
-    color:var(--color-primary);
+    color: var(--color-primary);
     border: 1px solidvar(--color-primary);
     background: none;
     border-radius: 8px;
@@ -701,13 +717,13 @@ h6 {
 }
 
 .boutonJoin:hover {
-    background:var(--color-primary);
-    color:  var(--color-secondary);
+    background: var(--color-primary);
+    color: var(--color-secondary);
     cursor: pointer;
 }
 
 .acheter1 {
-    color:var(--color-primary);
+    color: var(--color-primary);
     font-size: 1em;
     font-weight: bold;
     text-align: center;
@@ -719,7 +735,7 @@ h6 {
 #info {
     display: flex;
     flex-direction: column;
-    background:var(--color-primary);
+    background: var(--color-primary);
     padding-top: 40px;
     text-align: center;
     font-family: var(--police-primary);
@@ -776,14 +792,14 @@ h6 {
 }
 
 .acces .text3 {
-    color:  var(--color-secondary);
+    color: var(--color-secondary);
     margin-bottom: 0px;
 }
 
 .acces a {
     font-size: 1.2em;
     text-decoration: none;
-    color:  var(--color-secondary);
+    color: var(--color-secondary);
 }
 
 .acces p {
@@ -896,7 +912,7 @@ h6 {
     #info {
         display: flex;
         flex-direction: column;
-        background:var(--color-primary);
+        background: var(--color-primary);
         padding-top: 20px;
         text-align: center;
         font-family: var(--police-primary);
@@ -929,7 +945,7 @@ h6 {
     }
 
     .acces .text3 {
-        color:  var(--color-secondary);
+        color: var(--color-secondary);
         margin-bottom: 0px;
     }
 
