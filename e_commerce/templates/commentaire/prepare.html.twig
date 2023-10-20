@@ -31,12 +31,12 @@
         
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie un article #}
                 {% if edit %}
-                    <h3>Modifier le commentaire</h3>
+                    <h1>Modifier le commentaire</h1>
                 {% else %}
-                    <h3>Ajouter un commentaire</h3> 
+                    <h1>Ajouter un commentaire</h1> 
                 {% endif %}
 
-                <div class="formAddInscription">
+                <div class="formAddNews">
 
                     {# Affiche le formulaire #}
                     {{ form_start(form) }}
@@ -89,8 +89,6 @@
                         <a href="{{ path ('app_newsletters_home') }}">NEWSLETTERS</a>
                         <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
                     </div>
-                
-                    <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
                 
                 </div>
             
