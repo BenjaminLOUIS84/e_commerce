@@ -21,6 +21,21 @@
 
 /* wrapper  =   bloc contenant les réglages par défaut pour toute la page*/
 
+.wrapperLibre {
+
+    font-family: var(--police-primary);
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+}
+
+.fond {
+    width: 60%;
+}
+
 .wrapper {
 
     background-image: url(/img/logo.jpg);
