@@ -1126,7 +1126,7 @@ h6 {
 
     .meal {
         border-radius: 10px;
-        margin-right: 20px;
+        /* margin-right: 20px; */
         display: flex;
         width: 150%;
     }
