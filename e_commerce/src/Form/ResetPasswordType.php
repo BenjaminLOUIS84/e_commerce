@@ -17,7 +17,7 @@ class ResetPasswordType extends AbstractType
     {
         $builder
             ->add('plainPassword', RepeatedType::class, [
-                    
+            
                 'mapped' => false,
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent correspondre.',
