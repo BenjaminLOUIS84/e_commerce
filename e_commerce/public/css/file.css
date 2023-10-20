@@ -8,9 +8,9 @@
 /* VARIABLES CSS pour changer les couleurs et la police de tout le site */
 :root {
     /* COULEURS */
-    /* --color-primary: rgb(24, 57, 71); */
     --color-primary: rgba(204, 0, 0, 1);
     --color-secondary: rgb(242, 245, 247);
+    --color-third: rgb(59 191 241);
    
     /* POLICES */
     --police-primary: 'Libre Baskerville', sans-serif;
