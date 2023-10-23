@@ -19,7 +19,7 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
-            <a href="{{ path ('app_newsletters_prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"></a>
+            <a href="{{ path ('app_newsletters_prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"><br>Ajouter</a>
         
             {# Tableau pour gérer les envois des newsletters #}
             <h1>Liste des Newsletters</h1>
@@ -44,7 +44,7 @@
                             <td>{{ newsletters.categories.users|length}}</td>
                             <td>
                                 {% if newsletters.isSent == false %}
-                                    <a href="{{ path ('app_newsletters_send', {id: newsletters.id}) }}" class="btn btn-primary">Envoyer</a>
+                                    <a href="{{ path ('app_newsletters_send', {id: newsletters.id}) }}" class="btn btn-dark">Envoyer</a>
                                 {% endif %}
                             </td>
                             
@@ -99,7 +99,7 @@
                                             {# ADMIN Gérer les commentaires #}
                                             {% if is_granted('ROLE_ADMIN') %}
                                                 <a class="crud" href="{{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> 
-                                                <a class="crud" href="{{ path ('app_commentaire_edit', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                {# <a class="crud" href="{{ path ('app_commentaire_edit', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a> #}
                                             {% endif %}         
                                             
                                             <p>{{ commentaire }}</p><br>
@@ -158,8 +158,8 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="liste">
                                 {# Seul l'admin peut modifier et/ou supprimer un article #}
-                                <div class="option">
-
+                                <div class="optionAdmin">
+                                    <br><h2>Gérer cet article</h2>
                                     <a class="crud" href="
                                     {{ path ('app_newsletters_edit', {id: newsletters.id}) }}
                                     "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>

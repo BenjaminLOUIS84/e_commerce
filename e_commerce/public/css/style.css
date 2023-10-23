@@ -278,6 +278,12 @@ h1 {
     text-align: center;
 }
 
+.optionAdmin {
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+}
 
 
 /* ACCUEIL ////////////////////////////////////////////////////////////////*/

@@ -31,12 +31,12 @@
         
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie un article #}
                 {% if edit %}
-                    <h3>Modifier une newsletter</h3>
+                    <h1>Modifier une newsletter</h1>
                 {% else %}
-                    <h3>Ajouter une nouvelle newsletter</h3> 
+                    <h1>Ajouter une nouvelle newsletter</h1> 
                 {% endif %}
 
-                <div class="formAddInscription">
+                <div class="formAddNews">
 
                     {# Affiche le formulaire #}
                     {{ form_start(form) }}
@@ -52,7 +52,7 @@
 
                 <nav id="men">
                     <div id="menu">
-                        <a href="{{ path ('app_newsletters_list') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour au fil d'atualité" title="Retourner au fil d'atualité"></a>
+                        <a href="{{ path ('app_newsletters_list') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour au fil d'atualité" title="Retourner au fil d'atualité"><br>Retour</a>
                     </div>
                 </nav>
 
