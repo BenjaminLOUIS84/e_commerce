@@ -32,9 +32,9 @@
 
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie une livre #}
                 {% if edit %}
-                    <h3>Modifier un livre</h3>
+                    <h1>Modifier un livre</h1>
                 {% else %}
-                    <h3>Ajouter un nouveau livre</h3> 
+                    <h1>Ajouter un nouveau livre</h1> 
                 {% endif %}
 
                 <div class="formAddInscription">
@@ -44,18 +44,23 @@
 
                         {{ form_row(form.titre) }}
                         {{ form_row(form.date_publication) }}
+                        <br>
                         {{ form_row(form.couverture) }}
                         {{ form_row(form.tome) }}
                         {{ form_row(form.resume) }}
                         {{ form_row(form.serie) }}
-            
+                        {{ form_row(form.format) }}
+                        {{ form_row(form.prix_unitaire) }}<br>
+                        <br>
+                        {{ form_row(form.Valider) }}
+                       
                     {{ form_end(form) }}
 
                 </div>
 
                 <nav id="men">
                     <div id="menu">
-                        <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des livres" title="Retourner à la liste des livres"></a>
+                        <a href="{{ path ('app_livre') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des livres" title="Retourner à la liste des livres"><br>Retour</a>
                     </div>
                 </nav>
 

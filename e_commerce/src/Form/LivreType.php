@@ -24,7 +24,9 @@ class LivreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class)                 // Définir les types de champs et importer les classes
+            ->add('titre', TextType::class, [
+                'attr' =>['class' =>'form-control']
+            ])                 // Définir les types de champs et importer les classes
 
             ->add('date_publication', DateType::class, [    // Ajouter après class ['widget' => 'single_text', 'attr' =>['class' =>'form-control']] Propiété BootStrap pour améliorer l'affichage de la date
                 'label' => 'Date de publication',
@@ -66,6 +68,7 @@ class LivreType extends AbstractType
             ->add('resume', TextareaType::class, [              // Champs pour les textes long, zone de texte pour les résumés
                 'label' => 'Résumé',
                 'attr' => ['class' => 'tinymce'],
+                'attr' =>['class' =>'form-control'],
                 'required' => false                             // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 
@@ -85,7 +88,8 @@ class LivreType extends AbstractType
 
             ->add('prix_unitaire' , IntegerType::class, [
                 'label' => 'Prix',
-                'attr' => ['min' => 1, 'max' => 30]
+                'attr' => ['min' => 1, 'max' => 30],
+                'attr' =>['class' =>'form-control']
             ])
 
             ->add('Valider', SubmitType::class, [               // Ajouter directement le bouton submit ici

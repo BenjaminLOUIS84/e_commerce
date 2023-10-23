@@ -22,6 +22,7 @@ class FormatType extends AbstractType
         ->add('description', TextareaType::class, [     // Champs pour les textes long, zone de texte pour les descriptions
             'label' => 'Description',
             'attr' => ['class' => 'tinymce'],
+            'attr' =>['class' =>'form-control']
             
         ])
         
