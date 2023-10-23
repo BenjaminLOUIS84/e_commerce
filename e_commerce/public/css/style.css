@@ -414,7 +414,7 @@ sur les divs design, colors et solutions*/
 
 .text3 {
     text-align: center;
-    color: var(--color-third);
+    color: var(--color-primary);
     margin-bottom: 10px;
     font-size: 1.2em;
 }

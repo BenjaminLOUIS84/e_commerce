@@ -32,10 +32,6 @@
                             <div class="param">
                                 <a class="crud" href="{{ path ('forgotten_password') }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"><br>Modifier mon mot de passe</a>
                                 
-                                {# <a href=" #}
-                                {# {{ path ('app_newsletters_unsubscribe', {id: users.id, newsletters:newsletters.id, token: users.validationToken}) }} #}
-                                {# " onclick="return confirm('Etes-vous certain de vouloir vous désinscrire?')"><img class="icone" src="{{ asset('img/xmark-solid.svg') }}" alt="Se désinscrire" title="Se désinscrire"><br>Se désinscrire de la Newsletters</a> #}
-                                
                                 {# Pour permettre à l'utilisateur de supprimer son compte avec un message "onclick" de confirmation #}
                                 <a class="crud" href="{{ path ('delete_user', {id: app.user.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer votre Compte?')"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"><br>Supprimer mon compte</a>
                             

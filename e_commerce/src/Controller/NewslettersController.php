@@ -237,7 +237,7 @@ class NewslettersController extends AbstractController
 
         $this->addFlash(                                                                // Envoyer une notification
             'success',
-            'Supprimé avec succès!'
+            'Newsletter supprimée avec succès'
         );
 
         return $this->redirectToRoute('app_newsletters_list');                               // Rediriger vers la liste des newsletterss
@@ -261,7 +261,7 @@ class NewslettersController extends AbstractController
         }
         $entityManager->flush();
 
-        $this->addFlash('message', 'Newsletters supprimées avec succès');
+        $this->addFlash('message', 'Désinscription effectuée avec succès');
         return $this->redirectToRoute('app_home');
     }
  
