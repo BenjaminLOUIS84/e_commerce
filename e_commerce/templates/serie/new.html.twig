@@ -38,7 +38,11 @@
                 <div class="formAddNews">
 
                     {# Affiche le formulaire #}
-                    {{form(formAddSerie)}}
+                    {{form_start(formAddSerie)}}
+                        {{form_row(formAddSerie.intitule)}}
+                        <br>
+                        {{form_row(formAddSerie.Valider)}}
+                    {{form_end(formAddSerie)}}
 
                 </div>
 

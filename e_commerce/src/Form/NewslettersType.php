@@ -28,7 +28,8 @@ class NewslettersType extends AbstractType
             ])
 
             ->add('name', TextType::class, [
-                'label' => "Titre"
+                'label' => "Titre",
+                'attr' =>['class' =>'form-control']
             ])
 
             ->add('picture', FileType::class, [                    // Champs pour ajouter un fichier (les images jpg uniquement)
@@ -50,6 +51,7 @@ class NewslettersType extends AbstractType
             ->add('content', TextareaType::class , [              // Champs pour les textes long, zone de texte pour les résumés
                 'label' => 'Contenu',
                 'attr' => ['class' => 'tinymce'],
+                'attr' =>['class' =>'form-control'],
                 'required' => false                               // Pour rendre le résumé non obligatoire, rendre nullable la propriété resume dans la BDD
             ])
 

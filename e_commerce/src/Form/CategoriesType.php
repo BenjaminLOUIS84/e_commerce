@@ -15,8 +15,10 @@ class CategoriesType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Titre'
+                'label' => 'Titre',
+                'attr' =>['class' =>'form-control']
             ])          // Définir le type de champ et importer la classe
+            
             ->add('Valider', SubmitType::class, [   // Ajouter directement le bouton submit ici
             'attr' =>['class' => 'btn btn-dark']])  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton
             ;

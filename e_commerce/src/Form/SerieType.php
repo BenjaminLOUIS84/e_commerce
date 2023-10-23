@@ -14,7 +14,10 @@ class SerieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('intitule', TextType::class)      // Définir le type de champ et importer la classe
+        ->add('intitule', TextType::class, [
+            'attr' =>['class' =>'form-control']
+        ])      // Définir le type de champ et importer la classe
+        
         ->add('Valider', SubmitType::class, [   // Ajouter directement le bouton submit ici
         'attr' =>['class' => 'btn btn-dark']])  // Ajouter après class ['attr' =>['class' =>'btn btn-dark']] Pour améliorer le bouton
         ;
