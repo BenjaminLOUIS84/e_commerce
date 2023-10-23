@@ -110,7 +110,7 @@
 
 .wrapperPanier {
 
-    background-image: url(/img/collection1.jpg);
+    /* background-image: url(/img/collection1.jpg); */
     font-family: var(--police-primary);
     background-size: contain;
     background-repeat: no-repeat;
@@ -191,9 +191,21 @@ h1 {
 
 #menu a {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-primary);
+    background: none;
     font-family: var(--police-primary);
 
+}
+
+#menu a:hover {
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    transition: ease-in-out 0.5s;
+}
+
+#menu .lk {
+    width: 10%;
+    filter: none;
 }
 
 #men {
@@ -267,6 +279,8 @@ a {
 a:hover {
     opacity: 70%;
     color: black;
+    /* background: var(--color-primary); */
+    /* border: 1px solid var(--color-primary); */
 
 }
 
@@ -995,4 +1009,7 @@ h6 {
         top: 0px;
     }
 
+    #men {
+        margin-top: 140px;
+    }
 }
