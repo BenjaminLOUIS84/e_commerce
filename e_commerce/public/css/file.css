@@ -57,7 +57,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    height:max-content;
+    height: max-content;
 }
 
 .wrapperEtik {
@@ -69,7 +69,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    height:max-content;
+    height: max-content;
 }
 
 .wrapperVente {
@@ -386,7 +386,7 @@ header {
 }
 
 .formAddInscription input {
-   
+
     border-radius: 10px;
     width: 500px;
 }
@@ -509,6 +509,12 @@ header {
     display: flex;
     margin-bottom: 40px;
     border-radius: 10px;
+}
+
+.param {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .optionAdmin {
