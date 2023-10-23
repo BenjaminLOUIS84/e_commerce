@@ -90,13 +90,12 @@
                                         {% endif %}
                                         
                                         {% if is_granted('ROLE_ADMIN') %}
-                                            <div class="liste">
-                                                {# Seul l'admin peut modifier et/ou supprimer un livre #}
-                                                <div class="option">
-                                                    <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                    <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                                </div>  
-                                            </div>
+                                            {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                            <div class="optionAdmin">
+                                                <br><h2>Gérer ce livre</h2>
+                                                <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                            </div>  
                                         {% endif %}
 
                                     </div>

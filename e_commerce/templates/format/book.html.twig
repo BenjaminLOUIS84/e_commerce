@@ -39,7 +39,7 @@
                     
                     {% if is_granted('ROLE_ADMIN') %}
                         {# Seul l'admin peut ajouter un nouveau livre #}
-                        <a href="{{ path ('new_livre') }}">AJOUTER</a>
+                        <a href="{{ path ('new_livre') }}"><img class="icone" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un nouveau livre" title="Ajouter un nouveau livre"><br>Ajouter</a>
                     {% endif %}
 
                     <section class="price">
@@ -89,12 +89,11 @@
                                         {% endif %}
                                         
                                         {% if is_granted('ROLE_ADMIN') %}
-                                            <div class="liste">
+                                            <div class="optionAdmin">
                                                 {# Seul l'admin peut modifier et/ou supprimer un livre #}
-                                                <div class="option">
-                                                    <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                    <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                                </div>  
+                                                <br><h2>Gérer ce livre</h2>
+                                                <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                <a class="crud" href="{{ path ('delete_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                             </div>
                                         {% endif %}
 
