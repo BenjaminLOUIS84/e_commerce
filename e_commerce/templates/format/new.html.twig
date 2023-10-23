@@ -18,6 +18,8 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
+            {# Framework Bootstrap #}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
             <title>AJOUTER UN FORMAT</title>
         </head>
@@ -28,12 +30,12 @@
 
                 {# Condition pour gérer le titre selon si on créer ou l'on modifie une format #}
                 {% if edit %}
-                    <h3>Modifier un format</h3>
+                    <h1>Modifier un format</h1>
                 {% else %}
-                    <h3>Ajouter un nouveau format</h3> 
+                    <h1>Ajouter un nouveau format</h1> 
                 {% endif %}
 
-                <div class="formAddInscription">
+                <div class="formAddNews">
 
                     {# Affiche le formulaire #}
                     {{form(formAddFormat)}}
@@ -42,10 +44,13 @@
 
                 <nav id="men">
                     <div id="menu">
-                        <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des formats" title="Retourner à la liste des formats"></a>
+                        <a href="{{ path ('app_format') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour à la liste des formats" title="Retourner à la liste des formats"><br>Retour</a>
                     </div>
                 </nav>
             </div>
+
+            {# Framework Bootstrap #}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
             <footer>
 
