@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -23,7 +24,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email',EmailType::class, [
                 'constraints' => [
-                    new IsTrue([
+                    new NotBlank([
                         'message' => 'Merci d\'entrer un e-mail',
                     ]),
                 ],

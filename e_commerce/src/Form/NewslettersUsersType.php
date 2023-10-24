@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class NewslettersUsersType extends AbstractType
 {
@@ -20,7 +21,7 @@ class NewslettersUsersType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-                    new IsTrue([
+                    new NotBlank([
                         'message' => 'Merci d\'entrer un e-mail',
                     ]),
                 ],
