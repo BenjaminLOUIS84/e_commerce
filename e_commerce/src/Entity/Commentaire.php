@@ -38,9 +38,9 @@ class Commentaire
     private Collection $replies;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')] // Pour rendre l'ID user NULL lorsque celui-ci n'éxiste plus (Permet d'anonymiser les commentaires de l'utilisateur)
     private ?User $user = null;
-
+ 
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement

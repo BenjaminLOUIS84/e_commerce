@@ -95,7 +95,19 @@
                                     <div class="grix xs2 sm3 gutter-0 card">
                                         <div class="col-xs2 col-sm3">
 
-                                            <h4>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y H:i") }}</h4>
+                                            {# Si l'utilisateur supprime sont compte alors il faut anonymiser ses commentaires #}
+                                            {% if commentaire.user == null %}
+                                            
+                                                {# Afficher le profil anonyme et la date dans le commentaire #}
+                                                <p>Utilisateur anonyme {{ commentaire.createdAt | date("d-m-Y H:i") }}</p>
+
+                                            {% else %}
+                                                
+                                                {# Autrement, afficher le pseudo de l'user et la date dans le commentaire #}
+                                                <h4>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y H:i") }}</h4>
+                                                
+                                            {% endif %}
+                                            
                                             {# ADMIN Gérer les commentaires #}
                                             {% if is_granted('ROLE_ADMIN') %}
                                                 <a class="crud" href="{{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> 

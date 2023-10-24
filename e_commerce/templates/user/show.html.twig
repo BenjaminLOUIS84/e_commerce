@@ -18,7 +18,6 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
-
             <title>Mes Commandes et mes factures</title>
         </head>
 
@@ -44,7 +43,6 @@
                     {% if user.commande | length >0 %}
 
                         {% for commande in user.commande %}
-                            
                                     
                             <div class="optionAdmin">
 
@@ -60,13 +58,11 @@
                                 {% else %}
 
                                     {# Accéder au détail en cliquant sur la date de commande #}
-                                    <a class="btn" Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    <a class="btn" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
                                     
                                 {% endif %}
                                     
                             </div>
-                                
-                            
 
                         {% endfor %}
 
@@ -120,7 +116,6 @@
             
               </footer>
             
-
             <!-- <script>src = "script.js"</script> -->
         </body>
 

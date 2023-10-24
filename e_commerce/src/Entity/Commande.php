@@ -48,7 +48,7 @@ class Commande
     private Collection $Facture;
 
     #[ORM\ManyToOne(inversedBy: 'commande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')] // CF Entité Commentaire
     private ?User $user = null;
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
