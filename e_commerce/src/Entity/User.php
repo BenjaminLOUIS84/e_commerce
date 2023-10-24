@@ -46,10 +46,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)] // Spécifie que le pseudo est unique (à ajouter)
     private ?string $Pseudo = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
+    #[ORM\OneToMany(mappedBy: 'user', cascade: ['persist'], orphanRemoval:true, targetEntity: Commande::class)]
     private Collection $commande;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commentaire::class)]
+    #[ORM\OneToMany(mappedBy: 'user', cascade: ['persist'], orphanRemoval:true, targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
     #[ORM\Column]
