@@ -38,7 +38,7 @@ class NewslettersUsersType extends AbstractType
                         données personnelles'
                     ])
                 ],
-                'label' => 'J\'accepte les CGV'
+                'label' => 'J\'ai lu et j\'accepte les CGV'
             ])
             ->add('Enregistrer', SubmitType::class, [               // Ajouter directement le bouton submit ici
                 'attr' =>['class' => 'btn btn-dark']

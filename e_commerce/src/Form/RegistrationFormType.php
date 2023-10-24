@@ -31,18 +31,8 @@ class RegistrationFormType extends AbstractType
                         données personnelles'
                     ])
                 ],
-                'label' => 'J\'accepte la collecte de mes données personnelles'
+                'label' => 'J\'ai lu et j\'accepte les CGV'
             ])
-
-            // ->add('agreeTerms', CheckboxType::class, [
-            //     'mapped' => false,
-            //     'constraints' => [
-            //         new IsTrue([
-            //             'message' => 'Lire et accepter les CGV pour vous inscrire',
-            //         ]),
-            //     ],
-            // ])
-
             
             ->add('plainPassword', RepeatedType::class, [
                 
