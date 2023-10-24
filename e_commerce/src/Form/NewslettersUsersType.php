@@ -19,9 +19,15 @@ class NewslettersUsersType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Merci d\'entrer un e-mail',
+                    ]),
+                ],
+                'required' => true,
                 'attr' =>['class' =>'form-control']
             ])
-
+    
             ->add('categories', EntityType::class,[
                 'class' => Categories::class,
                 'label' => 'Choisissez une ou plusieurs catégories',

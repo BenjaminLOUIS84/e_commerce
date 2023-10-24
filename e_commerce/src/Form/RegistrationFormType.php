@@ -21,7 +21,15 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email',EmailType::class)
+            ->add('email',EmailType::class, [
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Merci d\'entrer un e-mail',
+                    ]),
+                ],
+                'required' => true,
+            ])
+            
             ->add('pseudo', TextType::class)
 
             ->add('is_rgpd', CheckboxType::class, [

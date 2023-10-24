@@ -14,6 +14,12 @@ class ResetPasswordRequestType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Merci d\'entrer un e-mail',
+                    ]),
+                ],
+                'required' => true,
                 'attr' =>['class' =>'form-control']
             ])
             ->add('Valider', SubmitType::class, [       // Ajouter directement le bouton submit ici
