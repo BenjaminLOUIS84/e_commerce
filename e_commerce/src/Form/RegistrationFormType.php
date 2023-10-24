@@ -31,7 +31,7 @@ class RegistrationFormType extends AbstractType
                         données personnelles'
                     ])
                 ],
-                // 'label' => 'J\'ai lu et j\'accepte les CGV'
+                'label' => 'J\'ai lu et j\'accepte les CGV'
             ])
             
             ->add('plainPassword', RepeatedType::class, [
