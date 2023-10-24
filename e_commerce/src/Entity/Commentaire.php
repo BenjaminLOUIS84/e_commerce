@@ -41,10 +41,6 @@ class Commentaire
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\Column]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?bool $is_rgpd = null;
-
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();    // Pour injecter la date automatiquement
@@ -166,15 +162,4 @@ class Commentaire
         return $this;
     }
 
-    public function isIsRgpd(): ?bool
-    {
-        return $this->is_rgpd;
-    }
-
-    public function setIsRgpd(bool $is_rgpd): static
-    {
-        $this->is_rgpd = $is_rgpd;
-
-        return $this;
-    }
 }
