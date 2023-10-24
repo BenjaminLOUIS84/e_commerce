@@ -37,7 +37,7 @@
                     
                 {% endif %}
                 
-                <div class="formAddCommande">
+                <div class="formAddNews">
 
                     {# Affiche le formulaire #}
                     {{ form_start(form) }}
@@ -55,7 +55,7 @@
 
                 <nav id="men">
                     <div id="menu">
-                        <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"></a>
+                        <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"><br>Retour</a>
                     </div>
                 </nav>
             </div>

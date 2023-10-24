@@ -25,11 +25,21 @@ class CommandeType extends AbstractType
     {
         $builder
            
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('adresse', TextType::class)
-            ->add('cp', TextType::class)
-            ->add('ville', TextType::class)
+            ->add('nom', TextType::class, [
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('prenom', TextType::class, [
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('adresse', TextType::class, [
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('cp', TextType::class, [
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('ville', TextType::class, [
+                'attr' => ['class' => 'form-control']
+            ])
 
             ->add('is_rgpd', CheckboxType::class, [
                 'constraints' => [
