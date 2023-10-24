@@ -173,13 +173,16 @@ class NewslettersController extends AbstractController
     // FONCTION pour afficher les newsletters dans un fil d'actualité 
 
     #[Route('/list', name: 'list')]
+    
+
     public function list(NewslettersRepository $newslettersRepository): Response
 
     {
         $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
-        
-        return $this->render('newsletters/list.html.twig', [                            // Emplacement et disposition de la vue 
-            'newsletters' => $newsletters,
+
+        return $this->render('newsletters/list.html.twig', [                // Emplacement et disposition de la vue 
+            'newsletters' => $newsletters
+            
         ]);
     }
 

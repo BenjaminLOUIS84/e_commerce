@@ -42,6 +42,7 @@ class Commentaire
     private ?User $user = null;
 
     #[ORM\Column]
+    #[ORM\JoinColumn(nullable: false)]
     private ?bool $is_rgpd = null;
 
     public function __construct()

@@ -39,15 +39,16 @@ class CommentaireType extends AbstractType
                 ]
             ])
 
-            ->add('is_rgpd', CheckboxType::class, [
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez accepter la collecte de vos 
-                        données personnelles'
-                    ])
-                ],
-                'label' => 'J\'accepte la collecte de mes données personnelles'
-            ])
+            // ->add('is_rgpd', HiddenType::class, [
+            //     'mapped' => false
+                // 'constraints' => [
+                //     new IsTrue([
+                //         'message' => 'Vous devez accepter la collecte de vos 
+                //         données personnelles'
+                //     ])
+                // ],
+                // 'label' => 'J\'accepte la collecte de mes données personnelles'
+            //])
 
             ->add('parentid', HiddenType::class, [
                 'mapped' => false

@@ -104,14 +104,6 @@
                                             
                                             <p>{{ commentaire }}</p><br>
 
-                                            <a class="btn btn-dark" href=
-                                                "
-                                                    #ajout-commentaire
-                                                    {# {{ path ('app_commentaire_prepare', {id: newsletters.id}) }} #}
-                                                "
-                                                data-reply data-id="{{ commentaire.id }}">Répondre
-                                            </a>
-
                                             {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
                                             {% if commentaire.user == app.user %}
 
@@ -182,31 +174,5 @@
 
     </section>
 
-    <div class="formAddInscription" id="ajout-commentaire">
-
-        {# Affiche le formulaire pour répondre aux commentaires #}
-        
-        <h1>REPONDRE AUX COMMENTAIRES</h1>
-        {# {{ form(form) }} #}
-
-    </div>
-
 {% endblock %}
 
-{# JAVASCRIPT On met un écouteur d'évènenments sur tous les boutons Répondre #}
-{% block javascripts %}    
-    <script>
-        window.onload = () => {
-            document.querySelectorAll("[data-reply]").forEach(element => {
-                element.addEventListener("click", function(){
-                     
-                    //Pour vérifier si au click l'ID correpsond au commentaire séléctionné
-                    console.log(this);
-                    
-                    //Pour récupérer l'ID du commentaire sur lequel l'utilisateur souhaite répondre
-                    //document.querySelector("#commentaire_parentid").value = this.dataset.id;
-                });
-            });
-        }
-    </script>
-{% endblock %}
