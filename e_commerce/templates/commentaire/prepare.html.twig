@@ -41,7 +41,6 @@
                     {# Affiche le formulaire #}
                     {{ form_start(form) }}
                         {{ form_row(form.content) }}
-                        {# {{ form_row(form.is_rgpd) }} #}
                         
                         {# Créer un champ caché pour recevoir et valider le token #}
                         <input type="hidden" id="recaptchaResponse" name="recaptcha-response">

@@ -23,32 +23,13 @@ class CommentaireType extends AbstractType
     {
         $builder
 
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
-            // ->add('newsletters', EntityType::class, [                 // OBJ Séléctionner la newsletters à commenter automatiquement
-            //     'label' => 'Sélectionnez la newsletter',              // CF CommentaireController
-            //     'class' => Newsletters::class, 
-            //     'attr' => ['class' => 'form-control'],
-            //     'choice_label' => 'name'
-            // ])
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+        
             ->add('content',TextareaType::class, [
                 'label' => 'Votre commentaire',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
-            // ->add('is_rgpd', HiddenType::class, [
-            //     'mapped' => false
-                // 'constraints' => [
-                //     new IsTrue([
-                //         'message' => 'Vous devez accepter la collecte de vos 
-                //         données personnelles'
-                //     ])
-                // ],
-                // 'label' => 'J\'accepte la collecte de mes données personnelles'
-            //])
 
             ->add('parentid', HiddenType::class, [
                 'mapped' => false
