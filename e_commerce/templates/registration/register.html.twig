@@ -45,13 +45,9 @@
                             label: 'Mot de passe'
                         }) }}
 
-                        {# {{ form_row(registrationForm.agreeTerms, {
-                            label: 'CGV'
-                        }) }} #}
-
                         <br><p>En cochant cette case vous acceptez le traitement de vos données personnelles</p>
                         {{ form_row(registrationForm.is_rgpd, {
-                            label: 'RGPD'
+                            label: 'J\'ai lu et j\'accepte les CGV'
                         }) }}
                         
                         {# Créer un champ caché pour recevoir et valider le token #}
@@ -113,7 +109,7 @@
                 <div class="acces">
                     <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
                     <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
-                    <a href="{{ path ('app_newsletters_home') }}">NEWSLETTERS</a>
+                    <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
                     <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
                 </div>
             

@@ -45,29 +45,28 @@
 
                         {% for commande in user.commande %}
                             
-                            {# <div class="liste"> #}
                                     
-                                <div class="optionAdmin">
+                            <div class="optionAdmin">
 
-                                    {% if commande.facture | length >0 %}
+                                {% if commande.facture | length >0 %}
 
-                                        {# Permet d'afficher la page des factures propre à chaque commandes #}
-                                        <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id}) }}"><img class="icone" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
-                                        
-                                        {% for facture in commande.Facture %}
-                                            <h2>Facture du {{ facture.dateFacture | date("d-m-Y") }}</h2>
-                                        {% endfor %}
+                                    {# Permet d'afficher la page des factures propre à chaque commandes #}
+                                    <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id}) }}"><img class="icone" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
+                                    
+                                    {% for facture in commande.Facture %}
+                                        <h2>Facture du {{ facture.dateFacture | date("d-m-Y") }}</h2>
+                                    {% endfor %}
 
-                                    {% else %}
+                                {% else %}
 
-                                        {# Accéder au détail en cliquant sur la date de commande #}
-                                        <a class="btn" Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
-                                        
-                                    {% endif %}
-                                      
-                                </div>
+                                    {# Accéder au détail en cliquant sur la date de commande #}
+                                    <a class="btn" Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    
+                                {% endif %}
+                                    
+                            </div>
                                 
-                            {# </div> #}
+                            
 
                         {% endfor %}
 
@@ -111,7 +110,7 @@
                   <div class="acces">
                     <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
                     <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
-                    <a href="{{ path ('app_newsletters_home') }}">NEWSLETTERS</a>
+                    <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
                     <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
                   </div>
             
