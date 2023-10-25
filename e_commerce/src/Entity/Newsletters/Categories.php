@@ -2,10 +2,11 @@
 
 namespace App\Entity\Newsletters;
 
-use App\Repository\Newsletters\CategoriesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\Newsletters\CategoriesRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 class Categories
@@ -15,8 +16,15 @@ class Categories
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $name = null;
+    
+    ///////////////////////////////////////////////////////////////////////
+    //Créer un attribut Slug pour améliorer l'URL (Protection et Référencement)
+    #[ORM\Column(length: 255, unique: true)]
+    #[NotBlank()]
+    private ?string $slug = null;
+    ///////////////////////////////////////////////////////////////////////
 
     #[ORM\ManyToMany(targetEntity: Users::class, mappedBy: 'categories')]
     private Collection $users;
@@ -46,6 +54,21 @@ class Categories
 
         return $this;
     }
+
+    ///////////////////////////////////////////////////////////////////////
+    // Importer le getteur et le setteur
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+    ///////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////
     // Il est possible de créer d'autres fonctions ici
