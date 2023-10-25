@@ -2,13 +2,22 @@
 
 namespace App\Entity\Newsletters;
 
+///////////////////////////////////////////////////////////////////////
+
 use Cocur\Slugify\Slugify;
+
+///////////////////////////////////////////////////////////////////////
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Repository\Newsletters\CategoriesRepository;
+
+///////////////////////////////////////////////////////////////////////
+
 // use Symfony\Component\Validator\Constraints as Assert;
+
+///////////////////////////////////////////////////////////////////////
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 class Categories
