@@ -64,7 +64,7 @@ class UserController extends AbstractController
 
         if($this->getUser() != $user){                                      // Si l'id de l'utilisateur dans l'url ne correspond pas à l'utilisateur connecté
             throw $this->createNotFoundException('Page non trouvée');
-        }                                                       
+        }                                                      
         
         $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes de l'utilisateur connecté
         $commandeLivres = $commandeLivreRepository->findAll();     
@@ -91,6 +91,8 @@ class UserController extends AbstractController
     ): Response
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
+        
+
         // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 78], ["livre" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findBy([], ["livre" => "ASC"]);
        
