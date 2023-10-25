@@ -2,11 +2,13 @@
 
 namespace App\Entity\Newsletters;
 
+use Cocur\Slugify\Slugify;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Repository\Newsletters\CategoriesRepository;
-use Symfony\Component\Validator\Constraints as Assert;
+// use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 class Categories
@@ -21,9 +23,9 @@ class Categories
     
     ///////////////////////////////////////////////////////////////////////
     //Créer un attribut Slug pour améliorer l'URL (Protection et Référencement)
-    #[ORM\Column(length: 255, unique: true)]
-    #[NotBlank()]
-    private ?string $slug = null;
+    // #[ORM\Column(length: 255, unique: true)]
+    // #[Assert\NotBlank()]
+    // private ?string $slug = null;
     ///////////////////////////////////////////////////////////////////////
 
     #[ORM\ManyToMany(targetEntity: Users::class, mappedBy: 'categories')]
@@ -56,18 +58,27 @@ class Categories
     }
 
     ///////////////////////////////////////////////////////////////////////
-    // Importer le getteur et le setteur
+
     public function getSlug(): ?string
     {
-        return $this->slug;
+        return (new Slugify())->slugify($this->name);
     }
 
-    public function setSlug(string $slug): static
-    {
-        $this->slug = $slug;
+    ///////////////////////////////////////////////////////////////////////
 
-        return $this;
-    }
+    ///////////////////////////////////////////////////////////////////////
+    // Importer le getteur et le setteur
+    // public function getSlug(): ?string
+    // {
+    //     return $this->slug;
+    // }
+
+    // public function setSlug(string $slug): static
+    // {
+    //     $this->slug = $slug;
+
+    //     return $this;
+    // }
     ///////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////
