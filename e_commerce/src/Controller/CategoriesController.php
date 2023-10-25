@@ -45,12 +45,19 @@ class CategoriesController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE CATEGORIE
 
-    #[Route('/categories/delete', name: 'delete_categories')]           // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+    #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories')]           // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
 
-    public function delete(Categories $categories, EntityManagerInterface $entityManager): Response   
+    public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
-        $entityManager->remove($categories);                                 // Supprime une CATEGORIE
+        if($categories->getSlug() !== $slug){
+            return $this->redirectToRoute('app_categories', [
+                'id' =>$categories->getId(),
+                'slug' => $categories->getSlug(),
+            ], 301);
+        }
+        
+        $entityManager->remove($categories);                            // Supprime une CATEGORIE
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
         $this->addFlash(                                                // Envoyer une notification
