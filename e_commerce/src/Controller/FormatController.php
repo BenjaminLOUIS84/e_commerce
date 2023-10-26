@@ -28,14 +28,20 @@ class FormatController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN FORMAT
 
-    #[Route('/format/{id}/delete', name: 'delete_format')]                  // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
-
+    #[Route('/format/{slug}-{id<[0-9]+>}/delete', name: 'delete_format', requirements: ['slug' => '[a-z0-9\-]*'])]   
     public function delete(Format $format, EntityManagerInterface $entityManager): Response   
 
     {                                                                       // Créer une fonction delete() dans le controller pour supprimer un format            
         
         if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
             throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
+        if($format->getSlug() !== $slug){
+            return $this->redirectToRoute('app_format', [
+                'id' =>$format->getId(),
+                'slug' => $format->getSlug(),
+            ], 301);
         }
 
         $entityManager->remove($format);                                    // Supprime un format
@@ -103,7 +109,6 @@ class FormatController extends AbstractController
 
         //////////////////////////////////////////////////////////////////////////
 
-
         return $this->render('format/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier format)
             'formAddFormat' => $form,
             'edit' => $format->getId()
@@ -113,11 +118,17 @@ class FormatController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE MODES D'EDITION
 
-    #[Route('/format/{id}', name: 'show_format')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
-
+    #[Route('/format/{slug}-{id<[0-9]+>}/show', name: 'show_format', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function show(Format $format): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un mode d'édition 
 
     {
+        if($format->getSlug() !== $slug){
+            return $this->redirectToRoute('app_format', [
+                'id' =>$format->getId(),
+                'slug' => $format->getSlug(),
+            ], 301);
+        }
+        
         return $this->render('format/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
             'format' => $format
         ]);
