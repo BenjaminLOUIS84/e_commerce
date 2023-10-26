@@ -12,6 +12,9 @@ use App\Repository\Newsletters\CategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * @IsGranted("ROLE_ADMIN")
+**/
 class CategoriesController extends AbstractController
 {
     #[Route('/categories', name: 'app_categories')]
@@ -43,9 +46,6 @@ class CategoriesController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE CATEGORIE
 
-    /**
- * @IsGranted("ROLE_ADMIN")
-**/
     #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
