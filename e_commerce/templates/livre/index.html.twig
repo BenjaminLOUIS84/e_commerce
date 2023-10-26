@@ -94,7 +94,7 @@
                                             <div class="optionAdmin">
                                                 <br><h2>Gérer ce livre</h2>
                                                 <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug:serie.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                                <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug:livre.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                             </div>  
                                         {% endif %}
 
