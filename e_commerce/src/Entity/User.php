@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use App\Entity\Commande;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -169,6 +170,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->Pseudo = $Pseudo;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return (new Slugify())->slugify($this->Pseudo);
     }
 
     /**
