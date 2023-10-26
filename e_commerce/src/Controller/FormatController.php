@@ -47,6 +47,11 @@ class FormatController extends AbstractController
         $entityManager->remove($format);                                    // Supprime un format
         $entityManager->flush();                                            // Exécute l'action DANS LA BDD
 
+        $this->addFlash(                                                    // Envoyer une notification
+            'success',
+            'Format supprimé avec succès!'
+        );
+
         return $this->redirectToRoute('app_format');                        // Rediriger vers la liste des formats
        
     }

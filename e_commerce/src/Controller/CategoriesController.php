@@ -65,7 +65,7 @@ class CategoriesController extends AbstractController
 
         $this->addFlash(                                                // Envoyer une notification
             'success',
-            'Supprimé avec succès!'
+            'Catégorie supprimée avec succès!'
         );
 
         return $this->redirectToRoute('app_categories');                // Rediriger vers la liste des CATEGORIES
