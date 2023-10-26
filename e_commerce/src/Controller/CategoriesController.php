@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\Newsletters\CategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CategoriesController extends AbstractController
 {
@@ -42,10 +43,14 @@ class CategoriesController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE CATEGORIE
 
+    /**
+ * @IsGranted("ROLE_ADMIN")
+**/
     #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
+        $this->denyAccesUnlessGranted('ROLE_ADMIN');                    // Permet de vérifier si un admin est connecté pour effectuer cette action
         if($categories->getSlug() !== $slug){
             return $this->redirectToRoute('app_categories', [
                 'id' =>$categories->getId(),
