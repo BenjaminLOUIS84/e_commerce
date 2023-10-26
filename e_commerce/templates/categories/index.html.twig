@@ -38,24 +38,26 @@
                         {% endfor %}
                     {% endfor %}
                     
-                    {# Seul l'admin peut ajouter une nouvelle catégorie #}
-                    <a class="crud" href="{{ path ('new_categories') }}">AJOUTER</a>
+                    {# Seul l'admin peut ajouter/modifier/supprimer une catégorie #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="crud" href="{{ path ('new_categories') }}">AJOUTER</a>
 
-                    {# BDD L'élément de la catégorie #}
-                    {# Créer une boucle for #}
-                    {% for categories in categories %}
-                        <div class="param">
-                            
-                            {# Seul l'admin peut modifier et/ou supprimer une catégorie #}
-                            <div class="optionAdmin">
-                                <a title="Afficher les informations de cette catégorie" href="{{ path ('show_categories', {id:categories.id, slug:categories.slug}) }}"><h3>{{ categories }}</h3></a>
-                                <a class="crud" href="{{ path ('edit_categories', {id: categories.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                <a class="crud" href="{{ path ('delete_categories', {id: categories.id, slug:categories.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                        {# BDD L'élément de la catégorie #}
+                        {# Créer une boucle for #}
+                        {% for categories in categories %}
+                            <div class="param">
+                                
+                                {# Seul l'admin peut modifier et/ou supprimer une catégorie #}
+                                <div class="optionAdmin">
+                                    <a title="Afficher les informations de cette catégorie" href="{{ path ('show_categories', {id:categories.id, slug:categories.slug}) }}"><h3>{{ categories }}</h3></a>
+                                    <a class="crud" href="{{ path ('edit_categories', {id: categories.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                    <a class="crud" href="{{ path ('delete_categories', {id: categories.id, slug:categories.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                </div>
+                                
                             </div>
-                            
-                        </div>
-                    {% endfor %}
-
+                        {% endfor %}
+                    {% endif %}
+                    
                     <nav id="men">
                         <div id="menu">
                             <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"><br>Mon espace</a>

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\Newsletters\CategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+// use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @IsGranted("ROLE_ADMIN")
@@ -50,7 +50,12 @@ class CategoriesController extends AbstractController
     public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
-        $this->denyAccesUnlessGranted('ROLE_ADMIN');                    // Permet de vérifier si un admin est connecté pour effectuer cette action
+        
+        // $this->denyAccesUnlessGranted('ROLE_ADMIN');                    // Permet de vérifier si un admin est connecté pour effectuer cette action
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
         if($categories->getSlug() !== $slug){
             return $this->redirectToRoute('app_categories', [
                 'id' =>$categories->getId(),
