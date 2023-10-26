@@ -27,7 +27,7 @@ class SerieController extends AbstractController
     // FONCTION POUR SUPPRIMER UNE COLLECTION
 
     #[Route('/serie/{slug}-{id<[0-9]+>}/delete', name: 'delete_serie', requirements: ['slug' => '[a-z0-9\-]*'])]   
-    public function delete(Serie $serie, EntityManagerInterface $entityManager): Response   
+    public function delete(Serie $serie, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une serie            
 
@@ -47,7 +47,7 @@ class SerieController extends AbstractController
 
         $this->addFlash(                                                // Envoyer une notification
             'success',
-            'Supprimé avec succès!'
+            'Collection supprimée avec succès!'
         );
 
         return $this->redirectToRoute('app_serie');                     // Rediriger vers la liste des collections
@@ -66,7 +66,10 @@ class SerieController extends AbstractController
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
 
     {
-         
+        if (!$this->isGranted('ROLE_ADMIN')) {                  // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
         if(!$serie){                                            // S'il n'ya pas de collection à modifier alors en créer une nouvelle
             $serie = new Serie();                               // Après avoir importé la classe Request Déclarer une nouvelle collection
         }
@@ -94,7 +97,6 @@ class SerieController extends AbstractController
 
         //////////////////////////////////////////////////////////////////////////
 
-
         return $this->render('serie/new.html.twig', [           // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier serie)
             'formAddSerie' => $form,
             'edit' => $serie->getId()
@@ -104,11 +106,17 @@ class SerieController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LA LISTE DES LIVRES DE CHAQUE COLLECTION
 
-    #[Route('/serie/{id}', name: 'show_serie')]                 // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
-
-    public function show(Serie $serie): Response                // Créer une fonction show() dans le controller pour afficher le détail d'une collection 
+    #[Route('/serie/{slug}-{id<[0-9]+>}/show', name: 'show_serie', requirements: ['slug' => '[a-z0-9\-]*'])]
+    public function show(Serie $serie, string $slug): Response                // Créer une fonction show() dans le controller pour afficher le détail d'une collection 
 
     {
+        if($serie->getSlug() !== $slug){
+            return $this->redirectToRoute('app_serie', [
+                'id' =>$serie->getId(),
+                'slug' => $serie->getSlug(),
+            ], 301);
+        }
+
         return $this->render('serie/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
             'serie' => $serie
         ]);
