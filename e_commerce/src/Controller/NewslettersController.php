@@ -132,6 +132,11 @@ class NewslettersController extends AbstractController
     ): Response
 
     {
+
+        if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+        
         if(!$newsletters){
             $newsletters = new Newsletters();                              // Créer une newsletter s'il n'y en a pas
         }
@@ -196,6 +201,10 @@ class NewslettersController extends AbstractController
     ): Response
 
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {                                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
        $users = $newsletters->getCategories()->getUsers();      // Pour rechercher les utilisateurs inscrits à chacune des catégories
     
        // Faire une boucle pour envoyer un mail à chaque utilisateurs inscrit
@@ -231,10 +240,20 @@ class NewslettersController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION pour supprimer les newsletters
 
-    #[Route('/newsletters/{id}/delete', name: 'delete_newsletters')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
-
-    public function delete(Newsletters $newsletters, EntityManagerInterface $entityManager): Response   
+    #[Route('/newsletters/{slug}-{id<[0-9]+>}/delete', name: 'delete_newsletters', requirements: ['slug' => '[a-z0-9\-]*'])]   
+    public function delete(Newsletters $newsletters, EntityManagerInterface $entityManager, string $slug): Response   
     {                                                                                   // Créer une fonction delete() dans le controller pour supprimer un newsletters            
+        if (!$this->isGranted('ROLE_ADMIN')) {                                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
+        if($newsletters->getSlug() !== $slug){
+            return $this->redirectToRoute('app_newsletters_list', [
+                'id' =>$newsletters->getId(),
+                'slug' => $newsletters->getSlug(),
+            ], 301);
+        }
+
         $entityManager->remove($newsletters);                                           // Supprime une newsletters
         $entityManager->flush();                                                        // Exécute l'action DANS LA BDD
 
