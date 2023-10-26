@@ -19,7 +19,7 @@ class Serie
     #[ORM\Column(length: 255)]
     private ?string $intitule = null;
 
-    #[ORM\OneToMany(mappedBy: 'serie', targetEntity: Livre::class)]
+    #[ORM\OneToMany(mappedBy: 'serie',  cascade: ['persist'], orphanRemoval:true, targetEntity: Livre::class)]
     private Collection $Livre;
 
     public function __construct()
