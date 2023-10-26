@@ -23,10 +23,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    // #[Route('/categories/{slug}-{id<[0-9]+>}', name: 'show_categories', requirements={"slug": "[a-z0-9\-]*"})]
-
-    #[Route('/categories/{slug}-{id<[0-9]+>}', name: 'show_categories')]
-
+    #[Route('/categories/{slug}-{id<[0-9]+>}', name: 'show_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function show(Categories $categories, string $slug): Response
     {
         if($categories->getSlug() !== $slug){
@@ -45,8 +42,7 @@ class CategoriesController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE CATEGORIE
 
-    #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories')]           // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
-
+    #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
@@ -74,7 +70,7 @@ class CategoriesController extends AbstractController
 
     #[Route('/categories/new', name: 'new_categories')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/categories/{id}/edit', name: 'edit_categories')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
-
+    
     public function new_edit(Categories $categories  = null, Request $request, EntityManagerInterface $entityManager): Response   
     
     {
@@ -104,7 +100,6 @@ class CategoriesController extends AbstractController
         }
 
         //////////////////////////////////////////////////////////////////////////
-
 
         return $this->render('categories/new.html.twig', [      // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier categories)
             'formAddCategories' => $form,
