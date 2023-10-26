@@ -34,18 +34,12 @@ class UserController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN COMPTE
 
-    #[Route('/user/{slug}-{id<[0-9]+>}/delete', name: 'delete_user', requirements: ['slug' => '[a-z0-9\-]*'])]
-    public function delete(User $user, EntityManagerInterface $entityManager, string $slug): Response   
+    #[Route('/user/{id}/delete', name: 'delete_user')]
+    public function delete(User $user, EntityManagerInterface $entityManager): Response   
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer un user            
-        if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur connecté
+        
+        if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
             throw $this->createAccessDeniedException('Accès non autorisé');
-        }
-
-        if($user->getSlug() !== $slug){
-            return $this->redirectToRoute('app_home', [
-                'id' =>$user->getId(),
-                'slug' => $user->getSlug(),
-            ], 301);
         }
 
         $entityManager->remove($user);                                  // Supprime un user
