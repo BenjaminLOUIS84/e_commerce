@@ -2,6 +2,7 @@
 
 namespace App\Entity\Newsletters;
 
+use Cocur\Slugify\Slugify;
 use App\Entity\Commentaire;
 use App\Repository\Newsletters\NewslettersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -61,6 +62,11 @@ class Newsletters
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return (new Slugify())->slugify($this->name);
     }
 
     public function getContent(): ?string
