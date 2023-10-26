@@ -74,6 +74,7 @@ class CategoriesController extends AbstractController
     public function new_edit(Categories $categories  = null, Request $request, EntityManagerInterface $entityManager): Response   
     
     {
+
         if(!$categories){                                                 // S'il n'ya pas de catégorie à modifier alors en créer une nouvelle
             $categories = new Categories();                               // Après avoir importé la classe Request Déclarer une nouvelle catégorie
         }
