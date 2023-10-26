@@ -29,7 +29,7 @@ class FormatController extends AbstractController
     // FONCTION POUR SUPPRIMER UN FORMAT
 
     #[Route('/format/{slug}-{id<[0-9]+>}/delete', name: 'delete_format', requirements: ['slug' => '[a-z0-9\-]*'])]   
-    public function delete(Format $format, EntityManagerInterface $entityManager): Response   
+    public function delete(Format $format, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                       // Créer une fonction delete() dans le controller pour supprimer un format            
         
@@ -119,7 +119,7 @@ class FormatController extends AbstractController
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE MODES D'EDITION
 
     #[Route('/format/{slug}-{id<[0-9]+>}/show', name: 'show_format', requirements: ['slug' => '[a-z0-9\-]*'])]
-    public function show(Format $format): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un mode d'édition 
+    public function show(Format $format, string $slug): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un mode d'édition 
 
     {
         if($format->getSlug() !== $slug){
@@ -128,7 +128,7 @@ class FormatController extends AbstractController
                 'slug' => $format->getSlug(),
             ], 301);
         }
-        
+
         return $this->render('format/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
             'format' => $format
         ]);

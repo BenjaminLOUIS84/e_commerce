@@ -51,17 +51,16 @@
                                 <div class="optionAdmin">
                                     <h3>{{ format }}</h3>
                                     <a class="crud" href="{{ path ('edit_format', {id: format.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                    <a class="crud" href="{{ path ('delete_format', {id: format.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                    <a class="crud" href="{{ path ('delete_format', {id: format.id, slug:format.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 </div>
                                 
                             </div>
                         {% endfor %}
-
                     {% endif %}
 
                     {% for format in formats %}
                         {# Accéder à la liste des livres pour chaque formats en cliquant sur l'intitulé d'un format #}
-                        <a class="btn" title="Détail sur ce mode d'édition" href="{{ path ('show_format', {id: format.id}) }}">{{ format }}</a>
+                        <a class="btn" title="Détail sur ce mode d'édition" href="{{ path ('show_format', {id: format.id, slug:format.slug}) }}">{{ format }}</a>
                     {% endfor %}
 
                     <nav id="men">
