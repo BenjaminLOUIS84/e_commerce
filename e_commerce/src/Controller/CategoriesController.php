@@ -51,8 +51,8 @@ class CategoriesController extends AbstractController
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
         
-        // $this->denyAccesUnlessGranted('ROLE_ADMIN');                    // Permet de vérifier si un admin est connecté pour effectuer cette action
-        if (!$this->isGranted('ROLE_ADMIN')) {
+        // $this->denyAccesUnlessGranted('ROLE_ADMIN');                 // Permet de vérifier si un admin est connecté pour effectuer cette action
+        if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
             throw $this->createAccessDeniedException('Accès non autorisé');
         }
 
@@ -85,6 +85,10 @@ class CategoriesController extends AbstractController
     
     {
 
+        if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+        
         if(!$categories){                                                 // S'il n'ya pas de catégorie à modifier alors en créer une nouvelle
             $categories = new Categories();                               // Après avoir importé la classe Request Déclarer une nouvelle catégorie
         }
