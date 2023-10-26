@@ -92,7 +92,6 @@ class UserController extends AbstractController
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
         
-
         // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 78], ["livre" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findBy([], ["livre" => "ASC"]);
        

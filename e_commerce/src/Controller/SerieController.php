@@ -31,6 +31,7 @@ class SerieController extends AbstractController
     public function delete(Serie $serie, EntityManagerInterface $entityManager): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une serie            
+
         $entityManager->remove($serie);                                 // Supprime une collection
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
@@ -55,6 +56,7 @@ class SerieController extends AbstractController
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
 
     {
+         
         if(!$serie){                                            // S'il n'ya pas de collection à modifier alors en créer une nouvelle
             $serie = new Serie();                               // Après avoir importé la classe Request Déclarer une nouvelle collection
         }
