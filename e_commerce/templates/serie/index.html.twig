@@ -51,7 +51,7 @@
                                 <div class="optionAdmin">
                                     <a title="Accéder à la liste des livres de cette collection" href="{{ path ('show_serie', {id: serie.id}) }}"><h3>{{ serie }}</h3></a>
                                     <a class="crud" href="{{ path ('edit_serie', {id: serie.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                    <a class="crud" href="{{ path ('delete_serie', {id: serie.id}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                    <a class="crud" href="{{ path ('delete_serie', {id: serie.id, slug:serie.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                 </div>
                                 
                             </div>

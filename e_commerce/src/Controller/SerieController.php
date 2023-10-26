@@ -26,11 +26,21 @@ class SerieController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE COLLECTION
 
-    #[Route('/serie/{id}/delete', name: 'delete_serie')]                // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
-
+    #[Route('/serie/{slug}-{id<[0-9]+>}/delete', name: 'delete_serie', requirements: ['slug' => '[a-z0-9\-]*'])]   
     public function delete(Serie $serie, EntityManagerInterface $entityManager): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une serie            
+
+        if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
+        if($serie->getSlug() !== $slug){
+            return $this->redirectToRoute('app_serie', [
+                'id' =>$serie->getId(),
+                'slug' => $serie->getSlug(),
+            ], 301);
+        }
 
         $entityManager->remove($serie);                                 // Supprime une collection
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
