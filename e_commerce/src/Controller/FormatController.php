@@ -33,6 +33,11 @@ class FormatController extends AbstractController
     public function delete(Format $format, EntityManagerInterface $entityManager): Response   
 
     {                                                                       // Créer une fonction delete() dans le controller pour supprimer un format            
+        
+        if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
         $entityManager->remove($format);                                    // Supprime un format
         $entityManager->flush();                                            // Exécute l'action DANS LA BDD
 
@@ -52,6 +57,10 @@ class FormatController extends AbstractController
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
 
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {                    // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
         if(!$format){                                            // S'il n'ya pas de format à modifier alors en créer un nouveau
             $format = new Format();                              // Après avoir importé la classe Request Déclarer un nouveau format
         }
