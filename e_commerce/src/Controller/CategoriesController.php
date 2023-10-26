@@ -10,11 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\Newsletters\CategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-// use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
- * @IsGranted("ROLE_ADMIN")
-**/
 class CategoriesController extends AbstractController
 {
     // #[IsGranted("ROLE_ADMIN")]
@@ -46,16 +42,16 @@ class CategoriesController extends AbstractController
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE CATEGORIE
-    // #[IsGranted("ROLE_ADMIN")]
+    
     #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer une categories            
         
-        // $this->denyAccesUnlessGranted('ROLE_ADMIN');                 // Permet de vérifier si un admin est connecté pour effectuer cette action
-        // if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
-        //     throw $this->createAccessDeniedException('Accès non autorisé');
-        // }
+        //$this->denyAccesUnlessGranted('ROLE_ADMIN');                 // Permet de vérifier si un admin est connecté pour effectuer cette action
+        if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
 
         if($categories->getSlug() !== $slug){
             return $this->redirectToRoute('app_categories', [
@@ -78,7 +74,7 @@ class CategoriesController extends AbstractController
 
      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION FORMULAIRE POUR AJOUTER et EDITER DES CATEGORIES
-    // #[IsGranted("ROLE_ADMIN")]
+    
     #[Route('/categories/new', name: 'new_categories')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/categories/{id}/edit', name: 'edit_categories')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
     
@@ -86,9 +82,9 @@ class CategoriesController extends AbstractController
     
     {
 
-        // if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
-        //     throw $this->createAccessDeniedException('Accès non autorisé');
-        // }
+        if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
 
         if(!$categories){                                                 // S'il n'ya pas de catégorie à modifier alors en créer une nouvelle
             $categories = new Categories();                               // Après avoir importé la classe Request Déclarer une nouvelle catégorie
