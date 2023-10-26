@@ -19,11 +19,9 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class LivreController extends AbstractController
 {                                                                       // AFFICHER LA LISTE DE TOUS LES LIVRES
     #[Route('/livre', name: 'app_livre')]                               // Route représentant l'URL '/livre' pour la redirection et le name: sert pour la navigation
-    
     public function index(LivreRepository $livreRepository): Response   // Pour afficher la liste des livres insérer dans la fonction index() livreRepository $livreRepository et Importer la classe LivreRepository avec un click droit
     {                                                                                                                       
-        $livres = $livreRepository->findBy([],["id" =>                  // Pour récupérer la liste des livres classées par ID ordre croissant
-        "ASC"]);      
+        $livres = $livreRepository->findBy([],["id" => "ASC"]);         // Pour récupérer la liste des livres classées par ID ordre croissant    
 
         return $this->render('livre/index.html.twig', [                 // render() Permet de faire le lien entre le controller et la view
             'livres' => $livres,                                        // Pour passer la variable $livres en argument 'livres'                                     
@@ -33,10 +31,22 @@ class LivreController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN LIVRE
 
-    #[Route('/livre/{id}/delete', name: 'delete_livre')]                // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
-
-    public function delete(Livre $livre, EntityManagerInterface $entityManager): Response   
+    #[Route('/livre/{slug}-{id<[0-9]+>}/delete', name: 'delete_livre', requirements: ['slug' => '[a-z0-9\-]*'])]   
+    public function delete(Livre $livre, EntityManagerInterface $entityManager, string $slug): Response   
+    
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer un livre            
+        
+        if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
+        if($livre->getSlug() !== $slug){
+            return $this->redirectToRoute('app_livre', [
+                'id' =>$livre->getId(),
+                'slug' => $livre->getSlug(),
+            ], 301);
+        }
+
         $entityManager->remove($livre);                                 // Supprime un livre
         $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
@@ -60,6 +70,10 @@ class LivreController extends AbstractController
     // Créer une fonction new() dans le controller pour permettre l'ajout de livre
     // Modifier celle-ci en new_edit pour permettre la modfication ou à défaut la création
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {                 // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
         if(!$livre){                                           // S'il n'ya pas de livre à modifier alors en créer un nouveau
             $livre = new Livre();                              // Après avoir importé la classe Request Déclarer un nouveau livre
         }

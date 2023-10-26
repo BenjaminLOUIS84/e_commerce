@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use App\Entity\Livre;
 use App\Entity\Serie;
 use App\Entity\Format;
@@ -68,6 +69,11 @@ class Livre
         $this->titre = $titre;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return (new Slugify())->slugify($this->titre);
     }
     
     public function getCouverture(): ?string
