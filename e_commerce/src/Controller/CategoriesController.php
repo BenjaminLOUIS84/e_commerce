@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 **/
 class CategoriesController extends AbstractController
 {
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/categories', name: 'app_categories')]
     public function index(CategoriesRepository $categoriesRepository): Response
     {
@@ -45,7 +46,7 @@ class CategoriesController extends AbstractController
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UNE CATEGORIE
-
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/categories/{slug}-{id<[0-9]+>}/delete', name: 'delete_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
     public function delete(Categories $categories, EntityManagerInterface $entityManager, string $slug): Response   
 
@@ -77,7 +78,7 @@ class CategoriesController extends AbstractController
 
      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION FORMULAIRE POUR AJOUTER et EDITER DES CATEGORIES
-
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/categories/new', name: 'new_categories')]                   // Reprendre la route en ajoutant /new à l'URL et en changeant le nom du name
     #[Route('/categories/{id}/edit', name: 'edit_categories')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
     
@@ -88,7 +89,7 @@ class CategoriesController extends AbstractController
         if (!$this->isGranted('ROLE_ADMIN')) {                          // Permet d'empécher l'accès à cette action si ce n'est pas un admin
             throw $this->createAccessDeniedException('Accès non autorisé');
         }
-        
+
         if(!$categories){                                                 // S'il n'ya pas de catégorie à modifier alors en créer une nouvelle
             $categories = new Categories();                               // Après avoir importé la classe Request Déclarer une nouvelle catégorie
         }
