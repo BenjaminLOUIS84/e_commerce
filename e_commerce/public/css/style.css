@@ -32,6 +32,7 @@ html {
     /* font-family: 'Libre Baskerville', sans-serif; */
     font-family: var(--police-primary);
     position: fixed;
+    /* position: absolute; */
 }
 
 main {
@@ -526,6 +527,8 @@ h5 {
     align-items: center;
     background: whitesmoke;
     padding: 40px;
+    position:relative;
+
 }
 
 .blocPrice {
@@ -1546,6 +1549,9 @@ section .price tr {
         flex-direction: row;
         width: 400px;
 
+    }
+    .photo-hover {
+        font-size: 0.4em;
     }
 
     .blocPrice:hover {
