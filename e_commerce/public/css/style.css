@@ -48,7 +48,8 @@ header {
     height: 50px;
     align-items: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    padding-left: 110px;
 }
 
 .head {
@@ -62,12 +63,12 @@ header {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin-left: 200px;
+    margin-left: 110px;
     /* width: 100%; */
 }
 
 .daniel {
-    width: 100%;
+    width: 170%;
 }
 
 .haut {
@@ -89,7 +90,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 200px;
+    margin-left: 400px;
 }
 
 .fb,
@@ -100,17 +101,12 @@ header {
 .tw,
 .sp,
 .pp {
-    width: 10%;
+    width: 5%;
 }
 
 .social {
     display: inline-table;
-    width: 30%;
-}
-
-.socialA {
-    display: inline-table;
-    width: 30%;
+    width: 50%;
 }
 
 .qR {
@@ -329,7 +325,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.8em;
+    font-size: 1.2em;
 }
 
 .bloc3 {
@@ -507,9 +503,13 @@ h5 {
 .book {
     display: flex;
     padding: 20px;
-    text-align: center;
+    text-align: justify;
     width: 400px;
     margin: auto;
+}
+
+.book p {
+    font-size: small;
 }
 
 .price {
@@ -922,7 +922,7 @@ h6 {
 }
 
 .acces {
-    font-size: 1em;
+    font-size: small;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -936,7 +936,7 @@ h6 {
 }
 
 .acces a {
-    font-size: 1.2em;
+    font-size: small;
     color: var(--color-secondary);
 }
 
@@ -949,10 +949,10 @@ h6 {
 }
 
 .boutonScroll {
-    width: 3%;
+    width: 2%;
     border-radius: 50%;
     position: fixed;
-    top: 580px;
+    top: 600px;
     left: 1230px;
     transition: .5s ease-in-out;
 }

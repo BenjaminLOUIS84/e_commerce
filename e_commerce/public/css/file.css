@@ -128,7 +128,7 @@ nav {
     justify-content: end;
     align-items: center;
     line-height: 1;
-    height: 160px;
+    /* height: 160px; */
 }
 
 nav .lk {
@@ -387,13 +387,13 @@ header {
 
 .formAddInscription input {
 
-    border-radius: 10px;
-    width: 500px;
+    border-radius: 5px;
+    width: 380px;
 }
 
 .formAddInscription label {
     padding: 10px;
-    font-size: 1.5em;
+    font-size: small;
 }
 
 #registration_form_is_rgpd {
@@ -924,16 +924,13 @@ h6 {
         width: 100%;
     }
 
-    .formAddInscription input {
-        width: 380px;
-    }
-
     .formAddCommande {
         line-height: 2;
     }
 
     .formAddCommande input {
         width: 380px;
+        height: 30px;
     }
 
     form {
