@@ -33,6 +33,9 @@
       <div class="name">
         <img class="daniel" src="{{ asset('img/danielAaron.jpg') }}" alt="Prénom et Nom">
       </div>
+      <div class="burger">
+        <a href="{{path ('app_menu')}}"><img src="{{ asset('img/burger.png') }}" class="meal" alt="menu burger" title="Menu"></a>
+      </div>
 
       <div class="icones">
         <div class="socialA">
@@ -84,10 +87,6 @@
               <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="sp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
               <a href="https://stripe.com/fr"><img class="pp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a>
             </div>
-          </div>
-
-          <div class="burger">
-            <a href="{{path ('app_menu')}}"><img src="{{ asset('img/burger.png') }}" class="meal" alt="menu burger" title="Menu"></a>
           </div>
 
           {% else %}

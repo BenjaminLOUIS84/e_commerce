@@ -10,12 +10,11 @@
     /* COULEURS */
     --color-primary: rgba(204, 0, 0, 1);
     --color-secondary: rgb(242, 245, 247);
-    --color-third: rgb(59 191 241);
-   
+
     /* POLICES */
     --police-primary: 'Libre Baskerville', sans-serif;
     /* --police-primary:  Verdana, Geneva, Tahoma, sans-serif; */
-   /* font-family: */
+    /* font-family: */
 }
 
 /* Pour rendre tous les liens scrollables*/
@@ -27,12 +26,12 @@ html {
 /* wrapper  =   bloc contenant les réglages par défaut pour toute la page*/
 
 .wrapper {
-    
     text-align: center;
     display: flex;
     flex-direction: column;
     /* font-family: 'Libre Baskerville', sans-serif; */
     font-family: var(--police-primary);
+    position: fixed;
 }
 
 main {
@@ -45,8 +44,8 @@ main {
 header {
     /* background: rgba(204, 0, 0, 1); */
     /* Intégrer la variable CSS avec var()*/
-    background:var(--color-primary);
-    height: 60px;
+    background: var(--color-primary);
+    height: 50px;
     align-items: center;
     display: flex;
     justify-content: space-around;
@@ -55,15 +54,16 @@ header {
 .head {
     display: flex;
     align-items: center;
-    height: 200px;
+    background: white;
+    /* height: 200px; */
 }
 
 .name {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin-left: 100px;
-    width: 100%;
+    margin-left: 200px;
+    /* width: 100%; */
 }
 
 .daniel {
@@ -89,6 +89,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 200px;
 }
 
 .fb,
@@ -98,20 +99,18 @@ header {
 .yt,
 .tw,
 .sp,
-.pp{
+.pp {
     width: 10%;
 }
 
 .social {
-    display: flex;
     display: inline-table;
-    width: 100%;
+    width: 30%;
 }
 
 .socialA {
-    display: flex;
     display: inline-table;
-    width: 100%;
+    width: 30%;
 }
 
 .qR {
@@ -151,8 +150,8 @@ nav .lk {
 }
 
 .menu {
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 0.8em;
+    /* font-weight: bold; */
 }
 
 .meal {
@@ -199,7 +198,7 @@ h2 {
 
 h1 {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 .blocArticle {
@@ -241,7 +240,7 @@ h1 {
     text-align: center;
     border: 1px solid var(--color-secondary);
     width: 290px;
-    position:sticky;
+    position: sticky;
     margin: 20px;
 }
 
@@ -293,8 +292,8 @@ h1 {
     flex-direction: row;
     align-items: center;
     margin-bottom: -5px;
-    padding-top: 160px;
-    padding-bottom: 160px;
+    padding-top: 200px;
+    padding-bottom: 200px;
     background: url(/img/collection1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -415,7 +414,6 @@ sur les divs design, colors et solutions*/
 .text3 {
     text-align: center;
     color: var(--color-primary);
-    margin-bottom: 10px;
     font-size: 1.2em;
 }
 
@@ -423,96 +421,35 @@ sur les divs design, colors et solutions*/
     display: flex;
     flex-direction: row;
     background: var(--color-secondary);
-    align-items: initial;
-    gap: 10px;
-    justify-content: center;
-    padding-bottom: 50px;
-    /* margin-top: 40px; */
 }
 
 .staff {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-}
-
-/*  Paramètres pour mettre les images et les icônes en ordre et pour zoomer*/
-
-.icoPhoto {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-}
-
-.icoPhoto:hover .ico3 {
-    opacity: 1;
-}
-
-.icoPhoto:hover .ico4 {
-    opacity: 1;
-}
-
-.ico3 {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 0px;
-    position: absolute;
-    width: 30%;
-    transition: 0.5s ease-in-out;
-    opacity: 0;
-    left: 170px;
-    top: 80px;
-    z-index: 1;
-}
-
-.ico4 {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 0px;
-    position: absolute;
-    width: 30%;
-    transition: 0.5s ease-in-out;
-    opacity: 0;
-    left: 20px;
-    top: 80px;
-    z-index: 1;
-}
-
-.icoFb,
-.icoIn,
-.icoLkd,
-.icoTk,
-.icoTw,
-.icoYt,
-.icoSp,
-.icoPp {
-    width: 40%;
-    filter: invert();
+    align-items: baseline;
+    padding-right: 40px;
 }
 
 .pcs1 {
-    width: 100%;
+    width: 60%;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 10px;
     margin: 0 auto;
-    margin-top: 40px;
+    padding-top: 30px;
+    margin-left: 90px;
 }
 
-.pcs1:hover {
-    transform: scale(1.2);
+/* .pcs1:hover {
+    transform: scale(1.1);
     transition: ease-in-out 0.5s;
-}
+} */
 
-.team figure {
-    justify-content: space-between;
-    width: 225px;
+.member {
+    display: contents;
 }
 
 .team h1 {
-    font-size: 1.8em;
-    margin-top: 40px;
+    font-size: 1.3em;
     color: black;
     text-align: center;
 }
@@ -521,14 +458,9 @@ sur les divs design, colors et solutions*/
     text-align: center;
 }
 
-.team h3 {
-    font-size: 1.6em;
-    margin-top: 0px;
-    text-align: center;
-}
-
 .team p {
-    text-align: center;
+    text-align: justify;
+    font-size: small;
 }
 
 /* EFFET PARALLAX */
@@ -758,13 +690,13 @@ h6 {
 }
 
 .boutonJoinJuifs:hover {
-    background:  rgba(1, 255, 249, 1);
+    background: rgba(1, 255, 249, 1);
     color: var(--color-secondary);
     cursor: pointer;
 }
 
 .juifs {
-    color:  rgba(1, 255, 249, 1);
+    color: rgba(1, 255, 249, 1);
     justify-content: center;
 }
 
@@ -790,13 +722,13 @@ h6 {
 }
 
 .boutonJoinArgents:hover {
-    background:  rgba(153, 153, 153, 1);
+    background: rgba(153, 153, 153, 1);
     color: var(--color-secondary);
     cursor: pointer;
 }
 
 .argents {
-    color:  rgba(153, 153, 153, 1);
+    color: rgba(153, 153, 153, 1);
     justify-content: center;
 }
 
@@ -822,13 +754,13 @@ h6 {
 }
 
 .boutonJoinFoot:hover {
-    background:  rgba(103, 169, 75, 1);
+    background: rgba(103, 169, 75, 1);
     color: var(--color-secondary);
     cursor: pointer;
 }
 
 .foot {
-    color:  rgba(103, 169, 75, 1);
+    color: rgba(103, 169, 75, 1);
     justify-content: center;
 }
 
@@ -854,13 +786,13 @@ h6 {
 }
 
 .boutonJoinPolitique:hover {
-    background:  rgba(1, 2, 253, 1);
+    background: rgba(1, 2, 253, 1);
     color: var(--color-secondary);
     cursor: pointer;
 }
 
 .politique {
-    color:  rgba(1, 2, 253, 1);
+    color: rgba(1, 2, 253, 1);
     justify-content: center;
 }
 
@@ -875,7 +807,7 @@ h6 {
 
 /*Inclassable*/
 .boutonJoinInclassable {
-    color:rgba(254, 0, 255, 1);
+    color: rgba(254, 0, 255, 1);
     border: 1px solid rgba(254, 0, 255, 1);
     background: none;
     border-radius: 8px;
@@ -907,7 +839,7 @@ h6 {
 
 /*Ayant*/
 .boutonJoinAyant {
-    color:rgba(244, 0, 4, 1);
+    color: rgba(244, 0, 4, 1);
     border: 1px solid rgba(244, 0, 4, 1);
     background: none;
     border-radius: 8px;
@@ -976,22 +908,14 @@ h6 {
     border: 1px solid gray;
 }
 
-.reseaux 
-.icoFb,
-.reseaux
-.icoIn,
-.reseaux
-.icoLkd,
-.reseaux
-.icoTk,
-.reseaux
-.icoTw,
-.reseaux
-.icoYt,
-.reseaux
-.icoSp,
-.reseaux
-.icoPp {
+.reseaux .icoFb,
+.reseaux .icoIn,
+.reseaux .icoLkd,
+.reseaux .icoTk,
+.reseaux .icoTw,
+.reseaux .icoYt,
+.reseaux .icoSp,
+.reseaux .icoPp {
 
     width: 180%;
     filter: invert();
@@ -1003,7 +927,7 @@ h6 {
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 20px   ;
+    gap: 20px;
 }
 
 .acces .text3 {
@@ -1086,7 +1010,7 @@ h6 {
 @media (min-width: 769px) and (max-width: 1024px) {
 
     .wrapper {
-       
+
         margin: auto;
     }
 
@@ -1143,7 +1067,7 @@ h6 {
         padding-right: 0px;
         padding-top: 0px;
         padding-bottom: 0px;
-       
+
     }
 
     .bloc {
@@ -1298,13 +1222,30 @@ h6 {
     }
 
     header {
-        height: 120px;
+        height: 90px;
+    }
+
+    .daniel {
+        width: 60%;
     }
 
     .head {
         display: flex;
-        flex-direction: column-reverse;
-        height: 330px;
+        flex-direction: row;
+        height: 75px;
+    }
+
+    header {
+        display: none;
+    }
+
+    .icones {
+        display: none;
+    }
+
+    .staff {
+        flex-direction: column;
+        align-items: center;
     }
 
     /* Desactiver cette fonction pour que le menu burger fonctionne*/
@@ -1550,7 +1491,7 @@ h6 {
     }
 
     .team .text3 {
-        font-size: 1.2em;
+        font-size: 0.8em;
         margin-bottom: 10px;
     }
 
@@ -1562,38 +1503,22 @@ h6 {
         padding-right: 15px;
     }
 
-    .ico3 {
-        left: 260px;
-        top: 90px;
-    }
-
     .team figure {
         width: 300px;
     }
 
+    .accueil {
+        padding-top: 80px;
+    }
+
     .pcs1 {
-        width: 100%;
+        margin-left: 60px;
+        padding-left: 0px;
     }
 
-    .ico3 {
-        padding-top: 30px;
-    }
-
-    .ico4 {
-        padding-top: 50px;
-        left: 5px;
-    }
-
-    .icoFb,
-    .icoIn,
-    .icoLkd,
-    .icoTk,
-    .icoYt,
-    .icoTw,
-    .icoLSp,
-    .icoPp {
-        width: 40%;
-        filter: invert();
+    .staff {
+        padding-right: 0px;
+        padding: 20px;
     }
 
     /*////////////////////////////GET START///////////////////////////*/
@@ -1632,7 +1557,7 @@ h6 {
     /* Générer un caroussel glissement AU DOIGT*/
 
     .price {
-        scroll-snap-type: x mandatory; 
+        scroll-snap-type: x mandatory;
         overflow: auto;
         padding: 0px;
     }
@@ -1643,7 +1568,7 @@ h6 {
         justify-content: left;
         flex-direction: row;
         width: 360px;
-        
+
     }
 
     .blocPrice:hover {
