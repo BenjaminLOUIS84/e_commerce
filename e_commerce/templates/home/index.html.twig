@@ -136,26 +136,28 @@
         <section class="price">
 
             <div class="blocPrice">
-                <div class="pack">
-                    <div class="front">
-                        <figure>
-                            <img src="{{ asset('img/livre1.jpg') }}" alt="livre Révolutions Femme" class="log">
-                        </figure>
+                <a href="{{ asset('img/livre1.jpg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('img/livre1.jpg') }}" class="photo" alt="Couverture du livre Femmes">
+                    <div class="photo-hover">
+                        <div class="inf">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Pamphlet, véritable cri d'amour, 
+                                            ce livre aborde la question cruciale de l'autonomie des femmes à travers cet amour,
+                                            au niveau intime et collectif.
+                                            Et toujours apporter un espoir…
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
-                    <div class="back">
-                        <p>
-                            Pamphlet, véritable cri d'amour, ce livre aborde la question cruciale de l'autonomie des
-                            femmes
-                            à travers cet amour,
-                            au niveau intime et collectif.
-                            Et toujours apporter un espoir…
-                        </p>
-                    </div>
-                </div>
+                </a>
             </div>
 
-            <div class="blocPrice">
+            {# <div class="blocPrice">
                 <div class="pack">
                     <div class="front">
                         <figure>
@@ -333,7 +335,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> #}
 
         </section>
     </main>

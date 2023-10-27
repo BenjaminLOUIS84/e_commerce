@@ -512,7 +512,7 @@ h5 {
 
 /* LES LIVRES/////////////////////////////////////////////////////////// */
 
-.price {
+/* .price {
     display: flex;
     flex-direction: row;
     background: whitesmoke;
@@ -521,16 +521,30 @@ h5 {
     overflow: auto;
     scroll-snap-type: x mandatory;
     padding: 40px;
-}
-
-.blocPrice {
+} */
+.price {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* position:relative; */
+    gap: 10px;
+    margin-left: 50px;
+}
+
+/* .blocPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     width: 360px;
+} */
+.blocPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: left;
 }
 
 .livres h3 {
@@ -542,7 +556,7 @@ h5 {
 
 /*Effet de carte retournée*/
 
-.blocPrice:hover .pack {
+/* .blocPrice:hover .pack {
     transform: rotateY(180deg);
     transition: ease-in-out 1s;
 }
@@ -598,7 +612,7 @@ h6 {
 }
 
 .log {
-    width: 100%;
+    width: 70%;
     align-items: center;
     cursor: pointer;
 }
@@ -613,7 +627,7 @@ h6 {
     width: 70%;
     align-items: center;
     cursor: pointer;
-}
+} */
 
 /*CODE COULEUR DES LIVRES*/
 /*Tue*/
