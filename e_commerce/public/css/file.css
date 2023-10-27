@@ -293,6 +293,7 @@ a:hover {
     font-family: var(--police-primary);
     text-align: justify;
     padding: 10px;
+    font-size: small;
 }
 
 .icoA {
@@ -843,12 +844,12 @@ h6 {
 .reseaux .icoSp,
 .reseaux .icoPp {
 
-    width: 180%;
+    width: 120%;
     filter: invert();
 }
 
 .acces {
-    font-size: 1em;
+    font-size: small;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -862,7 +863,7 @@ h6 {
 }
 
 .acces a {
-    font-size: 1.2em;
+    font-size: small;
     text-decoration: none;
     color: var(--color-secondary);
 }
@@ -876,7 +877,7 @@ h6 {
 }
 
 .boutonScroll {
-    width: 3%;
+    width: 2%;
     border-radius: 50%;
     position: fixed;
     top: 580px;
