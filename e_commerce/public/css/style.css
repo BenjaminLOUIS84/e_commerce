@@ -1544,7 +1544,7 @@ section .price tr {
         display: flex;
         justify-content: left;
         flex-direction: row;
-        width: 360px;
+        width: 400px;
 
     }
 
