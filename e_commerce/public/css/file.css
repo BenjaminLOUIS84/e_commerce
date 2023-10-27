@@ -30,6 +30,7 @@
     display: flex;
     flex-direction: column;
     height: max-content;
+    font-size: small;
 }
 
 .fond {
@@ -46,6 +47,7 @@
     display: flex;
     flex-direction: column;
     height: max-content;
+    font-size: small;
 }
 
 .wrapperCollection {
@@ -58,30 +60,7 @@
     display: flex;
     flex-direction: column;
     height: max-content;
-}
-
-.wrapperEtik {
-
-    background-image: url(/img/logo5.jpg);
-    font-family: var(--police-primary);
-    background-size: contain;
-    background-repeat: no-repeat;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    height: max-content;
-}
-
-.wrapperVente {
-
-    background-image: url(/img/logo4.bmp);
-    font-family: var(--police-primary);
-    background-size: contain;
-    background-repeat: no-repeat;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    height: max-content;
+    font-size: small;
 }
 
 .wrapperLivres {
@@ -94,6 +73,7 @@
     display: flex;
     flex-direction: column;
     height: max-content;
+    font-size: small;
 }
 
 .wrapperEdition {
@@ -106,6 +86,7 @@
     display: flex;
     flex-direction: column;
     height: max-content;
+    font-size: small;
 }
 
 .wrapperPanier {
@@ -118,6 +99,7 @@
     display: flex;
     flex-direction: column;
     height: max-content;
+    font-size: small;
 }
 
 /* nav  =   bloc contenant: h1, nav, menu et a  */
@@ -525,6 +507,7 @@ header {
     padding: 10px;
     margin-top: 20px;
     background: radial-gradient(var(--color-secondary), transparent);
+    width: 60%;
 }
 
 .crud {
@@ -1004,7 +987,7 @@ h6 {
         align-items: center;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 0px;
     }
 
     .acces .text3 {
@@ -1026,7 +1009,8 @@ h6 {
         top: 0px;
     }
 
-    #men {
+    /* #men {
         margin-top: 140px;
-    }
+    } */
+
 }

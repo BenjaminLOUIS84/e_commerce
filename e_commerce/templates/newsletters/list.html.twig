@@ -5,7 +5,7 @@
 {% block body %}
     <div class="fil">
         
-        <h1 id="fil">NEWSLETTERS</h1>
+        <h1 id="fil">ARTICLES</h1>
    
         {# Lire et afficher toutes les notifications #}
 
@@ -19,7 +19,7 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             {# Seul l'admin peut ajouter un nouvel article, modifier et supprimer #}
-            <a href="{{ path ('app_newsletters_prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter une newsletter" title="Ajouter une newsletter"><br>Ajouter</a>
+            <a href="{{ path ('app_newsletters_prepare') }}" class="ajouter"><img class="lk" src="{{ asset('img/plus-solid.svg') }}" alt="Ajouter un article" title="Ajouter un article"><br>Ajouter</a>
         
             {# Tableau pour gérer les envois des newsletters #}
             <h1>Liste des Newsletters</h1>

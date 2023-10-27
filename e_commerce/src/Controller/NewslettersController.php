@@ -164,7 +164,7 @@ class NewslettersController extends AbstractController
             // Execute PDO
             $entityManager->flush();                                        // Mettre la nouvelle newsletterdans la BDD
         
-            $this->addFlash('message', 'Newsletter ajoutée avec succès');
+            $this->addFlash('message', 'Opération réalisée avec succès');
             return $this->redirectToRoute('app_newsletters_list');
         }
 
