@@ -510,18 +510,15 @@ h5 {
     font-size: small;
 }
 
+.livres h3 {
+    color: var(--color-secondary);
+    background: var(--color-primary);
+    padding: 15px;
+    text-align: center;
+}
+
 /* LES LIVRES/////////////////////////////////////////////////////////// */
 
-/* .price {
-    display: flex;
-    flex-direction: row;
-    background: whitesmoke;
-    justify-content: left;
-    align-items: center;
-    overflow: auto;
-    scroll-snap-type: x mandatory;
-    padding: 40px;
-} */
 .price {
     display: flex;
     flex-direction: row;
@@ -531,14 +528,6 @@ h5 {
     margin-left: 50px;
 }
 
-/* .blocPrice {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 360px;
-} */
 .blocPrice {
     display: flex;
     flex-direction: column;
@@ -547,87 +536,59 @@ h5 {
     text-align: left;
 }
 
-.livres h3 {
-    color: var(--color-secondary);
-    background: var(--color-primary);
-    padding: 10px;
-    text-align: center;
+.photo {
+    border-radius: 10px;
+    width: 90%;
+    filter: grayscale(0%);
+    padding-bottom: 20px;
 }
 
-/*Effet de carte retournée*/
+/*  Pour créer un effet d'assombrissemen
+ avec informations sur les photos*/
 
-/* .blocPrice:hover .pack {
-    transform: rotateY(180deg);
-    transition: ease-in-out 1s;
+.lien-conteneur-photo {
+    position: relative;
 }
 
-.pack {
+.photo-hover {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    right: 50px;
+    bottom: 35px;
+    display: flex;
+    align-items: top;
+    justify-content: left;
+    font-size: 1.3em;
+    color: white;
+    border-radius: 10px;
+    background: black;
+    /* Equivaut à background-color: rgba(0, 0, 0, 0.5); */
+    opacity: 40%;
+    display: none;
+    transition: .5s ease-in-out;
+}
+
+.inf {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    transition: .5s ease-in-out;
-    transition: all 1s ease;
-    transform-style: preserve-3d;
-    margin: 10px;
+    padding-left: 30px;
+    padding-top: 30px;
 }
 
-.front {
-    position: absolute;
-    backface-visibility: hidden;
-    width: 310px;
-    left: 50px;
+section .price tr {
+    display: flex;
+    flex-direction: row;
+    opacity: 100%;
+    font-weight: bold;
 }
 
-.back {
-    background: var(--color-secondary);
-    position: sticky;
-    object-fit: cover;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    box-shadow: 0px 6px 10px black;
-    border-radius: 5px;
-    backface-visibility: hidden;
-    transform: rotateY(-180deg);
-    padding: 10px;
-    height: max-content;
-    width: 410px;
-    text-align: center;
+/*Pour activer l'effet au passage de la souris*/
+.lien-conteneur-photo:hover .photo-hover {
+    display: flex;
 }
 
-.back p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: justify;
-}
 
-.back h2 {
-    padding-bottom: 20px;
-    font-size: 2em;
-}
-
-h6 {
-    font-size: 0.7em;
-    font-weight: normal;
-}
-
-.log {
-    width: 70%;
-    align-items: center;
-    cursor: pointer;
-}
-
-.log1 {
-    width: 50%;
-    align-items: center;
-    cursor: pointer;
-}
-
-.log2 {
-    width: 70%;
-    align-items: center;
-    cursor: pointer;
-} */
 
 /*CODE COULEUR DES LIVRES*/
 /*Tue*/
