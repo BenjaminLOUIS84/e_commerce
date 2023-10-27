@@ -498,8 +498,6 @@ h5 {
     padding: 20px;
 }
 
-/* LES LIVRES/////////////////////////////////////////////////////////// */
-
 .book {
     display: flex;
     padding: 20px;
@@ -511,6 +509,8 @@ h5 {
 .book p {
     font-size: small;
 }
+
+/* LES LIVRES/////////////////////////////////////////////////////////// */
 
 .price {
     display: flex;
