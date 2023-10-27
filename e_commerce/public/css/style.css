@@ -537,8 +537,7 @@ h5 {
 }
 
 .photo {
-    border-radius: 10px;
-    width: 90%;
+    width: 50%;
     filter: grayscale(0%);
     padding-bottom: 20px;
 }
@@ -552,21 +551,24 @@ h5 {
 
 .photo-hover {
     position: absolute;
-    top: 8px;
-    left: 10px;
+    top: 14px;
+    left: 18px;
     right: 50px;
     bottom: 35px;
     display: flex;
-    align-items: top;
+    align-items: center;
     justify-content: left;
-    font-size: 1.3em;
+    font-size: small;
     color: white;
-    border-radius: 10px;
     background: black;
     /* Equivaut à background-color: rgba(0, 0, 0, 0.5); */
-    opacity: 40%;
+    opacity: 80%;
     display: none;
     transition: .5s ease-in-out;
+    width: 45%;
+    text-align: justify;
+    padding: 5px;
+    padding-right: 35px;
 }
 
 .inf {
