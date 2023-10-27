@@ -65,11 +65,6 @@
                                     </div>
                     
                                     <div class="back">
-
-                                        <figure>
-                                            {# Pour afficher les tomes de chaque livres #}
-                                            <img src="{{ asset('uploads/images/'~ livre.tome) }}" alt="Une image contenant graphisme, capture d’écran, affiche, Graphique" class="log">
-                                        </figure>
                                         
                                         {%  if app.user %}
                                     
@@ -78,15 +73,10 @@
                                             <h3>Prix : {{ livre.prixUnitaire }} € ttc</h3>
                                             <h6>(Dont 4 € de frais de port)</h6>
                                             <p>{{ livre.resume }}</p>
-
-                                            {# Condition pour gérer le stock de livres #}
-                                            {# {% if livre.stock > 0 %} #}
-                                                {# Pour ajouter le livre au panier #}
-                                                <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
-                                                {# {% else %} #}
-                                                {# <h2>Temporairement en rupture de stock</h2> #}
-                                            {# {% endif %} #}
-
+                                            
+                                            {# Pour ajouter le livre au panier #}
+                                            <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
+                                            
                                         {% endif %}
                                         
                                         {% if is_granted('ROLE_ADMIN') %}

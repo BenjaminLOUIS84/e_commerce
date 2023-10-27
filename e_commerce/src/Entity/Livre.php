@@ -38,9 +38,6 @@ class Livre
     #[ORM\ManyToOne(inversedBy: 'Livre')]
     private ?Serie $serie = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $tome = null;
-
     #[ORM\ManyToOne(inversedBy: 'livre')]
     private ?Format $format = null;
 
@@ -121,18 +118,6 @@ class Livre
         return $this->titre. " ";               
                                                 
     }                                           // Les éléments affichés de la liste des livres sont le titre, la couverture et le tome afin de permettre la modification des livres
-
-    public function getTome(): ?string
-    {
-        return $this->tome;
-    }
-
-    public function setTome(string $tome): static
-    {
-        $this->tome = $tome;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, CommandeLivre>

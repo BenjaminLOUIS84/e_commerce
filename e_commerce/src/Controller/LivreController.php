@@ -88,8 +88,7 @@ class LivreController extends AbstractController
             $livre = $form->getData();                              // Récupérer les informations du nouveau livre
             
             $couvertureFile = $form->get('couverture')->getData();
-            $tomeFile = $form->get('tome')->getData();              // Récupérer les images (couverture et tome) du nouveau livre
-            
+           
             //////////////////////////////////////////////////////////////////////////
             // Ces conditions sont nécessaires car les champs couverture et tome ne sont pas requis
             // Les fichiers jpeg doivent être priorisés seulement quand un fichier est chargé
@@ -98,12 +97,6 @@ class LivreController extends AbstractController
                 // Envoie les données au Service FileUploader 
                 $couvertureFileName = $fileUploader->upload($couvertureFile);
                 $livre->setCouverture($couvertureFileName);   
-            }
-
-            if ($tomeFile) {
-                // Envoie les données au Service FileUploader 
-                $tomeFileName = $fileUploader->upload($tomeFile);
-                $livre->setTome($tomeFileName);
             }
 
             //////////////////////////////////////////////////////////////////////////

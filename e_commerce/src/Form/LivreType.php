@@ -47,22 +47,7 @@ class LivreType extends AbstractType
                         'mimeTypesMessage' => 'Image au format jpg uniquement',
                     ])
                 ],
-            ])                           
-            
-            ->add('tome', FileType::class, [
-                'mapped' => false,
-                'required'=> false,
-                'constraints' => [                          
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/jpeg'
-                        ],
-                        'mimeTypesMessage' => 'Image au format jpeg uniquement',
-                    ])
-                ],
-
-            ])                  
+            ])                                    
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ->add('resume', TextareaType::class, [              // Champs pour les textes long, zone de texte pour les résumés
