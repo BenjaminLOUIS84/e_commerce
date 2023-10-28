@@ -556,15 +556,13 @@ h5 {
     position: absolute;
     top: 5px;
     left: 5px;
-    /* right: 50px; */
-    bottom: 25px;
+    bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: left;
     font-size: small;
     color: white;
     background: black;
-    /* Equivaut à background-color: rgba(0, 0, 0, 0.5); */
     opacity: 80%;
     display: none;
     transition: .5s ease-in-out;
@@ -1537,7 +1535,7 @@ section .price tr {
     /* Générer un caroussel glissement AU DOIGT*/
 
     .price {
-        scroll-snap-type: x mandatory;
+        /* scroll-snap-type: x mandatory; */
         overflow: auto;
         padding: 0px;
     }

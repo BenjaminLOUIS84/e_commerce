@@ -1011,6 +1011,10 @@ h6 {
         top: 0px;
     }
 
+    .formAddInscription input {
+        height: 30px;
+    }
+
     /* #men {
         margin-top: 140px;
     } */
