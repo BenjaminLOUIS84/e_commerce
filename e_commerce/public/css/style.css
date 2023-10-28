@@ -543,6 +543,7 @@ h5 {
     width: 60%;
     filter: grayscale(0%);
     padding-bottom: 20px;
+    box-shadow: 5px 10px 10px rgb(0, 0, 0);
 }
 
 /*  Pour créer un effet d'assombrissemen
@@ -556,7 +557,7 @@ h5 {
     position: absolute;
     top: 5px;
     left: 5px;
-    bottom: 40px;
+    bottom: 19px;
     display: flex;
     align-items: center;
     justify-content: left;
