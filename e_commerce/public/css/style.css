@@ -1549,8 +1549,13 @@ section .price tr {
         width: 400px;
 
     }
+
+    .photo {
+        width: 100%;
+    }
     .photo-hover {
-        font-size: 0.4em;
+        font-size: 0.8em;
+        width: 99%;
     }
 
     .blocPrice:hover {
