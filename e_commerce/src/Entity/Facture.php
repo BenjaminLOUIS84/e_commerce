@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use App\Entity\Facture;
 use App\Entity\Commande;
 use Doctrine\DBAL\Types\Types;
@@ -46,6 +47,11 @@ class Facture
         $this->numero_facture = $numero_facture;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return (new Slugify())->slugify($this->numero_facture);
     }
 
     public function getDateFacture(): ?\DateTimeImmutable

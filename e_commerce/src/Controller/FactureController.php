@@ -96,16 +96,26 @@ class FactureController extends AbstractController
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE FACTURES
 
     #[Route('/facture/{id}/detail', name: 'detail_facture')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
+    // #[Route('/facture/{slug}-{id<[0-9]+>}/detail', name: 'detail_facture', requirements: ['slug' => '[a-z0-9\-]*'])]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(
 
         Commande $commande,
         FactureRepository $factureRepository,
         CommandeLivreRepository $commandeLivreRepository,
         CommandeRepository $commandeRepository,
+        // string $slug
         
 
         ): Response
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une facture 
+        
+        // if($facture->getSlug() !== $slug){
+        //     return $this->redirectToRoute('detail_facture', [
+        //         'id' =>$facture->getId(),
+        //         'slug' => $facture->getSlug(),
+        //     ], 301);
+        // }
+
         $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         $factures = $factureRepository->findBy([], ["numero_facture" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();

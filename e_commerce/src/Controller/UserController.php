@@ -57,19 +57,28 @@ class UserController extends AbstractController
     // FONCTION POUR AFFICHER LES COMMANDES ET LES FACTURES DE CHAQUE UTILISATEURS
 
     #[Route('/user/{id}', name: 'show_user')]                               // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
+    // #[Route('/user/{slug}-{id<[0-9]+>}', name: 'show_user', requirements: ['slug' => '[a-z0-9\-]*'])]                               // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
 
     public function show(
         User $user,
         FactureRepository $factureRepository,
         CommandeRepository $commandeRepository,
         CommandeLivreRepository $commandeLivreRepository,
+        // string $slug,
         ): Response                                                         // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {
 
         if($this->getUser() != $user){                                      // Si l'id de l'utilisateur dans l'url ne correspond pas à l'utilisateur connecté
             throw $this->createNotFoundException('Page non trouvée');
-        }                                                      
+        }  
+        
+        // if($user->getSlug() !== $slug){
+        //     return $this->redirectToRoute('show_user', [
+        //         'id' =>$user->getId(),
+        //         'slug' => $user->getSlug(),
+        //     ], 301);
+        // }
         
         $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes de l'utilisateur connecté
         $commandeLivres = $commandeLivreRepository->findAll();     
@@ -87,16 +96,25 @@ class UserController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDES
 
-    #[Route('/user/{id}/detail', name: 'detail_commande')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
+    // #[Route('/user/{id}/detail', name: 'detail_commande')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
+    #[Route('/user/{slug}-{id<[0-9]+>}/detail', name: 'detail_commande', requirements: ['slug' => '[a-z0-9\-]*'])]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(
        
         Commande $commande,
         CommandeLivreRepository $commandeLivreRepository,
+        string $slug
     
     ): Response
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
         
+        if($commande->getSlug() !== $slug){
+                return $this->redirectToRoute('detail_commande', [
+                    'id' =>$commande->getId(),
+                    'slug' => $commande->getSlug(),
+                ], 301);
+            }
+
         // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 78], ["livre" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findBy([], ["livre" => "ASC"]);
        

@@ -58,7 +58,7 @@
                                 {% else %}
 
                                     {# Accéder au détail en cliquant sur la date de commande #}
-                                    <a class="btn" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    <a class="btn" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
                                     
                                 {% endif %}
                                     

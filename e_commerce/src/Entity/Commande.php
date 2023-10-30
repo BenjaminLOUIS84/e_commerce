@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use App\Entity\User;
 use App\Entity\Livre;
 use App\Entity\Facture;
@@ -84,6 +85,11 @@ class Commande
         $this->numero_commande = $numero_commande;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return (new Slugify())->slugify($this->numero_commande);
     }
 
     public function getDateCommande(): ?\DateTimeImmutable
