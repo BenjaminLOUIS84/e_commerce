@@ -57,14 +57,11 @@ class UserController extends AbstractController
     // FONCTION POUR AFFICHER LES COMMANDES ET LES FACTURES DE CHAQUE UTILISATEURS
 
     #[Route('/user/{id}', name: 'show_user')]                               // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
-    // #[Route('/user/{slug}-{id<[0-9]+>}', name: 'show_user', requirements: ['slug' => '[a-z0-9\-]*'])]                               // Reprendre la route en ajoutant /{id} à l'URL et en changeant le nom du name
-
     public function show(
         User $user,
         FactureRepository $factureRepository,
         CommandeRepository $commandeRepository,
         CommandeLivreRepository $commandeLivreRepository,
-        // string $slug,
         ): Response                                                         // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {
@@ -72,13 +69,6 @@ class UserController extends AbstractController
         if($this->getUser() != $user){                                      // Si l'id de l'utilisateur dans l'url ne correspond pas à l'utilisateur connecté
             throw $this->createNotFoundException('Page non trouvée');
         }  
-        
-        // if($user->getSlug() !== $slug){
-        //     return $this->redirectToRoute('show_user', [
-        //         'id' =>$user->getId(),
-        //         'slug' => $user->getSlug(),
-        //     ], 301);
-        // }
         
         $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes de l'utilisateur connecté
         $commandeLivres = $commandeLivreRepository->findAll();     
