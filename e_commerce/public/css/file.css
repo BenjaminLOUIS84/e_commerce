@@ -486,7 +486,7 @@ header {
     border-radius: 10px;
     text-align: center;
     display: flex;
-    width: 120px;
+    width: auto;
 }
 
 /*OPTIONS DU CRUD*/
@@ -956,6 +956,10 @@ h6 {
         flex-direction: column;
     }
 
+    .optionAdmin {
+        width: 90%;
+    }
+
     /* INFO///////////////////////////////////////////////////////////////////// */
 
     #info {
@@ -968,7 +972,7 @@ h6 {
     }
 
     .logQR {
-        width: 30%;
+        width: 20%;
         align-items: center;
         filter: invert(1);
     }
@@ -996,6 +1000,7 @@ h6 {
     .acces .text3 {
         color: var(--color-secondary);
         margin-bottom: 0px;
+        font-size: small;
     }
 
     .acces a {
@@ -1027,4 +1032,14 @@ h6 {
         padding-right: 40px;
     }
 
+    tr {
+        font-size: smaller;
+    }
+    h3 {
+        font-size: small;
+    }
+
+    .btn-dark {
+        width: auto;
+    }
 }

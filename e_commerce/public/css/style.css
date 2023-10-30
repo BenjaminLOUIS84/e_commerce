@@ -175,6 +175,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
 }
 
 .article {
@@ -380,7 +381,7 @@ sur les divs design, colors et solutions*/
 .text3 {
     text-align: center;
     color: var(--color-primary);
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 .team {
