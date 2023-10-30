@@ -665,7 +665,7 @@ header {
     align-items: center;
     background: whitesmoke;
     padding: 40px;
-    position:relative;
+    position: relative;
 
 }
 
@@ -678,7 +678,7 @@ header {
 }
 
 .photo {
-    width: 80%;
+    width: 100%;
     filter: grayscale(0%);
     padding-bottom: 20px;
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
@@ -705,7 +705,7 @@ header {
     opacity: 80%;
     display: none;
     transition: .5s ease-in-out;
-    width: 79%;
+    width: 99%;
     text-align: justify;
     padding: 5px;
     padding-right: 35px;
@@ -717,7 +717,6 @@ header {
     align-items: center;
     padding-left: 30px;
     padding-top: 30px;
-    font-size: smaller;
 }
 
 section .price tr {
@@ -1018,8 +1017,14 @@ h6 {
         height: 30px;
     }
 
-   .blocPrice {
-    flex-direction: column;
-   }
+    .blocPrice {
+        flex-direction: column;
+    }
+
+    .inf {
+        font-size: smaller;
+        padding-left: 60px;
+        padding-right: 40px;
+    }
 
 }

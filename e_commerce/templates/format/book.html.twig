@@ -22,10 +22,16 @@
         </head>
 
         <body>
-            <div class="wrapper">
+            <div class="wrapperLibre">
                 <header>
                     <!-- Cette page concerne les livres selon le format-->
                     <h3>Les Livres en version {{ format }}</h3>
+
+                    <nav id="men">
+                        <div id="menu">
+                            <a href="{{ path ('show_format', {id:format.id, slug:format.slug}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"><br>Retour</a>
+                        </div>
+                    </nav>
 
                     {# Lire et afficher toutes les notifications #}
 
@@ -47,55 +53,33 @@
                         {% for livre in format.livre %}
 
                             <div class="blocPrice">
-                                
-                                <div class="pack">   
-
-                                    <div class="front">
-
-                                        <h2>{{ livre.format }}</h2>
-
-                                        {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
-                                        <figure>
-                                            {# Pour afficher les couvertures de chaque livres #}
-                                            <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couvertures des livres de la collection Revolutions" class="log">
-                                        </figure>
-                                        <div class="acheter1">ACHETEZ-MOI</div>
-  
-                                    </div>
-                    
-                                    <div class="back">
-                                        
-                                        {%  if app.user %}
-                                    
-                                            {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
-                                            <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
+                                {# Pour ajouter le livre au panier #}
+                                <a href="{{ path ('panier_add', {id: livre.id}) }}" class="lien-conteneur-photo">
+                                    <figure>
+                                        <img src="{{ asset('uploads/images/'~ livre.couverture) }}" class="photo" alt="Couverture du livre Femmes">
+                                    </figure>
+                                    <div class="photo-hover">
+                                        <div class="inf">
+                                            <h2>Format d'édition : {{ livre.format }}</h2><br>
+                                            <h3>{{ livre.datePublication | date("d-m-Y") }}</h3>
+                                            <p>{{ livre.resume }}</p><br>
                                             <h3>Prix : {{ livre.prixUnitaire }} € ttc</h3>
-                                            <h6>(Dont 4 € de frais de port)</h6>
-                                            <p>{{ livre.resume }}</p>
-
-                                            {# Condition pour gérer le stock de livres #}
-                                            {# {% if livre.stock > 0 %} #}
-                                                {# Pour ajouter le livre au panier #}
-                                                <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
-                                                {# {% else %} #}
-                                                {# <h2>Temporairement en rupture de stock</h2> #}
-                                            {# {% endif %} #}
-
-                                        {% endif %}
-                                        
-                                        {% if is_granted('ROLE_ADMIN') %}
-                                            <div class="optionAdmin">
-                                                {# Seul l'admin peut modifier et/ou supprimer un livre #}
-                                                <br><h2>Gérer ce livre</h2>
-                                                <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug: livre.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                            </div>
-                                        {% endif %}
-
+                                            <h6>(Dont 4 € de frais de port)</h6><br>
+                                            <br><img class="icone3" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier">
+                                            
+                                        </div>
                                     </div>
-                                
-                                </div>
-                                
+                                </a>
+                                        
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <div class="optionAdmin">
+                                        {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                        <br><h2>Gérer ce livre</h2>
+                                        <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                        <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug: livre.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                    </div>
+                                {% endif %}
+
                             </div>
 
                         {% endfor %}
@@ -144,8 +128,8 @@
                 <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
               </div>
         
-            
-        
+              <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
+                
             </div>
         
           </footer>

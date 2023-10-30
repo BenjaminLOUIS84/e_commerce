@@ -59,6 +59,7 @@
                         {% for livre in livres %}
 
                             <div class="blocPrice">
+                                {# Pour ajouter le livre au panier #}
                                 <a href="{{ path ('panier_add', {id: livre.id}) }}" class="lien-conteneur-photo">
                                     <figure>
                                         <img src="{{ asset('uploads/images/'~ livre.couverture) }}" class="photo" alt="Couverture du livre Femmes">
@@ -76,9 +77,6 @@
                                     </div>
                                 </a>
 
-                                {# Pour ajouter le livre au panier #}
-                                {# <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
-                                    
                                 {% if is_granted('ROLE_ADMIN') %}
                                     {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                     <div class="optionAdmin">
@@ -142,7 +140,6 @@
               
               <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
                 
-        
             </div>
         
           </footer>
