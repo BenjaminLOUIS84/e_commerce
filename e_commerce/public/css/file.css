@@ -640,6 +640,7 @@ header {
 
 .couvertures {
     width: 20%;
+    box-shadow: 0px 6px 10px black;
 }
 
 .book {
