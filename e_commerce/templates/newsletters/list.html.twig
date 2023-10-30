@@ -75,7 +75,7 @@
                 
                 <p>{{ newsletters }}</p>
 
-                <a class="text3" href="">Voir les commentaires</a> 
+                <a class="text3" href="{{ path ('app_newsletters_show', {id: newsletters.id}) }}">Voir les commentaires</a> 
 
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="liste">

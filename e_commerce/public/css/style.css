@@ -208,6 +208,19 @@ h1 {
 
 }
 
+.bck {
+    text-align: center;
+}
+
+.option {
+    margin: 20px;
+    text-align: center;
+}
+
+.option a {
+    color: black;
+    font-size: small;
+}
 
 .ajouter {
     color: black;
@@ -468,7 +481,7 @@ h5 {
     align-items: center;
     background: whitesmoke;
     padding: 40px;
-    position:relative;
+    position: relative;
 
 }
 
@@ -1494,6 +1507,7 @@ section .price tr {
     .photo {
         width: 100%;
     }
+
     .photo-hover {
         font-size: 0.8em;
         width: 99%;

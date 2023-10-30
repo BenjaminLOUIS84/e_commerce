@@ -6,17 +6,6 @@
     <div class="fil">
         
         <h1 id="fil">COMMENTAIRES</h1>
-   
-        {# Lire et afficher toutes les notifications #}
-
-        {# {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="flash-{{ label }}">
-                    {{ message }}
-                
-            {% endfor %}
-        {% endfor %} #}
-
         
     </div>
     <section class="article">
@@ -27,8 +16,6 @@
 
                 {# Accéder au contenu et aux commentaires #}
                 <div class="bck">  
-
-                    <h2>COMMENTAIRES</h2>
 
                     {% for commentaire in newsletters.commentaire %}
 
@@ -96,7 +83,7 @@
                             <div class="option">
                                 <a class="crud" href="
                                 {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
-                                "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
+                                "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"><br>Commenter</a>
                             </div>  
                         </div>
 
