@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %} 
+    {# Le design de cette page dépend du fichier base.html.twig et doit s'éxécuter sur la page d'accueil #}
+{% block title %}Commentaires{% endblock %}
+
+{% block body %}
+    <div class="fil">
+        
+        <h1 id="fil">COMMENTAIRES</h1>
+   
+        {# Lire et afficher toutes les notifications #}
+
+        {# {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                
+            {% endfor %}
+        {% endfor %} #}
+
+        
+    </div>
+    <section class="article">
+
+        {% for newsletters in newsletters %}
+
+            <div class="blocArticle">
+
+                {# Accéder au contenu et aux commentaires #}
+                <div class="bck">  
+
+                    <h2>COMMENTAIRES</h2>
+
+                    {% for commentaire in newsletters.commentaire %}
+
+                        <div class="blocArticle">
+                                
+                            {# Accéder au contenu et aux commentaires #}
+                            <div class="bckCom">
+                                <div class="grix xs2 sm3 gutter-0 card">
+                                    <div class="col-xs2 col-sm3">
+
+                                        {# Si l'utilisateur supprime sont compte alors il faut anonymiser ses commentaires #}
+                                        {% if commentaire.user == null %}
+                                        
+                                            {# Afficher le profil anonyme et la date dans le commentaire #}
+                                            <p>Utilisateur anonyme {{ commentaire.createdAt | date("d-m-Y H:i") }}</p>
+
+                                        {% else %}
+                                            
+                                            {# Autrement, afficher le pseudo de l'user et la date dans le commentaire #}
+                                            <h4>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y H:i") }}</h4>
+                                            
+                                        {% endif %}
+                                        
+                                        {# ADMIN Gérer les commentaires #}
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a class="crud" href="{{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> 
+                                        {% endif %}         
+                                        
+                                        <p>{{ commentaire }}</p><br>
+
+                                        {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
+                                        {% if commentaire.user == app.user %}
+
+                                            <div class="liste">
+                                                
+                                                <div class="option">
+
+                                                    <br><a class="crud" href="
+                                                    {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
+                                                    "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                    
+                                                    <a class="crud" href="
+                                                    {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }} 
+                                                    "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                                
+                                                </div>  
+                                            </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            
+                        </div>
+
+                    {% endfor %}
+                    
+                    
+                    {% if app.user %}
+
+                        <div class="liste">
+                            {# Tous les utilisateurs peuvent commenter #}
+                            <div class="option">
+                                <a class="crud" href="
+                                {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
+                                "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"></a>
+                            </div>  
+                        </div>
+
+                    {% endif %}
+                       
+                    
+                </div>
+                    
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}
+

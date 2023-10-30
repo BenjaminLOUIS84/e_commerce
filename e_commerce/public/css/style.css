@@ -179,18 +179,15 @@ h2 {
 
 .article {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     background: url(/img/collection.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 20px;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    overflow: auto;
-    scroll-snap-type: x mandatory;
-    margin-top: 40px;
+    padding: 40px;
+    position: relative;
     gap: 30px;
-    height: 1000px;
 }
 
 h1 {
@@ -200,74 +197,17 @@ h1 {
 
 .blocArticle {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    width: 500px;
-}
-
-/*Effet de carte retournée*/
-
-.blocArticle:hover .pack {
-    transform: rotateY(180deg);
-    transition: ease-in-out 1s;
-}
-
-
-.frt {
-    position: absolute;
     box-shadow: 0px 5px 10px black;
-    backface-visibility: hidden;
     text-align: justify;
     border-radius: 5px;
     padding: 10px;
     background: radial-gradient(var(--color-secondary), transparent);
+
 }
 
-.bckCom {
-    background-color: var(--color-secondary);
-    object-fit: cover;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    box-shadow: 0px 6px 10px black;
-    border-radius: 5px;
-    padding: 10px;
-    height: max-content;
-    text-align: center;
-    border: 1px solid var(--color-secondary);
-    width: 290px;
-    position: sticky;
-    margin: 20px;
-}
-
-.bck {
-    background: radial-gradient(var(--color-secondary), transparent);
-    position: sticky;
-    object-fit: cover;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    box-shadow: 0px 6px 10px black;
-    border-radius: 5px;
-    backface-visibility: hidden;
-    transform: rotateY(-180deg);
-    padding: 10px;
-    height: max-content;
-    width: 410px;
-    text-align: center;
-}
-
-.bck p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-.bck h2 {
-
-    padding-bottom: 20px;
-    font-size: 2em;
-}
 
 .ajouter {
     color: black;
@@ -277,8 +217,9 @@ h1 {
 .optionAdmin {
     border: 1px solid var(--color-primary);
     border-radius: 5px;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 
@@ -302,9 +243,9 @@ h1 {
 }
 
 h2 {
-    font-size: 4em;
+    font-size: 3.5em;
     color: var(--color-primary);
-    padding-bottom: 80px;
+    padding-bottom: 50px;
 }
 
 .accueil figure {
