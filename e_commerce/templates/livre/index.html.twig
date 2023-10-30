@@ -18,17 +18,28 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
+            {# Framework Bootstrap #}
+            {# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> #}
+        
+
             <title>LES LIVRES</title>
         </head>
 
         <body>
-            <div class="wrapper">
+            <div class="wrapperLibre">
                 <header>
+                    
                     <!-- Cette page concerne tous les livres-->
                     <h3>LA LISTE DE TOUS LES LIVRES</h3>
                     <P>Comprend l'ensemble des livres en version papier et numérique</P>
 
                     {# Lire et afficher toutes les notifications #}
+
+                    <nav id="men">
+                        <div id="menu">
+                            <a href="{{ path ('app_user') }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retour à l'espace personnel" title="Retourner à mon espace"><br>Mon espace</a>
+                        </div>
+                    </nav>
 
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
@@ -48,50 +59,36 @@
                         {% for livre in livres %}
 
                             <div class="blocPrice">
-                                
-                                <div class="pack">   
-
-                                    <div class="front">
-
-                                        <h2>{{ livre.format }}</h2>
-
-                                        {# Accéder au détail du livre en passant la souris sur le titre d'un livre (effet carte retournée) #}
-                                        <figure>
-                                            {# Pour afficher les couvertures de chaque livres #}
-                                            <img src="{{ asset('uploads/images/'~ livre.couverture) }}" alt="Couvertures des livres de la collection Revolutions" class="log">
-                                        </figure>
-                                        <div class="acheter1">ACHETEZ-MOI</div>
-  
-                                    </div>
-                    
-                                    <div class="back">
-                                        
-                                        {%  if app.user %}
-                                    
-                                            {# Utiliser le filtre | date("d-m-Y")  pour formater la date #}
-                                            <h3>{{ livre.datePublication | date("d-m-Y") }}</h3><br>
+                                <a href="{{ path ('panier_add', {id: livre.id}) }}" class="lien-conteneur-photo">
+                                    <figure>
+                                        <img src="{{ asset('uploads/images/'~ livre.couverture) }}" class="photo" alt="Couverture du livre Femmes">
+                                    </figure>
+                                    <div class="photo-hover">
+                                        <div class="inf">
+                                            <h2>Format d'édition : {{ livre.format }}</h2><br>
+                                            <h3>{{ livre.datePublication | date("d-m-Y") }}</h3>
+                                            <p>{{ livre.resume }}</p><br>
                                             <h3>Prix : {{ livre.prixUnitaire }} € ttc</h3>
-                                            <h6>(Dont 4 € de frais de port)</h6>
-                                            <p>{{ livre.resume }}</p>
+                                            <h6>(Dont 4 € de frais de port)</h6><br>
+                                            <br><img class="icone3" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier">
                                             
-                                            {# Pour ajouter le livre au panier #}
-                                            <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>  
-                                            
-                                        {% endif %}
-                                        
-                                        {% if is_granted('ROLE_ADMIN') %}
-                                            {# Seul l'admin peut modifier et/ou supprimer un livre #}
-                                            <div class="optionAdmin">
-                                                <br><h2>Gérer ce livre</h2>
-                                                <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug:livre.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                            </div>  
-                                        {% endif %}
-
+                                        </div>
                                     </div>
-                                
-                                </div>
-                                
+                                </a>
+
+                                {# Pour ajouter le livre au panier #}
+                                {# <a href="{{ path ('panier_add', {id: livre.id}) }}"><img class="icone1" src="{{ asset('img/cart-plus-solid.svg') }}" alt="Ajouter au panier" title="Ajouter au panier"></a>   #}
+                                    
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    {# Seul l'admin peut modifier et/ou supprimer un livre #}
+                                    <div class="optionAdmin">
+                                        <h3>ADMIN</h3>
+                                        <br><h2>Gérer ce livre</h2>
+                                        <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                        <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug:livre.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                    </div>  
+                                {% endif %}
+
                             </div>
 
                         {% endfor %}
@@ -106,7 +103,10 @@
 
                 </header>
             </div>
-            <!-- <script>src = "script.js"</script> -->
+
+            {# Framework Bootstrap #}
+            {# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>   #}
+
         </body>
 
         <footer>
@@ -139,6 +139,9 @@
                 <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
                 <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
               </div>
+              
+              <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
+                
         
             </div>
         

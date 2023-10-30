@@ -18,7 +18,6 @@
     /* font-family: */
 }
 
-
 /* wrapper  =   bloc contenant les réglages par défaut pour toute la page*/
 
 .wrapperLibre {
@@ -128,6 +127,11 @@ nav .lk {
 
 .icone2 {
     width: 8%;
+    filter: invert();
+}
+
+.icone3 {
+    width: 20%;
     filter: invert();
 }
 
@@ -283,6 +287,7 @@ a:hover {
     margin-bottom: 40px;
     border-radius: 10px;
 }
+
 
 /* FACTURES */
 
@@ -507,7 +512,8 @@ header {
     padding: 10px;
     margin-top: 20px;
     background: radial-gradient(var(--color-secondary), transparent);
-    width: 60%;
+    width: 40%;
+    text-align: center;
 }
 
 .crud {
@@ -644,26 +650,6 @@ header {
     margin: auto;
 }
 
-.price {
-    display: flex;
-    flex-direction: row;
-    background: var(--color-secondary);
-    justify-content: left;
-    align-items: center;
-    overflow: auto;
-    scroll-snap-type: x mandatory;
-    width: -webkit-fill-available;
-}
-
-.blocPrice {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    /* position:relative; */
-    margin: auto;
-}
-
 .livres h3 {
     color: var(--color-secondary);
     background: var(--color-primary);
@@ -671,63 +657,79 @@ header {
     text-align: center;
 }
 
-/*Effet de carte retournée*/
+.price {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    background: whitesmoke;
+    padding: 40px;
+    position:relative;
 
-.blocPrice:hover .pack {
-    transform: rotateY(180deg);
-    transition: ease-in-out 1s;
 }
 
-.pack {
+.blocPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.photo {
+    width: 80%;
+    filter: grayscale(0%);
+    padding-bottom: 20px;
+    box-shadow: 5px 10px 10px rgb(0, 0, 0);
+}
+
+/*  Pour créer un effet d'assombrissemen
+ avec informations sur les photos*/
+
+.lien-conteneur-photo {
+    position: relative;
+}
+
+.photo-hover {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: small;
+    color: white;
+    background: black;
+    opacity: 80%;
+    display: none;
+    transition: .5s ease-in-out;
+    width: 79%;
+    text-align: justify;
+    padding: 5px;
+    padding-right: 35px;
+}
+
+.inf {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    transition: .5s ease-in-out;
-    transition: all 1s ease;
-    transform-style: preserve-3d;
-    margin: 10px;
+    align-items: center;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: smaller;
 }
 
-.front {
-    position: absolute;
-    box-shadow: 0px 5px 10px black;
-    backface-visibility: hidden;
-    width: 310px;
-    left: 50px;
+section .price tr {
+    display: flex;
+    flex-direction: column;
+    opacity: 100%;
+    font-weight: bold;
 }
 
-.back {
-    background: var(--color-secondary);
-    position: sticky;
-    object-fit: cover;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    box-shadow: 0px 6px 10px black;
-    border-radius: 5px;
-    backface-visibility: hidden;
-    transform: rotateY(-180deg);
-    padding: 10px;
-    height: max-content;
-    /* width: 400px; */
-    width: 410px;
-    text-align: center;
-}
-
-.back p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-.back a {
-    background: none;
-}
-
-.back h2 {
-
-    padding-bottom: 20px;
-    font-size: 2em;
+/*Pour activer l'effet au passage de la souris*/
+.lien-conteneur-photo:hover .photo-hover {
+    display: flex;
+    flex-direction: column;
 }
 
 h6 {
@@ -1015,8 +1017,8 @@ h6 {
         height: 30px;
     }
 
-    /* #men {
-        margin-top: 140px;
-    } */
+   .blocPrice {
+    flex-direction: column;
+   }
 
 }
