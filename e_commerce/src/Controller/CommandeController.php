@@ -68,7 +68,7 @@ class CommandeController extends AbstractController
         //     'Commande créee avec succès'
         // );
 
-        return $this->redirectToRoute('detail_commande', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER); // Rediriger vers la commande
+        return $this->redirectToRoute('detail_commande', ['id' => $commande->getId (), 'slug' => $commande->getSlug()], Response::HTTP_SEE_OTHER); // Rediriger vers la commande
 
     }
 
@@ -120,7 +120,7 @@ class CommandeController extends AbstractController
             //     'Coordonnées enregistrées'
             // );
 
-            return $this->redirectToRoute('detail_commande', ['id' => $commande->getId ()], Response::HTTP_SEE_OTHER);  // Rediriger vers la commande
+            return $this->redirectToRoute('detail_commande', ['id' => $commande->getId (),'slug' => $commande->getSlug()], Response::HTTP_SEE_OTHER);  // Rediriger vers la commande
         }
         
         return $this->render('commande/new.html.twig', [            // Pour faire le lien entre le controller et la vue new.html.twig (il faut donc la créer dans le dossier commande)
