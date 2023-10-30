@@ -124,8 +124,6 @@ class FactureController extends AbstractController
             'factures' => $factures,
             'commandeLivres' => $commandeLivres,
             'commandes' => $commandes,
-            
-
         ]);
     }
 
