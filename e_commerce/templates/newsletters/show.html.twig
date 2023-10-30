@@ -10,91 +10,85 @@
     </div>
     <section class="article">
 
-        {% for newsletters in newsletters %}
+        <div class="blocArticle">
 
-            <div class="blocArticle">
+            {# Accéder au contenu et aux commentaires #}
+            <div class="bck">  
 
-                {# Accéder au contenu et aux commentaires #}
-                <div class="bck">  
+                {% for commentaire in newsletters.commentaire %}
 
-                    {% for commentaire in newsletters.commentaire %}
+                    <div class="blocArticle">
+                            
+                        {# Accéder au contenu et aux commentaires #}
+                        <div class="bckCom">
+                            <div class="grix xs2 sm3 gutter-0 card">
+                                <div class="col-xs2 col-sm3">
 
-                        <div class="blocArticle">
-                                
-                            {# Accéder au contenu et aux commentaires #}
-                            <div class="bckCom">
-                                <div class="grix xs2 sm3 gutter-0 card">
-                                    <div class="col-xs2 col-sm3">
+                                    {# Si l'utilisateur supprime sont compte alors il faut anonymiser ses commentaires #}
+                                    {% if commentaire.user == null %}
+                                    
+                                        {# Afficher le profil anonyme et la date dans le commentaire #}
+                                        <p>Utilisateur anonyme {{ commentaire.createdAt | date("d-m-Y H:i") }}</p>
 
-                                        {# Si l'utilisateur supprime sont compte alors il faut anonymiser ses commentaires #}
-                                        {% if commentaire.user == null %}
+                                    {% else %}
                                         
-                                            {# Afficher le profil anonyme et la date dans le commentaire #}
-                                            <p>Utilisateur anonyme {{ commentaire.createdAt | date("d-m-Y H:i") }}</p>
+                                        {# Autrement, afficher le pseudo de l'user et la date dans le commentaire #}
+                                        <h4>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y H:i") }}</h4>
+                                        
+                                    {% endif %}
+                                    
+                                    {# ADMIN Gérer les commentaires #}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="crud" href="{{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> 
+                                    {% endif %}         
+                                    
+                                    <p>{{ commentaire }}</p><br>
 
-                                        {% else %}
+                                    {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
+                                    {% if commentaire.user == app.user %}
+
+                                        <div class="liste">
                                             
-                                            {# Autrement, afficher le pseudo de l'user et la date dans le commentaire #}
-                                            <h4>{{ commentaire.user.pseudo }} {{ commentaire.createdAt | date("d-m-Y H:i") }}</h4>
+                                            <div class="option">
+
+                                                <br><a class="crud" href="
+                                                {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
+                                                "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                
+                                                <a class="crud" href="
+                                                {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }} 
+                                                "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                             
-                                        {% endif %}
-                                        
-                                        {# ADMIN Gérer les commentaires #}
-                                        {% if is_granted('ROLE_ADMIN') %}
-                                            <a class="crud" href="{{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a> 
-                                        {% endif %}         
-                                        
-                                        <p>{{ commentaire }}</p><br>
+                                            </div>  
+                                        </div>
 
-                                        {# USER condition pour gérer les commentaires propre à chaque utilisateurs #}
-                                        {% if commentaire.user == app.user %}
+                                    {% endif %}
 
-                                            <div class="liste">
-                                                
-                                                <div class="option">
-
-                                                    <br><a class="crud" href="
-                                                    {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
-                                                    "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                                    
-                                                    <a class="crud" href="
-                                                    {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }} 
-                                                    "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                                
-                                                </div>  
-                                            </div>
-
-                                        {% endif %}
-
-                                    </div>
                                 </div>
-                            
                             </div>
-                            
+                        
                         </div>
+                        
+                    </div>
 
-                    {% endfor %}
-                    
-                    
-                    {% if app.user %}
+                {% endfor %}                
+                
+                {% if app.user %}
 
-                        <div class="liste">
-                            {# Tous les utilisateurs peuvent commenter #}
-                            <div class="option">
-                                <a class="crud" href="
-                                {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
-                                "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"><br>Commenter</a>
-                            </div>  
-                        </div>
+                    <div class="liste">
+                        {# Tous les utilisateurs peuvent commenter #}
+                        <div class="option">
+                            <a class="crud" href="
+                            {{ path ('app_commentaire_prepare', {id: newsletters.id}) }}
+                            "><img class="lk" src="{{ asset('img/comment-regular.svg') }}" alt="Commenter" title="Commenter"><br>Commenter</a>
+                        </div>  
+                    </div>
 
-                    {% endif %}
-                       
-                    
-                </div>
-                    
+                {% endif %}          
+                
             </div>
-
-        {% endfor %}
+                
+        </div>
 
     </section>
 

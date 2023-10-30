@@ -193,19 +193,27 @@ class NewslettersController extends AbstractController
 
     // FONCTION pour afficher le détail des newsletters (Accéder aux commentaires Commentaires)
 
-    #[Route('/show', name: 'show')]
-    
-
-    public function show(NewslettersRepository $newslettersRepository): Response
+    #[Route('/show/{slug}-{id<[0-9]+>}', name: 'show', requirements: ['slug' => '[a-z0-9\-]*'])]
+    public function show(
+        Newsletters $newsletters,
+        string $slug,
+        ): Response
 
     {
-        $newsletters = $newslettersRepository->findBy([], ["created_at" => "DESC"]);    // Classer les newsletters par date de publication du plus récent au plus ancien DESC
+
+        if($newsletters->getSlug() !== $slug){
+            return $this->redirectToRoute('show_newsletters', [
+                'id' =>$newsletters->getId(),
+                'slug' => $newsletters->getSlug(),
+            ], 301);
+        }
 
         return $this->render('newsletters/show.html.twig', [                // Emplacement et disposition de la vue 
-            'newsletters' => $newsletters
+            'newsletters' => $newsletters,
             
         ]);
     }
+
 
     // FONCTION pour envoyer par mail les newsletters à tous les utilisateurs inscrit à la newsletters
 
