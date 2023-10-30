@@ -96,7 +96,6 @@ class UserController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE COMMANDES
 
-    // #[Route('/user/{id}/detail', name: 'detail_commande')]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     #[Route('/user/{slug}-{id<[0-9]+>}/detail', name: 'detail_commande', requirements: ['slug' => '[a-z0-9\-]*'])]       // Reprendre la route en ajoutant /detail à l'URL et en changeant le nom du name
     public function detail(
        
@@ -107,13 +106,12 @@ class UserController extends AbstractController
     ): Response
 
     {                                                            // Créer une fonction detail() dans le controller pour afficher le détail d'une commande 
-        
         if($commande->getSlug() !== $slug){
-                return $this->redirectToRoute('detail_commande', [
-                    'id' =>$commande->getId(),
-                    'slug' => $commande->getSlug(),
-                ], 301);
-            }
+            return $this->redirectToRoute('detail_commande', [
+                'id' =>$commande->getId(),
+                'slug' => $commande->getSlug(),
+            ], 301);
+        }
 
         // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 78], ["livre" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findBy([], ["livre" => "ASC"]);
