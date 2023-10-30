@@ -213,13 +213,28 @@ h1 {
 }
 
 .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 20px;
     text-align: center;
 }
 
 .option a {
     color: black;
-    font-size: small;
+    font-size: 1.2em;
+}
+
+.option .lk {
+    width: 10%;
+}
+
+.option .bk {
+    width: 10%;
+}
+
+.bckCom {
+    text-align: center;
 }
 
 .ajouter {
