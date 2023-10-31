@@ -118,17 +118,17 @@ class CommentaireController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION pour supprimer les commentaires
+    // FONCTION pour permettre aux utilisateurs de supprimer leurs commentaires ainsi qu'à l'admin
 
     #[Route('/commentaire/{id}/delete', name: 'delete_commentaire')]                    // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
     
     public function delete(Commentaire $commentaire, EntityManagerInterface $entityManager): Response   
     {                                                                                   // Créer une fonction delete() dans le controller pour supprimer un commentaire            
         
-        if($this->getUser() == $commentaire->getUser() && $this->isGranted('ROLE_ADMIN'))                                 
+        if($this->getUser() == $commentaire->getUser() || $this->isGranted('ROLE_ADMIN') == true)                                 
         {
             // Si l'utilisateur correspond à l'auteur du commentaire ou s'il s'agit d'un Admin alors on éxecute l'action
-            
+
             $entityManager->remove($commentaire);                                       // Supprime une commentaire
             $entityManager->flush();                                                    // Exécute l'action DANS LA BDD
     
