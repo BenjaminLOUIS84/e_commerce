@@ -76,6 +76,11 @@ class FactureController extends AbstractController
         )
 
     {
+        if($this->getUser() != $commande->getUser())                  // Si l'utilisateur n'est pas à l'origine de la commande alors on interdit l'accès
+        {
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+        
         $commandes = $commandeRepository->findBy([], ["numero_commande" => "ASC"]);
         $factures = $factureRepository->findBy([], ["numero_facture" => "ASC"]);
         $commandeLivres = $commandeLivreRepository->findAll();
