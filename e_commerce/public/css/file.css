@@ -660,7 +660,7 @@ header {
 
 .price {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     /* background: whitesmoke; */
@@ -678,7 +678,7 @@ header {
 }
 
 .photo {
-    width: 100%;
+    width: 60%;
     filter: grayscale(0%);
     /* padding-bottom: 20px; */
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
@@ -705,7 +705,7 @@ header {
     opacity: 80%;
     display: none;
     transition: .5s ease-in-out;
-    width: 99%;
+    width: 59%;
     text-align: justify;
     padding: 5px;
     padding-right: 35px;
@@ -717,6 +717,7 @@ header {
     align-items: center;
     padding-left: 30px;
     padding-top: 30px;
+    font-size: smaller;
 }
 
 section .price tr {
@@ -729,13 +730,13 @@ section .price tr {
 /*Pour activer l'effet au passage de la souris*/
 .lien-conteneur-photo:hover .photo-hover {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
-h6 {
+/* h6 {
     font-size: 0.7em;
     font-weight: normal;
-}
+} */
 
 .log {
     width: 100%;
@@ -1024,6 +1025,7 @@ h6 {
 
     .blocPrice {
         flex-direction: column;
+        margin-left: 190px;
     }
 
     .inf {
