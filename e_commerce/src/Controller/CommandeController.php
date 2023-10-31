@@ -92,6 +92,7 @@ class CommandeController extends AbstractController
             );
 
             return $this->redirectToRoute('app_user');                      // Rediriger vers la liste des commandes
+            
         }else{
             throw $this->createAccessDeniedException('Accès non autorisé'); // Sinon on interdit l'accès
         }
