@@ -51,15 +51,12 @@
                                             
                                             <div class="option">
 
-                                                <br><a class="crud" href="
-                                                {{ path ('app_commentaire_edit', {id: commentaire.id}) }}
-                                                "><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
+                                                <br><a class="crud" href="{{ path ('app_commentaire_edit', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                                 
-                                                <a class="crud" href="
-                                                {{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }} 
-                                                "><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
+                                                <a class="crud" href="{{ path ('app_commentaire_delete_commentaire', {id: commentaire.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                             
                                             </div>  
+                                            
                                         </div>
 
                                     {% endif %}
