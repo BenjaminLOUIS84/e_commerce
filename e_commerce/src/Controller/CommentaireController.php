@@ -49,12 +49,11 @@ class CommentaireController extends AbstractController
         // }
         
         // if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
-        // if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
             
         //     throw $this->createAccessDeniedException('Accès non autorisé');
         // }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
@@ -62,6 +61,10 @@ class CommentaireController extends AbstractController
             $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                                             
         }                   
        
+        // if () {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
+            
+        //     throw $this->createAccessDeniedException('Accès non autorisé');
+        // }
 
         $form = $this->createForm(CommentaireType :: class, $commentaire);  // Créer le formulaire
         $form->handleRequest($request);                                     // Activer le formulaire
