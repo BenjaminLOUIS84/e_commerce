@@ -77,7 +77,7 @@ class CommandeController extends AbstractController
 
     #[Route('/commande/{id}/delete', name: 'delete_commande')]              // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
     public function delete(Commande $commande, EntityManagerInterface $entityManager): Response   
-    
+
     {                                                                       // Créer une fonction delete() dans le controller pour supprimer une commande            
         
         if($this->getUser() == $commande->getUser())                        // Si l'utilisateur est à l'origine de la commande alors on éxecute les instructions                      
@@ -104,6 +104,11 @@ class CommandeController extends AbstractController
     #[Route('/commande/{id}/edit', name: 'edit_commande')]            // Reprendre la route en ajoutant /{id}/edit à l'URL et en changeant le nom du name
     public function new_edit(Commande $commande  = null, Request $request, EntityManagerInterface $entityManager): Response   
     {
+        if($this->getUser() != $commande->getUser())                  // Si l'utilisateur n'est pas à l'origine de la commande alors on interdit l'accès
+        {
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
         if(!$commande){                                               // S'il n'ya pas de commande à modifier alors en créer une nouvelle
             $commande = new Commande();                               // Après avoir importé la classe Request Déclarer une nouvelle commande
         }
