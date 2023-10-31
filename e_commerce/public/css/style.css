@@ -496,7 +496,7 @@ h5 {
     justify-content: center;
     align-items: center;
     background: whitesmoke;
-    padding: 40px;
+    /* padding: 40px; */
     position: relative;
 
 }
@@ -512,7 +512,7 @@ h5 {
 .photo {
     width: 60%;
     filter: grayscale(0%);
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
 }
 
