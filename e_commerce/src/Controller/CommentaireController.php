@@ -41,30 +41,17 @@ class CommentaireController extends AbstractController
         $newsletters = $newslettersRepository->findOneBy(['id' => $id]);    // Rechercher la newsletter par son id
        
         // dd($newsletters);                                                   // Vérifier ce qui est récupéré
-
-        // Condition pour empécher de modifier l'Id dans l'Url pour éviter de modifier ou supprimer les commentaires des autres
-
-        // if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
-        //     throw $this->createAccessDeniedException('Accès non autorisé');
-        // }
         
-        // if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
-            
-        //     throw $this->createAccessDeniedException('Accès non autorisé');
-        // }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
             $commentaire->setUser($this->getUser());                        // Injecter l'utilisateur (auteur du commentaire)
             
             $commentaire->setNewsletters($newsletters);                     // Injecter la newsletter concernée                                             
-        }                   
-       
-        // if () {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
-            
-        //     throw $this->createAccessDeniedException('Accès non autorisé');
-        // }
+        }     
+        
+        if($this->getUser() != $commentaire->getUser()) {                   // Si l'utilisateur est différent de l'auteur du commentaire alors on interdit l'accès
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }     
 
         $form = $this->createForm(CommentaireType :: class, $commentaire);  // Créer le formulaire
         $form->handleRequest($request);                                     // Activer le formulaire
@@ -95,17 +82,25 @@ class CommentaireController extends AbstractController
                     header('Location: app_commentaire_prepare, id: newsletters.id'); 
                 }else{
                     $data = json_decode($response);
-                    if($data->success){
+                    if($data->success){                                                     // Si on à une réponse on éxécute les instructions
 
-                        $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
-            
-                        // Prepare PDO
-                        $entityManager->persist($commentaire);                          // Dire à Doctrine que je veux sauvegarder la nouveau commentaire          
-                        // Execute PDO
-                        $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
-                    
-                        $this->addFlash('message', 'Commentaire ajouté avec succès');
-                        return $this->redirectToRoute('app_newsletters_list');
+                        // Condition pour empécher de modifier l'Id dans l'Url pour éviter de modifier ou supprimer les commentaires des autres
+
+                        // if($this->getUser() == $commentaire->getUser()){
+
+                            $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
+                
+                            // Prepare PDO
+                            $entityManager->persist($commentaire);                          // Dire à Doctrine que je veux sauvegarder la nouveau commentaire          
+                            // Execute PDO
+                            $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
+                        
+                            $this->addFlash('message', 'Commentaire ajouté avec succès');
+                            return $this->redirectToRoute('app_newsletters_list');
+                        // }else{
+                            
+                        //     throw $this->createAccessDeniedException('Accès non autorisé');
+                        // }
 
                     }else{
                         header('Location: app_commentaire_prepare, id: newsletters.id'); 
@@ -129,15 +124,25 @@ class CommentaireController extends AbstractController
     
     public function delete(Commentaire $commentaire, EntityManagerInterface $entityManager): Response   
     {                                                                                   // Créer une fonction delete() dans le controller pour supprimer un commentaire            
-        $entityManager->remove($commentaire);                                           // Supprime une commentaire
-        $entityManager->flush();                                                        // Exécute l'action DANS LA BDD
+        
+        if($this->getUser() == $commentaire->getUser() && $this->isGranted('ROLE_ADMIN'))                                 
+        {
+            // Si l'utilisateur correspond à l'auteur du commentaire ou s'il s'agit d'un Admin alors on éxecute l'action
+            
+            $entityManager->remove($commentaire);                                       // Supprime une commentaire
+            $entityManager->flush();                                                    // Exécute l'action DANS LA BDD
+    
+            $this->addFlash(                                                            // Envoyer une notification
+                'success',
+                'Supprimé avec succès!'
+            );
 
-        $this->addFlash(                                                                // Envoyer une notification
-            'success',
-            'Supprimé avec succès!'
-        );
+            return $this->redirectToRoute('app_newsletters_list');                      // Rediriger vers la liste des newsletters
 
-        return $this->redirectToRoute('app_newsletters_list');                               // Rediriger vers la liste des newsletterss
+        }else{
+            throw $this->createAccessDeniedException('Accès non autorisé');             // Sinon on interdit l'accès
+        }
+
     }
 
 }
