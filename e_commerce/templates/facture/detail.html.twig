@@ -68,6 +68,7 @@
                                             {% else %}
                                                 
                                             {% endif %}
+
                                             {% if commandeLivre.livre.id == 59 %}
                                                 <td><a href="{{ asset('ppsx/tome2.ppsx') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
                                             {% else %}
@@ -81,7 +82,6 @@
                                                 <td><a href="{{ path ('app_facture_notif') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
                                             {% else %}
                                                 
-                                            
                                             {% endif %}
                                             {% if commandeLivre.livre.id == 61 %}
                                                 <td><a href="{{ path ('app_facture_notif') }}"><img class="icone" src="{{ asset('img/download-solid.svg') }}" alt="Télécharger le livre" title="Télécharger le livre"></a></td>
