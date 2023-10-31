@@ -75,19 +75,26 @@ class CommandeController extends AbstractController
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION UTILISATEUR POUR SUPPRIMER UNE COMMANDE
 
-    #[Route('/commande/{id}/delete', name: 'delete_commande')]          // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
+    #[Route('/commande/{id}/delete', name: 'delete_commande')]              // Reprendre la route en ajoutant /{id}/delete' à l'URL et en changeant le nom du name
     public function delete(Commande $commande, EntityManagerInterface $entityManager): Response   
-    {                                                                   // Créer une fonction delete() dans le controller pour supprimer une commande            
+    
+    {                                                                       // Créer une fonction delete() dans le controller pour supprimer une commande            
         
-        $entityManager->remove($commande);                              // Supprime une commande
-        $entityManager->flush();                                        // Exécute l'action DANS LA BDD
+        if($this->getUser() == $commande->getUser())                        // Si l'utilisateur est à l'origine de la commande alors on éxecute les instructions                      
+        {
 
-        $this->addFlash(                                                // Envoyer une notification
-            'success',
-            'Supprimée avec succès!'
-        );
+            $entityManager->remove($commande);                              // Supprime une commande
+            $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
-        return $this->redirectToRoute('app_user');                     // Rediriger vers la liste des commandes
+            $this->addFlash(                                                // Envoyer une notification
+                'success',
+                'Supprimée avec succès!'
+            );
+
+            return $this->redirectToRoute('app_user');                      // Rediriger vers la liste des commandes
+        }else{
+            throw $this->createAccessDeniedException('Accès non autorisé'); // Sinon on interdit l'accès
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
