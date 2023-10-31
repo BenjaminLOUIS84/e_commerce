@@ -41,6 +41,19 @@ class CommentaireController extends AbstractController
         $newsletters = $newslettersRepository->findOneBy(['id' => $id]);    // Rechercher la newsletter par son id
        
         // dd($newsletters);                                                   // Vérifier ce qui est récupéré
+
+        // Condition pour empécher de modifier l'Id dans l'Url pour éviter de modifier ou supprimer les commentaires des autres
+
+        // if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+        //     throw $this->createAccessDeniedException('Accès non autorisé');
+        // }
+        
+        // if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
+        // if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
+            
+        //     throw $this->createAccessDeniedException('Accès non autorisé');
+        // }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         if(!$commentaire){
             $commentaire = new commentaire();                               // Créer un commentaire s'il n'y en a pas
