@@ -1522,12 +1522,18 @@ section .price tr {
     }
 
     .photo {
-        width: 100%;
+        width: 60%;
+        margin-left: 80px;
     }
 
     .photo-hover {
+        width: 60%;
+        margin-left: 75px;
+        bottom: 17px;
+    }
+
+    .inf {
         font-size: 0.8em;
-        width: 99%;
     }
 
     .blocPrice:hover {
