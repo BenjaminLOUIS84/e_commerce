@@ -15,6 +15,9 @@
     --police-primary: 'Libre Baskerville', sans-serif;
     /* --police-primary:  Verdana, Geneva, Tahoma, sans-serif; */
     /* font-family: */
+    
+    /* IMAGES changement selon l'article */
+    /* --image-background: url({{ asset('uploads/images/'~ newsletters.picture) }}); */
 }
 
 /* Pour rendre tous les liens scrollables*/
@@ -182,6 +185,9 @@ h2 {
     display: flex;
     flex-flow: row wrap;
     background: url(/img/collection.jpg);
+    
+    /* background: var(--image-background); */
+
     background-size: cover;
     background-repeat: no-repeat;
     justify-content: center;
