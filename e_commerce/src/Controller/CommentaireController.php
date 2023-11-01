@@ -84,24 +84,16 @@ class CommentaireController extends AbstractController
                     $data = json_decode($response);
                     if($data->success){                                                     // Si on à une réponse on éxécute les instructions
 
-                        // Condition pour empécher de modifier l'Id dans l'Url pour éviter de modifier ou supprimer les commentaires des autres
-
-                        // if($this->getUser() == $commentaire->getUser()){
-
-                            $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
-                
-                            // Prepare PDO
-                            $entityManager->persist($commentaire);                          // Dire à Doctrine que je veux sauvegarder la nouveau commentaire          
-                            // Execute PDO
-                            $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
+                        $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
+            
+                        // Prepare PDO
+                        $entityManager->persist($commentaire);                          // Dire à Doctrine que je veux sauvegarder la nouveau commentaire          
+                        // Execute PDO
+                        $entityManager->flush();                                        // Mettre le nouveau commentaire dans la BDD
+                    
+                        $this->addFlash('message', 'Commentaire ajouté avec succès');
+                        return $this->redirectToRoute('app_newsletters_list');
                         
-                            $this->addFlash('message', 'Commentaire ajouté avec succès');
-                            return $this->redirectToRoute('app_newsletters_list');
-                        // }else{
-                            
-                        //     throw $this->createAccessDeniedException('Accès non autorisé');
-                        // }
-
                     }else{
                         header('Location: app_commentaire_prepare, id: newsletters.id'); 
                     }
