@@ -722,9 +722,17 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 30px;
-    padding-top: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
     font-size: smaller;
+}
+
+.inf h2 {
+    font-size: small;
+}
+
+.inf h3 {
+    margin-bottom: 10px;
 }
 
 section .price tr {
@@ -915,6 +923,10 @@ section .price tr {
         line-height: 1;
     }
 
+    #registration_form_is_rgpd {
+        width: 8%;
+    }
+
     textarea {
         width: 100%;
     }
@@ -1037,8 +1049,12 @@ section .price tr {
 
     .inf {
         font-size: smaller;
-        padding-left: 60px;
-        padding-right: 40px;
+        padding-left: 30px;
+        padding-right: 0px;
+    }
+
+    .icone3 {
+        width: 10%;
     }
 
     tr {
