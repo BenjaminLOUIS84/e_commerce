@@ -250,7 +250,7 @@ a {
 
 #menu a {
     /* width: 340px; */
-    width: 251px;
+    width: 300px;
 }
 
 .ml {
@@ -518,15 +518,18 @@ tr .btn-dark {
 }
 
 .optionAdminLivre {
-    /* border: 1px solid var(--color-primary); */
-    /* box-shadow: 0px 6px 10px black; */
-    /* border-radius: 5px; */
-    /* padding: 10px; */
     margin-top: 10px;
     margin-bottom: 10px;
     /* background: radial-gradient(var(--color-secondary), transparent); */
     width: 40%;
     text-align: center;
+}
+
+.optionAdminLivre:hover {
+    /* border: 1px solid var(--color-primary); */
+    box-shadow: 0px 6px 10px black;
+    border-radius: 5px;
+    transition: ease-in-out 0.5s;
 }
 
 .optionAdmin {
@@ -537,8 +540,12 @@ tr .btn-dark {
     margin-top: 10px;
     margin-bottom: 10px;
     background: radial-gradient(var(--color-secondary), transparent);
-    width: 35%;
+    width: 40%;
     text-align: center;
+}
+
+.optionAdmin h3 {
+    font-size: 1.5em;
 }
 
 .optionAdminLivre h2 {

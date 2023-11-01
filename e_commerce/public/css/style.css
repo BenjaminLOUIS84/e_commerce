@@ -209,6 +209,10 @@ h1 {
 
 }
 
+.blocArticle p {
+    padding: 20px;
+}
+
 .bck {
     text-align: center;
 }
@@ -960,8 +964,12 @@ section .price tr {
 @media (min-width: 769px) and (max-width: 1024px) {
 
     .wrapper {
-
         margin: auto;
+        width: -webkit-fill-available;
+    }
+
+    header {
+        display: none;
     }
 
     /*////////////////////////////ACCUEIL///////////////////////////*/
@@ -1354,7 +1362,7 @@ section .price tr {
         color: var(--color-primary);
         padding-bottom: 40px;
     }
-    
+
 
     /*////////////////////////////FEATURES///////////////////////////*/
 
