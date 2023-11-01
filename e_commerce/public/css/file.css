@@ -514,13 +514,19 @@ header {
 
 .optionAdmin {
     /* border: 1px solid var(--color-primary); */
-    box-shadow: 0px 6px 10px black;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 20px;
-    background: radial-gradient(var(--color-secondary), transparent);
+    /* box-shadow: 0px 6px 10px black; */
+    /* border-radius: 5px; */
+    /* padding: 10px; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* background: radial-gradient(var(--color-secondary), transparent); */
     width: 40%;
     text-align: center;
+}
+
+.optionAdmin h2 {
+    font-size: small;
+    margin-bottom: 10px;
 }
 
 .crud {
@@ -688,6 +694,7 @@ header {
 .photo {
     width: 60%;
     filter: grayscale(0%);
+    margin-left: 114px;
     /* display: inline-block; */
     /* padding-bottom: 20px; */
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
@@ -702,6 +709,7 @@ header {
 
 .photo-hover {
     position: absolute;
+    margin-left: 114px;
     top: 5px;
     left: 5px;
     bottom: 5px;
@@ -979,7 +987,7 @@ section .price tr {
     }
 
     .optionAdmin {
-        width: 90%;
+        width: 60%;
     }
 
     /* INFO///////////////////////////////////////////////////////////////////// */
