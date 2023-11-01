@@ -72,7 +72,7 @@
                                 </a>
                                         
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <div class="optionAdmin">
+                                    <div class="optionAdminLivre">
                                         {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                         <br><h2>Gérer {{ livre }}</h2>
                                         <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>

@@ -249,7 +249,8 @@ a {
 }
 
 #menu a {
-    width: 340px;
+    /* width: 340px; */
+    width: 251px;
 }
 
 .ml {
@@ -512,7 +513,7 @@ header {
     align-items: center;
 }
 
-.optionAdmin {
+.optionAdminLivre {
     /* border: 1px solid var(--color-primary); */
     /* box-shadow: 0px 6px 10px black; */
     /* border-radius: 5px; */
@@ -524,7 +525,19 @@ header {
     text-align: center;
 }
 
-.optionAdmin h2 {
+.optionAdmin {
+    /* border: 1px solid var(--color-primary); */
+    box-shadow: 0px 6px 10px black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: radial-gradient(var(--color-secondary), transparent);
+    width: 40%;
+    text-align: center;
+}
+
+.optionAdminLivre h2 {
     font-size: small;
     margin-bottom: 10px;
 }
