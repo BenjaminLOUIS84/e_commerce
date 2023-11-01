@@ -385,7 +385,14 @@ header {
 }
 
 #registration_form_is_rgpd {
-    width: 10%;
+    width: 5%;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 /* NEWSLETTERS */
@@ -1037,6 +1044,7 @@ section .price tr {
     tr {
         font-size: smaller;
     }
+
     h3 {
         font-size: small;
     }
@@ -1044,4 +1052,11 @@ section .price tr {
     .btn-dark {
         width: auto;
     }
+
+    /*////////////////////////////NEWSLETTERS//////////////////////////////////////*/
+
+    #newsletters_users_categories {
+        font-size: smaller;
+    }
+
 }
