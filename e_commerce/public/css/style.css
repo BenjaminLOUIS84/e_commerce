@@ -548,7 +548,7 @@ h5 {
     flex-direction: column;
     font-size: small;
     padding-left: 30px;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 section .price tr {

@@ -688,6 +688,7 @@ header {
 .photo {
     width: 60%;
     filter: grayscale(0%);
+    /* display: inline-block; */
     /* padding-bottom: 20px; */
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
 }
@@ -1045,7 +1046,7 @@ section .price tr {
 
     .blocPrice {
         flex-direction: column;
-        margin-left: 190px;
+        margin-left: 0px;
     }
 
     .inf {
@@ -1062,9 +1063,9 @@ section .price tr {
         font-size: smaller;
     }
 
-    h3 {
+    /* h3 {
         font-size: small;
-    }
+    } */
 
     .btn-dark {
         width: auto;

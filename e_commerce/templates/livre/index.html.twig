@@ -80,7 +80,7 @@
                                 {% if is_granted('ROLE_ADMIN') %}
                                     {# Seul l'admin peut modifier et/ou supprimer un livre #}
                                     <div class="optionAdmin">
-                                        <h2>Gérer ce livre</h2>
+                                        <h2>Gérer {{ livre }}</h2><br>
                                         <a class="crud" href="{{ path ('edit_livre', {id: livre.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
                                         <a class="crud" href="{{ path ('delete_livre', {id: livre.id, slug:livre.slug}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer ce livre?')"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
                                     </div>  
