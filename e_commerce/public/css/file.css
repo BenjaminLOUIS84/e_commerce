@@ -353,7 +353,7 @@ form {
 }
 
 h3 {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 header {
@@ -497,14 +497,18 @@ header {
     width: auto;
 }
 
+tr .btn-dark {
+    font-size: x-small;
+}
+
 /*OPTIONS DU CRUD*/
 
 .admin {
     background-color: var(--color-primary);
     box-shadow: 0px 6px 10px black;
     display: flex;
-    margin-bottom: 40px;
-    border-radius: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .param {
@@ -533,7 +537,7 @@ header {
     margin-top: 10px;
     margin-bottom: 10px;
     background: radial-gradient(var(--color-secondary), transparent);
-    width: 40%;
+    width: 35%;
     text-align: center;
 }
 
@@ -628,7 +632,7 @@ header {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 
 .cover {
@@ -925,6 +929,16 @@ section .price tr {
         font-size: 2em;
     }
 
+    h3 {
+        font-size: 1.5em;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .wrapper {
+        background: none;
+    }
+
     .icone,
     .icone1 {
         width: 10%;
@@ -997,10 +1011,12 @@ section .price tr {
 
     .admin {
         flex-direction: column;
+        margin-bottom: 0px;
     }
 
     .optionAdmin {
-        width: 60%;
+        /* width: 60%; */
+        width: 90%;
     }
 
     /* INFO///////////////////////////////////////////////////////////////////// */
