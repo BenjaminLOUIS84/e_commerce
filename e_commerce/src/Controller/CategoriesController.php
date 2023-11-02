@@ -25,6 +25,7 @@ class CategoriesController extends AbstractController
     }
 
     #[Route('/categories/{slug}-{id<[0-9]+>}', name: 'show_categories', requirements: ['slug' => '[a-z0-9\-]*'])]
+    //          Quelle différence ?                                                             ['id' => '\d+']
     public function show(Categories $categories, string $slug): Response
     {
         if($categories->getSlug() !== $slug){
