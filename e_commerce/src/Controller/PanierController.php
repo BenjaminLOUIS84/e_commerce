@@ -15,7 +15,10 @@ class PanierController extends AbstractController
     // FONCTION POUR AFFICHER LE PANIER
 
     #[Route('/', name: 'index')]
-    public function index(SessionInterface $session, LivreRepository $livreRepository)
+    public function index(
+        SessionInterface $session, 
+        LivreRepository $livreRepository
+    )
     {
         $panier = $session->get('panier', []);
         // dd($panier);
@@ -37,7 +40,8 @@ class PanierController extends AbstractController
             // dd($data);
         }
 
-        return $this->render('panier/index.html.twig', compact('data', 'total'));
+        return $this->render('panier/index.html.twig', 
+        compact('data', 'total'));
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
