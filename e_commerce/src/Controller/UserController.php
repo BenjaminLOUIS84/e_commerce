@@ -30,22 +30,6 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig', compact('users'));
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER TOUS LES UTILISATEURS
-
-    // #[Route('/user', name: 'list_user')]
-    // public function list(UserRepository $userRepository)
-    // { 
-    //     if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
-    //         throw $this->createAccessDeniedException('Accès non autorisé');
-    //     }
-
-    //     $users = $userRepository->findAll();      // Affiche tous les utilisateurs
-
-    //     return $this->render('user/list.html.twig', compact('users'));
-    // }
-
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN COMPTE
