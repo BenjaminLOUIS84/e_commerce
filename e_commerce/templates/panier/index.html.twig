@@ -8,11 +8,10 @@
 
         <head>
             <meta charset="utf-8">
-
-            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
-            
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link rel="stylesheet" href="{{ asset('css/file.css') }}">
             
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +20,6 @@
             {# Framework Bootstrap #}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
 
             <title>MON PANIER</title>
         </head>
@@ -92,42 +90,34 @@
         </body>
 
         <footer>
-
             <div id="info">
-        
-              <div class="pied">
-        
-                <figure>
-                  <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}"
-                      alt="QR Code de Daniel Aaron" class="logQR"></a>
-                </figure>
-        
-                <div class="reseaux">
-                  <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
-                  <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
-                  <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
-                  <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
-                  <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
-                  <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
-                  <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
-                  <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a>
+                <div class="pied">
+                    <figure>
+                        <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}" alt="QR Code de Daniel Aaron" class="logQR"></a>
+                    </figure>
+            
+                    <div class="reseaux">
+                        <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
+                        <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
+                        <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
+                        <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
+                        <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
+                        <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
+                        <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
+                        <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a>
+                    </div>
                 </div>
         
-              </div>
-        
-              <div class="acces">
-                <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
-                <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
-                <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
-                <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
-              </div>
-        
-              <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
-        
+                <div class="acces">
+                    <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
+                    <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
+                    <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
+                    <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
+                </div>
+            
+                <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
             </div>
-        
-          </footer>
-       
+        </footer>
 
     </html>
 {% endblock %}
