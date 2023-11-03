@@ -26,33 +26,12 @@ class CommandeController extends AbstractController
 {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LA LISTE DES COMMANDES ET DES FACTURES
-
-    // #[Route('/commande', name: 'registre')]
-    // public function registre(
-    //     CommandeRepository $commandeRepository,
-    //     CommandeLivreRepository $commandeLivreRepository,
-    //     )
-
-    // { 
-    //     if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
-    //         throw $this->createAccessDeniedException('Accès non autorisé');
-    //     }
-        
-    //     $commandes = $commandeRepository->findAll();      // Affiche toutes les commandes et les factures
-    //     $commandes = $commandeRepository->findAll();      
-
-    //     return $this->render('commande/registre.html.twig', compact('commandes'));
-    // }
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
     #[Route('/ajout', name: 'add')]                            // Récupérer la session du panier, le repository du livre, et l'entité de la table associative
     public function add(SessionInterface $session, LivreRepository $livreRepository, EntityManagerInterface $em): Response  
     {    
-        // $this->denyAccesUnlessGranted('ROLE_USER');         // Permet de vérifier si un user est connecté pour passer une commande
+
         $panier = $session->get('panier', []);                 // Récupérer le panier ou un tableau vide
         // dd($panier);                                        // Vérifier si le panier est bien récupéré
 
@@ -84,11 +63,6 @@ class CommandeController extends AbstractController
         $em->persist($commande);                               // Dire à Doctrine que je veux sauvegarder la nouvelle commande           
         $em->flush();                                          // Mettre la nouvelle commande dans la BDD
         $session->remove('panier');                            // Remettre à zero le panier
-
-        // $this->addFlash(                                       // Envoyer une notification
-        //     'success',
-        //     'Commande créee avec succès'
-        // );
 
         return $this->redirectToRoute('detail_commande', ['id' => $commande->getId (), 'slug' => $commande->getSlug()], Response::HTTP_SEE_OTHER); // Rediriger vers la commande
 
@@ -149,11 +123,6 @@ class CommandeController extends AbstractController
             $entityManager->persist($commande);                    // Dire à Doctrine que je veux sauvegarder la nouvelle commande           
             //execute PDO
             $entityManager->flush();                               // Mettre la nouvelle commande dans la BDD
-
-            // $this->addFlash(                                       // Envoyer une notification
-            //     'success',
-            //     'Coordonnées enregistrées'
-            // );
 
             return $this->redirectToRoute('detail_commande', ['id' => $commande->getId (),'slug' => $commande->getSlug()], Response::HTTP_SEE_OTHER);  // Rediriger vers la commande
         }
