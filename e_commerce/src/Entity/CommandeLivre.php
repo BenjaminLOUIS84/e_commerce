@@ -88,7 +88,7 @@ class CommandeLivre
 
         return $this;
     } 
-
+    
     // Créer un fonction pour calculer le sous-total de la commande
     public function getSousTotal(): int
     {

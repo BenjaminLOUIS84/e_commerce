@@ -24,6 +24,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/commande', name: 'app_commande_')]
 class CommandeController extends AbstractController
 {
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LA LISTE DES COMMANDES ET DES FACTURES
+
+    // #[Route('/commande', name: 'registre')]
+    // public function registre(
+    //     CommandeRepository $commandeRepository,
+    //     CommandeLivreRepository $commandeLivreRepository,
+    //     )
+
+    // { 
+    //     if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+    //         throw $this->createAccessDeniedException('Accès non autorisé');
+    //     }
+        
+    //     $commandes = $commandeRepository->findAll();      // Affiche toutes les commandes et les factures
+    //     $commandes = $commandeRepository->findAll();      
+
+    //     return $this->render('commande/registre.html.twig', compact('commandes'));
+    // }
+
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
