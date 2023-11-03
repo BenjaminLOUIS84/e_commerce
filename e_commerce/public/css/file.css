@@ -743,7 +743,7 @@ tr .btn-dark {
     font-size: small;
     color: white;
     background: black;
-    opacity: 80%;
+    opacity: 90%;
     display: none;
     transition: .5s ease-in-out;
     width: 59%;
