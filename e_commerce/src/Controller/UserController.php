@@ -32,6 +32,36 @@ class UserController extends AbstractController
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER TOUS LES UTILISATEURS
+
+    // #[Route('/user', name: 'list_user')]
+    // public function list(UserRepository $userRepository)
+    // { 
+    //     if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+    //         throw $this->createAccessDeniedException('Accès non autorisé');
+    //     }
+
+    //     $users = $userRepository->findAll();      // Affiche tous les utilisateurs
+
+    //     return $this->render('user/list.html.twig', compact('users'));
+    // }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LA LISTE DES COMMANDES ET DES FACTURES
+
+    #[Route('/user', name: 'registre')]
+    public function registre(CommandeRepository $commandeRepository)
+    { 
+        if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+        
+        $commandes = $commandeRepository->findAll();      // Affiche toutes les commandes et les factures
+
+        return $this->render('user/registre.html.twig', compact('commandes'));
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR SUPPRIMER UN COMPTE
 
     #[Route('/user/{id}/delete', name: 'delete_user')]
