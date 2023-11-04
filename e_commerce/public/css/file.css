@@ -844,7 +844,7 @@ section .price tr {
 }
 
 .logQR {
-    width: 10%;
+    width: 8%;
     align-items: center;
     filter: invert(1);
 }
@@ -855,7 +855,7 @@ section .price tr {
     justify-content: center;
     align-items: center;
     gap: 0px;
-    width: 30%;
+    width: 20%;
 }
 
 .pied {
