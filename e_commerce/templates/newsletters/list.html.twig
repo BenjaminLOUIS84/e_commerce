@@ -26,7 +26,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Catégorie</th>
                         <th>Date</th>
                         <th>Titre</th>
@@ -37,7 +36,6 @@
                 <tbody>
                     {% for newsletters in newsletters %}
                         <tr>
-                            <td>{{ newsletters.id }}</td>
                             <td>{{ newsletters.categories.name }}</td>
                             <td>{{ newsletters.createdAt|date("d-m-Y")}}</td>
                             <td>{{ newsletters.name}}</td>
