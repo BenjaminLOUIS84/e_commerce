@@ -96,8 +96,8 @@ class CommandeController extends AbstractController
 
     {                                                                       // Créer une fonction delete() dans le controller pour supprimer une commande            
         
-        if($this->getUser() == $commande->getUser())                        // Si l'utilisateur est à l'origine de la commande alors on éxecute les instructions                      
-        {
+        if($this->getUser() == $commande->getUser() || $this->isGranted('ROLE_ADMIN'))                        
+        {                                                                   // Si l'utilisateur est à l'origine de la commande OU si c'est un Admin alors on éxecute les instructions
 
             $entityManager->remove($commande);                              // Supprime une commande
             $entityManager->flush();                                        // Exécute l'action DANS LA BDD

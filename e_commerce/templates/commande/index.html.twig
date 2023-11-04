@@ -48,37 +48,25 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    
                                     <th>Date</th>
                                     <th>Référence</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    
-                                    <th>Action</th>
-                                   
+                                    <th>Action</th> 
                                 </tr>
                             </thead>
 
                             <tbody>
-
                                 {# BDD L'élément de la collection #}
                                 {# Créer une boucle for #}
                                 {% for commande in commandes %}
                                     <tr>
                                         <td>{{ commande.dateCommande | date("d-m-Y") }}</td>
                                         <td>{{ commande.numeroCommande }}</td>
-                                        <td>{{ commande }}</td>
-                                        <td>{{ commande.prenom }}</td>
-                                        
                                         <td>
                                             <a href="" class="btn btn-dark">Consulter</a>
-                                            <a href="" class="btn btn-dark">Supprimer</a> 
+                                            <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}" class="btn btn-dark">Supprimer</a> 
                                         </td>
-                                          
-                                    </tr>
-                                    
-                                {% endfor %}
-                                
+                                    </tr> 
+                                {% endfor %}  
                             </tbody>
                         </table>
 
