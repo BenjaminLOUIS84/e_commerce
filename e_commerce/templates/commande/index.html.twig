@@ -63,29 +63,19 @@
 
                                 {# BDD L'élément de la collection #}
                                 {# Créer une boucle for #}
-                                {% for commandeLivre in commandeLivres %}
+                                {% for commande in commandes %}
                                     <tr>
-                                        <td>{{ commandeLivre.commande.dateCommande | date("d-m-Y") }}</td>
-                                        <td>{{ commandeLivre.commande.numeroCommande }}</td>
-                                        <td>{{ commandeLivre.commande }}</td>
-                                        <td>{{ commandeLivre.commande.prenom }}</td>
+                                        <td>{{ commande.dateCommande | date("d-m-Y") }}</td>
+                                        <td>{{ commande.numeroCommande }}</td>
+                                        <td>{{ commande }}</td>
+                                        <td>{{ commande.prenom }}</td>
                                         
                                         <td>
                                             <a href="" class="btn btn-dark">Consulter</a>
                                             <a href="" class="btn btn-dark">Supprimer</a> 
                                         </td>
-                                        
-                                        
+                                          
                                     </tr>
-                                    
-                                        
-                                    {# Seul l'admin peut modifier et/ou supprimer une collection #}
-                                    {# <div class="optionAdmin">
-                                        <a title="Accéder à la liste des livres de cette collection" href="{{ path ('show_serie', {id: serie.id, slug:serie.slug}) }}"><h3>{{ serie }}</h3></a>
-                                        <a class="crud" href="{{ path ('edit_serie', {id: serie.id}) }}"><img class="icone" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Modifier" title="Modifier"></a>
-                                        <a class="crud" href="{{ path ('delete_serie', {id: serie.id, slug:serie.slug}) }}"><img class="icone" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"></a>
-                                    </div> #}
-                                        
                                     
                                 {% endfor %}
                                 

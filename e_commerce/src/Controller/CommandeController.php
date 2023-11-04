@@ -26,6 +26,26 @@ class CommandeController extends AbstractController
 {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FONCTION POUR AFFICHER LA LISTE DU TOUTES DES COMMANDES
+
+    #[Route('/liste', name: 'liste')]
+    public function index(CommandeRepository $commandeRepository): Response
+
+    {
+        if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
+            throw $this->createAccessDeniedException('Accès non autorisé');
+        }
+
+        $commandes = $commandeRepository->findBy([], ["id" => "DESC"]); // Classer les commandes de la plus récente à la plus ancienne
+
+        return $this->render('commande/index.html.twig', [
+            
+            'commandes' => $commandes,
+            
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR METTRE LE PANIER EN COMMANDE
 
     #[Route('/ajout', name: 'add')]                            // Récupérer la session du panier, le repository du livre, et l'entité de la table associative

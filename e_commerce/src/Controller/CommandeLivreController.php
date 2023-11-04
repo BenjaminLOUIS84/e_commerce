@@ -21,6 +21,7 @@ class CommandeLivreController extends AbstractController
             throw $this->createAccessDeniedException('Accès non autorisé');
         }
 
+        // $commandeLivres = $commandeLivreRepository->findBy(["commande" => 103], ["id" => "DESC"]); // Classer les commandes de la plus récente à la plus ancienne
         $commandeLivres = $commandeLivreRepository->findBy([], ["id" => "DESC"]); // Classer les commandes de la plus récente à la plus ancienne
 
         return $this->render('commande_livre/index.html.twig', [
