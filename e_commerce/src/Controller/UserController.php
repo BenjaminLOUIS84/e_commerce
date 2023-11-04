@@ -62,6 +62,7 @@ class UserController extends AbstractController
         FactureRepository $factureRepository,
         CommandeRepository $commandeRepository,
         CommandeLivreRepository $commandeLivreRepository,
+        
         ): Response                                                         // Créer une fonction show() dans le controller pour afficher le détail d'un user 
 
     {

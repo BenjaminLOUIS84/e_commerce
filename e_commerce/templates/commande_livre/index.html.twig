@@ -45,12 +45,15 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
 
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     
-                                    <th>Quantité</th>
-                                    <th>Prix</th>
+                                    <th>Date</th>
+                                    <th>Référence</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    {# <th>Prix</th> #}
                                     <th>Action</th>
                                    
                                 </tr>
@@ -62,8 +65,11 @@
                                 {# Créer une boucle for #}
                                 {% for commandeLivre in commandeLivres %}
                                     <tr>
-                                        <td>{{ commandeLivre }}</td>
-                                        <td>{{ commandeLivre.prixUnitaire }}</td>
+                                        <td>{{ commandeLivre.commande.dateCommande | date("d-m-Y") }}</td>
+                                        <td>{{ commandeLivre.commande.numeroCommande }}</td>
+                                        <td>{{ commandeLivre.commande }}</td>
+                                        <td>{{ commandeLivre.commande.prenom }}</td>
+                                        {# <td>{{ commandeLivre.prixUnitaire }}</td> #}
                                         
                                         <td>
                                             {# {% if newsletters.isSent == false %}
