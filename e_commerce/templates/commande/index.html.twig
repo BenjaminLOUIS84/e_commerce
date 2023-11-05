@@ -48,9 +48,9 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Référence</th>
-                                    <th>Action</th> 
+                                    <th>Dates</th>
+                                    <th>Numéros de commande</th>
+                                    <th>Actions</th> 
                                 </tr>
                             </thead>
 
@@ -62,7 +62,7 @@
                                         <td>{{ commande.dateCommande | date("d-m-Y") }}</td>
                                         <td>{{ commande.numeroCommande }}</td>
                                         <td>
-                                            <a href="" class="btn btn-dark">Consulter</a>
+                                            <a href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}" class="btn btn-dark">Consulter</a>
                                             <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}" class="btn btn-dark">Supprimer</a> 
                                         </td>
                                     </tr> 

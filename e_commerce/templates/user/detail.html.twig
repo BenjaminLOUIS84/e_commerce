@@ -27,8 +27,12 @@
         </head>
 
         <h3>Commande n° {{ commande.numeroCommande }}<br>
-            faite le {{ commande.dateCommande | date("d-m-Y") }}<br> 
-            par {{commande.user.pseudo}}
+            faite le {{ commande.dateCommande | date("d-m-Y") }}<br>
+            {% if commande.user.pseudo == null %}
+                par un utilisateur anonyme
+            {% else %}
+                par {{commande.user.pseudo}}
+            {% endif %}
         </h3>
 
         <body>
@@ -77,18 +81,23 @@
                     <nav id="men">
                         <div id="menu">
 
-                            {# Créer une condition pour changer le bouton de finalisation en bouton de paiement après avoir remplit le formulaire #}
-                            {% if commande.nom|length >0 %}
-                                {# Lien pour accéder à la page de paiement STRIPE #}
-                                <a href="{{ path ('payment_stripe', {numero_commande: commande.numeroCommande}) }}"><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Accéder au paiement" title="Accéder au paiement"><br>Payer</a>     
-                            
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path ('app_commande_liste') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"><br>Retour</a>
                             {% else %}
-                                <a href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"><br>Finaliser</a>
-                            {% endif %}
                             
-                            <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"><br>Supprimer</a>
+                                {# Créer une condition pour changer le bouton de finalisation en bouton de paiement après avoir remplit le formulaire #}
+                                {% if commande.nom|length >0 %}
+                                    {# Lien pour accéder à la page de paiement STRIPE #}
+                                    <a href="{{ path ('payment_stripe', {numero_commande: commande.numeroCommande}) }}"><img class="lk" src="{{ asset('img/euro-sign-solid.svg') }}" alt="Accéder au paiement" title="Accéder au paiement"><br>Payer</a>     
+                                {% else %}
+                                    <a href="{{ path ('app_commande_edit_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/pen-to-square-solid.svg') }}" alt="Finaliser la commande" title="Finaliser la commande"><br>Finaliser</a>
+                                {% endif %}
 
-                            <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"><br>Retour</a>
+                                <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}"><img class="lk" src="{{ asset('img/trash-solid.svg') }}" alt="Supprimer" title="Supprimer"><br>Supprimer</a>
+                                <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retour" title="Retour"><br>Retour</a>
+                            
+                            {% endif %}
+
                         </div>
                     </nav>
 
@@ -133,7 +142,7 @@
                     <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
                 </div>
         
-                <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
+                {# <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a> #}
         
             </div>
         
