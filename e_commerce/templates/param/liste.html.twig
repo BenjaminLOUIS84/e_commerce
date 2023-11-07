@@ -61,7 +61,7 @@
                                         <td>{{ user.email }}</td>
                                         <td>
                                             <a href="" class="btn btn-dark">Consulter</a> 
-                                            <a href="{{ path ('delete_user', {id: app.user.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer cet utilisateur?')" class="btn btn-dark">Supprimer</a>
+                                            <a href="{{ path ('delete_user', {id: user.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer cet utilisateur?')" class="btn btn-dark">Supprimer</a>
                                         </td>
                                     </tr> 
                                 {% endfor %}  

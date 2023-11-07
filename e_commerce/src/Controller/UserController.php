@@ -38,8 +38,8 @@ class UserController extends AbstractController
     public function delete(User $user, EntityManagerInterface $entityManager): Response   
     {                                                                   // Créer une fonction delete() dans le controller pour supprimer un user            
         
-        if ($this->getUser() != $user) {                                // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
-            throw $this->createAccessDeniedException('Accès non autorisé');
+        if ($this->getUser() != $user || $this->isGranted('ROLE_ADMIN')) { // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
+            throw $this->createAccessDeniedException('Accès non autorisé'); // ou si un admin n'est pas à l'origine de l'action
         }
 
         $entityManager->remove($user);                                  // Supprime un user

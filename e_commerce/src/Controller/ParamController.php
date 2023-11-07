@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Newsletters\Users;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +21,7 @@ class ParamController extends AbstractController
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // // FONCTION POUR AFFICHER LA LISTE DE TOUS LES UTILISATEURS
 
-    #[Route('/', name: 'liste')]
+    #[Route('/liste', name: 'liste')]
     public function liste(UserRepository $userRepository)
     { 
         if (!$this->isGranted('ROLE_ADMIN')) {                              // Permet d'empécher l'accès à cette action si ce n'est pas un admin
@@ -31,4 +32,5 @@ class ParamController extends AbstractController
 
         return $this->render('param/liste.html.twig', compact('users'));
     }
+    
 }
