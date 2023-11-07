@@ -63,9 +63,7 @@
                         
                             <br><a href="{{ path ('app_serie') }}"><img class="icone2" src="{{ asset('img/gears-solid.svg') }}" title="Ajouter une nouvelle Collection" alt="Ajouter une nouvelle Collection"><br>Ajouter une nouvelle collection</a>
                             <br><a href="{{ path ('app_categories') }}"><img class="icone2" src="{{ asset('img/pen-to-square-solid.svg') }}" title="Gérer les catégories de la Newsletter" alt="Gérer les catégories de la Newsletter"><br>Gérer les catégories de la Newsletter</a>
-                            
-                            <br><a href=""><img class="icone2" src="{{ asset('img/people-roof-solid.svg') }}" title="Gérer les Utilisateurs" alt="Gérer les Utilisateurs"><br>Gérer les utilisateurs</a>
-                            
+                            <br><a href="{{ path ('app_param_liste') }}"><img class="icone2" src="{{ asset('img/people-roof-solid.svg') }}" title="Gérer les Utilisateurs" alt="Gérer les Utilisateurs"><br>Gérer les utilisateurs</a>
                             <br><a href="{{ path ('app_commande_liste') }}"><img class="icone2" src="{{ asset('img/cart-shopping-solid.svg') }}" title="Afficher la liste de toutes les commandes" alt="Afficher la liste de toutes les commandes"><br>Liste de toutes les commandes</a>
                         
                         {% endif %}   
@@ -84,7 +82,7 @@
                             {# Permet d'afficher la page des commandes propre à chaque utilisateurs #}
                             <a href="{{ path ('show_user', {id: app.user.id}) }}"><img class="lk" src="{{ asset('img/cart-shopping-solid.svg') }}" alt="Voir mes commandes et mes factures" title="Voir mes commandes et mes factures"><br>Commandes & Factures</a>
                 
-                            <a href="{{ path ('app_param') }}"><img class="lk" src="{{ asset('img/gear-solid.svg') }}" title="Gérer mon compte" alt="Gérer mon compte"><br>Mon compte</a>
+                            <a href="{{ path ('app_param_param') }}"><img class="lk" src="{{ asset('img/gear-solid.svg') }}" title="Gérer mon compte" alt="Gérer mon compte"><br>Mon compte</a>
                             <a href="{{ path ('app_home') }}"><img class="lk" src="{{ asset('img/house-solid.svg') }}" title="Retourner à la page d'accueil" alt="Retour à la page d'accueil"><br>Accueil</a>
                         
                         </div>
