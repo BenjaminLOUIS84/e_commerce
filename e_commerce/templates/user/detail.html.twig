@@ -28,11 +28,9 @@
 
         <h3>Commande n° {{ commande.numeroCommande }}<br>
             faite le {{ commande.dateCommande | date("d-m-Y") }}<br>
-            {% if commande.user.pseudo == null %}
-                par un utilisateur anonyme
-            {% else %}
-                par {{commande.user.pseudo}}
-            {% endif %}
+            
+            {# Utiliser le pipe | default pour afficher les commandes d'un utilisateur anonymisé #}
+            par {{ commande.user.pseudo | default('Utilisateur anonyme') }}
         </h3>
 
         <body>
