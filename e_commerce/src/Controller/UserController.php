@@ -70,21 +70,22 @@ class UserController extends AbstractController
 
     {
 
-        if($this->getUser() != $user){                                      // Si l'id de l'utilisateur dans l'url ne correspond pas à l'utilisateur connecté
-            throw $this->createNotFoundException('Page non trouvée');
-        }  
-        
-        $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]);     // Affiche tous les commandes de l'utilisateur connecté
-        $commandeLivres = $commandeLivreRepository->findAll();     
-        $factures = $factureRepository->findAll();      
+        if($this->getUser() == $user || $this->isGranted('ROLE_ADMIN')){                                      // Si l'id de l'utilisateur dans l'url correspond à l'utilisateur connecté ou s'il s'agit d'un admin alors exécuter les instructions
+           
+            $commandes = $commandeRepository->findBy([], ["nom" => "ASC"]); // Affiche tous les commandes de l'utilisateur connecté
+            $commandeLivres = $commandeLivreRepository->findAll();     
+            $factures = $factureRepository->findAll();      
 
-        return $this->render('user/show.html.twig', [                       // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
-            'user' => $user,
-            'commandes' => $commandes,
-            'commandeLivres' => $commandeLivres,
-            'factures' => $factures
-        ]);
-        
+            return $this->render('user/show.html.twig', [                   // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier user)
+                'user' => $user,
+                'commandes' => $commandes,
+                'commandeLivres' => $commandeLivres,
+                'factures' => $factures
+            ]);
+            
+        }else{                                                             // Sinon rendre la page introuvable
+            throw $this->createNotFoundException('Page non trouvée');
+        } 
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
