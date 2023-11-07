@@ -18,7 +18,7 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
-            <title>Mes Commandes et mes factures</title>
+            <title>Commandes et factures</title>
         </head>
 
         <body>
@@ -26,97 +26,148 @@
                 <header>
 
                     <!-- Cette partie concerne les commandes de chaque utilisateurs -->
-                    <h3>MES COMMANDES & MES FACTURES</h3>
-
-                    {# Lire et afficher toutes les notifications #}
-                    {% for label, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="flash-{{ label }}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-
-                    {# Ce que les utiliseurs peuvent voir #}
-                    {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
+                    {% if is_granted('ROLE_ADMIN') %}
                     
-                    {% if user.commande | length >0 %}
+                        {# Ce que l'admin doit voir #}
+                        <h3>COMMANDES & FACTURES de {{ user.Pseudo }}</h3>
 
-                        {% for commande in user.commande %}
+                        {# Lire et afficher toutes les notifications #}
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="flash-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                        {% if user.commande | length >0 %}
+                            
+                            {% for commande in user.commande %}
+                            
+                                <div class="optionAdmin">
                                     
-                            <div class="optionAdmin">
-
-                                {% if commande.facture | length >0 %}
-
+                                    {% if commande.facture | length >0 %}
+                                    
                                     {# Permet d'afficher la page des factures propre à chaque commandes #}
                                     <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id, slug:commande.slug}) }}"><img class="icone" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
                                     
                                     {% for facture in commande.Facture %}
-                                        <h2>Facture du {{ facture.dateFacture | date("d-m-Y") }}</h2>
+                                    <h2>Facture du {{ facture.dateFacture | date("d-m-Y") }}</h2>
                                     {% endfor %}
-
-                                {% else %}
-
+                                    
+                                    {% else %}
+                                    
                                     {# Accéder au détail en cliquant sur la date de commande #}
                                     <a class="btn" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
                                     
-                                {% endif %}
+                                    {% endif %}
                                     
+                                </div>
+                                
+                            {% endfor %}
+                            
+                        {% else %}
+                            <p>Aucune commande</p>
+                        {% endif %}
+                            
+                        <nav id="men">
+                            <div id="menu">
+                                <a href="{{ path ('app_param_liste') }}"><img class="lk" src="{{ asset('img/backward-step-solid.svg') }}" alt="Retourner à la liste des utilisateurs" title="Retourner à la liste des utilisateurs"><br>Retour</a>
                             </div>
-
-                        {% endfor %}
-
-                    {% else %}
-                        <p>Aucune commande</p>
-                    {% endif %}
+                        </nav>
                     
-                    <nav id="men">
-                        <div id="menu">
-                            <a href="{{ path ('app_user', {id: user.id}) }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retourner à mon espace" title="Retourner à mon espace"><br>Mon espace</a>
-                        </div>
-                    </nav>
+                        {# Ce que les utilisateurs doivent voir #}
+                    {% else %} 
+                        
+                        <h3>MES COMMANDES & MES FACTURES</h3>
+                            
+                        {# Lire et afficher toutes les notifications #}
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="flash-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                            
+                        {# Ce que les utiliseurs peuvent voir #}
+                        {# Créer une condition pour afficher un message quand il n'y a pas de commandes #}
+                        
+                        {% if user.commande | length >0 %}
+                        
+                            {% for commande in user.commande %}
+                            
+                                <div class="optionAdmin">
+                                    
+                                    {% if commande.facture | length >0 %}
+                                    
+                                    {# Permet d'afficher la page des factures propre à chaque commandes #}
+                                    <a class="crud" href="{{ path ('app_facture_detail_facture', {id: commande.id, slug:commande.slug}) }}"><img class="icone" src="{{ asset('img/file-solid.svg') }}" alt="Voir la facture" title="Voir la facture"></a>
+                                    
+                                    {% for facture in commande.Facture %}
+                                    <h2>Facture du {{ facture.dateFacture | date("d-m-Y") }}</h2>
+                                    {% endfor %}
+                                    
+                                    {% else %}
+                                    
+                                    {# Accéder au détail en cliquant sur la date de commande #}
+                                    <a class="btn" title="Accéder au détail de cette commande" href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}">Commande du {{ commande.dateCommande | date("d-m-Y") }}</a>
+                                    
+                                    {% endif %}
+                                    
+                                </div>
+                                
+                            {% endfor %}
+                            
+                        {% else %}
+                            <p>Aucune commande</p>
+                        {% endif %}
+                            
+                        <nav id="men">
+                            <div id="menu">
+                                <a href="{{ path ('app_user', {id: user.id}) }}"><img class="lk" src="{{ asset('img/user-solid.svg') }}" alt="Retourner à mon espace" title="Retourner à mon espace"><br>Mon espace</a>
+                            </div>
+                        </nav>
+                            
+                    {% endif %}
 
                 </header>
             </div>
-
+                
             <footer>
 
                 <div id="info">
             
-                  <div class="pied">
+                    <div class="pied">
+                
+                        <figure>
+                            <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}" alt="QR Code de Daniel Aaron" class="logQR"></a>
+                        </figure>
+                
+                        <div class="reseaux">
+                            <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
+                            <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
+                            <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
+                            <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
+                            <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
+                            <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
+                        </div>
             
-                    <figure>
-                      <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}"
-                          alt="QR Code de Daniel Aaron" class="logQR"></a>
-                    </figure>
-            
-                    <div class="reseaux">
-                      <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
-                      <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
-                      <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
-                      <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
-                      <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
-                      <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
-                      {# <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
-                      <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a> #}
                     </div>
             
-                  </div>
-            
-                  <div class="acces">
-                    <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
-                    <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
-                    <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
-                    <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
-                  </div>
-            
-                  <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
-            
+                    <div class="acces">
+                        <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
+                        <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
+                        <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
+                        <p class="text3">2023 © Fou et Sage - Template by Benjamin LOUIS</p>
+                    </div>
+                
+                    <a href="#"><img class="boutonScroll" alt="bouton scroll" src="{{ asset('img/UP.jpg') }}"></a>
+                
                 </div>
             
-              </footer>
+            </footer>
             
-            <!-- <script>src = "script.js"</script> -->
         </body>
 
     </html>
