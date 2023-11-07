@@ -29,7 +29,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
                     
                         {# Ce que l'admin doit voir #}
-                        <h3>COMMANDES & FACTURES de {{ user.Pseudo }}</h3>
+                        <h3>Commandes et factures de {{ user.Pseudo }}</h3>
 
                         {# Lire et afficher toutes les notifications #}
                         {% for label, messages in app.flashes %}

@@ -50,7 +50,7 @@
                                 <tr>
                                     <th>Dates</th>
                                     <th>Numéros de commande</th>
-                                    <th>Actions</th> 
+                                    <th>Action</th> 
                                 </tr>
                             </thead>
 
@@ -62,8 +62,7 @@
                                         <td>{{ commande.dateCommande | date("d-m-Y") }}</td>
                                         <td>{{ commande.numeroCommande }}</td>
                                         <td>
-                                            <a href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}" class="btn btn-dark">Consulter</a>
-                                            <a href="{{ path ('app_commande_delete_commande', {id: commande.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer cette commande?')" class="btn btn-dark">Supprimer</a> 
+                                            <a href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}" class="btn btn-dark">Consulter</a> 
                                         </td>
                                     </tr> 
                                 {% endfor %}  
