@@ -24,7 +24,7 @@ class CommandeLivre
     private ?Commande $commande = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandeLivres')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true, onDelete:'SET NULL')]
     private ?Livre $livre = null;
 
     #[ORM\Column]
