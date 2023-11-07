@@ -36,21 +36,24 @@ class UserController extends AbstractController
 
     #[Route('/user/{id}/delete', name: 'delete_user')]
     public function delete(User $user, EntityManagerInterface $entityManager): Response   
-    {                                                                   // Créer une fonction delete() dans le controller pour supprimer un user            
+    {                                                                       // Créer une fonction delete() dans le controller pour supprimer un user            
         
-        if ($this->getUser() != $user || !$this->isGranted('ROLE_ADMIN')) { // Permet d'empécher l'accès à cette action si l'id dans l'URL ne correspond pas à celui de l'utilisateur
-            throw $this->createAccessDeniedException('Accès non autorisé'); // ou si un admin n'est pas à l'origine de l'action
-        }
+        if ($this->getUser() == $user || $this->isGranted('ROLE_ADMIN')) {  // Si l'id dans l'URL correspond à celui de l'utilisateur connecté || ou si il s'agit d'un admin
+            
+            $entityManager->remove($user);                                  // Supprime un user
+            $entityManager->flush();                                        // Exécute l'action DANS LA BDD
 
-        $entityManager->remove($user);                                  // Supprime un user
-        $entityManager->flush();                                        // Exécute l'action DANS LA BDD
+            $this->addFlash(                                                // Envoyer une notification
+                'success',
+                'Compte supprimé avec succès!'
+            );
 
-        $this->addFlash(                                                // Envoyer une notification
-            'success',
-            'Compte supprimé avec succès!'
-        );
+            return $this->redirectToRoute('app_home');                      // Rediriger vers la page d'accueil
+        
+        }else{
+            throw $this->createAccessDeniedException('Accès non autorisé'); // Sinon interdire l'accès à cette action
+        }                                                           
 
-        return $this->redirectToRoute('app_home');                      // Rediriger vers la page d'accueil
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
