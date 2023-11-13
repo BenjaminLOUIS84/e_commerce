@@ -178,7 +178,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 .article {
@@ -211,7 +211,8 @@ h1 {
     text-align: justify;
     border-radius: 5px;
     padding: 10px;
-    background: radial-gradient(var(--color-secondary), transparent);
+    /* background: radial-gradient(var(--color-secondary), transparent); */
+    background: var(--color-secondary);
 
 }
 
