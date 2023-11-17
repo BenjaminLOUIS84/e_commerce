@@ -13,21 +13,14 @@
 
     /* POLICES */
     --police-primary: 'Libre Baskerville', sans-serif;
-    /* --police-primary:  Verdana, Geneva, Tahoma, sans-serif; */
-    /* font-family: */
-    
-    /* IMAGES changement selon l'article */
-    /* --image-background: url({{ asset('uploads/images/'~ newsletters.picture) }}); */
 }
 
 /* Pour rendre tous les liens scrollables*/
-
 html {
     scroll-behavior: smooth;
 }
 
 /* wrapper  =   bloc contenant les réglages par défaut pour toute la page*/
-
 .wrapper {
     text-align: center;
     display: flex;
@@ -35,13 +28,11 @@ html {
     /* font-family: 'Libre Baskerville', sans-serif; */
     font-family: var(--police-primary);
     position: fixed;
-    /* position: absolute; */
 }
 
 main {
     font-family: var(--police-primary);
 }
-
 
 /*HEADER///////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -56,11 +47,20 @@ header {
     padding-left: 110px;
 }
 
-.head {
+.daniel {
+    width: 170%;
+}
+
+.meal {
+    border-radius: 10px;
+    display: none;
+}
+
+.icones {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background: white;
-    /* height: 200px; */
+    margin-left: 400px;
 }
 
 .name {
@@ -68,11 +68,13 @@ header {
     flex-direction: row;
     gap: 10px;
     margin-left: 110px;
-    /* width: 100%; */
 }
 
-.daniel {
-    width: 170%;
+.head {
+    display: flex;
+    align-items: center;
+    background: white;
+    /* height: 200px; */
 }
 
 .haut {
@@ -90,12 +92,7 @@ header {
     width: 30%;
 }
 
-.icones {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 400px;
-}
+
 
 .fb,
 .in,
@@ -132,7 +129,6 @@ a {
 a:hover {
     opacity: 50%;
     transition: ease-in-out 0.5s;
-    /* color: var(--color-third); */
 }
 
 /* NAVIGATION ////////////////////////////////////////////////////////////////////*/
@@ -153,12 +149,6 @@ nav .lk {
     font-size: 0.8em;
     /* font-weight: bold; */
 }
-
-.meal {
-    border-radius: 10px;
-    display: none;
-}
-
 
 h2 {
     font-size: 2em;
@@ -1187,25 +1177,23 @@ section .price tr {
         line-height: 1.5;
     }
 
-    header {
-        height: 90px;
-    }
-
     .daniel {
         width: 60%;
     }
 
-    .head {
+    .meal {
+        border-radius: 10px;
         display: flex;
-        flex-direction: row;
-        height: 75px;
-    }
-
-    header {
-        display: none;
+        cursor: pointer;
     }
 
     .icones {
+        display: none;
+    }
+
+    /*////////////////////////////MENU BURGER///////////////////////////*/
+
+    .menu {
         display: none;
     }
 
@@ -1220,6 +1208,10 @@ section .price tr {
         scroll-behavior: unset;
     }
 
+    header {
+        height: 90px;
+    }
+    
     /* Animation Faire apparaitre certains éléments Zoom*/
 
     @keyframes appear {
@@ -1246,6 +1238,16 @@ section .price tr {
     }
 
     /*////////////////////////////ACCUEIL///////////////////////////*/
+
+    .head {
+        display: flex;
+        flex-direction: row;
+        height: 75px;
+    }
+
+    header {
+        display: none;
+    }
 
     .name {
         display: flex;
@@ -1333,18 +1335,6 @@ section .price tr {
         /*Faire apparaitre cet élément*/
         animation: appear 1s;
         transition: ease-in-out 0.5s;
-    }
-
-    /*////////////////////////////MENU BURGER///////////////////////////*/
-
-    .menu {
-        display: none;
-    }
-
-    .meal {
-        border-radius: 10px;
-        display: flex;
-        cursor: pointer;
     }
 
     .meal:hover {
