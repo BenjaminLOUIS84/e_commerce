@@ -122,9 +122,10 @@ class FormatController extends AbstractController
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FONCTION POUR AFFICHER LE DETAIL DE CHAQUE MODES D'EDITION
-
+    // Créer une fonction show() dans le controller pour afficher le détail d'un mode d'édition 
+    
     #[Route('/format/{slug}-{id<[0-9]+>}/show', name: 'show_format', requirements: ['slug' => '[a-z0-9\-]*'])]
-    public function show(Format $format, string $slug): Response                // Créer une fonction show() dans le controller pour afficher le détail d'un mode d'édition 
+    public function show(Format $format, string $slug): Response                
 
     {
         if($format->getSlug() !== $slug){
@@ -134,7 +135,8 @@ class FormatController extends AbstractController
             ], 301);
         }
 
-        return $this->render('format/show.html.twig', [          // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
+        // Pour faire le lien entre le controller et la vue show.html.twig (il faut donc la créer dans le dossier collection)
+        return $this->render('format/show.html.twig', [          
             'format' => $format
         ]);
     }
