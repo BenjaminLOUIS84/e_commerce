@@ -37,13 +37,14 @@ class CommandeController extends AbstractController
         }
         
         $commandes = $commandeRepository->findBy([], ["id" => "DESC"]); // Classer les commandes de la plus récente à la plus ancienne
-        $commandesMois = $commandeRepository->mois([], ["id" => "DESC"]); // Pour récupérer les commandes faites le mois en cours
+        
+        $commandesLastDays = $commandeRepository->lastDays([], ["id" => "DESC"]); // Pour récupérer les commandes faites les 10 derniers jours
 
 
         return $this->render('commande/index.html.twig', [
             
             'commandes' => $commandes,
-            'commandesMois' => $commandesMois,
+            'commandesLastDays' => $commandesLastDays,
             
         ]);
     }

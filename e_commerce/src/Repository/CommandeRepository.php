@@ -23,35 +23,38 @@ class CommandeRepository extends ServiceEntityRepository
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REQUETES SQL -> DQL
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //Pour afficher les commandes passées en novembre
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Pour afficher les commandes passées les 10 derniers jours
 
         // 1 Créer une requête SQL dans la BDD pour matérialiser le mécanisme
         // 2 Adapter cette requête en DQL
-        // 3 Créer la fonctions showPast() dans le CommandeController.php
-        // 4 Créer les chemins d'accès href="{{path ('')}}">Commande passées en Novembre 2023 dans la vue index twig
+        // 3 Créer la fonction lastDays() dans le CommandeController.php
+        
+        // Pour afficher la liste de toutes les commandes et en premier plan les commandes passées les 10 derniers jours dans la vue index.html.twig
 
-        // Ci dessous sont des requêtes DQL
-    public function mois(): ?array
+        // 4 Créer le chemin d'accès href="{{path ('app_commande_list')}}"> 
+
+    public function lastDays()
         { 
-            /////////////////////DQL//////////////////////       Mois en cours           /////////////////////// SQL////////////////////
+            /////////////////////SQL//////////////////////                              
+            // SELECT c.date_commande
+            // FROM commande c
+            // WHERE ADDDATE(date_commande, INTERVAL 10 DAY) >= CURDATE()
+                
+            /////////////////////// DQL////////////////////
+                $dateLimit = new \DateTime();                                           // Créer une variable pour initialiser une nouvelle Date en guise de référence
+                $dateLimit->modify('-10 days');                                         // Utiliser la Fonction modify() pour modifier cette date
+                
+                $query = $this->createQueryBuilder('c')                                 // Pour créer la requête
 
-            return $this                                                                 // $entityManager = $this->getEntityManager();
+                ->andWhere ('c.date_commande >= :dateLimit')                            // Remplace le WHERE en SQL pour filtrer l'affichage au 20 derniers jours
+                ->setParameter (':dateLimit', $dateLimit)                               // Sécurité pour éviter l'injection SQL           
 
-                ->createQueryBuilder('commande')                                         // $query = $entityManager->createQuery()
-
-                // ->andWhere('commande.date_commande > CURRENT_DATE()')                 // WHERE s.date_commande < CURDATE() 
-
-                // ->andWhere('commande.date_commande <= CURRENT_DATE() AND commande.date_commande >= CURRENT_DATE()+1')
-
-                // ->andWhere('commande.user = 10')  // Pour afficher les commande d'un utilisateur en particulier                 
-
-                ->getQuery()                                                             // return $query->getResult();
-                ->getResult()
+                ->getQuery();                                                           // Récupérer le résultat 
+                return $query->getResult()                                              // Renvoyer le résultat de la requête
             ;
 
         }
-
 
 //    /**
 //     * @return Commande[] Returns an array of Commande objects

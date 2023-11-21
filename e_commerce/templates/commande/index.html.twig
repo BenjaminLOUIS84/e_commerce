@@ -31,10 +31,7 @@
             <div class="wrapperLibre">
                 <header>
                     <!-- Cette page concerne les séries de livres -->
-                    <h3>Liste de toutes les commandes</h3>
-
                     {# Lire et afficher toutes les notifications #}
-
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
                             <div class="flash-{{ label }}">
@@ -44,8 +41,31 @@
                     {% endfor %}
 
                     {% if is_granted('ROLE_ADMIN') %}
+
+                        {# Affiche la liste des commandes passée le mois en cours #}
+                        <br><h3>Liste des commandes des 10 derniers jours</h3>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Dates</th>
+                                    <th>Numéros de commande</th>
+                                    <th>Clients</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for commandeLastDays in commandesLastDays %}
+                                    <tr>
+                                        <td>{{ commandeLastDays.dateCommande | date("d-m-Y") }}</td>
+                                        <td>{{ commandeLastDays.numeroCommande }}</td> 
+                                        <td>{{ commandeLastDays.getCoordonnees()}}</td> 
+                                    </tr> 
+                                {% endfor %}  
+                            </tbody>
+                        </table><br>
                         
                         {# Affiche la liste de toutes les commandes #}
+                        <br><h3>Liste de toutes les commandes</h3>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -65,29 +85,6 @@
                                         <td>
                                             <a href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}" class="btn btn-dark">Consulter</a> 
                                         </td>
-                                    </tr> 
-                                {% endfor %}  
-                            </tbody>
-                        </table>
-
-                        {# Affiche la liste des commandes passée en novembre 2023 #}
-                        <br><h3>Liste des commandes du mois en cours</h3>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Dates</th>
-                                    <th>Numéros de commande</th>
-                                    <th>Clients</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                
-                                {% for commandeMois in commandesMois %}
-                                    <tr>
-                                        <td>{{ commandeMois.dateCommande | date("d-m-Y") }}</td>
-                                        <td>{{ commandeMois.numeroCommande }}</td> 
-                                        <td>{{ commandeMois.getCoordonnees()}}</td> 
                                     </tr> 
                                 {% endfor %}  
                             </tbody>
