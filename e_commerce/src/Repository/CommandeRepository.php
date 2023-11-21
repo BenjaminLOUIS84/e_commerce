@@ -21,6 +21,34 @@ class CommandeRepository extends ServiceEntityRepository
         parent::__construct($registry, Commande::class);
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //REQUETES SQL -> DQL
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Pour afficher les commandes passées en novembre
+
+        // 1 Créer une requête SQL dans la BDD pour matérialiser le mécanisme
+        // 2 Adapter cette requête en DQL
+        // 3 Créer la fonctions showPast() dans le CommandeController.php
+        // 4 Créer les chemins d'accès href="{{path ('')}}">Commande passées en Novembre 2023 dans la vue index twig
+
+        // Ci dessous sont des requêtes DQL
+    public function novembre($date_commande): ?array
+        { 
+            /////////////////////DQL//////////////////////       Novembre 2023           /////////////////////// SQL////////////////////
+
+            return $this                                                                 // $entityManager = $this->getEntityManager();
+            
+                ->createQueryBuilder('commande')                                         // $query = $entityManager->createQuery()
+
+                ->andWhere('commande.date_commande > CURRENT_DATE()')                    // WHERE s.date_commande < CURDATE()
+
+                ->getQuery()                                                             // return $query->getResult();
+                ->getResult()
+            ;
+
+        }
+
+
 //    /**
 //     * @return Commande[] Returns an array of Commande objects
 //     */

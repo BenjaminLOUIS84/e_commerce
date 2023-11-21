@@ -26,7 +26,7 @@ class CommandeController extends AbstractController
 {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FONCTION POUR AFFICHER LA LISTE DU TOUTES DES COMMANDES
+    // FONCTION POUR AFFICHER LA LISTE DU TOUTES DES COMMANDES (dont les commandes passées en novembre 2023)
 
     #[Route('/liste', name: 'liste')]
     public function index(CommandeRepository $commandeRepository): Response
@@ -37,10 +37,12 @@ class CommandeController extends AbstractController
         }
 
         $commandes = $commandeRepository->findBy([], ["id" => "DESC"]); // Classer les commandes de la plus récente à la plus ancienne
+        $commandesNovembre = $commandeRepository->novembre([], ["id" => "DESC"]); // Pour récupérer les commandes faite en Novembre 2023
 
         return $this->render('commande/index.html.twig', [
             
             'commandes' => $commandes,
+            'commandesNovembre' => $commandesNovembre,
             
         ]);
     }

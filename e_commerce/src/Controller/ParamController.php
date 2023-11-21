@@ -29,8 +29,9 @@ class ParamController extends AbstractController
         }
         
         $users = $userRepository->findBy([], ["Pseudo" => "ASC"]);      // Affiche tous les utilisateurs
+        
 
         return $this->render('param/liste.html.twig', compact('users'));
     }
-    
+
 }

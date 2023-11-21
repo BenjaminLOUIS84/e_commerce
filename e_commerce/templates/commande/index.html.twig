@@ -44,7 +44,7 @@
                     {% endfor %}
 
                     {% if is_granted('ROLE_ADMIN') %}
-
+                        {# Affiche la liste de toutes les commandes #}
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -64,6 +64,27 @@
                                         <td>
                                             <a href="{{ path ('detail_commande', {id: commande.id, slug:commande.slug}) }}" class="btn btn-dark">Consulter</a> 
                                         </td>
+                                    </tr> 
+                                {% endfor %}  
+                            </tbody>
+                        </table>
+                        
+                        {# Affiche la liste des commandes passée en novembre 2023 #}
+                        <h2>Liste des commandes passées en novembre 2023</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Dates</th>
+                                    <th>Numéros de commande</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                
+                                {% for commandeNovembre in commandesNovembre %}
+                                    <tr>
+                                        <td>{{ commandeNovembre.dateCommande | date("d-m-Y") }}</td>
+                                        <td>{{ commandeNovembre.numeroCommande }}</td> 
                                     </tr> 
                                 {% endfor %}  
                             </tbody>
