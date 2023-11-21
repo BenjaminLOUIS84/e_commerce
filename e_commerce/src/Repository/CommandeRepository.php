@@ -32,15 +32,19 @@ class CommandeRepository extends ServiceEntityRepository
         // 4 Créer les chemins d'accès href="{{path ('')}}">Commande passées en Novembre 2023 dans la vue index twig
 
         // Ci dessous sont des requêtes DQL
-    public function novembre($date_commande): ?array
+    public function mois(): ?array
         { 
-            /////////////////////DQL//////////////////////       Novembre 2023           /////////////////////// SQL////////////////////
+            /////////////////////DQL//////////////////////       Mois en cours           /////////////////////// SQL////////////////////
 
             return $this                                                                 // $entityManager = $this->getEntityManager();
-            
+
                 ->createQueryBuilder('commande')                                         // $query = $entityManager->createQuery()
 
-                ->andWhere('commande.date_commande > CURRENT_DATE()')                    // WHERE s.date_commande < CURDATE()
+                // ->andWhere('commande.date_commande > CURRENT_DATE()')                 // WHERE s.date_commande < CURDATE() 
+
+                // ->andWhere('commande.date_commande <= CURRENT_DATE() AND commande.date_commande >= CURRENT_DATE()+1')
+
+                // ->andWhere('commande.user = 10')  // Pour afficher les commande d'un utilisateur en particulier                 
 
                 ->getQuery()                                                             // return $query->getResult();
                 ->getResult()

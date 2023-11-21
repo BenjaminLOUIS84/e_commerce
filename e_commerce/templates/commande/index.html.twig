@@ -44,6 +44,7 @@
                     {% endfor %}
 
                     {% if is_granted('ROLE_ADMIN') %}
+                        
                         {# Affiche la liste de toutes les commandes #}
                         <table class="table table-striped">
                             <thead>
@@ -68,23 +69,25 @@
                                 {% endfor %}  
                             </tbody>
                         </table>
-                        
+
                         {# Affiche la liste des commandes passée en novembre 2023 #}
-                        <h2>Liste des commandes passées en novembre 2023</h2>
+                        <br><h3>Liste des commandes du mois en cours</h3>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Dates</th>
                                     <th>Numéros de commande</th>
+                                    <th>Clients</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 
-                                {% for commandeNovembre in commandesNovembre %}
+                                {% for commandeMois in commandesMois %}
                                     <tr>
-                                        <td>{{ commandeNovembre.dateCommande | date("d-m-Y") }}</td>
-                                        <td>{{ commandeNovembre.numeroCommande }}</td> 
+                                        <td>{{ commandeMois.dateCommande | date("d-m-Y") }}</td>
+                                        <td>{{ commandeMois.numeroCommande }}</td> 
+                                        <td>{{ commandeMois.getCoordonnees()}}</td> 
                                     </tr> 
                                 {% endfor %}  
                             </tbody>

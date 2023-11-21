@@ -197,14 +197,12 @@ class Commande
 
     ////////////////////////////////////////////////////////////////////////
     // Il est possible de créer d'autres fonctions ici
-
     public function __toString() {  // Pour faciliter l'affichage des autres informations d'une entité
 
         return $this->nom. " ";     // L'élément affiché de la liste des commande est seulement la date de commande
     }                                       
 
     // Créer un fonction pour afficher les coordonnées complètes afin de pouvoir la réutiliser et d'alléger le code dans le fichier show.html.twig
-
     public function getCoordonnees(): string
     {
        return  $this->nom. " " .$this->prenom. " " .$this->adresse. " " .$this->cp. " " .$this->ville; 
