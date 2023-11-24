@@ -2,7 +2,7 @@ ecommit_deploy_rsync:
     #Environments configuration
     environments:
         my_server1: #Environment name
-            hostname: danielaaron.eu #SSH hostname - Required
+            hostname: ssh.cluster028.hosting.ovh.net #SSH hostname - Required
             username: danieqh #SSH username - Required
             dir: /home/danieqh #SSH remote directory - Required
             #port: 22 #Port - Not required - Default value: 22
