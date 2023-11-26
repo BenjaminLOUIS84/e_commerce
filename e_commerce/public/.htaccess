@@ -17,6 +17,8 @@ DirectoryIndex index.php
     Options -MultiViews
 </IfModule>
 
+SetEnv PHP_VER 5
+
 <IfModule mod_rewrite.c>
     # This Option needs to be enabled for RewriteRule, otherwise it will show an error like
     # 'Options FollowSymLinks or SymLinksIfOwnerMatch is off which implies that RewriteRule directive is forbidden'
@@ -77,3 +79,4 @@ DirectoryIndex index.php
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule . index.php [L]
 </IfModule>
+
