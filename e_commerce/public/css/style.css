@@ -1012,9 +1012,9 @@ section .price tr {
 
     .meal {
         border-radius: 10px;
-        /* margin-right: 20px; */
         display: flex;
-        width: 150%;
+        width: 110%;
+        padding-left: 230px;
     }
 
     /*//////////////////////////////////////////////////////////////////*/
@@ -1060,9 +1060,9 @@ section .price tr {
         display: none;
     }
 
-    figure {
+    /* figure {
         margin: auto;
-    }
+    } */
 
     /*////////////////////////////FEATURES///////////////////////////*/
 
@@ -1129,7 +1129,7 @@ section .price tr {
     }
 
     .photo-hover {
-        left: 0px;
+        left: 5px;
     }
 
     h4 {
