@@ -959,7 +959,7 @@ section .price tr {
 
 /*TABLETTE//////////////////////////////////////////////////////*/
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
 
     .wrapper {
         margin: auto;
@@ -1129,7 +1129,7 @@ section .price tr {
     }
 
     .photo-hover {
-        left: 40px;
+        left: 0px;
     }
 
     h4 {
@@ -1162,7 +1162,7 @@ section .price tr {
     }
 
     footer figure {
-        display: none;
+        width: 70%;
     }
 
 }
@@ -1242,7 +1242,7 @@ section .price tr {
     .head {
         display: flex;
         flex-direction: row;
-        height: 75px;
+        height: 90px;
     }
 
     header {
@@ -1592,7 +1592,7 @@ section .price tr {
     .reseaux {
         padding-top: 0px;
         padding-bottom: 0px;
-        width: 50%;
+        width: 40%;
         margin-right: 0px;
         gap: 15px;
     }
