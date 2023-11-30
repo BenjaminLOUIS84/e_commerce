@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14d6c492acb2f19343538eacee7f0a6e",
+    "content-hash": "4bbc9ad3ff2f2b912f81fd05f2595dc4",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1454,71 +1454,6 @@
                 "source": "https://github.com/dompdf/dompdf/tree/v2.0.3"
             },
             "time": "2023-02-07T12:51:48+00:00"
-        },
-        {
-            "name": "ecommit/deploy-rsync-bundle",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/e-commit/deploy-rsync-bundle.git",
-                "reference": "5c0b66b5834445e7d63f7b8b085db8d271355911"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/e-commit/deploy-rsync-bundle/zipball/5c0b66b5834445e7d63f7b8b085db8d271355911",
-                "reference": "5c0b66b5834445e7d63f7b8b085db8d271355911",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": "^7.2|^8.0",
-                "symfony/config": "^4.4.12|^5.4|^6.0",
-                "symfony/console": "^4.4|^5.4|^6.0",
-                "symfony/dependency-injection": "^4.4.12|^5.4|^6.0",
-                "symfony/framework-bundle": "^4.4|^5.4|^6.0",
-                "symfony/http-kernel": "^4.4|^5.4|^6.0",
-                "symfony/process": "^4.4|^5.4|^6.0"
-            },
-            "require-dev": {
-                "dg/bypass-finals": "^1.3",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "phpunit/phpunit": "^8.5.14",
-                "vimeo/psalm": "^4.23"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ecommit\\DeployRsyncBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hubert Lecorche",
-                    "email": "contact@e-commit.fr"
-                }
-            ],
-            "description": "Deploy Symfony project with Rsync",
-            "keywords": [
-                "deploy",
-                "rsync",
-                "ssh",
-                "symfony",
-                "symfony-bundle"
-            ],
-            "support": {
-                "issues": "https://github.com/e-commit/deploy-rsync-bundle/issues",
-                "source": "https://github.com/e-commit/deploy-rsync-bundle/tree/v1.0.0"
-            },
-            "time": "2022-07-26T21:06:29+00:00"
         },
         {
             "name": "egulias/email-validator",
