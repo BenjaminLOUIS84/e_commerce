@@ -5,8 +5,13 @@ framework:
         # Configure how to generate URLs in non-HTTP contexts, such as CLI commands.
         # See https://symfony.com/doc/current/routing.html#generating-urls-in-commands
         default_uri: http://127.0.0.1:8000/
+       
 
 when@prod:
     framework:
         router:
+            # utf8: true
+                # Configure how to generate URLs in non-HTTP contexts, such as CLI commands.
+                # See https://symfony.com/doc/current/routing.html#generating-urls-in-commands
+                default_uri: https://www.danielaaron.eu/home
             strict_requirements: null
