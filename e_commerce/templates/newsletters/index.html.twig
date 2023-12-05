@@ -39,7 +39,7 @@
                         {{ form_row(form.is_rgpd) }}
                     
                         {# Créer un champ caché pour recevoir et valider le token #}
-                        <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+                        {# <input type="hidden" id="recaptchaResponse" name="recaptcha-response"> #}
 
                         {{ form_row(form.Enregistrer) }}
                     {{ form_end(form) }}
@@ -62,7 +62,7 @@
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
             
             {# Script JS pour éxécuter le Captcha de Google #}
-            <script src="https://www.google.com/recaptcha/api.js?render=6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE"></script>
+            {# <script src="https://www.google.com/recaptcha/api.js?render=6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE"></script>
             <script> 
             grecaptcha.ready(function() {
                 grecaptcha.execute('6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE', {action: 'homepage'}).then(function(token) {
@@ -70,7 +70,7 @@
                     document.getElementById("recaptchaResponse").value = token
                 });
             });
-            </script>
+            </script> #}
             
         </body>
 
