@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ConditonsGeneralesVenteController extends AbstractController
 {
-    #[Route('/conditons/generales/vente', name: 'app_conditons_generales_vente')]
+    #[Route('/conditons/generales', name: 'app_conditons_generales_vente')]
     public function index(): Response
     {
         return $this->render('conditons_generales_vente/index.html.twig', [
-            'controller_name' => 'ConditonsGeneralesVenteController',
+            'controller_name' => 'ConditonsGeneralesVenteController',           
         ]);
     }
 }
