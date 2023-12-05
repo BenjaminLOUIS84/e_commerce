@@ -36,31 +36,31 @@ class NewslettersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {             // Si le formulaire soumis est valide alors
             
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
-            if(empty($_POST['recaptcha-response'])){
+            // if(empty($_POST['recaptcha-response'])){
 
-                header('Location: app_newsletters_home'); 
+            //     header('Location: app_newsletters_home'); 
 
-            }else{ // On prépare l'URL
-                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
+            // }else{ // On prépare l'URL
+            //     $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
-                // On vérifie si CURL est installé
-                if(function_exists('curl_version')){
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_HEADER, false);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-                    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-                    $response = curl_exec($curl);
-                }else{
-                    $response = file_get_contents($url);
-                }
+            //     // On vérifie si CURL est installé
+            //     if(function_exists('curl_version')){
+            //         $curl = curl_init($url);
+            //         curl_setopt($curl, CURLOPT_HEADER, false);
+            //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            //         curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+            //         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            //         $response = curl_exec($curl);
+            //     }else{
+            //         $response = file_get_contents($url);
+            //     }
 
-                // On vérifie si on a une réponse
-                if(empty($response) || is_null($response)){
-                    header('Location: app_newsletters_home'); 
-                }else{
-                    $data = json_decode($response);
-                    if($data->success){
+            //     // On vérifie si on a une réponse
+            //     if(empty($response) || is_null($response)){
+            //         header('Location: app_newsletters_home'); 
+            //     }else{
+            //         $data = json_decode($response);
+            //         if($data->success){
 
                         // Sinon on éxécute les instructions
 
@@ -89,12 +89,12 @@ class NewslettersController extends AbstractController
                         $this->addFlash('message', 'Inscription en attente de validation');
                         return $this->redirectToRoute('app_home');
 
-                    }else{
-                        header('Location: app_newsletters_home'); 
-                    }
-                }
+            //         }else{
+            //             header('Location: app_newsletters_home'); 
+            //         }
+            //     }
 
-            }
+            // }
         }
         
         return $this->render('newsletters/index.html.twig', [
