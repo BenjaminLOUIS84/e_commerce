@@ -115,7 +115,8 @@ class SecurityController extends AbstractController
 
                             // Envoi du mail (Utiliser le service mail)
                             $mail->send(
-                                'etrefouetsage@gmail.com',                              // Emetteur
+                                // 'etrefouetsage@gmail.com',                              // Emetteur
+                                'contact@danielaaron.eu',                              // Emetteur
                                 $user->getEmail(),                                      // Destinataire
                                 'Réinitialisation de mot de passe',                     // Titre
                                 'password_reset',                                       // Template 

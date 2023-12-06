@@ -239,7 +239,8 @@ class NewslettersController extends AbstractController
                 $url = $this->generateUrl('app_login', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
                 $email = (new TemplatedEmail())
-                    ->from('etrefouetsage@gmail.com')
+                    // ->from('etrefouetsage@gmail.com')
+                    ->from('contact@danielaaron.eu')
                     ->to($users->getEmail())
                     ->subject($newsletters->getName())
                     ->htmlTemplate('email/news.html.twig')

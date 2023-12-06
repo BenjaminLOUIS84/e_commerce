@@ -76,7 +76,8 @@ class RegistrationController extends AbstractController
                         // generate a signed url and email it to the user (utilise le bundle de symfonyCast)
                         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                             (new TemplatedEmail())
-                                ->from(new Address('etrefouetsage@gmail.com', 'Daniel Aaron'))
+                                // ->from(new Address('etrefouetsage@gmail.com', 'Daniel Aaron'))
+                                ->from(new Address('contact@danielaaron.eu', 'Daniel Aaron'))
                                 ->to($user->getEmail())
                                 ->subject('Confirmer votre email')
                                 ->htmlTemplate('registration/confirmation_email.html.twig')
