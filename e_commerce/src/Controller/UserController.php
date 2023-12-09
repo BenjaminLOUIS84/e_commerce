@@ -46,7 +46,7 @@ class UserController extends AbstractController
             $this->addFlash(                                                // Envoyer une notification
                 'success',
                 'Compte supprimé avec succès!'
-            );
+            ); 
 
             return $this->redirectToRoute('app_home');                      // Rediriger vers la page d'accueil
         
