@@ -474,9 +474,10 @@ h5 {
 .book {
     display: flex;
     padding: 20px;
-    text-align: justify;
-    width: 400px;
+    text-align: center;
+    /* width: 400px; */
     margin: auto;
+    background: white;
 }
 
 .book p {
@@ -490,6 +491,10 @@ h5 {
     text-align: center;
 }
 
+.livres {
+    height: 50px;
+}
+
 /* LES LIVRES/////////////////////////////////////////////////////////// */
 
 .price {
@@ -498,7 +503,7 @@ h5 {
     justify-content: center;
     align-items: center;
     background: whitesmoke;
-    /* padding: 40px; */
+    padding: 40px;
     position: relative;
 
 }
@@ -1516,7 +1521,7 @@ section .price tr {
     .price {
         /* scroll-snap-type: x mandatory; */
         overflow: auto;
-        padding: 0px;
+        padding-top: 20px;
     }
 
     .blocPrice {
@@ -1530,12 +1535,12 @@ section .price tr {
 
     .photo {
         width: 60%;
-        margin-left: 80px;
+        margin-left: 65px;
     }
 
     .photo-hover {
         width: 60%;
-        margin-left: 75px;
+        margin-left: 60px;
         bottom: 17px;
     }
 
