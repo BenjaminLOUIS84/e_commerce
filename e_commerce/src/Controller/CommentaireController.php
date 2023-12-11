@@ -59,30 +59,30 @@ class CommentaireController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {                     // Si le formulaire soumis est valide alors
 
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
-            // if(empty($_POST['recaptcha-response'])){
-            //     header('Location: app_commentaire_prepare, id: newsletters.id'); 
+            if(empty($_POST['recaptcha-response'])){
+                header('Location: app_commentaire_prepare, id: newsletters.id'); 
 
-            // }else{  // On prépare l'URL
-            //     $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
+            }else{  // On prépare l'URL
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
-            //     // On vérifie si CURL est installé
-            //     if(function_exists('curl_version')){
-            //         $curl = curl_init($url);
-            //         curl_setopt($curl, CURLOPT_HEADER, false);
-            //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            //         curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-            //         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            //         $response = curl_exec($curl);
-            //     }else{
-            //         $response = file_get_contents($url);
-            //     }
+                // On vérifie si CURL est installé
+                if(function_exists('curl_version')){
+                    $curl = curl_init($url);
+                    curl_setopt($curl, CURLOPT_HEADER, false);
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                    $response = curl_exec($curl);
+                }else{
+                    $response = file_get_contents($url);
+                }
 
-            //     // On vérifie si on a une réponse
-            //     if(empty($response) || is_null($response)){
-            //         header('Location: app_commentaire_prepare, id: newsletters.id'); 
-            //     }else{
-            //         $data = json_decode($response);
-            //         if($data->success){                                                     // Si on à une réponse on éxécute les instructions
+                // On vérifie si on a une réponse
+                if(empty($response) || is_null($response)){
+                    header('Location: app_commentaire_prepare, id: newsletters.id'); 
+                }else{
+                    $data = json_decode($response);
+                    if($data->success){                                                     // Si on à une réponse on éxécute les instructions
 
                         $commentaire = $form->getData();                                // Récupérer les informations du fomulaire
             
@@ -94,11 +94,11 @@ class CommentaireController extends AbstractController
                         $this->addFlash('message', 'Commentaire ajouté avec succès');
                         return $this->redirectToRoute('app_newsletters_list');
                         
-            //         }else{
-            //             header('Location: app_commentaire_prepare, id: newsletters.id'); 
-            //         }
-            //     }   
-            // }  
+                    }else{
+                        header('Location: app_commentaire_prepare, id: newsletters.id'); 
+                    }
+                }   
+            }  
         }
 
         return $this->render('commentaire/prepare.html.twig', [
