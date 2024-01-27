@@ -364,7 +364,7 @@ header {
 }
 
 .formAddInscription {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
+    background: linear-gradient(135deg, var(--color-primary), transparent);
     color: black;
     line-height: 2;
     padding: 20px;
