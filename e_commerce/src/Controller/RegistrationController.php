@@ -37,30 +37,30 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // On vérifie si le champ "recaptcha-response" contient une valeur/////////CAPTCHA
-            if(empty($_POST['recaptcha-response'])){
-                header('Location: app_register'); 
+            // if(empty($_POST['recaptcha-response'])){
+            //     header('Location: app_register'); 
 
-            }else{ // On prépare l'URL
-                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
+            // }else{ // On prépare l'URL
+            //     $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LemV_MnAAAAAMVu3oth8lvd3LVLOXoH7FMdKuJt&response={$_POST['recaptcha-response']}";
 
-                // On vérifie si CURL est installé
-                if(function_exists('curl_version')){
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_HEADER, false);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-                    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-                    $response = curl_exec($curl);
-                }else{
-                    $response = file_get_contents($url);
-                }
+            //     // On vérifie si CURL est installé
+            //     if(function_exists('curl_version')){
+            //         $curl = curl_init($url);
+            //         curl_setopt($curl, CURLOPT_HEADER, false);
+            //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            //         curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+            //         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            //         $response = curl_exec($curl);
+            //     }else{
+            //         $response = file_get_contents($url);
+            //     }
 
-                // On vérifie si on a une réponse
-                if(empty($response) || is_null($response)){
-                    header('Location: app_register'); 
-                }else{
-                    $data = json_decode($response);
-                    if($data->success){
+            //     // On vérifie si on a une réponse
+            //     if(empty($response) || is_null($response)){
+            //         header('Location: app_register'); 
+            //     }else{
+            //         $data = json_decode($response);
+            //         if($data->success){
 
                         // Sinon on éxécute les instructions encode the plain password
                         $user->setPassword(
@@ -89,11 +89,11 @@ class RegistrationController extends AbstractController
                             $authenticator,
                             $request
                         ); 
-                    }else{
-                        header('Location: app_register'); 
-                    }
-                }   
-            }
+                //     }else{
+                //         header('Location: app_register'); 
+                //     }
+                // }   
+            // }
         }
 
         return $this->render('registration/register.html.twig', [
