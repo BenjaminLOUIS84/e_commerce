@@ -176,7 +176,7 @@ h2 {
     display: flex;
     flex-flow: row wrap;
     background: url(/public/img/collection.jpg);
-    
+
     /* background: var(--image-background); */
 
     background-size: cover;
@@ -1018,7 +1018,7 @@ section .price tr {
     .meal {
         border-radius: 10px;
         display: flex;
-        width: 110%;
+        width: 140%;
         padding-left: 230px;
     }
 
@@ -1190,6 +1190,7 @@ section .price tr {
         border-radius: 10px;
         display: flex;
         cursor: pointer;
+        width: 70%;
     }
 
     .icones {
@@ -1216,7 +1217,7 @@ section .price tr {
     header {
         height: 90px;
     }
-    
+
     /* Animation Faire apparaitre certains éléments Zoom*/
 
     @keyframes appear {
@@ -1374,6 +1375,10 @@ section .price tr {
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
+    }
+
+    .bouton#commentaire_envoyer.btn.btn-dark {
+        margin-top: 20px;
     }
 
     .text1 {

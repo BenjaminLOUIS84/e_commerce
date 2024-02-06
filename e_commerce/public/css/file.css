@@ -402,7 +402,7 @@ header {
 .formAddNews {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), var(--color-primary));
     color: black;
-    line-height: 2;
+    line-height: 5;
     padding: 10px;
     width: auto;
     display: flex;
@@ -716,10 +716,16 @@ tr .btn-dark {
     text-align: left;
 }
 
+#photo {
+    width: 70%;
+    margin-left: 60px;
+}
+
 .photo {
     width: 60%;
     filter: grayscale(0%);
     margin-left: 114px;
+    margin-bottom: 20px;
     /* display: inline-block; */
     /* padding-bottom: 20px; */
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
