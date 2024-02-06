@@ -65,9 +65,9 @@
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                         {# Créer un champ caché pour recevoir et valider le token #}
-                        <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+                        {# <input type="hidden" id="recaptchaResponse" name="recaptcha-response"> #}
 
-                        <br><button class="btn btn-dark" type="submit">Valider</button>
+                        {# <br><button class="btn btn-dark" type="submit">Valider</button> #}
 
                     </div>
                     
@@ -87,7 +87,7 @@
                 {% block javascripts %}
 
                     {# Script JS pour éxécuter le Captcha de Google #}
-                    <script src="https://www.google.com/recaptcha/api.js?render=6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE"></script>
+                    {# <script src="https://www.google.com/recaptcha/api.js?render=6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE"></script>
                     <script> 
                     grecaptcha.ready(function() {
                         grecaptcha.execute('6LemV_MnAAAAAEzotTK_2Jah4FMbZTmJa90z4qkE', {action: 'homepage'}).then(function(token) {
@@ -95,7 +95,7 @@
                             document.getElementById("recaptchaResponse").value = token
                         });
                     });
-                    </script>
+                    </script> #}
 
                     {# Framework Bootstrap #}
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
@@ -112,17 +112,17 @@
                 <div class="pied">
         
                     <figure>
-                    <a href="https://linktr.ee/SageEtFou"><img src="{{ asset('img/qrCode.png') }}"
+                    <a href=""><img src="{{ asset('img/qrCode.png') }}"
                         alt="QR Code de Daniel Aaron" class="logQR"></a>
                     </figure>
             
                     <div class="reseaux">
-                    <a href="https://www.facebook.com/daniel.aaron.906638/"><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
-                    <a href="https://www.instagram.com/_daniel_aaron_/"><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
-                    <a href="https://www.linkedin.com/in/daniel-aaron"><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
-                    <a href="https://www.tiktok.com/@daniel.aaron67"><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
-                    <a href="https://www.youtube.com/@danielaaron125"><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
-                    <a href="https://twitter.com/Danielaaron67"><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
+                    <a href=""><img class="icoFb" src="{{ asset('img/square-facebook.svg') }}" alt="Lien vers le compte Facebook" title="Facebook"></a>
+                    <a href=""><img class="icoIn" src="{{ asset('img/instagram.svg') }}" alt="Lien vers le compte Instagram" title="Instagram"></a>
+                    <a href=""><img class="icoLkd" src="{{ asset('img/linkedin.svg') }}" alt="Lien vers le compte LinkedIn" title="LinkedIn"></a>
+                    <a href=""><img class="icoTk" src="{{ asset('img/tiktok.svg') }}" alt="Lien vers le compte Tiktok" title="TikTok"></a>
+                    <a href=""><img class="icoYt" src="{{ asset('img/youtube.svg') }}" alt="Lien vers le compte Youtube" title="Youtube"></a>
+                    <a href=""><img class="icoTw" src="{{ asset('img/x-twitter.svg') }}" alt="Lien vers le compte Twitter" title="Twitter"></a>
                     {# <a href="https://open.spotify.com/user/31b6ue6zwhrygobz7olaor7dm54u"><img class="icoSp" src="{{ asset('img/spotify.svg') }}" alt="Lien vers le compte Spotify" title="Spotify"></a>
                     <a href="https://stripe.com/fr"><img class="icoPp" src="{{ asset('img/cc-stripe.svg') }}" alt="Lien vers Stripe" title="Stripe"></a> #}
                     </div>
@@ -132,7 +132,7 @@
                 <div class="acces">
                     <a href="{{ path ('app_mentions_legales') }}">Mentions Légales</a>
                     <a href="{{ path ('app_conditons_generales_vente') }}">CGV</a>
-                    <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a>
+                    {# <a href="{{ path ('app_newsletters_home') }}">S'inscrire à la newsletter</a> #}
                     <p class="text3">2023 © Fou et Sage - Réalisé par Benjamin LOUIS</p>
                 </div>
             
