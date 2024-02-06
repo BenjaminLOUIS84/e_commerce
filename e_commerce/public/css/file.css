@@ -38,7 +38,7 @@
 
 .wrapper {
 
-    background-image: url(/img/logo.jpg);
+    background-image: url(/public/img/logo.jpg);
     font-family: var(--police-primary);
     background-size: contain;
     background-repeat: no-repeat;
@@ -51,7 +51,7 @@
 
 .wrapperCollection {
 
-    background-image: url(/img/collection.jpg);
+    background-image: url(/public/img/collection.jpg);
     font-family: var(--police-primary);
     background-size: contain;
     background-repeat: no-repeat;
@@ -64,7 +64,7 @@
 
 .wrapperLivres {
 
-    background-image: url(/img/collection.jpg);
+    background-image: url(/public/img/collection.jpg);
     font-family: var(--police-primary);
     background-size: contain;
     background-repeat: no-repeat;
@@ -294,7 +294,7 @@ a:hover {
 /* FACTURES */
 
 .wrapperFactures {
-    background-image: url(/img/collection.jpg);
+    background-image: url(/public/img/collection.jpg);
     font-family: 'Libre Baskerville', sans-serif;
     background-size: cover;
     background-repeat: no-repeat;

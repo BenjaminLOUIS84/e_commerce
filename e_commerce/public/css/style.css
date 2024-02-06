@@ -175,7 +175,7 @@ h2 {
 .article {
     display: flex;
     flex-flow: row wrap;
-    background: url(/img/collection.jpg);
+    background: url(/public/img/collection.jpg);
     
     /* background: var(--image-background); */
 
@@ -263,7 +263,7 @@ h1 {
     margin-bottom: -5px;
     padding-top: 200px;
     padding-bottom: 200px;
-    background: url(/img/collection1.jpg);
+    background: url(/public/img/collection1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -437,7 +437,7 @@ sur les divs design, colors et solutions*/
 
 .getStart {
     color: var(--color-secondary);
-    background-image: url(/img/collection.jpg);
+    background-image: url(/public/img/collection.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position: top;
@@ -1370,7 +1370,7 @@ section .price tr {
     /*////////////////////////////FEATURES///////////////////////////*/
 
     .illustrationC {
-        background: url(/img/collection1.jpg);
+        background: url(/public/img/collection1.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
